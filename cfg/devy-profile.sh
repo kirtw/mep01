@@ -33,8 +33,8 @@ $PB/ou(\
        $GB/rd2c  \
        $GB/rddv3)"
 #
-#Simple start use ^ZWZ("umep",zroStart
-export ydb_routines="$ydb_dist $PB/o($PB/rcfg) $PB/ou($PB/urzro3)"  
+#Simple start use ^ZWZ("umep",zroStart      not even  $PB/ou($PB/urzro3)
+### export ydb_routines="$ydb_dist $PB/o($PB/rcfg)"   # uses zroStd or zroUcp before any ^dz
 #
 # mpj aliases 'exclusively' in .bash_aliases  now 
 

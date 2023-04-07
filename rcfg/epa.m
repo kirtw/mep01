@@ -1,4 +1,4 @@
-epa  ;CKW/ESC  i31oct22 rcfg/ ;20221031-07;Start Earley Parser Menu
+epa  ;CKW/ESC  i31oct22 rcfg/ ;20221031-07;Start Earley Parser Menu umep./ zroStd or zroUcp
 ;
 ; input config:  $PWD must be umep, $zro bash is primary
 ;
@@ -13,19 +13,25 @@ top    	S $ETRAP="B"
         .D b^dv(Q,"mpj,PWD")
     ;  Note also compiles ^epa itself ???  works
     S zrid="umep"
-    S zroS=^ZWZ(zrid,"zroStart")
-      I zroS="" D bug^dv Q
-    S $zro=zroS
+    S zroStd=$G(^ZWZ(zrid,"zroStd"))
+    S zroUcp=$G(^ZWZ(zrid,"zroUcp"))
+;;Config epa choice:
+    I 1 DO  ; zroStd refs umep./ and gmsa./ for utilities
+      .I zroStd="" W !!,"? zroUcp null ? " BREAK
+      .S $zro=zroStd
+    I 0 DO  ;  zroUcp selfcontained umep./  util in ru* rdirs
+      .I zroUcp="" W !!,"? zroUcp null ? " BREAK
+      .S $zro=zroUcp   
+    ;Now regular start, compile
 	D ^dzzl($zro)  ; deletes *.o and recompiles to o/*.o  and ou/*.o  for gmsa, gmma, gmfd, umfd
 	;
-    S zrid="umep"
-	S ^ZWZ(zrid,"izro")=$zro  ; Log zrid,zzro for mbr IB^mwIpg
+	S ^ZWZ(zrid,"zroMBR")=$zro  ; Log zrid,zzro for mbr
 	S ^ZWZ(0,"zridCur")=zrid
-	S ^ZWZ(zrid,"zzro")=$zro
 	;
-	D ^dzWZuf(zrid)  ; zzro for MBR
+	D ^dzWZuf(zrid)  ; from ^ZWZ(zrid,zroMBR to 0uzro./  file for MBR
 	;
-        ;D ZST
+    ;D ZST
+        ;
         D ^epaMenu  ; Compiles and run 
         Q
 ;*
