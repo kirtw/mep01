@@ -1,0 +1,98 @@
+== log-rek4-fri1250pm.txt
+== /home/kw/km3a/Earley-Parse/Lua-EP-code/log-rek4-fri1250pm.txt
+
+
+nxSymFn- Get TokR1 :Sum  
+!  PRED sym:Sum
+SSC Dupl rej:1  set-item1
+Pred mch:1  Sum  new item:1- grx:1  dot/nx:1
+SSC Dupl rej:2  set-item2
+Pred mch:1  Sum  new item:1- grx:2  dot/nx:1
+nxSymFn- Get TokR1 :Product  
+!  PRED sym:Product
+Pred mch:1  Product  new item:1- grx:3  dot/nx:1
+Pred mch:1  Product  new item:1- grx:4  dot/nx:1
+nxSymFn- Get TokR1 :Product  
+!  PRED sym:Product
+SSC Dupl rej:3  set-item3
+Pred mch:1  Product  new item:1- grx:3  dot/nx:1
+SSC Dupl rej:4  set-item4
+Pred mch:1  Product  new item:1- grx:4  dot/nx:1
+nxSymFn- Get TokR1 :Factor  
+!  PRED sym:Factor
+Pred mch:1  Factor  new item:1- grx:5  dot/nx:1
+Pred mch:1  Factor  new item:1- grx:6  dot/nx:1
+nxSymFn- TokR1 is terminal function
+nxSymFn- Get TokR1 :Number  
+!  PRED sym:Number
+Pred mch:1  Number  new item:1- grx:7  dot/nx:1
+Pred mch:1  Number  new item:1- grx:8  dot/nx:1
+nxSymFn- TokR1 is terminal function
+Scan mch:1,7 sym:1+(2*3+4)  function  in:nil  new item:2-  dot/nx:1
+nxSymFn- TokR1 is terminal function
+Scan mch:1,8 sym:1+(2*3+4)  function  in:nil  new item:2-  dot/nx:1
+loop:2 9 
+nxSymFn- Get TokR1 :Number  
+!  PRED sym:Number
+Pred mch:2  Number  new item:2- grx:7  dot/nx:1
+Pred mch:2  Number  new item:2- grx:8  dot/nx:1
+nxSymFn- TokR1 is terminal function
+Complete item loops thru S[1] 8 2
+ item done, Complete loop-2/2  old:1<>tablenxSymFn- Get TokR1 :Sum  
+
+ Test tokr1:string ?== Number : name(gram... nxSymFn- Get TokR1 :Sum  
+
+ item done, Complete loop-2/2  old:2<>tablenxSymFn- Get TokR1 :Product  
+
+ Test tokr1:string ?== Number : name(gram... nxSymFn- Get TokR1 :Product  
+
+ item done, Complete loop-2/2  old:3<>tablenxSymFn- Get TokR1 :Product  
+
+ Test tokr1:string ?== Number : name(gram... nxSymFn- Get TokR1 :Product  
+
+ item done, Complete loop-2/2  old:4<>tablenxSymFn- Get TokR1 :Factor  
+
+ Test tokr1:string ?== Number : name(gram... nxSymFn- Get TokR1 :Factor  
+
+ item done, Complete loop-2/2  old:5<>tablenxSymFn- TokR1 is terminal function
+
+ Test tokr1:function ?== Number : name(gram... nxSymFn- TokR1 is terminal function
+
+ item done, Complete loop-2/2  old:6<>tablenxSymFn- Get TokR1 :Number  
+
+ Test tokr1:string ?== Number : name(gram... nxSymFn- Get TokR1 :Number  
+SSC Dupl rej:8  set-item8
+
+ item done, Complete loop-2/2  old:7<>tablenxSymFn- TokR1 is terminal function
+
+ Test tokr1:function ?== Number : name(gram... nxSymFn- TokR1 is terminal function
+
+ item done, Complete loop-2/2  old:8<>tablenxSymFn- TokR1 is terminal function
+
+ Test tokr1:function ?== Number : name(gram... nxSymFn- TokR1 is terminal function
+nxSymFn- TokR1 is terminal function
+nxSymFn- TokR1 is terminal function
+loop:3 5 
+Input: 1+(2*3+4)
+input is of Lua type:string
+Grammar is of Lua type:table
+S two levels is Lua type:table
+    === 0 ===
+    Sum     -> • Sum [+-] Product     (0)
+    Sum     -> • Product              (0)
+    Product -> • Product [*/] Factor  (0)
+    Product -> • Factor               (0)
+    Factor  -> • '(' Sum ')'          (0)
+    Factor  -> • Number               (0)
+    Number  -> • [0-9] Number         (0)
+    Number  -> • [0-9]                (0)
+
+    === 1 ===
+    Number -> [0-9] • Number  (0)
+    Number -> [0-9] •         (0)
+    Number -> • [0-9] Number  (1)
+    Number -> • [0-9]         (1)
+
+dx failed test 2 vs inlut:len()-9  +1
+The input stopped making sense at character 2
+The begining of the input couldn't be parsed.

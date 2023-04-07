@@ -1,0 +1,51 @@
+== Serial Careful Changes in rec*.lua versions
+    { km3a/ Earley-Parse./   dmdk/* } 6dec22
+    
+recognizer.lua  is Loup Reference, Unchanged
+
+rec-2a.lua  works   Chg function names BUILD, PRED, SCAN, COMP
+
+rec-2b.lua  works   Chg function names 
+        append:SavUniqItem, append_unsafe:SaveItem
+        See rec-funord1.lua vs rec-funord2.lua !
+            Critical ORDER of functions in source/Obscure Error
+            dLua/  rec-fun-OrderFun.mdk/html
+        STOP Printing S-1, (IPs-1)  Chg punct to clue diff ==++  ++== {1}
+            
+rec-2c.lua  No crash, but doesn't trigger all the parts
+        Only produces one S[1]
+        ReDesigned Grammar-
+            Remove functions, class,char, range and their entries
+            Change to TCop  '(', TCcp  ')'
+            Tdig '0123456789'
+            TPsum  '+-'
+            TPfac  '*/'
+        Add these five Terminal tokens into grammar
+        Add field CL string of matching characters
+        Add ty field, {R  for Rule, usual, and T for Terminal, new entries
+          Alt ruid~csq  > 9 to determine Terminal ty  vs field
+          Alt Alt  test first letter of runa T for Terminal (sic)
+          
+   BUILD  inner loop much cleaner
+        item Si,Sj
+        item.rule  is ruid or gsq  -- fetch ruLst
+        item[dot] is tokR1  first right side token
+        if beyond ruLst, value is == nil (type(tokR1) == "nil" sic)
+           so passes COMP screen test => COMP
+           then decides ty  (T terminal) 
+                Now match C current char (Si-1 ) - is it in CL
+                    if yes SCAN ...
+           if ty R tokR1 is a runa  rule.name  -> PRED
+
+rec-2d.lua  Short loop, same as c, No crash
+    Added symTy[tokR1] = ty {T or R}  from grammar  -not used yet, ?why
+    
+rec-2e.lua  
+
+rec-2f.lua
+    NEEDs debugging
+    io.write Bloop i.j   and item 
+    
+    lot of  write garbage added, diff 140 lines !
+    finally ran without crashing
+    only one line output

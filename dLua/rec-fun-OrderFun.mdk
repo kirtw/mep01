@@ -1,0 +1,34 @@
+== Function Placement in source CRITICAL in OBSCURE manner!
+    
+
+
+137,140c137
+< -- Adds an item at the end of the Earley set
+< local function SaveItem(set, item)
+<    set[#set+1] = item
+< end
+---
+> 
+152c149,152
+< 
+---
+> -- Adds an item at the end of the Earley set
+> local function SaveItem(set, item)
+>    set[#set+1] = item
+> end
+
+
+Moved 4 lines from before SavUniqItem to after
+Critical Difference !!!
+
+kw@L7a:~/km3a/Earley-Parse/Lua-EP-code$ lua rec-funord2.lua 
+lua: rec-funord2.lua:146: attempt to call a nil value (global 'SaveItem')
+stack traceback:
+        rec-funord2.lua:146: in upvalue 'SavUniqItem'
+        rec-funord2.lua:180: in upvalue 'PRED'
+        rec-funord2.lua:206: in local 'BUILD'
+        rec-funord2.lua:389: in main chunk
+        [C]: in ?
+
+Shows up as RunTIme Undef something else !!!
+

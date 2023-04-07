@@ -1,0 +1,11 @@
+prefix=/home/kw/km5b/yottadb/gtmy-r134
+
+exec_prefix=${prefix}
+includedir=${prefix}
+libdir=${exec_prefix}
+
+Name: YottaDB
+Description: YottaDB database library
+Version: r1.34
+Cflags: -I${includedir}
+Libs: -L${libdir} -lyottadb -Wl,-rpath,${libdir}

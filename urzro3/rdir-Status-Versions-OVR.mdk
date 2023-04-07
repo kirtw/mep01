@@ -1,0 +1,21 @@
+= rdir Status and version summary
+
+
+== Starter $zro setup  with -profile, and zroCfg.mdk
+    ^dz*  in rzro3   dependency: ^dv in rddv3/
+        pseudo debIB,  SFL
+        RefBy:
+    
+== Menu
+    rmenu3/   not clean, but works, $T("Menu") mSys ^MNU
+        menu  vs op in menu
+        fields: opab.  dopLR  opde   /menu after
+        Other vers OBS
+        
+== Debug  ^dv, ^dvstk, ^dvcaller  labels bug, log, ... ?
+    rddv3/  ^dv*  
+        prior OBS  - some local var susceptibilities, VVL, VL?
+        
+== mGP   mGlobal print, dump, HGen  variations
+    rMG
+    

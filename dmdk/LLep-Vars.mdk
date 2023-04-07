@@ -1,0 +1,13 @@
+== LLep Vars/Arrays Loup/Lua recognizer Doc
+
+Grammar
+   Organize by gsi, serial id
+   Array gr[1:1] are tokens in ruLst
+   Separately has named-key/vars:  
+   
+input  string of chars/terminal each
+
+S  table
+    
+   
+Source  $T  (or later file)  -> R

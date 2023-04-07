@@ -1,0 +1,116 @@
+epPAR  ;CKW/ESC i31oct22 ;20221031-56;Parse INc(),INty  into Gr Grammar...
+;
+;  GRi(gsq)=RP  _5 part readable extras  See EXRP^epW  to expand
+;  Gxi(<rule-name>,gi)=isq  ;  ~ left-hand-side name index, mult rules, gi
+;
+;  INc(Ip)=literal input chars
+;  INty(Ip)= type  {
+;
+;  SC items or rules have 6 _ pieces  or dotted-rule
+;   ruLst:   _5 is ruLst a comma list of rule-names
+;   Pdot:  _4 is dot, a ptr into the current ruLst comma pieces
+;   Ips    _3 is the input start pointer, Ips
+;   debug who did this item, {scan, }
+;    
+top    W !!,"Magic  Parsed !"
+       D initSC
+       D main
+       Q
+       ;
+main   ; loop thru INputs, Ip build analog
+       F Si=1:1 Q:Si>SC   W !!,"Build Loop1 ",Si,! F Sj=1:1 Q:Sj>SC(Si)  DO  D EL2 ;
+         .S RPitem=$G(SC(Si,Sj))  ; 
+         .   I RPitem="" D bug^dv("Err no RPitem","RPitem,Si,Sj") Q
+         .S trc="?"
+         .D EXRP^epW(RPitem)  ; Si,Sj expand item TokR1,dot,ruLst
+         .W !,"Build inner loop2 ",Sj,!
+         .; rule loop, item-loop, within one SCi
+         .I TokR1=""  D complete S trc="complete" Q  ; 
+         .I TokR1["+" D scan S trc="Scan" Q  ; token with + is terminal
+         .D pred S trc="pred" Q ;inside loop chart items/rules
+         .D b^dv("Err illegal rule.?","TokR1,RPi,Si,Sj")
+       Q
+;*   end each double loop
+EL2    W:$X ! W "End inner ",Si,",",Sj,"   trace:",$G(trc),"  "
+       Q
+;*         
+;*  Si,        
+pred   I $G(TokR1)="" D b^dv("Err TokR1 should not be null here","TokR1,Si,Sj") Q
+       ;I $D(Gxi(TokR1))=0 D bug^dv
+       ;For every grammar rule with name=TokR1-
+       F gi=1:1 Q:$D(Gxi(TokR1,gi))=0  S rusq=$G(Gxi(TokR1,gi)) DO
+         .I rusq="" D b^dv("Err rusq from Gxi(TokR1)","rusq,TokR1,gi") Q
+         .S RPgr=GRi(rusq)  ;
+         .;D ^dv("Log pred Add Item rule: ","TokR1,gi,rusq,RPgr")
+         .W:$X ! W "Pred add ",RPgr,!         
+         .D SSC(Si,RPgr) ; save in this State Si at end
+       ;D PZE
+       Q
+;*
+scan   S ty=INty(Si),C=INc(Si)
+       S RPdi=SC(Si,Sj)
+       D EXRP^epW(RPdi)
+       W:$X ! W " * st scan ",Si,"/",Sj,"  ",?40,RPdi,!       
+       I TokR1'=ty Q
+       I dot'=$P(RPdi,"_",4) D b^dv("Err dot","dot,RPdi")
+       S $P(RPdi,"_",4)=dot+1
+       S $P(RPdi,"_",6)="scan"
+       D SSC(Si+1,RPdi)
+       ;D ^dv("Log scan MCH Si+1 dot+1","RPdi,Si,Sj,gti")
+       W:$X ! W " * end scan ",Si,"/",Sj,"  ",?40,RPdi,!
+       Q
+;*
+complete  
+       F Sj=1:1:SC(Si) S RPc=SC(Si,Sj) DO  ;
+         .D EXRP^epW(RPc)
+         .W:$X ! W " * + Comp st ",Si,"/",Sj," dot=",dot,"  ",?40,RPc,!         
+         .I TokR1'=runa Q
+         .S dot=dot+1
+         .S $P(RPc,"_",4)=dot
+         .S $P(RPc,"_",6)="complete"
+         .D SSC(Si,RPc)
+         .;D b^dv("Log one new item ","Si,Sj,RPc,dot,ruLst")
+         .W:$X ! W " * + Comp end-new ",Si,"/",Sj," dot=",dot,"  ",?40,RPc,!
+       Q
+;*
+;*  Save in SC
+;Analog of Append and Unsafe-Append (sic,sic) functions
+;  Dont duplicate, loop til empty, punt if dupl
+SSC(Si,RPit)  I SC<Si S SC=Si ;D b^dv("Log New Si ","Si,SC,RPit")
+       NEW ni
+       F ni=1:1 S RPg=$G(SC(Si,ni)) Q:RPg=""  S Q=(RPg=RPit) DO  Q:Q  
+         .I $P(RPg,"_",1,5)=$P(RPit,"_",1,5),'Q D b^dv("err QQ","Q,RPg,RPit")
+       I Q W:$X ! W "SSC rej Dupl at Si=",Si,"/",ni,"  ",?40,RPit   Q
+       ; ni at new empty node of SC(Si,ni       
+       S SC(Si,ni)=RPit,SC(Si)=ni
+       W:$X ! W "SSC New/nonDup SC(",Si,",",ni,") = '",?40,RPit,"' "
+       Q
+       ;
+;*
+;*
+PZE(M,VL) USE $P W !!," *****  "
+      S VL=$G(VL) I VL="" S VL="mrid"
+      I $G(M)'="" D ^dv(M,VL)
+      R !,"Pause (ret) . for Dir Mode",!,":",X
+      I $G(VL)="" S VL="zrid,rdid,mrid,mwCMO"
+      I X["." D b^dv("Pause ",VL)
+      Q
+ ;*
+initSC KILL SC
+       S RP=$G(GRi(1))
+       S SC(1,1)=RP  ; Initial conditions
+       S SC=1,SC(1)=1
+       Q
+;   D ^dv("Log Parsing ParRu ","Si,Sj,RPi,runa,ruab,rusq,TokR1,dot,IPs,IPc,ruLst")
+;*
+WRP(RP) W:$X ! W Si,",",Sj,"  ",RP,"  ",ruLst," "
+       Q      
+       
+     
+; GWUSCO
+; Si~Ip ~IPc  pointer to INc()  inPointer 
+;
+; SC State Chart  sic 
+; RP*  Rule object, RPgr rule from grammar Place holder dot, IPs, IPc
+; RPi  Rule as item, dot-item, match in progress
+;

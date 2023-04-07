@@ -1,0 +1,22 @@
+== ToDo-mep    
+   { umbr./  dmep/*  } 12jan23   
+
+Possibl Directions
+   1.  Run different Inputs on Lua and mep - compare
+      1a. Lua -> text file
+      1b. mep -> text file  for diff  mv one to rev filename to save
+
+   2.  Add back ptrs
+
+   3.  Notes on how it works
+
+   4.  Clean minimal Version - why ?
+
+   5.  Alternate Data Structures
+      2a. Grammar   key ruab  eg sum.1, no need for index
+      2b. Separate Grammar File -> Array -compile -> GRk
+
+   6. Clean version, remove writes, extraneous tests
+
+
+ 

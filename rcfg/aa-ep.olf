@@ -1,0 +1,24 @@
+#!   aa-ep.olf
+
+
+//  $PB  rcfg/
+  ^epa
+  ^epaMenu
+  ^epaMa
+
+//  $PB  rmep4/     
+  ^ep4go
+      ^epGRdemo
+      ^epGRmumps
+    ^ep4RGA
+    ^ep4IN
+    ^ep4PAR
+    ^ep4W
+ 
+  
+//  $PB  rmePT1/
+  ^ep4PTx
+
+//  $PB  rmep2/
+
+

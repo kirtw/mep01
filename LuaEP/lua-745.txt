@@ -1,0 +1,489 @@
+lua output 745
+
+
+kw@L7a:~/km3a/Earley-Parse/Lua-EP-code$ lua rek.lua
+SSC Dupl rej:1  set-item1
+Pred mch:1  Sum  new item:1- r:1  dot/nx:1
+SSC Dupl rej:2  set-item2
+Pred mch:1  Sum  new item:1- r:2  dot/nx:1
+Pred mch:1  Product  new item:1- r:3  dot/nx:1
+Pred mch:1  Product  new item:1- r:4  dot/nx:1
+SSC Dupl rej:3  set-item3
+Pred mch:1  Product  new item:1- r:3  dot/nx:1
+SSC Dupl rej:4  set-item4
+Pred mch:1  Product  new item:1- r:4  dot/nx:1
+Pred mch:1  Factor  new item:1- r:5  dot/nx:1
+Pred mch:1  Factor  new item:1- r:6  dot/nx:1
+Pred mch:1  Number  new item:1- r:7  dot/nx:1
+Pred mch:1  Number  new item:1- r:8  dot/nx:1
+
+Scan mch:1,7 sym:function  in:string  new item:2-  dot/nx:1
+Scan mch:1,8 sym:function  in:string  new item:2-  dot/nx:1
+loop:2 9 
+Pred mch:2  Number  new item:2- r:7  dot/nx:1
+Pred mch:2  Number  new item:2- r:8  dot/nx:1
+Com loops thru S[1] 8 2
+ item done, Complete loop-2/2  old:1<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-2/2  old:2<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-2/2  old:3<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-2/2  old:4<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-2/2  old:5<>table
+ Test tokr1:function ?== Number : name(gram... 
+ item done, Complete loop-2/2  old:6<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-2/2  old:7<>table
+ Test tokr1:function ?== Number : name(gram... 
+ item done, Complete loop-2/2  old:8<>table
+ Test tokr1:function ?== Number : name(gram... Com loops thru S[1] 6 2
+ item done, Complete loop-2/5  old:1<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-2/5  old:2<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-2/5  old:3<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-2/5  old:4<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-2/5  old:5<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-2/5  old:6<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-2/5  old:7<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-2/5  old:8<>table
+ Test tokr1:function ?== Factor : name(gram... Com loops thru S[1] 4 2
+ item done, Complete loop-2/6  old:1<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-2/6  old:2<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-2/6  old:3<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-2/6  old:4<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-2/6  old:5<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-2/6  old:6<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-2/6  old:7<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-2/6  old:8<>table
+ Test tokr1:function ?== Product : name(gram... Com loops thru S[1] 2 2
+ item done, Complete loop-2/7  old:1<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-2/7  old:2<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-2/7  old:3<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-2/7  old:4<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-2/7  old:5<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-2/7  old:6<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-2/7  old:7<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-2/7  old:8<>table
+ Test tokr1:function ?== Sum : name(gram... Scan mch:2,9 sym:function  in:string  new item:3-  dot/nx:1
+loop:3 10 
+Pred mch:3  Product  new item:3- r:3  dot/nx:1
+Pred mch:3  Product  new item:3- r:4  dot/nx:1
+SSC Dupl rej:3  set-item3
+Pred mch:3  Product  new item:3- r:3  dot/nx:1
+SSC Dupl rej:4  set-item4
+Pred mch:3  Product  new item:3- r:4  dot/nx:1
+Pred mch:3  Factor  new item:3- r:5  dot/nx:1
+Pred mch:3  Factor  new item:3- r:6  dot/nx:1
+Scan mch:3,4 sym:function  in:string  new item:4-  dot/nx:1
+Pred mch:3  Number  new item:3- r:7  dot/nx:1
+Pred mch:3  Number  new item:3- r:8  dot/nx:1
+loop:4 8 
+Pred mch:4  Sum  new item:4- r:1  dot/nx:1
+Pred mch:4  Sum  new item:4- r:2  dot/nx:1
+SSC Dupl rej:1  set-item1
+Pred mch:4  Sum  new item:4- r:1  dot/nx:1
+SSC Dupl rej:2  set-item2
+Pred mch:4  Sum  new item:4- r:2  dot/nx:1
+Pred mch:4  Product  new item:4- r:3  dot/nx:1
+Pred mch:4  Product  new item:4- r:4  dot/nx:1
+SSC Dupl rej:3  set-item3
+Pred mch:4  Product  new item:4- r:3  dot/nx:1
+SSC Dupl rej:4  set-item4
+Pred mch:4  Product  new item:4- r:4  dot/nx:1
+Pred mch:4  Factor  new item:4- r:5  dot/nx:1
+Pred mch:4  Factor  new item:4- r:6  dot/nx:1
+Pred mch:4  Number  new item:4- r:7  dot/nx:1
+Pred mch:4  Number  new item:4- r:8  dot/nx:1
+Scan mch:4,8 sym:function  in:string  new item:5-  dot/nx:1
+Scan mch:4,9 sym:function  in:string  new item:5-  dot/nx:1
+loop:5 10 
+Pred mch:5  Number  new item:5- r:7  dot/nx:1
+Pred mch:5  Number  new item:5- r:8  dot/nx:1
+Com loops thru S[4] 8 2
+ item done, Complete loop-5/2  old:1<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-5/2  old:2<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-5/2  old:3<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-5/2  old:4<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-5/2  old:5<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-5/2  old:6<>table
+ Test tokr1:function ?== Number : name(gram... 
+ item done, Complete loop-5/2  old:7<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-5/2  old:8<>table
+ Test tokr1:function ?== Number : name(gram... 
+ item done, Complete loop-5/2  old:9<>table
+ Test tokr1:function ?== Number : name(gram... Com loops thru S[4] 6 2
+ item done, Complete loop-5/5  old:1<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-5/5  old:2<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-5/5  old:3<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-5/5  old:4<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-5/5  old:5<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-5/5  old:6<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-5/5  old:7<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-5/5  old:8<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-5/5  old:9<>table
+ Test tokr1:function ?== Factor : name(gram... Com loops thru S[4] 4 2
+ item done, Complete loop-5/6  old:1<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-5/6  old:2<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-5/6  old:3<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-5/6  old:4<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-5/6  old:5<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-5/6  old:6<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-5/6  old:7<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-5/6  old:8<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-5/6  old:9<>table
+ Test tokr1:function ?== Product : name(gram... Com loops thru S[4] 2 2
+ item done, Complete loop-5/7  old:1<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-5/7  old:2<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-5/7  old:3<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-5/7  old:4<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-5/7  old:5<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-5/7  old:6<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-5/7  old:7<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-5/7  old:8<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-5/7  old:9<>table
+ Test tokr1:function ?== Sum : name(gram... Scan mch:5,8 sym:function  in:string  new item:6-  dot/nx:1
+loop:6 11 
+Pred mch:6  Factor  new item:6- r:5  dot/nx:1
+Pred mch:6  Factor  new item:6- r:6  dot/nx:1
+Pred mch:6  Number  new item:6- r:7  dot/nx:1
+Pred mch:6  Number  new item:6- r:8  dot/nx:1
+Scan mch:6,4 sym:function  in:string  new item:7-  dot/nx:1
+Scan mch:6,5 sym:function  in:string  new item:7-  dot/nx:1
+loop:7 6 
+Pred mch:7  Number  new item:7- r:7  dot/nx:1
+Pred mch:7  Number  new item:7- r:8  dot/nx:1
+Com loops thru S[6] 8 2
+ item done, Complete loop-7/2  old:1<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-7/2  old:2<>table
+ Test tokr1:function ?== Number : name(gram... 
+ item done, Complete loop-7/2  old:3<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-7/2  old:4<>table
+ Test tokr1:function ?== Number : name(gram... 
+ item done, Complete loop-7/2  old:5<>table
+ Test tokr1:function ?== Number : name(gram... Com loops thru S[6] 6 2
+ item done, Complete loop-7/5  old:1<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-7/5  old:2<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-7/5  old:3<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-7/5  old:4<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-7/5  old:5<>table
+ Test tokr1:function ?== Factor : name(gram... Com loops thru S[4] 3 4
+ item done, Complete loop-7/6  old:1<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-7/6  old:2<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-7/6  old:3<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-7/6  old:4<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-7/6  old:5<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-7/6  old:6<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-7/6  old:7<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-7/6  old:8<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-7/6  old:9<>table
+ Test tokr1:function ?== Product : name(gram... Com loops thru S[4] 2 2
+ item done, Complete loop-7/7  old:1<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-7/7  old:2<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-7/7  old:3<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-7/7  old:4<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-7/7  old:5<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-7/7  old:6<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-7/7  old:7<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-7/7  old:8<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-7/7  old:9<>table
+ Test tokr1:function ?== Sum : name(gram... Scan mch:7,10 sym:function  in:string  new item:8-  dot/nx:1
+loop:8 11 
+Pred mch:8  Product  new item:8- r:3  dot/nx:1
+Pred mch:8  Product  new item:8- r:4  dot/nx:1
+SSC Dupl rej:3  set-item3
+Pred mch:8  Product  new item:8- r:3  dot/nx:1
+SSC Dupl rej:4  set-item4
+Pred mch:8  Product  new item:8- r:4  dot/nx:1
+Pred mch:8  Factor  new item:8- r:5  dot/nx:1
+Pred mch:8  Factor  new item:8- r:6  dot/nx:1
+Pred mch:8  Number  new item:8- r:7  dot/nx:1
+Pred mch:8  Number  new item:8- r:8  dot/nx:1
+Scan mch:8,6 sym:function  in:string  new item:9-  dot/nx:1
+Scan mch:8,7 sym:function  in:string  new item:9-  dot/nx:1
+loop:9 8 
+Pred mch:9  Number  new item:9- r:7  dot/nx:1
+Pred mch:9  Number  new item:9- r:8  dot/nx:1
+Com loops thru S[8] 8 2
+ item done, Complete loop-9/2  old:1<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-9/2  old:2<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-9/2  old:3<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-9/2  old:4<>table
+ Test tokr1:function ?== Number : name(gram... 
+ item done, Complete loop-9/2  old:5<>table
+ Test tokr1:string ?== Number : name(gram... 
+ item done, Complete loop-9/2  old:6<>table
+ Test tokr1:function ?== Number : name(gram... 
+ item done, Complete loop-9/2  old:7<>table
+ Test tokr1:function ?== Number : name(gram... Com loops thru S[8] 6 2
+ item done, Complete loop-9/5  old:1<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-9/5  old:2<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-9/5  old:3<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-9/5  old:4<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-9/5  old:5<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-9/5  old:6<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-9/5  old:7<>table
+ Test tokr1:function ?== Factor : name(gram... Com loops thru S[8] 4 2
+ item done, Complete loop-9/6  old:1<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-9/6  old:2<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-9/6  old:3<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-9/6  old:4<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-9/6  old:5<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-9/6  old:6<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-9/6  old:7<>table
+ Test tokr1:function ?== Product : name(gram... Com loops thru S[4] 1 4
+ item done, Complete loop-9/7  old:1<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-9/7  old:2<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-9/7  old:3<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-9/7  old:4<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-9/7  old:5<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-9/7  old:6<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-9/7  old:7<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-9/7  old:8<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-9/7  old:9<>table
+ Test tokr1:function ?== Sum : name(gram... Scan mch:9,9 sym:function  in:string  new item:10-  dot/nx:1
+loop:10 11 
+Com loops thru S[3] 5 4
+ item done, Complete loop-10/1  old:1<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-10/1  old:2<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-10/1  old:3<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-10/1  old:4<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-10/1  old:5<>table
+ Test tokr1:string ?== Factor : name(gram... 
+ item done, Complete loop-10/1  old:6<>table
+ Test tokr1:function ?== Factor : name(gram... 
+ item done, Complete loop-10/1  old:7<>table
+ Test tokr1:function ?== Factor : name(gram... Com loops thru S[3] 4 2
+ item done, Complete loop-10/2  old:1<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-10/2  old:2<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-10/2  old:3<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-10/2  old:4<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-10/2  old:5<>table
+ Test tokr1:string ?== Product : name(gram... 
+ item done, Complete loop-10/2  old:6<>table
+ Test tokr1:function ?== Product : name(gram... 
+ item done, Complete loop-10/2  old:7<>table
+ Test tokr1:function ?== Product : name(gram... Com loops thru S[1] 1 4
+ item done, Complete loop-10/3  old:1<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-10/3  old:2<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-10/3  old:3<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-10/3  old:4<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-10/3  old:5<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-10/3  old:6<>table
+ Test tokr1:string ?== Sum : name(gram... 
+ item done, Complete loop-10/3  old:7<>table
+ Test tokr1:function ?== Sum : name(gram... 
+ item done, Complete loop-10/3  old:8<>table
+ Test tokr1:function ?== Sum : name(gram... loop:11 6 
+Input: 1+(2*3+4)
+    === 0 ===
+    Sum     -> • Sum [+-] Product     (0)
+    Sum     -> • Product              (0)
+    Product -> • Product [*/] Factor  (0)
+    Product -> • Factor               (0)
+    Factor  -> • '(' Sum ')'          (0)
+    Factor  -> • Number               (0)
+    Number  -> • [0-9] Number         (0)
+    Number  -> • [0-9]                (0)
+
+    === 1 ===
+    Number  -> [0-9] • Number         (0)
+    Number  -> [0-9] •                (0)
+    Number  -> • [0-9] Number         (1)
+    Number  -> • [0-9]                (1)
+    Factor  -> Number •               (0)
+    Product -> Factor •               (0)
+    Sum     -> Product •              (0)
+    Product -> Product • [*/] Factor  (0)
+    Sum     -> Sum • [+-] Product     (0)
+
+    === 2 ===
+    Sum     -> Sum [+-] • Product     (0)
+    Product -> • Product [*/] Factor  (2)
+    Product -> • Factor               (2)
+    Factor  -> • '(' Sum ')'          (2)
+    Factor  -> • Number               (2)
+    Number  -> • [0-9] Number         (2)
+    Number  -> • [0-9]                (2)
+
+    === 3 ===
+    Factor  -> '(' • Sum ')'          (2)
+    Sum     -> • Sum [+-] Product     (3)
+    Sum     -> • Product              (3)
+    Product -> • Product [*/] Factor  (3)
+    Product -> • Factor               (3)
+    Factor  -> • '(' Sum ')'          (3)
+    Factor  -> • Number               (3)
+    Number  -> • [0-9] Number         (3)
+    Number  -> • [0-9]                (3)
+
+    === 4 ===
+    Number  -> [0-9] • Number         (3)
+    Number  -> [0-9] •                (3)
+    Number  -> • [0-9] Number         (4)
+    Number  -> • [0-9]                (4)
+    Factor  -> Number •               (3)
+    Product -> Factor •               (3)
+    Sum     -> Product •              (3)
+    Product -> Product • [*/] Factor  (3)
+    Factor  -> '(' Sum • ')'          (2)
+    Sum     -> Sum • [+-] Product     (3)
+
+    === 5 ===
+    Product -> Product [*/] • Factor  (3)
+    Factor  -> • '(' Sum ')'          (5)
+    Factor  -> • Number               (5)
+    Number  -> • [0-9] Number         (5)
+    Number  -> • [0-9]                (5)
+
+    === 6 ===
+    Number  -> [0-9] • Number         (5)
+    Number  -> [0-9] •                (5)
+    Number  -> • [0-9] Number         (6)
+    Number  -> • [0-9]                (6)
+    Factor  -> Number •               (5)
+    Product -> Product [*/] Factor •  (3)
+    Sum     -> Product •              (3)
+    Product -> Product • [*/] Factor  (3)
+    Factor  -> '(' Sum • ')'          (2)
+    Sum     -> Sum • [+-] Product     (3)
+
+    === 7 ===
+    Sum     -> Sum [+-] • Product     (3)
+    Product -> • Product [*/] Factor  (7)
+    Product -> • Factor               (7)
+    Factor  -> • '(' Sum ')'          (7)
+    Factor  -> • Number               (7)
+    Number  -> • [0-9] Number         (7)
+    Number  -> • [0-9]                (7)
+
+    === 8 ===
+    Number  -> [0-9] • Number         (7)
+    Number  -> [0-9] •                (7)
+    Number  -> • [0-9] Number         (8)
+    Number  -> • [0-9]                (8)
+    Factor  -> Number •               (7)
+    Product -> Factor •               (7)
+    Sum     -> Sum [+-] Product •     (3)
+    Product -> Product • [*/] Factor  (7)
+    Factor  -> '(' Sum • ')'          (2)
+    Sum     -> Sum • [+-] Product     (3)
+
+    === 9 ===
+    Factor  -> '(' Sum ')' •          (2)
+    Product -> Factor •               (2)
+    Sum     -> Sum [+-] Product •     (0)
+    Product -> Product • [*/] Factor  (2)
+    Sum     -> Sum • [+-] Product     (0)
+
+The input has been recognised. Congratulations!
+kw@L7a:~/km3a/Earley-Parse/Lua-EP-code$

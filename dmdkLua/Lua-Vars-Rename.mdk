@@ -1,0 +1,20 @@
+Lua Vars Rename
+
+A. Rename in Lua rek4*.lua
+B. Rename in mep  ^epPar  etc.
+
+inPtr index  ptr to chars in input array  input[inPtr]
+    input is a string, may be ref in Lua as input[
+
+Si   i  in Build Outer Loop ~ Input ptr  (multiple uses of i)
+Sj   j  inner Build Loop, sometimes, ptr to state table S[i][j]
+
+
+item state table contents, obj, dot-rule, dot is ptr, partially matched
+   item.name
+   item.rule  is index into Grammar, rule number, gsi
+   item.next  is dot?/ tokR1 where dot+1 points, leftmost of remaining rule list
+   exists in S[i]  where i is start ptr into input, next/dot is ptr in ruleList?
+   
+   
+   

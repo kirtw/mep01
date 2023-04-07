@@ -1,0 +1,26 @@
+dzSETzro(rdLSTo,rdLSTou) ;CKW/ESC i10nov22 gmsa./ rzro3/ ;20221110-06;Compose $zro from o and ou lists
+;  : izro
+;  OBS, successor ? 
+;
+top   NEW Q S Q=""     NEW dist,PB,SB,GB,MB,WB
+      S dist=$ZTRNLNM("ydb_dist")
+      I $G(rdLSTo)="" D bug^dv Q
+        S rdLSTo=$TR(rdLSTo,","," ")  ; either space or comma delim, sp here
+        S rdLSTou=$TR(rdLSTou,","," ")  ; ditto
+      S rdLSTou=$G(rdLSTou) ; may be null
+      D ^dzXIzro  ; RDx(rdir)=BB  does ^devIB : PB, SB, GB, MB
+      S izro=dist_" "_PB_"o("
+      D RL(rdLSTo)
+      I rdLSTou'="" DO  ;
+        .S izro=izro_")  "_PB_"ou("
+        .D RL(rdLSTou)
+      S izro=izro_")"   ;  vs lib*.so
+Q     Q:$Q Q  Q
+;*  add to izro if in RDx(rdir)      
+RL(LST)  
+      F di=1:1:$L(LST," ") S rdir=$P(LST," ",di) I rdir'="" DO  ;
+        .S BB=$G(RDx(rdir))
+        .I BB="" S Q="Err rdir " D b^dv(Q,"Q,rdir") Q  ;skip it
+        .S izro=izro_BB_rdir_" "
+      Q
+      

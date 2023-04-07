@@ -1,0 +1,504 @@
+
+
+ Build loop #1
+Bld inner loop #1
+** Pred  
+Try to append 1/1/1   
+*** Pred Add new:1 Si:  sym:Sum
+Try to append 2/1/1   
+*** Pred Add new:1 Si:  sym:Sum
+Bld inner loop #2
+** Pred  
+Try to append 3/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Product
+Try to append 4/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Product
+Bld inner loop #3
+** Pred  
+Try to append 3/1/1   
+*** Pred Add new:1 Si:  sym:Product
+Try to append 4/1/1   
+*** Pred Add new:1 Si:  sym:Product
+Bld inner loop #4
+** Pred  
+Try to append 5/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Factor
+Try to append 6/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Factor
+Bld inner loop #5
+ * * scan 1/5 ~ boolean
+Bld inner loop #6
+** Pred  
+Try to append 7/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Number
+Try to append 8/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Number
+Bld inner loop #7
+ * * scan 1/7 ~ boolean
+Bld inner loop #8
+ * * scan 1/8 ~ boolean
+end build loop:2 9 
+
+
+ Build loop #2
+Bld inner loop #1
+** Pred  
+Try to append 7/2/1    is new. 
+*** Pred Add new:2 Si:  sym:Number
+Try to append 8/2/1    is new. 
+*** Pred Add new:2 Si:  sym:Number
+Bld inner loop #2
+ * ! complete 2/2
+C test :2/1: Sum =? Number
+C test :2/2: Product =? Number
+C test :2/3: Product =? Number
+C test :2/4: Factor =? Number
+C test term 2/5
+C test :2/6: Number =? Number
+Try to append 6/1/2    is new. 
+comp success:6~Number
+C test term 2/7
+C test term 2/8
+Bld inner loop #3
+ * * scan 2/3 ~ boolean
+Bld inner loop #4
+ * * scan 2/4 ~ boolean
+Bld inner loop #5
+ * ! complete 2/5
+C test :2/1: Sum =? Factor
+C test :2/2: Product =? Factor
+C test :2/3: Product =? Factor
+C test :2/4: Factor =? Factor
+Try to append 4/1/2    is new. 
+comp success:4~Factor
+C test term 2/5
+C test :2/6: Number =? Factor
+C test term 2/7
+C test term 2/8
+Bld inner loop #6
+ * ! complete 2/6
+C test :2/1: Sum =? Product
+C test :2/2: Product =? Product
+Try to append 2/1/2    is new. 
+comp success:2~Product
+C test :2/3: Product =? Product
+Try to append 3/1/2    is new. 
+comp success:3~Product
+C test :2/4: Factor =? Product
+C test term 2/5
+C test :2/6: Number =? Product
+C test term 2/7
+C test term 2/8
+Bld inner loop #7
+ * ! complete 2/7
+C test :2/1: Sum =? Sum
+Try to append 1/1/2    is new. 
+comp success:1~Sum
+C test :2/2: Product =? Sum
+C test :2/3: Product =? Sum
+C test :2/4: Factor =? Sum
+C test term 2/5
+C test :2/6: Number =? Sum
+C test term 2/7
+C test term 2/8
+Bld inner loop #8
+ * * scan 2/8 ~ boolean
+Bld inner loop #9
+ * * scan 2/9 ~ boolean
+end build loop:3 10 
+
+
+ Build loop #3
+Bld inner loop #1
+** Pred  
+Try to append 3/3/1    is new. 
+*** Pred Add new:3 Si:  sym:Product
+Try to append 4/3/1    is new. 
+*** Pred Add new:3 Si:  sym:Product
+Bld inner loop #2
+** Pred  
+Try to append 3/3/1   
+*** Pred Add new:3 Si:  sym:Product
+Try to append 4/3/1   
+*** Pred Add new:3 Si:  sym:Product
+Bld inner loop #3
+** Pred  
+Try to append 5/3/1    is new. 
+*** Pred Add new:3 Si:  sym:Factor
+Try to append 6/3/1    is new. 
+*** Pred Add new:3 Si:  sym:Factor
+Bld inner loop #4
+ * * scan 3/4 ~ boolean
+Bld inner loop #5
+** Pred  
+Try to append 7/3/1    is new. 
+*** Pred Add new:3 Si:  sym:Number
+Try to append 8/3/1    is new. 
+*** Pred Add new:3 Si:  sym:Number
+Bld inner loop #6
+ * * scan 3/6 ~ boolean
+Bld inner loop #7
+ * * scan 3/7 ~ boolean
+end build loop:4 8 
+
+
+ Build loop #4
+Bld inner loop #1
+** Pred  
+Try to append 1/4/1    is new. 
+*** Pred Add new:4 Si:  sym:Sum
+Try to append 2/4/1    is new. 
+*** Pred Add new:4 Si:  sym:Sum
+Bld inner loop #2
+** Pred  
+Try to append 1/4/1   
+*** Pred Add new:4 Si:  sym:Sum
+Try to append 2/4/1   
+*** Pred Add new:4 Si:  sym:Sum
+Bld inner loop #3
+** Pred  
+Try to append 3/4/1    is new. 
+*** Pred Add new:4 Si:  sym:Product
+Try to append 4/4/1    is new. 
+*** Pred Add new:4 Si:  sym:Product
+Bld inner loop #4
+** Pred  
+Try to append 3/4/1   
+*** Pred Add new:4 Si:  sym:Product
+Try to append 4/4/1   
+*** Pred Add new:4 Si:  sym:Product
+Bld inner loop #5
+** Pred  
+Try to append 5/4/1    is new. 
+*** Pred Add new:4 Si:  sym:Factor
+Try to append 6/4/1    is new. 
+*** Pred Add new:4 Si:  sym:Factor
+Bld inner loop #6
+ * * scan 4/6 ~ boolean
+Bld inner loop #7
+** Pred  
+Try to append 7/4/1    is new. 
+*** Pred Add new:4 Si:  sym:Number
+Try to append 8/4/1    is new. 
+*** Pred Add new:4 Si:  sym:Number
+Bld inner loop #8
+ * * scan 4/8 ~ boolean
+Bld inner loop #9
+ * * scan 4/9 ~ boolean
+end build loop:5 10 
+
+
+ Build loop #5
+Bld inner loop #1
+** Pred  
+Try to append 7/5/1    is new. 
+*** Pred Add new:5 Si:  sym:Number
+Try to append 8/5/1    is new. 
+*** Pred Add new:5 Si:  sym:Number
+Bld inner loop #2
+ * ! complete 5/2
+C test :5/1: Sum =? Number
+C test :5/2: Sum =? Number
+C test :5/3: Product =? Number
+C test :5/4: Product =? Number
+C test :5/5: Factor =? Number
+C test term 5/6
+C test :5/7: Number =? Number
+Try to append 6/4/2    is new. 
+comp success:7~Number
+C test term 5/8
+C test term 5/9
+Bld inner loop #3
+ * * scan 5/3 ~ boolean
+Bld inner loop #4
+ * * scan 5/4 ~ boolean
+Bld inner loop #5
+ * ! complete 5/5
+C test :5/1: Sum =? Factor
+C test :5/2: Sum =? Factor
+C test :5/3: Product =? Factor
+C test :5/4: Product =? Factor
+C test :5/5: Factor =? Factor
+Try to append 4/4/2    is new. 
+comp success:5~Factor
+C test term 5/6
+C test :5/7: Number =? Factor
+C test term 5/8
+C test term 5/9
+Bld inner loop #6
+ * ! complete 5/6
+C test :5/1: Sum =? Product
+C test :5/2: Sum =? Product
+C test :5/3: Product =? Product
+Try to append 2/4/2    is new. 
+comp success:3~Product
+C test :5/4: Product =? Product
+Try to append 3/4/2    is new. 
+comp success:4~Product
+C test :5/5: Factor =? Product
+C test term 5/6
+C test :5/7: Number =? Product
+C test term 5/8
+C test term 5/9
+Bld inner loop #7
+ * ! complete 5/7
+C test :5/1: Sum =? Sum
+Try to append 5/3/3    is new. 
+comp success:1~Sum
+C test :5/2: Sum =? Sum
+Try to append 1/4/2    is new. 
+comp success:2~Sum
+C test :5/3: Product =? Sum
+C test :5/4: Product =? Sum
+C test :5/5: Factor =? Sum
+C test term 5/6
+C test :5/7: Number =? Sum
+C test term 5/8
+C test term 5/9
+Bld inner loop #8
+ * * scan 5/8 ~ boolean
+Bld inner loop #9
+ * * scan 5/9 ~ boolean
+Bld inner loop #10
+ * * scan 5/10 ~ boolean
+end build loop:6 11 
+
+
+ Build loop #6
+Bld inner loop #1
+** Pred  
+Try to append 5/6/1    is new. 
+*** Pred Add new:6 Si:  sym:Factor
+Try to append 6/6/1    is new. 
+*** Pred Add new:6 Si:  sym:Factor
+Bld inner loop #2
+ * * scan 6/2 ~ boolean
+Bld inner loop #3
+** Pred  
+Try to append 7/6/1    is new. 
+*** Pred Add new:6 Si:  sym:Number
+Try to append 8/6/1    is new. 
+*** Pred Add new:6 Si:  sym:Number
+Bld inner loop #4
+ * * scan 6/4 ~ boolean
+Bld inner loop #5
+ * * scan 6/5 ~ boolean
+end build loop:7 6 
+
+
+ Build loop #7
+Bld inner loop #1
+** Pred  
+Try to append 7/7/1    is new. 
+*** Pred Add new:7 Si:  sym:Number
+Try to append 8/7/1    is new. 
+*** Pred Add new:7 Si:  sym:Number
+Bld inner loop #2
+ * ! complete 7/2
+C test :7/1: Factor =? Number
+C test term 7/2
+C test :7/3: Number =? Number
+Try to append 6/6/2    is new. 
+comp success:3~Number
+C test term 7/4
+C test term 7/5
+Bld inner loop #3
+ * * scan 7/3 ~ boolean
+Bld inner loop #4
+ * * scan 7/4 ~ boolean
+Bld inner loop #5
+ * ! complete 7/5
+C test :7/1: Factor =? Factor
+Try to append 3/4/4    is new. 
+comp success:1~Factor
+C test term 7/2
+C test :7/3: Number =? Factor
+C test term 7/4
+C test term 7/5
+Bld inner loop #6
+ * ! complete 7/6
+C test :7/1: Sum =? Product
+C test :7/2: Sum =? Product
+C test :7/3: Product =? Product
+Try to append 2/4/2    is new. 
+comp success:3~Product
+C test :7/4: Product =? Product
+Try to append 3/4/2    is new. 
+comp success:4~Product
+C test :7/5: Factor =? Product
+C test term 7/6
+C test :7/7: Number =? Product
+C test term 7/8
+C test term 7/9
+Bld inner loop #7
+ * ! complete 7/7
+C test :7/1: Sum =? Sum
+Try to append 5/3/3    is new. 
+comp success:1~Sum
+C test :7/2: Sum =? Sum
+Try to append 1/4/2    is new. 
+comp success:2~Sum
+C test :7/3: Product =? Sum
+C test :7/4: Product =? Sum
+C test :7/5: Factor =? Sum
+C test term 7/6
+C test :7/7: Number =? Sum
+C test term 7/8
+C test term 7/9
+Bld inner loop #8
+ * * scan 7/8 ~ boolean
+Bld inner loop #9
+ * * scan 7/9 ~ boolean
+Bld inner loop #10
+ * * scan 7/10 ~ boolean
+end build loop:8 11 
+
+
+ Build loop #8
+Bld inner loop #1
+** Pred  
+Try to append 3/8/1    is new. 
+*** Pred Add new:8 Si:  sym:Product
+Try to append 4/8/1    is new. 
+*** Pred Add new:8 Si:  sym:Product
+Bld inner loop #2
+** Pred  
+Try to append 3/8/1   
+*** Pred Add new:8 Si:  sym:Product
+Try to append 4/8/1   
+*** Pred Add new:8 Si:  sym:Product
+Bld inner loop #3
+** Pred  
+Try to append 5/8/1    is new. 
+*** Pred Add new:8 Si:  sym:Factor
+Try to append 6/8/1    is new. 
+*** Pred Add new:8 Si:  sym:Factor
+Bld inner loop #4
+ * * scan 8/4 ~ boolean
+Bld inner loop #5
+** Pred  
+Try to append 7/8/1    is new. 
+*** Pred Add new:8 Si:  sym:Number
+Try to append 8/8/1    is new. 
+*** Pred Add new:8 Si:  sym:Number
+Bld inner loop #6
+ * * scan 8/6 ~ boolean
+Bld inner loop #7
+ * * scan 8/7 ~ boolean
+end build loop:9 8 
+
+
+ Build loop #9
+Bld inner loop #1
+** Pred  
+Try to append 7/9/1    is new. 
+*** Pred Add new:9 Si:  sym:Number
+Try to append 8/9/1    is new. 
+*** Pred Add new:9 Si:  sym:Number
+Bld inner loop #2
+ * ! complete 9/2
+C test :9/1: Product =? Number
+C test :9/2: Product =? Number
+C test :9/3: Factor =? Number
+C test term 9/4
+C test :9/5: Number =? Number
+Try to append 6/8/2    is new. 
+comp success:5~Number
+C test term 9/6
+C test term 9/7
+Bld inner loop #3
+ * * scan 9/3 ~ boolean
+Bld inner loop #4
+ * * scan 9/4 ~ boolean
+Bld inner loop #5
+ * ! complete 9/5
+C test :9/1: Product =? Factor
+C test :9/2: Product =? Factor
+C test :9/3: Factor =? Factor
+Try to append 4/8/2    is new. 
+comp success:3~Factor
+C test term 9/4
+C test :9/5: Number =? Factor
+C test term 9/6
+C test term 9/7
+Bld inner loop #6
+ * ! complete 9/6
+C test :9/1: Product =? Product
+Try to append 1/4/4    is new. 
+comp success:1~Product
+C test :9/2: Product =? Product
+Try to append 3/8/2    is new. 
+comp success:2~Product
+C test :9/3: Factor =? Product
+C test term 9/4
+C test :9/5: Number =? Product
+C test term 9/6
+C test term 9/7
+Bld inner loop #7
+ * ! complete 9/7
+C test :9/1: Sum =? Sum
+Try to append 5/3/3    is new. 
+comp success:1~Sum
+C test :9/2: Sum =? Sum
+Try to append 1/4/2    is new. 
+comp success:2~Sum
+C test :9/3: Product =? Sum
+C test :9/4: Product =? Sum
+C test :9/5: Factor =? Sum
+C test term 9/6
+C test :9/7: Number =? Sum
+C test term 9/8
+C test term 9/9
+Bld inner loop #8
+ * * scan 9/8 ~ boolean
+Bld inner loop #9
+ * * scan 9/9 ~ boolean
+Bld inner loop #10
+ * * scan 9/10 ~ boolean
+end build loop:10 11 
+
+
+ Build loop #10
+Bld inner loop #1
+ * ! complete 10/1
+C test :10/1: Product =? Factor
+C test :10/2: Product =? Factor
+C test :10/3: Factor =? Factor
+Try to append 4/3/2    is new. 
+comp success:3~Factor
+C test term 10/4
+C test :10/5: Number =? Factor
+C test term 10/6
+C test term 10/7
+Bld inner loop #2
+ * ! complete 10/2
+C test :10/1: Product =? Product
+Try to append 1/1/4    is new. 
+comp success:1~Product
+C test :10/2: Product =? Product
+Try to append 3/3/2    is new. 
+comp success:2~Product
+C test :10/3: Factor =? Product
+C test term 10/4
+C test :10/5: Number =? Product
+C test term 10/6
+C test term 10/7
+Bld inner loop #3
+ * ! complete 10/3
+C test :10/1: Sum =? Sum
+Try to append 1/1/2    is new. 
+comp success:1~Sum
+C test :10/2: Product =? Sum
+C test :10/3: Product =? Sum
+C test :10/4: Factor =? Sum
+C test term 10/5
+C test :10/6: Number =? Sum
+C test term 10/7
+C test term 10/8
+Bld inner loop #4
+ * * scan 10/4 ~ boolean
+Bld inner loop #5
+ * * scan 10/5 ~ boolean
+end build loop:11 6 
+Input: 1+(2*3+4)
+The input has been recognised. Congratulations!

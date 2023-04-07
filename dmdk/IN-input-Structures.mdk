@@ -1,0 +1,44 @@
+= Input Structures and Variables
+
+
+
+Input here is expr where all are only one char tokes each.
+I understand one can pre-process some things for efficiency and simplicity
+    eg a series of digits together, a series of chars as a word
+    
+I started by using IN() as an array of tokens, 
+    with each having a literal char field, here always one char.
+    and a type ty which is like the first level of rule
+    
+I think the distinction between terminal and non-terminal tokens can be simplified
+    and be included as a regular rule in the grammar
+    I named them Psum for Punct in sum-group, just + and minus here.
+       and Pfac in set * and /  mult and divide
+       and Cdig  a one-char digit, ie not ain integer set of digits, later
+
+INs="1+(2*3-4)"
+Ip is Ptr into INs and IN(Ip)
+I am going to use separate Array INty(Ip) vs a more complicated array form.
+    Experience is whispering in my ear here.
+    Experience also tells me to separate Ic the grabber from INs
+        and the actual resulting token counter/ptr Ip.
+        Later they may not be 1:1
+So
+   KILL IN,INty S IN=0  ;quick and dirty keep num/'len' of array in base node **
+   S Ip=0 F Ic=1L:1:$L(INs) S C=$E(INs,Ic),ty="X" DO  ;
+      I C?1N S ty="Cdig"  ;This could be "0123456789"[C for consistency
+      I "+-"[C S ty="Psum"  ; this is new rule for terminal in a set [+-]
+      I "*/"[C S ty="Pfac"
+      ;ty may be X unk token type
+      I ty="X" ; could punt here, but I will treat it as a unrecog token
+      S Ip=Ip+1  ; now I know I have one new input token, bump Ip
+     .S IN(Ip)=C
+     .S INty(Ip)=ty
+     .S IN=Ip  ; this is a trick for quick code, keeping the count **
+
+So IN is 9, Ip goes from 1:1:IN and all of this is static for whole parse run
+I wrote a three line display sr to display it like so-
+1    2    3   4    5    6    7    8    9      ; Ip
+1    +    (   2    *    3    -    4    )      ; C    IN(Ip)
+Cdig Psum Cop Cdig Pfac Cdig Psum Cdig Ccp    ; ty   INty(Ip)
+

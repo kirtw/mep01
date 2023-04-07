@@ -1,0 +1,12 @@
+#!
+
+Vers 4  HGen mods
+
+  rhgen4/    is  RefBy    
+  
+18feb21   KA2    ReFactor KAcct  Accounting Software
+    Hx HG1^kah  and write html directly to devh...
+    So no previous ref to a utility separately...
+    
+About 15 mpj which ref prior vers, rd3hg !
+

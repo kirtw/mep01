@@ -1,0 +1,9 @@
+== ChangeLog-mep
+	{ umbr./   dmep/* } 12jan23
+
+12jan23  both ep2PAR and ^ep3PAR still work
+	New access to both, via new ^ep3G0 variant of ^ep2G0
+
+See ToDo-mep   Versions-mep   
+
+

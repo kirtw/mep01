@@ -1,0 +1,106 @@
+
+#    /home/kw/km3a/Earley-Parse/dmdk/    S-final.mdk
+#   recognizer.lua  Input '
+
+
+    === 0 ===
+    Sum     -> • Sum [+-] Product     (0)
+    Sum     -> • Product              (0)
+    Product -> • Product [*/] Factor  (0)
+    Product -> • Factor               (0)
+    Factor  -> • '(' Sum ')'          (0)
+    Factor  -> • Number               (0)
+    Number  -> • [0-9] Number         (0)
+    Number  -> • [0-9]                (0)
+
+    === 1 ===
+    Number  -> [0-9] • Number         (0)
+    Number  -> [0-9] •                (0)
+    Number  -> • [0-9] Number         (1)
+    Number  -> • [0-9]                (1)
+    Factor  -> Number •               (0)
+    Product -> Factor •               (0)
+    Sum     -> Product •              (0)
+    Product -> Product • [*/] Factor  (0)
+    Sum     -> Sum • [+-] Product     (0)
+
+    === 2 ===
+    Sum     -> Sum [+-] • Product     (0)
+    Product -> • Product [*/] Factor  (2)
+    Product -> • Factor               (2)
+    Factor  -> • '(' Sum ')'          (2)
+    Factor  -> • Number               (2)
+    Number  -> • [0-9] Number         (2)
+    Number  -> • [0-9]                (2)
+
+    === 3 ===
+    Factor  -> '(' • Sum ')'          (2)
+    Sum     -> • Sum [+-] Product     (3)
+    Sum     -> • Product              (3)
+    Product -> • Product [*/] Factor  (3)
+    Product -> • Factor               (3)
+    Factor  -> • '(' Sum ')'          (3)
+    Factor  -> • Number               (3)
+    Number  -> • [0-9] Number         (3)
+    Number  -> • [0-9]                (3)
+
+    === 4 ===
+    Number  -> [0-9] • Number         (3)
+    Number  -> [0-9] •                (3)
+    Number  -> • [0-9] Number         (4)
+    Number  -> • [0-9]                (4)
+    Factor  -> Number •               (3)
+    Product -> Factor •               (3)
+    Sum     -> Product •              (3)
+    Product -> Product • [*/] Factor  (3)
+    Factor  -> '(' Sum • ')'          (2)
+    Sum     -> Sum • [+-] Product     (3)
+
+    === 5 ===
+    Product -> Product [*/] • Factor  (3)
+    Factor  -> • '(' Sum ')'          (5)
+    Factor  -> • Number               (5)
+    Number  -> • [0-9] Number         (5)
+    Number  -> • [0-9]                (5)
+
+    === 6 ===
+    Number  -> [0-9] • Number         (5)
+    Number  -> [0-9] •                (5)
+    Number  -> • [0-9] Number         (6)
+    Number  -> • [0-9]                (6)
+    Factor  -> Number •               (5)
+    Product -> Product [*/] Factor •  (3)
+    Sum     -> Product •              (3)
+    Product -> Product • [*/] Factor  (3)
+    Factor  -> '(' Sum • ')'          (2)
+    Sum     -> Sum • [+-] Product     (3)
+
+    === 7 ===
+    Sum     -> Sum [+-] • Product     (3)
+    Product -> • Product [*/] Factor  (7)
+    Product -> • Factor               (7)
+    Factor  -> • '(' Sum ')'          (7)
+    Factor  -> • Number               (7)
+    Number  -> • [0-9] Number         (7)
+    Number  -> • [0-9]                (7)
+
+    === 8 ===
+    Number  -> [0-9] • Number         (7)
+    Number  -> [0-9] •                (7)
+    Number  -> • [0-9] Number         (8)
+    Number  -> • [0-9]                (8)
+    Factor  -> Number •               (7)
+    Product -> Factor •               (7)
+    Sum     -> Sum [+-] Product •     (3)
+    Product -> Product • [*/] Factor  (7)
+    Factor  -> '(' Sum • ')'          (2)
+    Sum     -> Sum • [+-] Product     (3)
+
+    === 9 ===
+    Factor  -> '(' Sum ')' •          (2)
+    Product -> Factor •               (2)
+    Sum     -> Sum [+-] Product •     (0)
+    Product -> Product • [*/] Factor  (2)
+    Sum     -> Sum • [+-] Product     (0)
+
+    

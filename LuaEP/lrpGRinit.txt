@@ -1,0 +1,29 @@
+
+
+
+-------------------
+-- Hello, world! --
+-------------------
+local Grammar = {
+   start_rule_name = 'Sum',
+   { name = 'Sum'    , 'Sum'      , class('+-'), 'Product'},
+   { name = 'Sum'    , 'Product'  ,                       },
+   { name = 'Product', 'Product'  , class('*/'), 'Factor' },
+   { name = 'Product', 'Factor'   ,                       },
+   { name = 'Factor' , char('(')  , 'Sum', char(')')      },
+   { name = 'Factor' , 'Number'                           },
+   { name = 'Number' , range('09'), 'Number'              },
+   { name = 'Number' , range('09'),                       },
+}
+local input = "1+(2*3+4)" -- Tinker with this first.
+                          -- I have left some examples.
+-- local input = "@@(2*3+4)"
+-- local input = "1+(2*@@@@"
+-- local input = "1+(2*"
+-- local input = "1+(2*3+4)"
+
+local S = build_items(Grammar, input)
+io.write("Input: ", input, '\n') -- print the input
+print_S(S, Grammar)              -- print all the internal state
+diagnose(S, Grammar, input)      -- tell if the input is OK or not
+

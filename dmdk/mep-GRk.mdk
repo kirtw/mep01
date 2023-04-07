@@ -1,0 +1,24 @@
+==  mep Grammar Table
+    {      dmep/* }  15dec22
+    
+copy paste
+
+Option 2  #2  WGR^ep2W-   -
+
+
+ Grammar GRk() rules-
+ 1  sum.1      -> R  sum,Psum,prod      Sum            sum is sum rule +/- 
+ 2  sum.2      -> R  prod  
+ 3  prod.1     -> R  prod,Pfac,fac      Product         prod is product 
+ 4  prod.2     -> R  fac  
+ 5  fac.1      -> R  Cop,sum,Ccp        Factor           f vs (,s,)  with the literal char as its own name 
+ 6  fac.2      -> R  num  
+ 7  num.1      -> R  Cdig,num           Number  
+ 8  num.2      -> R  Cdig  
+ 9  Cdig.1     -> T  0123456789         [0-9]            
+ 10 Cop.1      -> T  (                   '('   
+ 11 Ccp.1      -> T  )                   ')'   
+ 12 Psum.1     -> T  +-                 ['+-']  
+ 13 Pfac.1     -> T  */                 ['*/']  
+Finished Option...
+

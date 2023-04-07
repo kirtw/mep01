@@ -1,0 +1,25 @@
+== rek Function Nesting and scope
+
+
+Is it copying the whole Grammar and S tables repetitively
+as arguments to srs.
+
+Lua local var-scoping is NOT nested. One layer with %prefix 'uplifted'
+Perhaps Grammar and S should be global in scope, so not copied.
+Might be significant later (? not to me, not running in production vs mep)
+
+Note names and scopes vary
+    Grammar
+    grammar (sic vary by case only!)
+    Bgram   - playing with scope and renames, arg-passing
+    
+Function Nesting-
+
+  build_items(
+    predict(S, i, symbol, grammar)   -- single refs
+    scan(S, i, j, symbol, inputarg)
+    complete(S, Si, Sj, grammar)
+    
+srs
+    Append sic two variants, nested!  No good reason!
+      

@@ -1,0 +1,31 @@
+== kw Display experimentation One 5dec22
+
+input   1 + ( 2 * 3 + 4 )       nI=$L(input) # slots
+or      A + ( x * y + B )
+
+Substitution processes- rule-name replaces tokens
+spans same number of positions
+
+Array DP
+   dsq  serial steps, substitutions
+   input pieces, slots ? new name  IPs,IPe Si
+   sli  1:1:$L(input)
+   sliE end slot/span multiple slots
+DP(dsq,sli,
+    tokNa   -current names
+    tokRaw  -input accumulation of chars
+    
+W:$X ! F sli=1:1:nI DO  ;
+         .S tokNa=$G(DP(dsr,sli,"tokNa"))
+         .I tokNa="" Q
+         .W ?tb(sli),"| ",tokNa," "
+        F sli=1:1:nI DO  ;
+         .S tokNa=$G(DP(dsr,sli,"tokNa"))
+         .I tokNa="" Q
+         .S tokCS=$G(DP(dsr,sli,"tokCS"))
+         .W ?tb(sli),"| ",tokCS," "
+       W:$X !
+       Q
+Serial trans dsq
+    sli, runa, sl2, ruLst ?
+    

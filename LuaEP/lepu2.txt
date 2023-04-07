@@ -1,0 +1,54 @@
+
+
+
+
+--------------------
+-- Test utilities --  (Don't read this yet, it's not very interesting.)
+--------------------
+
+function has_partial_parse(S, i, grammar)
+   local set = S[i]
+   for i = 1, #set do
+      local item = set[i]
+      local rule  = grammar[item.rule]
+      if rule.name  == grammar.start_rule_name and
+         item.next  >  #rule                   and
+         item.start == 1
+      then
+         return true
+      end
+   end
+   return false
+end
+
+function has_complete_parse(S, grammar)
+   return has_partial_parse(S, #S, grammar)
+end
+
+function last_partial_parse(S, grammar)
+   for i = #S, 1, -1 do
+      if has_partial_parse(S, i, grammar) then
+         return i
+      end
+   end
+   return nil
+end
+
+function diagnose(S, grammar, input)
+   if has_complete_parse(S, grammar)
+   then
+      print("The input has been recognised. Congratulations!")
+   else
+      if #S == input:len() + 1
+      then print("The whole input made sense. Maybe it is incomplete?")
+      else io.write("The input stopped making sense at character ", #S, '\n')
+      end
+
+      local lpp = last_partial_parse(S, grammar)
+      if lpp ~= nil
+      then io.write("This begining of the input has been recognised: ",
+                    input:sub(1, lpp - 1), '\n')
+      else print("The begining of the input couldn't be parsed.")
+      end
+   end
+end

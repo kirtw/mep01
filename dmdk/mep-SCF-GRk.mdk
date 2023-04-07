@@ -1,0 +1,197 @@
+== mep Tables  ^ep2*  rmep2/  
+
+
+--
+ Grammar then SCF State Tables Dump
+
+
+
+ Grammar GRk() rules-
+ 1  sum.1      -> R  sum,Psum,prod      Sum            sum is sum rule +/- 
+ 2  sum.2      -> R  prod  
+ 3  prod.1     -> R  prod,Pfac,fac      Product         prod is product 
+ 4  prod.2     -> R  fac  
+ 5  fac.1      -> R  Cop,sum,Ccp        Factor           f vs (,s,)  with the literal char as its own name 
+ 6  fac.2      -> R  num  
+ 7  num.1      -> R  Cdig,num           Number  
+ 8  num.2      -> R  Cdig  
+ 9  Cdig.1     -> T  0123456789         [0-9]            
+ 10 Cop.1      -> T  (                   '('   
+ 11 Ccp.1      -> T  )                   ')'   
+ 12 Psum.1     -> T  +-                 ['+-']  
+ 13 Pfac.1     -> T  */                 ['*/']  
+
+
+ Complete Table-
+
+
+     ====++ 1 ++==== SE:0  
+     Init sum.1
+1  1.1 sum.1/1    -> {}  .1   *  sum    Psum    prod    R sum        {1-0} 
+     Init sum.2
+2  1.2 sum.2/2    -> {}  .1   *  prod                   R prod       {1-0} 
+     Pred fr:1.2
+3  1.3 prod.1/3   -> {}  .1   *  prod   Pfac    fac     R prod       {1-0} 
+     Pred fr:1.2
+4  1.4 prod.2/4   -> {}  .1   *  fac                    R fac        {1-0} 
+     Pred fr:1.4
+5  1.5 fac.1/5    -> {}  .1   *  Cop    sum     Ccp     T Cop        {1-0} 
+     Pred fr:1.4
+6  1.6 fac.2/6    -> {}  .1   *  num                    R num        {1-0} 
+     Pred fr:1.6
+7  1.7 num.1/7    -> {}  .1   *  Cdig   num             T Cdig       {1-0} 
+     Pred fr:1.6
+8  1.8 num.2/8    -> {}  .1   *  Cdig                   T Cdig       {1-0} 
+
+
+     ====++ 2 ++==== SE:1  
+     SCAN term char '1'  fr:1.7
+9  2.1 num.1/7    -> {1}  .2 Cdig   *   num             R num        {1-1} 
+     SCAN term char '1'  fr:1.8
+10 2.2 num.2/8    -> {1}  .2 Cdig   *                   C            {1-1} 
+     Pred fr:2.1
+11 2.3 num.1/7    -> {1}  .1   *  Cdig  num             T Cdig       {1-1} 
+     Pred fr:2.1
+12 2.4 num.2/8    -> {1}  .1   *  Cdig                  T Cdig       {1-1} 
+     Cmplt fr:2.2(C) sub num into 1.6,  new:2.*
+13 2.5 fac.2/6    -> {1}  .2 num   *                    C            {1-2} 
+     Cmplt fr:2.5(C) sub fac into 1.4,  new:2.*
+14 2.6 prod.2/4   -> {1}  .2 fac   *                    C            {1-2} 
+     Cmplt fr:2.6(C) sub prod into 1.2,  new:2.*
+15 2.7 sum.2/2    -> {1}  .2 prod   *                   C            {1-2} 
+     Cmplt fr:2.6(C) sub prod into 1.3,  new:2.*
+16 2.8 prod.1/3   -> {1}  .2 prod   *   Pfac    fac     T Pfac       {1-2} 
+     Cmplt fr:2.7(C) sub sum into 1.1,  new:2.*
+17 2.9 sum.1/1    -> {1}  .2 sum   *    Psum    prod    T Psum       {1-2} 
+
+
+     ====++ 3 ++==== SE:2  
+     SCAN term char '+'  fr:2.9
+18 3.1 sum.1/1    -> {1+}  .3 sum Psum    *     prod    R prod       {1-2} 
+     Pred fr:3.1
+19 3.2 prod.1/3   -> {1+}  .1   *  prod Pfac    fac     R prod       {1-2} 
+     Pred fr:3.1
+20 3.3 prod.2/4   -> {1+}  .1   *  fac                  R fac        {1-2} 
+     Pred fr:3.3
+21 3.4 fac.1/5    -> {1+}  .1   *  Cop  sum     Ccp     T Cop        {1-2} 
+     Pred fr:3.3
+22 3.5 fac.2/6    -> {1+}  .1   *  num                  R num        {1-2} 
+     Pred fr:3.5
+24 3.6 num.1/7    -> {1+}  .1   *  Cdig num             T Cdig       {1-2} 
+     Pred fr:3.5
+25 3.7 num.2/8    -> {1+}  .1   *  Cdig                 T Cdig       {1-2} 
+
+
+     ====++ 4 ++==== SE:3  
+     SCAN term char '('  fr:3.4
+23 4.1 fac.1/5    -> {1+(}  .2 Cop   *  sum     Ccp     R sum        {1-3} 
+     Pred fr:4.1
+26 4.2 sum.1/1    -> {1+(}  .1   *  sum Psum    prod    R sum        {1-3} 
+     Pred fr:4.1
+27 4.3 sum.2/2    -> {1+(}  .1   *  prod                R prod       {1-3} 
+     Pred fr:4.3
+28 4.4 prod.1/3   -> {1+(}  .1   *  prod Pfac   fac     R prod       {1-3} 
+     Pred fr:4.3
+29 4.5 prod.2/4   -> {1+(}  .1   *  fac                 R fac        {1-3} 
+     Pred fr:4.5
+30 4.6 fac.1/5    -> {1+(}  .1   *  Cop sum     Ccp     T Cop        {1-3} 
+     Pred fr:4.5
+31 4.7 fac.2/6    -> {1+(}  .1   *  num                 R num        {1-3} 
+     Pred fr:4.7
+32 4.8 num.1/7    -> {1+(}  .1   *  Cdig num            T Cdig       {1-3} 
+     Pred fr:4.7
+33 4.9 num.2/8    -> {1+(}  .1   *  Cdig                T Cdig       {1-3} 
+
+
+     ====++ 5 ++==== SE:4  
+     SCAN term char '2'  fr:4.8
+34 5.1 num.1/7    -> {1+(2}  .2 Cdig   *  num           R num        {1-4} 
+     SCAN term char '2'  fr:4.9
+35 5.2 num.2/8    -> {1+(2}  .2 Cdig   *                C            {1-4} 
+     Pred fr:5.1
+36 5.3 num.1/7    -> {1+(2}  .1   *  Cdig num           T Cdig       {1-4} 
+     Pred fr:5.1
+37 5.4 num.2/8    -> {1+(2}  .1   *  Cdig               T Cdig       {1-4} 
+     Cmplt fr:5.2(C) sub num into 1.6,  new:5.*
+38 5.5 fac.2/6    -> {1+(2}  .2 num   *                 C            {1-5} 
+     Cmplt fr:5.5(C) sub fac into 1.4,  new:5.*
+39 5.6 prod.2/4   -> {1+(2}  .2 fac   *                 C            {1-5} 
+     Cmplt fr:5.6(C) sub prod into 1.2,  new:5.*
+40 5.7 sum.2/2    -> {1+(2}  .2 prod   *                C            {1-5} 
+     Cmplt fr:5.6(C) sub prod into 1.3,  new:5.*
+41 5.8 prod.1/3   -> {1+(2}  .2 prod   *  Pfac  fac     T Pfac       {1-5} 
+     Cmplt fr:5.7(C) sub sum into 1.1,  new:5.*
+42 5.9 sum.1/1    -> {1+(2}  .2 sum   *  Psum   prod    T Psum       {1-5} 
+
+
+     ====++ 6 ++==== SE:5  
+     SCAN term char '*'  fr:5.8
+43 6.1 prod.1/3   -> {1+(2*}  .3 prod Pfac   *  fac     R fac        {1-5} 
+     Pred fr:6.1
+44 6.2 fac.1/5    -> {1+(2*}  .1   *  Cop sum   Ccp     T Cop        {1-5} 
+     Pred fr:6.1
+45 6.3 fac.2/6    -> {1+(2*}  .1   *  num               R num        {1-5} 
+     Pred fr:6.3
+46 6.4 num.1/7    -> {1+(2*}  .1   *  Cdig num          T Cdig       {1-5} 
+     Pred fr:6.3
+47 6.5 num.2/8    -> {1+(2*}  .1   *  Cdig              T Cdig       {1-5} 
+
+
+     ====++ 7 ++==== SE:6  
+     SCAN term char '3'  fr:6.4
+48 7.1 num.1/7    -> {1+(2*3}  .2 Cdig   *  num         R num        {1-6} 
+     SCAN term char '3'  fr:6.5
+49 7.2 num.2/8    -> {1+(2*3}  .2 Cdig   *              C            {1-6} 
+     Pred fr:7.1
+50 7.3 num.1/7    -> {1+(2*3}  .1   *  Cdig num         T Cdig       {1-6} 
+     Pred fr:7.1
+51 7.4 num.2/8    -> {1+(2*3}  .1   *  Cdig             T Cdig       {1-6} 
+     Cmplt fr:7.2(C) sub num into 1.6,  new:7.*
+52 7.5 fac.2/6    -> {1+(2*3}  .2 num   *               C            {1-7} 
+     Cmplt fr:7.5(C) sub fac into 1.4,  new:7.*
+53 7.6 prod.2/4   -> {1+(2*3}  .2 fac   *               C            {1-7} 
+     Cmplt fr:7.6(C) sub prod into 1.2,  new:7.*
+54 7.7 sum.2/2    -> {1+(2*3}  .2 prod   *              C            {1-7} 
+     Cmplt fr:7.6(C) sub prod into 1.3,  new:7.*
+55 7.8 prod.1/3   -> {1+(2*3}  .2 prod   *  Pfac fac    T Pfac       {1-7} 
+     Cmplt fr:7.7(C) sub sum into 1.1,  new:7.*
+56 7.9 sum.1/1    -> {1+(2*3}  .2 sum   *  Psum prod    T Psum       {1-7} 
+
+
+     ====++ 8 ++==== SE:7  
+     SCAN term char '-'  fr:7.9
+57 8.1 sum.1/1    -> {1+(2*3-}  .3 sum Psum   *  prod   R prod       {1-7} 
+     Pred fr:8.1
+58 8.2 prod.1/3   -> {1+(2*3-}  .1   *  prod Pfac fac   R prod       {1-7} 
+     Pred fr:8.1
+59 8.3 prod.2/4   -> {1+(2*3-}  .1   *  fac             R fac        {1-7} 
+     Pred fr:8.3
+60 8.4 fac.1/5    -> {1+(2*3-}  .1   *  Cop sum Ccp     T Cop        {1-7} 
+     Pred fr:8.3
+61 8.5 fac.2/6    -> {1+(2*3-}  .1   *  num             R num        {1-7} 
+     Pred fr:8.5
+62 8.6 num.1/7    -> {1+(2*3-}  .1   *  Cdig num        T Cdig       {1-7} 
+     Pred fr:8.5
+63 8.7 num.2/8    -> {1+(2*3-}  .1   *  Cdig            T Cdig       {1-7} 
+
+
+     ====++ 9 ++==== SE:8  
+     SCAN term char '4'  fr:8.6
+64 9.1 num.1/7    -> {1+(2*3-4}  .2 Cdig   *  num       R num        {1-8} 
+     SCAN term char '4'  fr:8.7
+65 9.2 num.2/8    -> {1+(2*3-4}  .2 Cdig   *            C            {1-8} 
+     Pred fr:9.1
+66 9.3 num.1/7    -> {1+(2*3-4}  .1   *  Cdig num       T Cdig       {1-8} 
+     Pred fr:9.1
+67 9.4 num.2/8    -> {1+(2*3-4}  .1   *  Cdig           T Cdig       {1-8} 
+     Cmplt fr:9.2(C) sub num into 1.6,  new:9.*
+68 9.5 fac.2/6    -> {1+(2*3-4}  .2 num   *             C            {1-9} 
+     Cmplt fr:9.5(C) sub fac into 1.4,  new:9.*
+69 9.6 prod.2/4   -> {1+(2*3-4}  .2 fac   *             C            {1-9} 
+     Cmplt fr:9.6(C) sub prod into 1.2,  new:9.*
+70 9.7 sum.2/2    -> {1+(2*3-4}  .2 prod   *            C            {1-9} 
+     Cmplt fr:9.6(C) sub prod into 1.3,  new:9.*
+71 9.8 prod.1/3   -> {1+(2*3-4}  .2 prod   *  Pfac fac  T Pfac       {1-9} 
+     Cmplt fr:9.7(C) sub sum into 1.1,  new:9.*
+72 9.9 sum.1/1    -> {1+(2*3-4}  .2 sum   *  Psum prod  T Psum       {1-9} 
+

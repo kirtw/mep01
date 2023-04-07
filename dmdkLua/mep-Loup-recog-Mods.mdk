@@ -1,0 +1,23 @@
+= mep Mods to recognizer  Loop
+
+
+ReFactor multiply used and too short-to-search vn's
+
+i   gsi in Build loops
+i   as S group identifier  Si AND end input ptr
+j    ditto Sj  item identifier, next, no other meaning
+
+index  for input char pointer  inPtr   
+
+symbol  three diff types from grammar values  -> TokR1 list left token
+    element (dot as ptr) from ruLst
+      string,  normal runa
+      nil   means no more , ruLst/rule/item matched
+      numeric  -> range digits [0-9]
+      function  -> punct, digits,
+
+   mep:  grammar  ruLst  is comma list, each is name
+      runa  for terminals has sfx +  (now dot, confusing)
+         {Cdig+,Cop+,Ccp+,Psum+,Pfac+,  }
+      non-terminals, name/no sfx, no punct
+      

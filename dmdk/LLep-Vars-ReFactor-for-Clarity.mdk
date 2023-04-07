@@ -1,0 +1,36 @@
+== LLep  ReName/ReFactor Vars -Only  -> rec1.lua
+
+
+ S  not searchable, too brief for global Dataset
+    Rename ET  Earley Table of States/Items
+    
+ Also set -> ESET or remove it in favor of S[S?i]  only ref minor srs
+    Not an Efficiency issue, more obfuscation than clarifying logic?
+    Earley Set  although funny separation key IPe~S?i - confusing why
+    
+ Rename major functions pred,scan,comp in UC PRED SCAN COMP  also BUILD
+        only one ref each in BUILD but need to jump to/from, browsing
+        
+    
+ set  alias for one sub table, often displayed as a collection
+
+
+ i,j  biggest abuse  - Remove/Rename ALL i,j
+   Build loop function
+   Sbi,Sbj  For loops but refers to ET[Sbi]  and ET[Sbi][Sbj]
+    Args to immed func calls
+
+ BUILD  middle (after Init Stuff, gamma entries)
+   For Sbi=1:1  while (because end is a moving target as loop adds to same end)
+     For Sbj=1:1  also while because # may change ?
+ 
+ PRED(
+    Spi
+    Svi 'Append'  is into same SET/same Svi=Spi
+ SCAN
+    Ssi
+    Ss2i = Ssi + 1  add into next set
+ COMP
+    Sci
+    Svi
+

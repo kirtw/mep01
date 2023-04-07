@@ -1,0 +1,115 @@
+==  diff recog rec1
+
+kw@L7a:~/km3a/Earley-Parse/Lua-EP-code$ diff recogniser.lua rec1.lua 
+3,9d2
+< 
+< -- Usage: just execute `lua recogniser.lua` in the command line.
+< -- You probably want to tinker with the grammar and the input at the
+< -- end of this file.
+< 
+< -- Prerequisites: imperative programming and basic knowledge of Earley
+< -- parsing. The tutorial at
+11,12c4
+< -- is highly recomended.
+< -- You don't need to know Lua.  Think of it as "executable pseudocode".
+---
+> 
+26,34d17
+< -- There are cleverer representation.  This one is merely the dumbest
+< -- I came up with.
+< 
+< -- Earley sets are dynamic arrays of Earley items.  They are
+< -- represented with Lua tables.  Warning: In Lua, array indices start
+< -- at 1.
+< -- S is the whole state of an Earley parsing.  It's a dynamic array of
+< -- Earley sets.  Again, they are represented with Lua tables.
+< 
+144,145c127,128
+<    for i = 1, #set do
+<       if equal(item, set[i]) then
+---
+>    for Sfj = 1, #set do
+>       if equal(item, set[Sfj]) then
+155,156c138,141
+< local function complete(S, i, j, grammar)
+<    local item = S[i][j]
+---
+> local function COMP(S, Sci, Scj, grammar)
+>    local item = S[Sci][Scj]
+>    IPs = item.start
+>    local Sc2i = Sci + 1
+159c144
+<          append(S[i], { rule  = old_item.rule,
+---
+>          append(S[Sc2i], { rule  = old_item.rule,
+161a147
+>          io.write("COMP ",Sci," - ",Sc2i,"  IPs:",IPs,"   ","\n")
+166,170c152,157
+< local function scan(S, i, j, symbol, input)
+<    local item = S[i][j]
+<    if symbol(input, i) then -- terminal symbols are predicates
+<       if S[i+1] == nil then S[i+1]  = {} end
+<       unsafe_append(S[i+1], { rule  = item.rule,
+---
+> local function SCAN(S, Ssi, Ssj, symbol, input)
+>    local item = S[Ssi][Ssj]
+>    local Ss2i = Ssi + 1
+>    if symbol(input, Ssi) then -- terminal symbols are predicates
+>       if S[Ss2i] == nil then S[Ss2i]  = {} end
+>       unsafe_append(S[Ss2i], { rule  = item.rule,
+176c163
+< local function predict(S, i, symbol, grammar)
+---
+> local function PRED(S, Spi, symbol, grammar)
+177a165
+>       local gsi = rule_index
+179c167
+<          append(S[i], { rule  = rule_index,
+---
+>          append(S[Spi], { rule  = rule_index,
+181c169
+<                         start = i })
+---
+>                         start = Spi })
+186c174
+< local function build_items(grammar, input)
+---
+> local function BUILD(grammar, input)
+190,192c178,180
+<    for i = 1, #grammar do
+<       if grammar[i].name == grammar.start_rule_name then
+<          unsafe_append(S[1], { rule  = i,
+---
+>    for gsi = 1, #grammar do
+>       if grammar[gsi].name == grammar.start_rule_name then
+>          unsafe_append(S[1], { rule  = gsi,
+198,205c186,193
+<    local i = 1
+<    while i <= #S do
+<       local j = 1
+<       while j <= #S[i] do
+<          local symbol = next_symbol(grammar, S[i][j])
+<          if     type(symbol) == "nil"      then complete(S, i, j, grammar)
+<          elseif type(symbol) == "function" then scan    (S, i, j, symbol, input)
+<          elseif type(symbol) == "string"   then predict (S, i,    symbol, grammar)
+---
+>    local Sbi = 1
+>    while Sbi <= #S do
+>       local Sbj = 1
+>       while Sbj <= #S[Sbi] do
+>          local symbol = next_symbol(grammar, S[Sbi][Sbj])
+>          if     type(symbol) == "nil"      then COMP(S, Sbi, Sbj, grammar)
+>          elseif type(symbol) == "function" then SCAN(S, Sbi, Sbj, symbol, input)
+>          elseif type(symbol) == "string"   then PRED(S, Sbi,    symbol, grammar)
+208c196
+<          j = j + 1
+---
+>          Sbj = Sbj + 1
+210c198
+<       i = i + 1
+---
+>       Sbi = Sbi + 1
+388c376
+< local S = build_items(Grammar, input)
+---
+> local S = BUILD(Grammar, input)

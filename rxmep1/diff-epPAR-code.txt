@@ -1,0 +1,6 @@
+
+
+-         .I TokR1=""  D complete S trc="complete" Q  ; 
+-         .I TokR1["+" D scan S trc="Scan" Q  ; token with + is terminal
+-         .D pred S trc="pred" Q ;inside loop chart items/rules
+

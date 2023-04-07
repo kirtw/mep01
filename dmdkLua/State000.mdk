@@ -1,0 +1,27 @@
+== State 0 Table
+
+
+    === 0 ===
+    Sum     -> • Sum [+-] Product     (0)
+    Sum     -> • Product              (0)
+    Product -> • Product [*/] Factor  (0)
+    Product -> • Factor               (0)
+    Factor  -> • '(' Sum ')'          (0)
+    Factor  -> • Number               (0)
+    Number  -> • [0-9] Number         (0)
+    Number  -> • [0-9]                (0)
+
+Note i or Si in Lua is 1:1, Label === 0 ===  is i-1 !
+  to match classic Early table precedents
+
+Each line is an object, item
+    item = S[i][j]
+ then  item.name  is 'Sum'  various strings (type== string)
+       item.rule is space-delim list of rule elements
+          or rule
+       item.index is dot is ptr into rule, 0 preceeds all element
+       item.next is element following dot, first unmatched
+          ie rule[1]  first in list
+          TokR1 is mep var name
+             is either an input match-test (class, range, char)
+                or a grammar (sub) rule-name

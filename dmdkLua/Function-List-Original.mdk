@@ -1,0 +1,42 @@
+== Function List Original
+
+
+kw@L7a:~/km3a/Earley-Parse/Rec2$ grep function recog2.lua   
+-- Terminal symbols are represented with functions:
+local function  char(...) return ... end
+local function class(...) return ... end
+local function range(...) return ... end
+function has_partial_parse(S, i, grammar)
+function has_complete_parse(S, grammar)
+function last_partial_parse(S, grammar)
+function diagnose(S, grammar, input)
+-- Utilities -- (Read the function names and the comments.)
+local function next_symbol(grammar, item)
+local function name(grammar, item)
+local function equal(item1, item2)
+local function unsafe_append(set, item)
+local function append(set, item)
+local function complete(S, i, j, grammar)
+local function scan(S, i, j, symbol, input)
+local function predict(S, i, symbol, grammar)
+local function build_items(grammar, input)
+         elseif type(symbol) == "function" then scan    (S, i, j, symbol, input)
+local function pretty_printer()
+   function self.write(...)
+   function self.col()
+   function self.line()
+   local function max(f)
+   local function len(i)
+      return function(v)
+   local function nb_col(line) return #line end
+   function self.print(indent)
+local function print_S(S, grammar)
+            elseif type(symbol) == "function" then pp.write(' ', symbol())
+-- The following functions generate terminal symbols.  A terminal
+-- symbol is a function that tell us if the input matches them:
+local function char(c)
+   return function(input, index)
+local function range(r)
+   return function(input, index)
+local function class(c)
+   return function(input, index)

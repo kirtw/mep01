@@ -1,0 +1,56 @@
+
+
+
+    Sum     -> • Sum [+-] Product     (0)
+    Sum     -> • Product              (0)
+    Product -> • Product [*/] Factor  (0)
+    Product -> • Factor               (0)
+    Factor  -> • '(' Sum ')'          (0)
+    Factor  -> • Number               (0)
+    Number  -> • [0-9] Number         (0)
+    Number  -> • [0-9]                (0)
+
+    
+    SC(1)=9
+SC(1,1)="gamma.1/1  => [_0_0_0_s"
+SC(1,2)="s.1/2      => [_0_0_0_s,Psum.,p"
+SC(1,3)="s.2/3      => [_0_0_0_p"
+SC(1,4)="p.1/4      => [_0_0_0_p,Pfac.,f"
+SC(1,5)="p.2/5      => [_0_0_0_f"
+SC(1,6)="f.1/6      => [_0_0_0_Cop.,s,Ccp."
+SC(1,7)="f.2/7      => [_0_0_0_n"
+SC(1,8)="n.1/8      => [_0_0_0_Cdig.,n"
+SC(1,9)="n.2/9      => [_0_0_0_Cdig."
+
+Looks good  SC(1,  kw
+______________
+
+    === 1 ===
+    Number  -> [0-9] • Number         (0)
+    Number  -> [0-9] •                (0)
+    Number  -> • [0-9] Number         (1)
+    Number  -> • [0-9]                (1)
+    Factor  -> Number •               (0)
+    Product -> Factor •               (0)
+    Sum     -> Product •              (0)
+    Product -> Product • [*/] Factor  (0)
+    Sum     -> Sum • [+-] Product     (0)
+
+        === 1 ===
+    Number  -> [0-9] • Number         (0)
+    Number  -> [0-9] •                (0)
+    Number  -> • [0-9] Number         (1)
+    Number  -> • [0-9]                (1)
+    Factor  -> Number •               (0)
+    Product -> Factor •               (0)
+    Sum     -> Product •              (0)
+    Product -> Product • [*/] Factor  (0)
+    Sum     -> Sum • [+-] Product     (0)
+
+    
+SC(2)=5
+SC(2,1)="n.1/8      => [_0_0_1_Cdig.,n_scan"
+SC(2,2)="n.2/9      => [_0_0_1_Cdig._scan"
+SC(2,3)="n.1/8      => [_0_0_0_Cdig.,n"
+SC(2,4)="n.2/9      => [_0_0_0_Cdig."
+SC(2,5)="n.1/8      => [_0_0_2_Cdig.,n_complete"

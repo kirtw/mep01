@@ -1,0 +1,32 @@
+= mep terms ReFactored
+
+
+state table  two level array
+    S(Si,Sr)
+
+items   - rules, token list
+
+grammar  - set of rules, named rules, multiple (or) per name, ordered
+    left side is just name
+    right side is list of tokens to match
+    
+terminal  - char literal  - test match yes/no
+non-terminal  - named rule match
+
+top-level rule, ? special init, not in grammar ?  vs named 00
+
+Input   tokens - also named, 
+    ?distinguish type for algo  or just match input token
+
+item - rule, moved as whole, usu incr dot
+    list of named subrules/rules
+    dot  ptr into the rule
+    start - ptr to input list
+    
+outer loop  thru input tokens, Ip  Start 1, not zero (this is mumps!)
+inner loop  thru rules in one Si, ie for the corresponding input token
+    ri is rule ptr  1:1  til runs out last ri if each is dynamic
+
+
+
+

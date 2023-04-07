@@ -1,0 +1,34 @@
+
+
+---------------------------  ---------------------------  ----------------
+-- Building Earley items --  This is the core algorithm.  Read everything.
+---------------------------  ---------------------------  ----------------
+
+local function build_items(grammar, input)
+   -- Earley sets
+   local S = {{}}
+   -- put start item(s) in S[1]
+   for i = 1, #grammar do
+      if grammar[i].name == grammar.start_rule_name then
+         unsafe_append(S[1], { rule  = i,
+                               start = 1,
+                               next  = 1 })
+      end
+   end
+   -- populate the rest of S[i]
+   local i = 1
+   while i <= #S do
+      local j = 1
+      while j <= #S[i] do
+         local symbol = next_symbol(grammar, S[i][j])
+         if     type(symbol) == "nil"      then complete(S, i, j, grammar)
+         elseif type(symbol) == "function" then scan    (S, i, j, symbol, input)
+         elseif type(symbol) == "string"   then predict (S, i,    symbol, grammar)
+         else error("illegal rule")
+         end
+         j = j + 1
+      end
+      i = i + 1
+   end
+   return S
+end

@@ -1,0 +1,188 @@
+TOId   ;CKW/ESC   i22jan18  gmsa/  rTOI7/ ; 20191002-94 ; Find a Date Field TOI
+  ; 20sep20 cqlog-> devlog   rev 9oct Use WD() not L2  8aug19    
+  ; At least one / or - not just day of month vs amt/num
+;    wki, WD(wki), Wu(wki)
+;  Defaults  Ddef(vn)=val  Dlst()  vn in {yr,mo,wkn,dat,apm,  d12, dj, wh}
+A    D B,D,SDlst
+     Q
+;*
+B    I $G(toiFL)="" D ^TOIimg  ; : dtFL, toiFL ^TG(0
+     NEW d8,wh,djw D II
+     ;S L2=$$LC^dvs(L2) ; D b^dv("Expect LC by now?","L2") Q
+     ;S L2=$$DSP^dvs(L2)  ; lead, trail, dbl spaces
+     S VL=$P(dtFL,"_") F wi=1:1:$L(VL,",") S vn=$P(VL,",",wi),@vn=""  ; Init null vs NFL^dvs(dtFL)?
+     S nTry=0 F wki=1:1:nsp I 'Wu(wki) S nTry=nTry+1 Q:nTry>3  DO  I day'="" D sWU("1dt") Q
+       .S dt1=$G(WD(wki)) I dt1'="" DO  ;
+          ..D date I 'day Q  ; dt1 : day
+          ..S d8=yr_mn_day
+          ..S Wr(wki)=d8,Wty(wki)="dt1",Wu(wki)="1dt1"
+     I day="" S nTry=0 F wki=1:1:nsp I 'Wu(wki) S nTry=nTry+1 Q:nTry>3  DO  I day'="" D sWU("2dyw") Q
+       .S dt2=$G(Wd(wki)) I dt2'="" I dyL[dt2 DO  ;
+          ..D dydt  ; Mon 
+          ..S Wr(wki)=dtm,Wty(wki)="dtm"
+          ..S Wu(wki)="1dydt"
+          ..S Wtr(wki)=Lpr,Lpr=""
+       .;I day'="" D b^dv("debug dydt","dt2,day,date")
+     ;I tci=24 S WU24=Wu(1) D b^dv("debug yr-time","WU24")
+     S nTry=0,Lpr="" F wki=1:1:nsp I 'Wu(wki) S nTry=nTry+1 Q:nTry>3  DO  I hr'="" D sWU("3tm") Q
+       .S tm1=$G(Wd(wki)) I tm1'="" DO  ;
+          ..D time 
+          ..S Wr(wki)=hr_min,Wu(wki)="1dhm",Wty(wki)="dtm"
+          ..D b^dv("Log time","hr,min")
+       .;S TRY(wki)=tm1_"^"_hr_"^"_min  ; debug only
+     Q
+;*  Switch order of 3 FOR loops above 16nov19 130am, nTry vs wki=1:1:3, also add Wu test      
+;* wki : Set Wu(wki) , replaces xL2
+sWU(wu)  S:$G(wu)="" wu="1dtm" S:'wu wu=9_wu S Wu(wki)=wu
+      S Wty(wki)="dt"
+      S Wtr(wki)=Lpr,Lpr=""
+      Q
+;*
+II   S AZ="ABCDEFGHIJKLMNOPQRSTUVWXYZ",Az="abcdefghijklmnopqrstuvwxyz"
+     S dyL="mon,tue,wed,thu,fri,sat,sun,"
+     S moL="jan,feb,mar,apr,may,jun,jul,aug,sep,oct,nov,dec,"
+     Q
+;*  Derive Defaults from Ddef(), where day, hr etc are still null
+D    I yr="" S yr=$G(Ddef("yr"))
+     I day="" S day=$G(Dlst("day")) I day S mn=$G(Dlst(mn)),yr=$G(Dlst("yr"))
+     I day="" S day=$G(Ddef("day")) I day>0 S mn=$G(Ddef("mn")),yr=$G(Ddef("yr"))
+     I mn="" S mn=$G(Dlst("mn")) D dpr("deflstmn") I mn S:$G(Dlst("yr")) yr=Dlst("yr")
+     I mn="" S mn=$G(Ddef("mn")) D dpr("defdefmn") I mn S:$G(Ddef("yr")) yr=Ddef("yr")
+     I yr="" S yr=$G(Dlst("yr")) D dpr("defyr") I yr="" S yr=$G(Ddef("yr"))
+     I day="" D dpr("defday") DO  
+        .I $G(Ddef("d12")) S d12=Ddef("d12") I d12?12n D d12p Q
+        .I $G(Dlst("d12")) S d12=Dlst("d12") I d12?12n D d12p Q
+        .I $G(Ddef("day")) S day=Ddef("day"),mn=$G(Ddef("mn")),yr=$G(Ddef("yr"))
+     I hr="" S hr=$G(Dlst("hr")),min=$G(Dlst("min")) I hr="" S hr="00",min="00"
+     ;I wh="",d12?12n S whj=$$d8whj^dd($E(d12,1,8)),wh=+whj,djw=$P(whj,"-",2)
+     D dtm  ; Now compose d12
+     Q
+;* Save Dlst()   vs end of dtm already, redone here
+SDlst KILL Dlst I d12?12n S Dlst("d12")=d12 ;D d12p 
+     S Dlst("yr")=yr,Dlst("mn")=mn,Dlst("day")=day
+     S Dlst("hr")=hr,Dlst("min")=min,Dlst("apm")=apm
+     I $G(wh) S Dlst("wh")=wh
+     Q
+;*  d12 -> yr,mn,day, hr,min
+d12p S day=$E(d12,7,8),mn=$E(d12,5,6),yr=$E(d12,1,4)
+     S hr=$E(d12,9,10),min=$E(d12,11,12)
+     Q
+;* dt1 : yr, mo, day,  opt: hr,min
+date  S day="" I dt1["/" D day1 Q  ; may or may not have found date, day
+      I dt1?1.2n3A.4n D nMon I day D dpr("nJan") Q
+      I dt1?1"wk"1.2n D WKN I wh D dpr("WKn"),sWU("3wkn") Q
+      I dt1?12n S hr=$E(dt1,9,10),min=$E(dt1,11,12),dt1=$E(dt1,1,8) D dpr("n12") Q ; and fall thru
+      I dt1?8n S yr=$E(dt1,1,4),mn=$E(dt1,5,6),day=$E(dt1,7,8) D dpr("n8") Q
+      I dt1?4n D dpr("4nyr") D year(dt1) I yr D sWU Q  ;No day yet, mark used 2019 not time
+      D dpr("date-not")
+     ; Didnt find a date in this WD
+     Q
+;*  dt1 split by/   : yr, mn, day
+day1  ;I $G(dtFL)="" D ^TOIimg
+      S Ln=$L(dt1,"/") I $E(dt1)="/" D dpr("dtRej/pre") Q  ; prefix /
+      S p1=$P(dt1,"/"),p2=$P(dt1,"/",2) I p1'?1.2n!(p2'?1.2n) Q  ; some other use of /
+      I Ln=3 S yr=$P(dt1,"/",3),mn=$P(dt1,"/"),day=$P(dt1,"/",2) D dpr("3/dt")
+      I Ln=2  DO  ;
+        .S mn=$P(dt1,"/"),day=$P(dt1,"/",2)
+        .D dpr("2/md-"_mn_"-"_day)
+        .S yr=$G(Ddef("yr")) I yr D dpr("defyr") Q
+        .S yr=$G(Dlst("yr")) D dpr("yrDlst")
+      I mn>12 D b^dv("Mo >12 ","mn,L2") S mn="m?" D dpr("Erm/*n12*/")
+      I yr?2n S yr="20"_yr D dpr("yrd20")
+      I yr<1990!(yr>2050) D b^dv("Err year ","yr,dt1,Ln,L2") S yr="?" D dpr("Eryr")
+      I day<1!(day>31) D b^dv("Err m/d ","day,L2") S day="?" D dpr("Erday")
+      Q     
+;*  10oct or 10oct19 : day, mn, yr
+nMon  NEW d,m,n,y
+      S d=+dt1,m=$E(dt1,2,4) S:m m=$E(dt1,3,5)
+      S m=$$LC^TOIs(m),n=$F(moL,m_",")\4  ; 1-12 or 0
+      I 'n D dpr("xMocd") Q
+      S mn=n,day=d
+      S y=$P(dt1,m,2) I (y?2n)!(y?4n) D year(y) D dpr("1JanY") I yr Q
+      Q
+;*  ?2n or 4n year ? : yr
+year(y)  I y?2n S y=20_y
+      I y>1950,y<2100 S yr=y Q
+      D dpr("4nnotYr")
+      Q
+;*  dy1~wk41 : wh for use with day of week, WkDy
+WKN  S w=+$E(dt1,3,9)
+     I (w<1)!(w>53) D b^dv("Err wkn 1-53","dt1,w") Q
+     S:w?1n w=0_w S wjy=w,w6=yr_wjy
+       I w6'?6n D b^dv("Err w6 fmt","w6,w")
+     S wh=$$w6wh^dd(w6)
+     Q
+;*
+;* Calc day from day of week (djwq) +  Week as wh
+WkDy  S d8=$$whjd8^dd(wh,djwq)
+      I d8?8n S yr=$E(d8,1,4),mn=$E(d8,5,6),day=$E(d8,7,8) Q
+      D b^dv("Err cal date from week & day of week","d8,wh,djwq")
+      Q
+;*  dt2, dyL  :  day of week ("wed") -> day,mn,yr, d8m~d8
+dydt  S djwq=$F(dyL,dt2_",")-1\4 I djwq D WkDy Q
+      I day  Q  ; Ignore if have date
+      DO  ; 
+        .I d12?12n S d8=$E(d12,1,8)
+        .E  S:mn?1n mn=0_mn S:day?1n day=0_day S:yr?2n yr=20_yr S d8=yr_mn_day
+        .D cdjw(d12)
+        .I djw=djwq Q  ;redundant, all is ok
+        .D dpr("day-not-eq") 
+        .D b^dv("mon NOT eq m/d","djw,djwq,day,L2,L0,ri")
+      I day="" DO  Q
+        .NEW dh,d8a,d8b,d12d
+        .S xwh=$G(Ddef("wh")) I xwh DO   I d8 Q
+           ..S d8=$$whjd8^dd(xwh,djwq)
+           ..I d8'?8n D b^dv("Err def day","d8,xwh,wh,djwq") Q
+           ..S yr=$E(d8,1,4),mn=$E(d8,5,6),day=$E(d8,7,8)
+        .S d12d=$G(Dlst("d12")) I d12d="" S d12d=$G(Dlst("d12"))
+        .S d8a=$E(d12d,1,8) I d8a'?8n Q
+        .D cdjw(d8a)
+        .S d12=d8b_$E(d12,9,12)
+        .S day=$E(d12,7,8)
+        .D ^devlog("Log mon -> day","day,djwq,wh")
+      S:mn?1n mn=0_mn S:day?1n day=0_day
+      S d8m=yr_mn_day
+      Q
+;*  : d8b, djw, day'
+cdjw(d8a) I $G(d8a)'?8n D b^dv("cdjw-arg-not?8n") Q
+        S dh=$$d8dh^dd(d8a)
+        S whj=$$dhwhj^dd(dh)
+        S djw=$P(whj,"-",2)
+        S d8b=$$whjd8^dd(+whj,djwq)  ;diff day of week -> d8
+        D dpr("d12-d8-wh-d8")
+        S day=$E(d8b,7,8)  ;d8 may be null
+        I day="" D b^dv("wed -> d8 err","day,d8a,dh,wh,djw,djwq,L2,L0,ri")
+      Q
+;* tm1 : hr, min
+time  ;
+      I $P(tm1,"pm")_"pm"=tm1 S apm="pm",tm1=$P(tm1,"pm") D dpr("pm")
+      I $P(tm1,"p")_"p"=tm1 S apm="pm",tm1=$P(tm1,"p") D dpr("p")
+      I $P(tm1,"am")_"am"=tm1 S apm="am",tm1=$P(tm1,"am") D dpr("am")
+      I $P(tm1,"a")_"a"=tm1 S apm="am",tm1=$P(tm1,"a") D dpr("a")
+      I tm1?1.2n1":"1.2n S hr=$P(tm1,":"),min=+$P(tm1,":",2) D dpr("n:n")
+      ; Simple numbers- only if no hr yet
+      I tm1?3.4n,hr="" S hr=tm1\100,min=tm1#100 D dpr("3-4nhrmin")
+      I tm1?1.2n,hr="" S hr=+tm1,min="00" D dpr("1-2nhrmin00")
+      I apm="pm",hr'="",hr<12 S hr=hr+12 D dpr("hr+12")
+      Q
+      ;I hr?1n S hr=0_hr 
+      ;I min?1n S min=0_min 
+      Q
+;*  yr,mn,day, hr,min  : d12, Dlst()
+dtm   D dpr("dtm") 
+      I mn?1n S mn="0"_mn D dpr("lzmn")
+      I day?1n S day="0"_day D dpr("lzday")
+      I yr?2n S yr="20"_yr D dpr("yrl20")
+      I hr?1n S hr="0"_hr D dpr("lzhr")
+      I min?1n S min="0"_min D dpr("lzmin")
+      S d=yr_mn_day_hr_min I d?12n S d12=d
+        I d12'?12n D ^deverr("d12 err ","d12,d,yr,mn,day,hr,min,dt1,dt2,L0,L2") Q
+      F vn="d12","yr","mn","day","hr","min" S Dlst(vn)=$G(@vn)  ; sic vs dtFL ? not wh
+      Q
+;*
+;*  Add process cd to  Lpr  (identical to dpr() in ^qdTOIin
+dpr(cd) I Lpr'="" S Lpr=Lpr_", "_cd Q
+        S Lpr=cd Q
+;*    * * * * *
+
+      

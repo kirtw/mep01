@@ -1,0 +1,38 @@
+== Changes e to f   diff-ef
+
+Vers e has Revised grammar content, ty, CL fields
+Ttok is new var vs symbol (was function-valued, sometimes)
+Tmch is new function, tests terminal tok for match withC input char
+    replacing symbol and next_symbol
+No refs to class, range, char now, except in print*
+    but not testing terminal correctly yet.
+
+
+119a120,129
+> --  new Tmch replaces var symbol (various types/str,func,nil)
+> --      and  next_symbol
+> --
+> local function Tmch(input,i,Ttok,grammar)
+>     local CL = grammar[Ttok]['CL']
+>     local mch = false
+>     local C = input.byte(i)
+>     for ci = 1, CL.len() do if CL.byte(ci) == C then mch = true end
+>     return mch
+> end
+168c178
+< local function SCAN(S, i, j, symbol, input)
+---
+> local function SCAN(S, i, j, Ttok, input)
+170c180
+<    if symbol(input, i) then -- terminal symbols are predicates
+---
+> --   if Tmch(input, i, Ttok,grammar) then -- terminal symbols are predicates
+176a187,188
+> --   if symbol(input, i) then -- terminal symbols are predicates
+> 
+193a206,210
+>          local runa = grammar[i].name
+>          if type(runa) == 'nil' then 
+>             io.write("Err init name",i,"\n") 
+>             return
+>           end

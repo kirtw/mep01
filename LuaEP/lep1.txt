@@ -1,0 +1,52 @@
+-- You don't need to know Lua.  Think of it as "executable pseudocode".
+
+
+---------------------
+-- Data Structures --
+---------------------
+
+-- Earley items are basically 3 integers.  I have represented them
+-- with Lua tables:
+local earley_item = {
+   rule  = index_of_rule_in_grammar,
+   next  = index_of_symbol_in_rule,
+   start = start_position_in_input,
+}
+-- There are cleverer representation.  This one is merely the dumbest
+-- I came up with.
+
+-- Earley sets are dynamic arrays of Earley items.  They are
+-- represented with Lua tables.  Warning: In Lua, array indices start
+-- at 1.
+-- S is the whole state of an Earley parsing.  It's a dynamic array of
+-- Earley sets.  Again, they are represented with Lua tables.
+
+-- Non-terminal symbols are represented with strings.
+-- Terminal symbols are represented with functions:
+local function  char(...) return ... end
+local function class(...) return ... end
+local function range(...) return ... end
+
+-- Rules are Lua tables. Note: unnamed elements are implicitely
+-- numbered.  That helps to represent arrays.  Warning: Lua arrays
+-- start at 1.
+-- So, the following lines represent the same rule:
+local my_rule = { name = 'Sum',       'Sum',       class('+-'),       'Product'}
+local my_rule = { name = 'Sum', [1] = 'Sum', [2] = class('+-'), [3] = 'Product'}
+
+-- Grammars are a list of rules, and a name for the start rule.  They
+-- are represented with...  Lua tables.  again, notice the unnamed
+-- elements.
+local example_grammar = {
+   start_rule_name = 'Sum',
+   { name = 'Sum'    , 'Sum'      , class('+-'), 'Product'},
+   { name = 'Sum'    , 'Product'  ,                       },
+   { name = 'Product', 'Product'  , class('*/'), 'Factor' },
+   { name = 'Product', 'Factor'   ,                       },
+   { name = 'Factor' , char('(')  , 'Sum', char(')')      },
+   { name = 'Factor' , 'Number'                           },
+   { name = 'Number' , range('09'), 'Number'              },
+   { name = 'Number' , range('09'),                       },
+}
+
+-- (note: all the code above is dead. The real deal starts now.)

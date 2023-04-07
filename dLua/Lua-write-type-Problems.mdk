@@ -1,0 +1,13 @@
+== Lua Problem write vs type
+
+
+eg symbol  TokRa  from ruleList in SC
+    is often a string, name of a grammar rule
+    BUT when it is a Terminal, it is a function
+        eg class, char or range
+    AND write Chokes on function
+    
+Modify
+    1 grammar to contain some name, marked as Terminal
+        but with string type, writeable
+    2. Test Terminal & Match is not that hard...

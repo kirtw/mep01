@@ -1,0 +1,9 @@
+dzro(zro)  ;CKW/ESC i25aug20 gmsa/ rzro3/ ; 20200825-50 ; Direct call test zro vs ^dzs/^dzZro
+;
+;
+    S zro=($G(zro))
+    I zro="" S zro=$zro
+    S Q=$$check^dzZRO(zro)
+    Q:$Q ""
+    Q
+;*

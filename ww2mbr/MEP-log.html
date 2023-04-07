@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head><title>Log</title>
+
+</head>
+<h1>Log File</h1>
+<pre>
+
+
+ Grammar GRk() rules-
+ 1  sum.1      -> T  sum,Psum,prod      Sum            sum is sum rule +/- 
+ 2  sum.2      -> T  prod  
+ 3  prod.1     -> T  prod,Pfac,fac      Product         prod is product 
+ 4  prod.2     -> T  fac  
+ 5  fac.1      -> T  Cop,sum,Ccp        Factor           f vs (,s,)  with the literal char as its own name 
+ 6  fac.2      -> T  num  
+ 7  num.1      -> T  Cdig,num           Number  
+ 8  num.2      -> T  Cdig  
+ 9  Cdig.1     -> T  0123456789         [0-9]            
+ 10 Cop.1      -> T  (                   '('   
+ 11 Ccp.1      -> T  )                   ')'   
+ 12 Psum.1     -> T  +-                 ['+-']  
+ 13 Pfac.1     -> T  */                 ['*/']  
+ 14 Pfac.2     -> T  *** end Terminal tokens  
+
+Inputs-
+In str '1+(2*3-4)'  
+Ip: 1   2    3    4    5    6    7    8    9 
+lit 1   +    (    2    *    3    -    4    ) 
+
+
+Magic:  Parsing !
+Ref: itemFL:runa,ruab,ruid,ikey,svSSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+Inline Ref FLi1^ep2PAR
+itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+
+Ref: itemFL:runa,ruab,ruid,ikey,svSSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+Inline Ref FLi2^ep2PAR
+itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+
+Ref: itemFL:runa,ruab,ruid,ikey,svSSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+Inline Ref FLi3^ep2PAR
+itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+
+Ref: itemFL:runa,ruab,ruid,ikey,svSSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+Inline Ref FLi4^ep2PAR
+itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+
+Ref: itemFL:runa,ruab,ruid,ikey,svSSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+Inline Ref FLi5^ep2PAR
+itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+

@@ -1,0 +1,17 @@
+== Earley-Parser Lua Versions
+	{ km3a/  umep./   akw/*  } 13jan23
+
+
+Series of working Iterative Changes
+    rek4.lua  crashing currently 
+        
+
+
+Original   recognizer.Lua  
+	Outputs Input and State Table to Console
+	can > Lua-SS.txt  ...
+
+
+
+
+

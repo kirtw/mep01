@@ -1,0 +1,9 @@
+== Lua language tricks
+    { km3a/  Earley-Parser./   dLua/   admep
+
+  pfx # is shorthand for length of string or array/table-level
+
+  ipairs  is builtin function that iterates through an array
+    delivering a pair of variables from the array
+    FOR rule-index,rule  in ipairs(grammar) do   ; Note here going thru whole grammar
+        ...  rule-index  and rule vars available here  

@@ -1,0 +1,40 @@
+
+
+ Build loop #1
+Bld inner loop #1
+** Pred  
+Try to append 1/1/1   
+*** Pred Add new:1 Si:  sym:Sum
+Try to append 2/1/1   
+*** Pred Add new:1 Si:  sym:Sum
+Bld inner loop #2
+** Pred  
+Try to append 3/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Product
+Try to append 4/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Product
+Bld inner loop #3
+** Pred  
+Try to append 3/1/1   
+*** Pred Add new:1 Si:  sym:Product
+Try to append 4/1/1   
+*** Pred Add new:1 Si:  sym:Product
+Bld inner loop #4
+** Pred  
+Try to append 5/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Factor
+Try to append 6/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Factor
+Bld inner loop #5
+ * * scan 1/5 ~ boolean
+Bld inner loop #6
+** Pred  
+Try to append 7/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Number
+Try to append 8/1/1    is new. 
+*** Pred Add new:1 Si:  sym:Number
+Bld inner loop #7
+ * * scan 1/7 ~ boolean
+Bld inner loop #8
+ * * scan 1/8 ~ boolean
+   *** End of Loop 1

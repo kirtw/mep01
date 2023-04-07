@@ -1,0 +1,28 @@
+155c155
+< local function complete(S, i, j, grammar)
+---
+> local function COMP(S, i, j, grammar)
+166c166
+< local function scan(S, i, j, symbol, input)
+---
+> local function SCAN(S, i, j, symbol, input)
+176c176
+< local function predict(S, i, symbol, grammar)
+---
+> local function PRED(S, i, symbol, grammar)
+186c186
+< local function build_items(grammar, input)
+---
+> local function BUILD(grammar, input)
+203,205c203,205
+<          if     type(symbol) == "nil"      then complete(S, i, j, grammar)
+<          elseif type(symbol) == "function" then scan    (S, i, j, symbol, input)
+<          elseif type(symbol) == "string"   then predict (S, i,    symbol, grammar)
+---
+>          if     type(symbol) == "nil"      then COMP(S, i, j, grammar)
+>          elseif type(symbol) == "function" then SCAN    (S, i, j, symbol, input)
+>          elseif type(symbol) == "string"   then PRED (S, i,    symbol, grammar)
+388c388
+< local S = build_items(Grammar, input)
+---
+> local S = BUILD(Grammar, input)

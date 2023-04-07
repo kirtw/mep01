@@ -1,0 +1,33 @@
+zhx-stray code  ^ep2*  rmep2/
+
+
+;*
+;*  RuLst vs ruL ?
+WRP(RP,Swi,Swj) NEW ruL,dot
+       W:$X ! W $G(Swi,"S*i?"),",",$G(Swj,"S*j?"),"  "
+       S ruL=$P(RP,"_",4) W RP,"  "
+       S dot=$P(RP,"_",3),$P(ruL,",",dot+1)=" * ,"_$P(ruL,",",dot+1)
+       W ruL
+       Q
+       
+       ----------
+;*  Write one item ala Lua Loup format for comparison
+; WNa substitutes full Lua name
+; RP and rula, ruLst, dot, IPs
+WKRP(Swi,Swj)  ;
+       D T^kfm("itemFL:runa,ruab,SSq,IPs,IPe,dot,ruLst,nLst,TokR1,ruDone,ruby,rufrm_SCF(Si,Sj)")
+       NEW runa,IPs,IPe,ruLst,dot,Lna,ti,tok
+       S Si=$G(Swi),Sj=$G(Swj) I 'Si!'Sj D b^dv("Err Si.Sj ","Si,Sj,Swi,Swj") Q
+       D GFL^kfm(itemFL) ; 
+       ;W:$X ! S Lna=$G(WNa(runa)) I Lna="" D b^dv("Missing Lna","runa") S Lna=runa
+       ;W Lna," ",?8," -> "
+       F ti=1:1:$L(ruLst,",")+1 S tok=$P(ruLst,",",ti) DO
+         .I (dot+1)=ti W "  *  "
+         .I tok="" Q  ; no more tok, extra to do dot at end
+         .S Lna=$G(WNa(tok)) I Lna="" DO  ;
+            ..D b^dv("Err Missing Lna of tok","tok,WNa,ti,rulst")
+            ..S Lna=" ??? "
+         .W Lna,"  "
+       W ?50,"{",IPs,"}",!
+       Q
+----------

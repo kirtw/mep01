@@ -1,0 +1,13 @@
+dzgo  ;CKW/ESC i2jun20  gmsa/ rd2zro/ ; 20200602-67 ; Starter sequence by ?
+;
+; RefBy: none  2feb23
+A     KILL  ; start clean ?
+      S zro=$zro
+      D ^dzzl(zro)  ; compile, rev zro order
+        I Q'="" D b^dv("Err compiling etc. ","Q,zro")
+      D ^dzMenu
+Qz5   KILL:1 zdir,odir,sdir,zro
+      Q
+;*
+;*
+;*

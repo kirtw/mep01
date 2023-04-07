@@ -1,0 +1,34 @@
+
+
+local function complete(S, i, j, grammar)
+   local item = S[i][j]
+   for old_item_index, old_item in ipairs(S[item.start]) do
+      if next_symbol(grammar, old_item) == name(grammar, item) then
+         append(S[i], { rule  = old_item.rule,
+                        next  = old_item.next + 1,
+                        start = old_item.start })
+      end
+   end
+end
+
+local function scan(S, i, j, symbol, input)
+   local item = S[i][j]
+   if symbol(input, i) then -- terminal symbols are predicates
+      if S[i+1] == nil then S[i+1]  = {} end
+      unsafe_append(S[i+1], { rule  = item.rule,
+                              next  = item.next + 1,
+                              start = item.start })
+   end
+end
+
+local function predict(S, i, symbol, grammar)
+   for rule_index, rule in ipairs(grammar) do
+      if rule.name == symbol then
+         append(S[i], { rule  = rule_index,
+                        next  = 1 ,
+                        start = i })
+      end
+   end
+end
+
+

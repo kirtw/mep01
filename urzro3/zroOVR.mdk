@@ -1,0 +1,54 @@
+== rzro  OVR   
+
+    { km3a/   gmsa./  rzro3/*  }
+    
+=== StartUp $zro errors painful 
+
+=== Functions for $zro 
+ * MRou access, from start, incl start-MRou, $PB and $GB/$MB, dist, lib*.so
+ *   Critical crash if ANY errors, hard to self-diagnoses here
+ * MKW delo & recompile every rapid-debug cycle
+   Capture syntax errors and correct, MEdit
+     via ^dzro zdir(oi,si)=rdir...  parse $zro
+ * Test rdir for existence - not yet, just crash
+ * Audit $zro on Start Dup (and Case-Clash) MRou names (sequence/priority)
+ * $PB  rdir list
+ * $GB/$MB Utility dependence  and Versions - 
+ * devIO  Std, but gets PB, GB, SB for File Access
+ * %DIR  
+ * MBR driver top-level MRou or
+ 
+ + Init creation of list for new mpj
+ + Change rdir, add new, update vers
+
+=== Abs vs $PWD rel, $PB(mpj) rel, 
+  Rel dependent on $PWD at start-up ? $PB vs LUser-home
+  Rel still requires rdir variants
+
+=== Related
+==== ydb_dist  local  gtmy-symlink  vs /usr/local/lib/yottadb/  r<vers>
+         Included as first obj/subj $zro element
+         
+==== $zgl  and *.gld, gde
+
+=== Formats
+==== Env Var set
+ * Full string, $L 240+
+ * $PB, $GB visually much better, not easy
+      Still wraps and gets hard if all in one export smt.
+ * Separate lines, end \  (No # comments allowed, unfortunately
+      Manually align cols, then at least readable
+
+==== New zroCfg source, compile, set $zro=^  at start
+ * script text file, in cfg/ with others, or Shared 0mpj./ cfg/ zro<mpj>Cfg.mdk
+ *  and result text file
+ * One per mpj/cfg ? Std Filename  vs mpj-id so copy is specific elsewhare
+ * S $zro=
+   ++ ^ZWZ(zrid,"izro")  but diff MGbl files, not shared
+   ++ ^Shared  - not functional yet, gde dependency/complexity
+   ++ Text file, Shared Folder, eg km5a/ 0mpj./ cfg/ or cfr/
+ * Multiple possible formats, copy and paste, 
+ 
+==== ^dz Modules, current
+ ^dzs  dump $zro in zdir format
+ ^

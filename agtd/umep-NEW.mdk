@@ -1,0 +1,28 @@
+== Move to umep umep-NEW.mdk
+    {  umep./  akw/*  }
+EDME:vim /home/kw/km3a/umep/akw/umep-NEW.mdk
+
+
+Give mep its own $zro
+Combine Lua and mep
+
+Allow easier to compare output files
+
+UseCase for akw task pages  akw/ *.mdk
+UseCase for mad gather links  
+    and *.olf page HGen
+    
+Spread out rdirs
+Allow vers copies, variant $zro's
+
+Work:
+    Remove mep from mbr for now
+        rmep2/   epa and epMenu alread moved from rcfg/ to rmep2/
+    Remove rmep2  from $zro - 1 devy-profile in umbr./
+    
+Initiate
+    Reaim alias mep, admep, vmep
+    umep/cfg    devy-profile.sh   mep.sh  (move from mbr, edit)
+    umep/g & .gld  copy and GDE, mupip create
+    gtmy   symlink for now  ?vers r132/, r134/  
+    

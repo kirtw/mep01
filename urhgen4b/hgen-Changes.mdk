@@ -1,0 +1,21 @@
+#   Mods to rhgen4b/    30nov22 review
+
+
+hghEOL=1   $G(hghEOL) flag var to control eols in html, in WHT+3 
+to make it readable, but may bleed to output in not all in pre-mode
+
+Note ^h4css  replaced ^h3css after rd2hg/  and rd3hg/  versions
+
+New format css input  combine tag.class in 1st arg
+    eg table.tb1   or td.blk1
+    or combine with id as    h1#start
+Useful for tags other than div.
+
+1dec22  Couldnt find the version of hgh with new code in xict sr
+    Easy to write  - all on L3a although I looked back at hgh KAcf on HP5b.
+    
+First I modified hgh in rd3hgKAcf  thinking it was the ont to fix.
+    but it was old, still referencing ^h3css no longer in existence (vs h4css)
+Then moved the 4 new lines into the hgh from rhgen4b/ presumably the newest.
+
+

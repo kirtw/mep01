@@ -1,0 +1,43 @@
+#  diff-ep3-v-ep2.txt       14feb23
+
+
+kw@L7a:~/km3a/umep/rmep2$ diff ep2PAR.m ep3PAR.m 
+1c1,4
+< ep2PAR  ;CKW/ESC i31oct22 ;20230112-75;Parse INc(),INty  into GRk Grammar...
+---
+> ep3PAR  ;CKW/ESC i31oct22 ;20230111-45;Parse Trial IX exploration
+> ;
+> ;  Iabe(ruab,IPe,SSq)=ikey
+> ;  ISi(IPe,runa)=ikey
+5c8
+< 
+---
+> ;
+70a74
+>        S SSp=Spi_"."_Spj  ;same each in gi loop
+100c104,105
+<        S frm="SCAN term char '"_C_"'  fr:"_Ssi_"."_Ssj
+---
+>        S SSp=Ssi_"."_Ssj
+>        S frm="SCAN term char '"_C_"'  fr:"_SSp
+119,120c124,125
+<        S ruab=$G(GRk(ruid,"ruab"))  ;GFL^kfm("ruab",itemFL)
+<        S tokCL=$G(GRk(ruid,"tokCL"))  ;terminal token char list
+---
+>        S ruab=$G(GRk(ruid,"ruab"))
+>        S tokCL=$G(GRk(ruid,"tokCL"))
+144a150
+>          .S SSp=Sc2i_"."_Sc2j
+203a210,214
+>        S Iabe(ruab,IPe,SSq)=ikey
+>        S ISe(IPe,runa,SSq)=ikey
+>        S SS=Si_"."_Sj
+>        S IR(SS)=$G(SSp)
+>        ;
+208a220
+> ;*
+213c225,226
+<        S DSQ(SSq)=SS
+---
+>        S XSS(SSq)=SS
+>        S XSQ(SS)=SSq

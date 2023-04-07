@@ -1,0 +1,30 @@
+== rek  Variants  OVR
+
+=== recognizer  Original unmodified Lua code, grammar and inlut string
+    Wierd/obscure/bad choice of var and function names
+    Kludge of entities in rules and type determination by type/Lua
+        this type corein three main parts of build loops ===> Obscure
+    Type is determined in Lua by value, not variable
+        {nil, string, function, number, 
+        
+Modifications
+    Var name changes - unique and meaningful
+    io.write   insertions to monitor sequence and compare to mep
+        io wierdness in Lua, wont write some types...
+        Depend on new var names vs old, not easily copy-paste among re*.lua
+    Functions renames, ReFactored ?
+    ReFactor type=terminal test
+    
+rekSV.lua   22 with DW  enhanced output functions
+r3ek.lua -> rek3.lua  24nov22
+
+Compare  rekSV & rek3  tpLog/Compare-24nov22
+
+
+
+=== OBS
+rek1t.lua   -> x-rek1t.lua  24nov22
+    Trial removed dead code/comments at front, still worked
+    Vars inPtr/index
+    
+rek.lua   older vers, crashes --> x-rek.lua  24nov22  OBS    

@@ -1,0 +1,67 @@
+dzXZW(zro) ;CKW/ESC i2jun20 gmsa/ rd2zro/ ; 20220523-75 ; Gen RXU() of mrou and rdir
+;$$Q  or not        was ^dzMDup,  ^dzMdir  (sic)
+;
+;falls from top---
+A       NEW zdir
+        D ^dzroz($G(zro))  ; zro : zdir(oi,si)
+        NEW RXU,Ru  ; Arrays, Clean up
+        NEW Q
+        S Q=$$RXU  ; zdir :  Find Dupl mrou refs in zro/zdir sdir's
+        Q:$Q Q
+        Q
+;*$$Q      alt entry without recalculating zdir from zro
+zdir()  NEW Q  S Q=""  NEW RXU,Ru
+        S Q=$$RXU  ; zdir : RXU  dup mrou refs
+        Q:$Q Q
+        Q
+;
+;
+;$$Q  zdir : Writes if Dup mrou or case-clash
+RXU()  NEW Q,oi,si S Q=""
+      KILL RXU
+      F oi=2:1 Q:$D(zdir(oi))=0  F si=1:1 Q:$D(zdir(oi,si))=0   S Q=$$SRU(oi,si)
+      ;S Q=$$Dup  ; : Q
+Q     Q:$Q Q
+      Q
+;*
+;*$$Q zdir(oi,si)   - one dir, Ru()	and cumulative RXU(mr,url)=ii
+SRU(oi,si)  KILL Ru  ; not RXU here, it is cumulative
+      NEW Q,m,ri,ii,nsl,mr,mrou,url,durl,ref,fil,x
+      S Q=""
+      ;
+      S durl=$G(zdir(oi,si))  ; sdir
+      I durl["gtm" Q ""  ;Skip Utilities, gtm/ or gtmy/
+      I durl["mumps-" B  Q  ;oi=1
+      S x=$ZSEARCH(durl)  ;Init $ZS anything else than ref
+      S ref=durl_"/*.m"
+      F ri=1:1 S url=$ZSEARCH(ref) Q:url=""  D F1  ;
+    Q Q
+;* One mumps (*.m) File url    
+F1   S nsl=$L(url,"/"),fil=$P(url,"/",nsl)
+     S mrou=$P(fil,".m")   
+     S rdir=$P(url,"/",nsl-2)  
+     S ii=oi_"-"_si_"-"_ri_"-"_mrou
+     S mr=$ZCONVERT(mrou,"L")  ;$$LC^dwc ?
+     ;D b^dv("Log mrou ","fil,n,url,mrou,mr")        
+     S Ru(mr,url)=ri
+     I $D(RXU(mr,url)) D ^dv("Dup mrou","mrou,mr,oi,si,ri,url") Q
+     S RXU(mr,url)=ii  ; ? Identical structure... Cumulative across zro
+     S m=$G(RXU(mr)) I m="" S RXU(mr)=mrou
+     I m'="",m'=mrou D ^dv("Case clash ?","m,mrou,mr") ;Lists as dup too
+     Q
+
+;*$$Q   RXU()  : Q  msg $P/$IO
+Dup()   NEW Q,mr,mi,url,url2,i S Q=""
+      USE $P W:$X ! W "Checking for Duplications in $zro-",!
+      S mr=0
+      F mi=0:1 S mr=$O(RXU(mr)) Q:mr=""  S url=$O(RXU(mr,"")) S url2=$O(RXU(mr,url)) I url2'="" DO  ;
+        .I url2["gtmy/" Q  ;Skip utilities, both case ways
+        .W !,url,!,url2,!!
+        .S Q=Q+1
+        .S url=url2 F i=0:1 S url=$O(RXU(mr,url)) Q:url=""  W url,!
+      I Q="" W:$X ! W "No duplications- No overlapping mrou in different $zro groups.",!
+      Q Q
+;*
+
+
+      

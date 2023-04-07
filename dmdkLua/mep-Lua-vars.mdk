@@ -1,0 +1,28 @@
+= Lua mep  variable correspondence
+    { km3a/  Earley-Parse./  Lua-EP-code/ dref/
+
+--
+S   is array of state tables
+S[i]  input level
+
+S[i,j]   is item nodes, 3 fields each an integer { rule, start, next }
+     Note starts at 1, SAME as mep, but Displays i-1 sic
+     Goes to 10, $L(input) +1   confusing potentially !
+     
+Seems to go back to grammar for ruLst ?
+    via rule which is grammar rule number, ie rusq/gsq
+
+input  is raw input string
+   input to build, 2nd arg, still called input (new scope ?)
+   access thru 3 functions which compare char, range and class
+   arg to scan, but NOT predict or complete
+   
+index is ptr into input   used in char/range/class  only
+    renamed inPtr in rek.lua
+    
+Note name class searches - unrelated index vars
+  ln  index_
+  
+--
+name            runa
+next_symbol

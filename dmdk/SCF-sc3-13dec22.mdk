@@ -1,0 +1,43 @@
+== SCF  3parts 13dec22
+
+YDB>d WSC^ep2W
+
+
+Complete Table-
+
+
+     ====++ 1 ++==== SE:0  
+   1.1 sum.1/1    -> {2}  .1   *  sum   Psum    prod    R sum        {1-0}    Init sum.1 
+   1.2 sum.2/2    -> {2}  .1   *  prod                  R prod       {1-0}    Init sum.2 
+   1.3 prod.1/3   -> {2}  .1   *  prod  Pfac    fac     R prod       {1-0}    Pred fr:1.2 
+   1.4 prod.2/4   -> {2}  .1   *  fac                   R fac        {1-0}    Pred fr:1.2 
+   1.5 fac.1/5    -> {2}  .1   *  Cop   sum     Ccp     T Cop        {1-0}    Pred fr:1.4 
+   1.6 fac.2/6    -> {2}  .1   *  num                   R num        {1-0}    Pred fr:1.4 
+   1.7 num.1/7    -> {2}  .1   *  Cdig  num             T Cdig       {1-0}    Pred fr:1.6 
+   1.8 num.2/8    -> {2}  .1   *  Cdig                  T Cdig       {1-0}    Pred fr:1.6 
+
+
+     ====++ 2 ++==== SE:1  
+   2.1 fac.1/5    -> {2}  .2 Cop   *    sum     Ccp     R sum        {1-1}    SCAN term '1'  fr:1.5 
+   2.2 num.1/7    -> {2}  .2 Cdig   *   num             R num        {1-1}    SCAN term '1'  fr:1.7 
+   2.3 num.2/8    -> {2}  .2 Cdig                       C            {1-1}    SCAN term '1'  fr:1.8 
+   2.4 sum.1/1    -> {2}  .1   *  sum   Psum    prod    R sum        {1-1}    Pred fr:2.1 
+   2.5 sum.2/2    -> {2}  .1   *  prod                  R prod       {1-1}    Pred fr:2.1 
+   2.6 num.1/7    -> {2}  .1   *  Cdig  num             T Cdig       {1-1}    Pred fr:2.2 
+   2.7 num.2/8    -> {2}  .1   *  Cdig                  T Cdig       {1-1}    Pred fr:2.2 
+   2.8 sum.1/1    -> {2}  .2 sum   *    Psum    prod    T Psum       {1-2}    Cmplt fr:2.3 
+   2.9 prod.1/3   -> {2}  .1   *  prod  Pfac    fac     R prod       {1-1}    Pred fr:2.5 
+   2.10 prod.2/4   -> {2}  .1   *  fac                  R fac        {1-1}    Pred fr:2.5 
+   2.11 fac.1/5   -> {2}  .1   *  Cop   sum     Ccp     T Cop        {1-1}    Pred fr:2.10 
+   2.12 fac.2/6   -> {2}  .1   *  num                   R num        {1-1}    Pred fr:2.10 
+
+
+     ====++ 3 ++==== SE:2  
+   3.1 num.1/7    -> {2}  .2 Cdig   *   num             R num        {1-2}    SCAN term '+'  fr:2.6 
+   3.2 num.2/8    -> {2}  .2 Cdig                       C            {1-2}    SCAN term '+'  fr:2.7 
+   3.3 sum.1/1    -> {2}  .3 sum Psum     *     prod    R prod       {1-2}    SCAN term '+'  fr:2.8 
+   3.4 fac.1/5    -> {2}  .2 Cop   *    sum     Ccp     R sum        {1-2}    SCAN term '+'  fr:2.11 
+   3.5 num.1/7    -> {2}  .1   *  Cdig  num             T Cdig       {1-2}    Pred fr:3.1 
+   3.6 num.2/8    -> {2}  .1   *  Cdig                  T Cdig       {1-2}    Pred fr:3.1 
+
+

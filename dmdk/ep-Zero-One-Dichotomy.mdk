@@ -1,0 +1,21 @@
+== ep Zero-One-Dichotomy - Analysis & Resolution
+
+
+input  is string of terminal chars in Lua
+Lua tables used as arrays, start with 1 (NOT 0), implicit integer keys
+S is a two level table
+$L(input)=9 chars
+
+Si  goes from 0 to 9
+Lua Table array structure starts at 1
+
+IPs ~ i ~ Si ~ Sbi  Ptr to Input, Start of parsed input of this item
+    not explicit in item
+    IPe  end input ptr  - how much has been parsed in this item
+    
+IPs=1  initially, IPe=0  means nothing parsed
+    IPs=IPe  points to and includes one input terminal
+    Initial Value of IPe=0 ?  vs =1  1 would mean something alread included!
+    
+
+

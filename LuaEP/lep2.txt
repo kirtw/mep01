@@ -1,0 +1,36 @@
+
+
+---------------
+-- Utilities -- (Read the function names and the comments.)
+---------------
+-- next element in the rule of this item
+local function next_symbol(grammar, item)
+   return grammar[item.rule][item.next]
+end
+
+-- gets the name of the rule pointed by the item
+local function name(grammar, item)
+   return grammar[item.rule].name
+end
+
+-- compares two items for equality (needed for safe append)
+local function equal(item1, item2)
+   return item1.rule  == item2.rule
+      and item1.start == item2.start
+      and item1.next  == item2.next
+end
+
+-- Adds an item at the end of the Earley set
+local function unsafe_append(set, item)
+   set[#set+1] = item
+end
+
+-- Adds an item at the end of the Earley set, **unless already present**
+local function append(set, item)
+   for i = 1, #set do
+      if equal(item, set[i]) then
+         return
+      end
+   end
+   unsafe_append(set, item) -- the item wasn't already there, we add it
+end

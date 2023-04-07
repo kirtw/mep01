@@ -1,0 +1,31 @@
+== rek4 Mods log  vs git versions
+
+
+Failed to resist cleaning up append and unsafe_append
+
+Note tables as args are ALWAYS-in-Lua ref-by-name
+   tables include S, set, Grammar, ?item
+   #set is number in array
+   set = S(Si+1)
+   
+Much more confusion and ambiguity over var i - looks like global ref ?
+  in loop thru Si+1
+SI separated out from and to pairs of Si.Sj and writeable string
+  SVi,SVj and sweep for dup SVj
+  
+I renamed SSC and duplicated code in append's
+  No need to separate unsafe_append, it just returns
+I added args to SSC vs append
+I eliminated set and #set in favor of S[SVi]
+and directly set S(SVi][SVj] = itemSV -just incremented dot !
+
+equal  renamed itemEQ  because it is very specific, comparing three fields
+    for two diff items.
+   
+I wanted to output in append, but include caller - trace  trc -> 
+
+...  Many fiddles with functions, grammar  Cdig+  and trying to do sinple string
+
+7am  finally at least running again, syntax errors fixes
+  strange error    Init  S[1][1]  trying to index a number ???
+  

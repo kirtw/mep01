@@ -1,0 +1,54 @@
+
+
+
+#       Refs  TSTK
+
+
+kw@TP7:~/km7r$ grep TSTK -ni g*/r*/*.m       ***************
+
+  gmsa/rd3hg/hghcb.m:29:;;ct^hgh(tg)  tg may be null, in which case it uses TSTK to know tag to close
+  gmsa/rd3hg/hghcb.m:42:;;Init^hgh  internal by ^HGS  Init CS, HCS, TSTK
+gmsa/rd3hg/hgh.m:48:HGS() KILL TSTK  S TSTK=0,tsti=0  ; dupl stk ptr ?
+  *** gmsa/rd3hg/hgh.m:136:       I $G(tsti)="" D bug^dv("tsti,TSTK not init for ^hgh HGS^hgh","ict") S tsti=0  ; sic vs init ???
+gmsa/rd3hg/hgh.m:137:       S tsti=tsti+1,TSTK(tsti,"ict")=ict,TSTK(tsti,"tag")=tag
+gmsa/rd3hg/hgh.m:151:;*$$  Close tag from ict or TSTK(tsti)   -- if tsg null just pop and dont test tag=ctag
+gmsa/rd3hg/hgh.m:156:      I $G(tsti)<1 S Q="99 stack undef tsti,TSTK?" D b^dv(Q,"tsti,TSTK") Q:$Q Q  Q
+gmsa/rd3hg/hgh.m:157:      S stkict=TSTK(tsti,"ict"),tag=TSTK(tsti,"tag"),tsti=tsti-1  ; ict  POP stack
+gmsa/rd3hg/hgh.m:160:        .USE $P W:$X ! zwr TSTK  W !
+  gmsa/rd3hg/hgh.m:161:        .D b^dv("ct close ict stack err","ict,ictstk")
+  gmsa/rd3hg/hgTes.m:4:Ttct   S Qt=""  D Itstk^hgh
+  gmsa/rd3hg/hgTes.m:11:T     S Qt=""  D Itstk^hgh
+
+gmma/rHNMP/guHN1.m:116:      .;D b^dv("Log post ct menuSel","TSTK,tsti,tag,muf,href,h")
+gmma/rmbs/mbsQTP.m:10:       ;NEW HTS,HTE,HT,CS,TSTK,tsti  ; In case HGen ^hgh is accidentally nested here
+gmma/rmbs/mbsQTP.m:22:Qp     KILL TSTK,HTS,HTE,HT,CS,TI,RM,CD  ; Clean Up
+gmma/rmbs/mbsQTP.m:29:       F Iri=1:1:RM S L0=$G(RM(Iri)) D RL1(L0) I tsti'=2 D b^dv("Err RL1 stk","TSTK,tsti,Iri")
+gmma/rmbs/mbsQTP.m:30:       S Q=$$ct^hgh(".precod") I Q'="" D b^dv("tag-sync-TSTK precod","TSTK,tsti,mrou,sq,Iri")
+gmma/rmFL/mbuMFL.m:31:       ;D b^dv("Log Stk ","tsti,TSTK,ict")
+gmma/rns/gunHns2.m:6:       D Init^hgh  ; HT*, CS/HCS, devcss, TSTK
+
+gmsa/rd2dvs/dvh.m:96:;* * *  from cqHCal  nov2016      TSTK(), tsti stack pointer
+gmsa/rd2dvs/dvh.m:102:     S tsti=tsti+1,TSTK(tsti,"tag")=tag
+gmsa/rd2dvs/dvh.m:110:;*  Close tag from TSTK(tsti)
+gmsa/rd2dvs/dvh.m:111:ctag  I $G(tsti)<1 D b^dv("Stack undef","tsti,TSTK") Q
+gmsa/rd2dvs/dvh.m:113:      S tag=TSTK(tsti,"tag"),tsti=tsti-1
+
+
+
+gmsa/rdv/dvh.m:96:;* * *  from cqHCal  nov2016      TSTK(), tsti stack pointer
+gmsa/rdv/dvh.m:102:        S tsti=tsti+1,TSTK(tsti,"tag")=tag
+gmsa/rdv/dvh.m:110:;*  Close tag from TSTK(tsti)
+gmsa/rdv/dvh.m:111:ctag  I $G(tsti)<1 D b^dv("Stack undef","tsti,TSTK") Q
+gmsa/rdv/dvh.m:113:      S tag=TSTK(tsti,"tag"),tsti=tsti-1
+
+gmsa/rHg1/hgh.m:135:;* * *  from cqHCal  nov2016      TSTK(), tsti stack pointer
+gmsa/rHg1/hgh.m:136:Itstk    KILL TSTK S tsti=0
+gmsa/rHg1/hgh.m:144:       S tsti=tsti+1,TSTK(tsti,"tag")=tag
+gmsa/rHg1/hgh.m:172:       S tsti=tsti+1,TSTK(tsti,"tag")=tagcls
+gmsa/rHg1/hgh.m:187:;*$$  Close tag from TSTK(tsti)   -- if tsg null just pop and dont test tag=ctag
+gmsa/rHg1/hgh.m:193:      I $G(tsti)<1 D b^dv("Stack undef","tsti,TSTK") Q "99 stack undef tsti,TSTK?"
+gmsa/rHg1/hgh.m:194:      S ctag=TSTK(tsti,"tag"),tsti=tsti-1  ; tagcls
+gmsa/rHg1/hgh.m:204:ctag(tag)  I $G(tsti)<1 D b^dv("Stack undef","tsti,TSTK") Q "?"
+gmsa/rHg1/hgh.m:206:      S ctag=TSTK(tsti,"tag"),tsti=tsti-1
+gmsa/rHg1/hgTes.m:4:Ttct   S Qt=""  D Itstk^hgh
+gmsa/rHg1/hgTes.m:11:T     S Qt=""  D Itstk^hgh

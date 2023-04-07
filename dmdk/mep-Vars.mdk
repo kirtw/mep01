@@ -1,0 +1,36 @@
+= Vars in mep  - mumps Earley Parser
+
+
+    { km3a/  umbr./   rMW1/   subset of mbr  umbr./ m Project }
+    
+Grammar   GRr   rules
+          GRxq  Index - ordered entries preserved
+
+Grammar is compile as ready-to-go rules, just insert dot and Ips
+    to become rules in the Chart - State-Tables
+    
+A rule in SC is identified, referred back to as Si,Sj  the subscripts
+    or par=Si_"."_Sj
+    
+Rule parts collected as sl readable six-piece _ string
+    RP*  is local from various item/rule sources
+    runa is rule name
+    ruri is sub-num ri for runa
+    rusq is isq the seq-number/ rule-index of Lua
+    ruLst  is the rule list itself, a comma list of runa values
+    dot is ptr into ruL  current parsed comma piece, init 0
+    Ips is ptr to IN for start of input tokens used
+    Ipc~Ipe is current end ptr into IN, implicit in Early = Si, here explicit
+    
+ruLst is comma list, spaces for readability squeezed out in GR*
+    elements of the lists are runa  or terminal, tok["+" sfx
+    Each is a unique grammar name, type is determined by name
+        terminal type names end in +,
+        and non-termainals have no sfx
+        
+TokR1 ~ symbol 
+
+
+    
+
+    

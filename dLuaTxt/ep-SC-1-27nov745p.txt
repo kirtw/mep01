@@ -1,0 +1,51 @@
+
+
+
+YDB>zwr SC
+SC=5
+SC(1)=9
+SC(1,1)="gamma.1/1  => [_1_1_0_sum"
+SC(1,2)="sum.1/2    => [_1_1_0_sum,Psum+,prod"
+SC(1,3)="sum.2/3    => [_1_1_0_prod"
+SC(1,4)="prod.1/4   => [_1_1_0_prod,Pfac+,f"
+SC(1,5)="prod.2/5   => [_1_1_0_fac"
+SC(1,6)="fac.1/6    => [_1_1_0_Cop+,sum,Ccp+"
+SC(1,7)="fac.2/7    => [_1_1_0_num"
+SC(1,8)="num.1/8    => [_1_1_0_Cdig+,num"
+SC(1,9)="num.2/9    => [_1_1_0_Cdig+"
+SC(2)=10
+SC(2,1)="num.1/8    => [_1_1_1_Cdig+,num_scan"
+SC(2,2)="num.2/9    => [_1_1_1_Cdig+_scan"
+SC(2,3)="num.1/8    => [_1_1_0_Cdig+,num"
+SC(2,4)="num.2/9    => [_1_1_0_Cdig+"
+SC(2,5)="fac.2/7    => [_1_1_1_num_Cmplt fr:2.2"
+SC(2,6)="prod.2/5   => [_1_1_1_fac_Cmplt fr:2.5"
+SC(2,7)="sum.2/3    => [_1_1_1_prod_Cmplt fr:2.6"
+SC(2,8)="prod.1/4   => [_1_1_1_prod,Pfac+,f_Cmplt fr:2.6"
+SC(2,9)="gamma.1/1  => [_1_1_1_sum_Cmplt fr:2.7"
+SC(2,10)="sum.1/2    => [_1_1_1_sum,Psum+,prod_Cmplt fr:2.7"
+SC(3)=7
+SC(3,1)="sum.1/2    => [_1_1_2_sum,Psum+,prod_scan"
+SC(3,2)="prod.1/4   => [_1_1_0_prod,Pfac+,f"
+SC(3,3)="prod.2/5   => [_1_1_0_fac"
+SC(3,4)="fac.1/6    => [_1_1_0_Cop+,sum,Ccp+"
+SC(3,5)="fac.2/7    => [_1_1_0_num"
+SC(3,6)="num.1/8    => [_1_1_0_Cdig+,num"
+SC(3,7)="num.2/9    => [_1_1_0_Cdig+"
+SC(4)=9
+SC(4,1)="fac.1/6    => [_1_1_1_Cop+,sum,Ccp+_scan"
+SC(4,2)="sum.1/2    => [_1_1_0_sum,Psum+,prod"
+SC(4,3)="sum.2/3    => [_1_1_0_prod"
+SC(4,4)="prod.1/4   => [_1_1_0_prod,Pfac+,f"
+SC(4,5)="prod.2/5   => [_1_1_0_fac"
+SC(4,6)="fac.1/6    => [_1_1_0_Cop+,sum,Ccp+"
+SC(4,7)="fac.2/7    => [_1_1_0_num"
+SC(4,8)="num.1/8    => [_1_1_0_Cdig+,num"
+SC(4,9)="num.2/9    => [_1_1_0_Cdig+"
+SC(5)=4
+SC(5,1)="num.1/8    => [_1_1_1_Cdig+,num_scan"
+SC(5,2)="num.2/9    => [_1_1_1_Cdig+_scan"
+SC(5,3)="num.1/8    => [_1_1_0_Cdig+,num"
+SC(5,4)="num.2/9    => [_1_1_0_Cdig+"
+
+YDB>

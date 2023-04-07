@@ -1,0 +1,27 @@
+
+
+
+
+-- Prints all the Earley items.
+local function print_S(S, grammar)
+   for i, set in ipairs(S) do
+      io.write('    === ', i-1, ' ===\n')
+      pp = pretty_printer()
+      for j, st in ipairs(set) do
+         pp.line()
+         pp.col() pp.write(name(grammar, st))
+         pp.col() pp.write(' ->')
+         for k, symbol in ipairs(grammar[st.rule]) do
+            if k == st.next                   then pp.write(' •') end
+            if     type(symbol) == "string"   then pp.write(' ', symbol)
+            elseif type(symbol) == "function" then pp.write(' ', symbol())
+            else                                   error("Impossible symbol")
+            end
+         end
+         if st.next > #grammar[st.rule] then pp.write(' •') end
+         pp.col() pp.write('  (', st.start-1, ')')
+      end
+      pp.print(4)
+      io.write('\n')
+   end
+end

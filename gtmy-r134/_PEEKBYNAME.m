@@ -1,0 +1,172 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;								;
+; Copyright (c) 2015-2019 Fidelity National Information		;
+; Services, Inc. and/or its subsidiaries. All rights reserved.	;
+;								;
+; Copyright (c) 2018-2021 YottaDB LLC and/or its subsidiaries.	;
+; All rights reserved.						;
+;								;
+;	This source code contains the intellectual property	;
+;	of its copyright holder(s), and is made available	;
+;	under a license.  If you do not know the terms of	;
+;	the license, please stop and do not read further.	;
+;								;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; Calls $ZPEEK() with proper offset, length and format based on the info given in ^gtmtypes global
+;
+; field: specifies the memory location that needs to be accessed in the C-style dotted format i.e. CONTROL_BLOCK[.FIELD].* (For
+;        example "gd_region.max_key_size")
+; regindex: (Optional) a region name, structure index or a base address that is associated with the first (field name) argument.
+;        The choice is governed by the following rules applied in the following order:
+;
+;	1. If the value is a hex value in the form of "0xhhhhhhhh[hhhhhhhh]", then it is used as the base address of the data to
+;          fetch. Also in this case, the offset, length, and type are taken from the field specified in the first expression (field)
+;          See the $ZPEEK() function description of the "PEEK" mnemonic for more information.
+;
+;	2. If the first expression refers to one of the region-related structures supported by the $ZPEEK() function, this second
+;          expression is treated as a region name.
+;
+;	3. If the first expression refers to one of the replication related structures supported by the $ZPEEK() function that are
+;          indexed, this second expression is treated as a numerical (base 10) index value.
+;
+;	4. For those structures supported by the $ZPEEK() function that do not accept an argument, this second expression must be
+;          NULL or not specified.
+;
+; format: (Optional) specifies the output format in one character as defined in the "format" argument in the $ZPEEK() documentation.
+;        This argument overrides the automatic format detection by the %PEEKBYNAME utility.
+
+%PEEKBYNAME(field,regindex,format,gldpath)
+	if '$quit write "YDB-E-EXTRINSIC Use $$ rather than DO to invoke ",$text(+0) quit
+	new anindexval,aregname,digits,etrap,first,ishexnum,land,length,mnemonicandreg,offset,pattern,rest,type,typeindex
+	new dim,ret,idx,off
+	set etrap=$etrap
+	new $etrap	; Do not modify caller's error trap
+	set $ecode="",$etrap="quit"	; Defer error handling to the caller without doing anything
+	set land=$zlevel-1
+	set anindexval="an index value",aregname="a region name"
+	set first=$piece(field,".",1)
+	set rest=$piece(field,".",2,$length(field,"."))
+	if ("sgmnt_data"=first)&("freeze_online"=rest) set first="node_local" ; cough, cough, kludge, kludge - temporarily hide move
+	do:""=rest error("NOFIELD")
+	set digits=$select("x86"=$p($zver," ",4):8,1:16)
+	set regindex=$get(regindex)
+	; Is regindex a hex number in the acceptable address range (1-8 digits on 32-bit platforms and 1-16 digits on 64-bit)?
+	set pattern=""""_regindex_"""?1""0x""1."_digits_"(1N,1""A"",1""B"",1""C"",1""D"",1""E"",1""F"")"
+	set @("ishexnum=("_pattern_")")
+	; PEEK takes a hexadecimal number as the regindex
+	if ishexnum&(""'=field) set mnemonicandreg="PEEK:"_regindex
+	else  if "sgmnt_addrs"=first do:""=regindex error("PARMREQ",first,aregname) set mnemonicandreg="CSAREG:"_regindex
+	else  if "sgmnt_data"=first do:""=regindex error("PARMREQ",first,aregname) set mnemonicandreg="FHREG:"_regindex
+	else  if "gd_region"=first do:""=regindex error("PARMREQ",first,aregname) set mnemonicandreg="GDRREG:"_regindex
+	else  if "gd_segment"=first do:""=regindex error("PARMREQ",first,aregname) set mnemonicandreg="GDSSEG:"_regindex
+	else  if "gtmsrc_lcl"=first do:""=regindex error("PARMREQ",first,anindexval) set mnemonicandreg="GLFREPL:"_regindex
+	else  if "gtmrecv_local_struct"=first do:""'=regindex error("NOPARM",first) set mnemonicandreg="GRLREPL"
+	else  if "gtmsource_local_struct"=first do:""=regindex error("PARMREQ",first,anindexval) do
+	.	set mnemonicandreg="GSLREPL:"_regindex
+	else  if "jnl_buffer"=first do:""=regindex error("PARMREQ",first,aregname) set mnemonicandreg="JBFREG:"_regindex
+	else  if "jnl_private_control"=first do:""=regindex error("PARMREQ",first,aregname) set mnemonicandreg="JNLREG:"_regindex
+	else  if "jnlpool_ctl_struct"=first do:""'=regindex error("NOPARM",first) set mnemonicandreg="JPCREPL"
+	else  if ("node_local"=first)&(""'=regindex) set mnemonicandreg="NLREG:"_regindex
+	else  if ("node_local"=first)&(""=regindex) set mnemonicandreg="NLREPL"
+	else  if "repl_inst_hdr"=first do:""'=regindex error("NOPARM",first) set mnemonicandreg="RIHREPL"
+	else  if "recvpool_ctl_struct"=first do:""'=regindex error("NOPARM",first) set mnemonicandreg="RPCREPL"
+	else  if "upd_helper_ctl_struct"=first do:""'=regindex error("NOPARM",first) set mnemonicandreg="UHCREPL"
+	else  if "upd_proc_local_struct"=first do:""'=regindex error("NOPARM",first) set mnemonicandreg="UPLREPL"
+	else  do error("UNSUPSTRUCT",first)
+	do
+	.	new $zgbldir
+	.	set $zgbldir=$select($length($get(gldpath)):gldpath,1:$ztrnlnm("ydb_dist"))_"/gtmhelp.gld"
+	.	set typeindex=$get(^gtmtypfldindx(first,rest))
+	.	do:0=+typeindex error("INVALID",first,rest)
+	.	set type=^gtmtypes(first,typeindex,"type")
+	.	; determine if struct or union
+	.	do:0'=$data(^gtmtypes(type)) error("UNSUPTYPE",type)
+	.	set offset=^gtmtypes(first,typeindex,"off")
+	.	set length=^gtmtypes(first,typeindex,"len")
+	.	set dim=$get(^gtmtypes(first,typeindex,"dim"),1)
+	if $get(format)="" do
+	.	; note that even with the check above for structs, anonymous
+	.	; structs and unions "types" can still appear here
+	.	set format=$get(format)
+	.	set:(""=format)&(1=length) format=$select((type="unsigned-char"):"U",(type="char"):"I",1:"")
+	.	set:""=format format=$select(type["char":"C",1:"")
+	.	set:""=format format=$select(type["addr":"X",type["ptr":"X",type["void":"X",1:"")
+	.	set:""=format format=$select(type["uint64":"X",type["int64":"X",type["long":"X",1:"")
+	.	set:""=format format=$select(type["uint":"U",type["unsigned":"U",1:"")
+	.	set:""=format format=$select(type["int":"I",1:"")
+	.	; miscellaneous whitelist of non-standard types
+	.	set:""=format format=$select("boolean_t"=type:"I","time_t"=type:"I","size_t"=type:"U",1:"")
+	.	do:""=format error("UNSUPTYPE",type)
+	set $etrap=etrap
+	; determine if this is an array
+	if (1=dim)!("C"=format) do
+	.	set ret=$zpeek(mnemonicandreg,offset,length,format)
+	else  do
+	.	set length=length/dim
+	.	set ret=$zpeek(mnemonicandreg,offset,length,format)
+	.	for idx=1:1:dim-1 do
+	.	.	set off=offset+(length*idx)
+	.	.	set ret=ret_","_$zpeek(mnemonicandreg,off,length,format)
+	quit ret
+
+; Raises an error with given arguments
+error(err,first,args)
+	new str,x
+	set str=$text(@("ERRPBN"_err)),x="x="_$piece(str,";",3),@x,str=$piece(str,";",2)_","
+	if ("PARMREQ"=err)!("INVALID"=err) set args=""""_first_""":"""_args_""""
+	else  if ("NOPARM"=err)!("UNSUPSTRUCT"=err)!("UNSUPTYPE"=err) set args=""""_first_""""
+	else  set args=""""""
+	set $etrap="if $zstatus[""UNKNOWN"" set $zstatus=""%YDB-E-""_str_x zgoto land"	; in case of older versions
+	xecute "zmessage "_$translate(str,",",":")_args			; XECUTE because indirection exploded in older versions
+	zgoto land
+
+; Prints all $ZPEEK() acceptable fields
+LISTALL(gldpath)
+	do listiterate(,$get(gldpath))
+	quit
+
+; Populates output with type and length information indexed by $ZPEEK() acceptable fields
+; e.g. output("gd_region.jnl_file_name")="unsigned-char,256"
+LIST(output,gldpath)
+	do listiterate(.output,$get(gldpath))
+	quit
+
+; Iterate through names of the structures defined in ^gtmtypes and execute given command for each one
+listiterate(out,gldpath)
+	new $zgbldir,fieldname,i,j,struct,write
+	set $zgbldir=$select($length($get(gldpath)):gldpath,1:$ztrnlnm("ydb_dist"))_"/gtmhelp.gld"
+	set write=100>$zdata(out)
+	for i=1:1 set struct=$piece($text(struct+i),";",2) quit:""=struct  do
+	. for j=1:1  set fieldname=$get(^gtmtypes(struct,j,"name")) quit:""=fieldname  do
+	. . if 'write set out(fieldname)=^gtmtypes(struct,j,"type")_","_^gtmtypes(struct,j,"len")
+	. . else  write fieldname,!
+	quit
+
+data(field,gldpath)
+	new $etrap set $etrap="set $ecode="""" quit:$quit 0 quit"
+	set gbldirpath=$select($length($get(gldpath)):gldpath,1:$ztrnlnm("ydb_dist"))_"/gtmhelp.gld"
+	quit $data(^|gbldirpath|gtmtypfldindx($piece(field,"."),$piece(field,".",2,$length(field,".")))) quit
+
+; the below error definitions derived from merrors.msg are relatively complete so older version where they weren't defined get info
+ERRPBNPARMREQ		;150383746;"A first parameter value "_first_" requires a second parameter specified containing "_args
+ERRPBNNOPARM		;150383754;"First parameter "_first_" does not support a second parameter"
+ERRPBNUNSUPSTRUCT	;150383762;"$ZPEEK() does not support structure "_first
+ERRPBNINVALID		;150383770;first_" does not have a field named "_args
+ERRPBNNOFIELD		;150383778;"%ZPEEKBYNAME() requires a field.item in its first parameter"
+ERRPBNUNSUPTYPE		;150383882;"$ZPEEK() does not support type "_first
+struct	;  listed below, in alphabetical order, structures currently supported by ^%PEEKBYNAME
+	;gd_region
+	;gd_segment
+	;gtmrecv_local_struct
+	;gtmsource_local_struct
+	;gtmsrc_lcl
+	;jnl_buffer
+	;jnl_private_control
+	;jnlpool_ctl_struct
+	;node_local
+	;recvpool_ctl_struct
+	;repl_inst_hdr
+	;sgmnt_addrs
+	;sgmnt_data
+	;upd_helper_ctl_struct
+	;upd_proc_local_struct

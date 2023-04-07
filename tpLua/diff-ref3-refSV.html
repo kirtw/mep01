@@ -1,0 +1,176 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>diff-ref3-refSV</title>
+  </head>
+  <body>
+    <h1>==&nbsp; diff rek3.lua rekSV.lua </h1>
+    kw@L7a:~/km3a/Earley-Parse/Lua-EP-code$ diff rek3.lua rekSV.lua <br>
+    1c1<br>
+    &lt; local LuaRekRunning = "rek3.lua"<br>
+    ---<br>
+    &gt; local LuaRekRunning = "rekSV.lua"<br>
+    107d106<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("dx failed test
+    ",#S," vs inlut:len()-",input:len(),"&nbsp; +1","\n")<br>
+    127,128d125<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp; nxSym = grammar[item.rule][item.next]<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp; io.write("\n&nbsp;&nbsp; Get TokR1
+    ",type(nxSym),"&nbsp; ")<br>
+    150a148<br>
+    &gt;&nbsp;&nbsp;&nbsp; io.write("Try to append
+    ",item.rule,"/",item.start,"/",item.next,"&nbsp; ")<br>
+    153c151<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    io.write("SSC Dupl rej:",item.rule,"&nbsp;
+    set-item",set[i].rule,"\n")<br>
+    ---<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    io.write(" \n")<br>
+    156a155<br>
+    &gt;&nbsp;&nbsp;&nbsp; io.write("&nbsp; is new. \n")<br>
+    161,162c160,174<br>
+    &lt; -- debug insertion kw<br>
+    &lt; <br>
+    ---<br>
+    &gt; --debug insertion kw<br>
+    &gt; function locals()<br>
+    &gt;&nbsp;&nbsp; local variables = {}<br>
+    &gt;&nbsp;&nbsp; local idx = 1<br>
+    &gt;&nbsp;&nbsp; while true do<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp; local ln, lv = debug.getlocal(2, idx)<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp; if ln ~= nil then<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; variables[ln] = lv<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp; else<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; break<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp; end<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp; idx = 1 + idx<br>
+    &gt;&nbsp;&nbsp; end<br>
+    &gt;&nbsp;&nbsp; return variables<br>
+    &gt; end<br>
+    167,168d178<br>
+    &lt; -- rule S[i,j] ie item just passed, input moved dot to far
+    right.<br>
+    &lt; --<br>
+    171,172c181<br>
+    &lt;&nbsp;&nbsp;&nbsp; local old_item_index, old_item<br>
+    &lt;&nbsp;&nbsp;&nbsp; io.write("Com loops thru S[",item.start,"]
+    ",item.rule," ",item.next)<br>
+    ---<br>
+    &gt;&nbsp;&nbsp;&nbsp; io.write(" * ! complete
+    ",i,"/",j,"\n")&nbsp;&nbsp; <br>
+    174,178c183,188<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("\n item done,
+    Complete loop-",i,"/",j,"&nbsp;
+    old:",old_item_index,"&lt;&gt;",type(old_item))<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; local tokr1=
+    next_symbol(grammar, old_item) <br>
+    &lt;&nbsp; --&nbsp;&nbsp;&nbsp;&nbsp; tokVal= symbol(grammar,
+    old_item)&nbsp; io.write("\n tokVal:",tokVal)<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; local ngri= name(grammar,
+    item)<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("\n Test
+    tokr1:",type(tokr1)," ?== ",ngri," : name(gram... ")<br>
+    ---<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; local Sj = old_item_index<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; local Si=i<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if
+    type(next_symbol(grammar, old_item))=="string" then <br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    io.write("C test :",Si,"/",Sj,": ",next_symbol(grammar, old_item),"
+    =? ",name(grammar, item),"\n")<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; else io.write("C test term
+    ",Si,"/",Sj,"\n")<br>
+    &gt;&nbsp;&nbsp;&nbsp; end<br>
+    182a193<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    io.write("comp success:",old_item_index,"~",name(grammar,
+    item),"\n")<br>
+    187c198<br>
+    &lt; local function scan(S, i, j, symbol, inputarg)<br>
+    ---<br>
+    &gt; local function scan(S, i, j, symbol, input)<br>
+    189c200,203<br>
+    &lt;&nbsp;&nbsp;&nbsp; if symbol(inputarg, i) then -- terminal
+    symbols are predicates<br>
+    ---<br>
+    &gt;&nbsp;&nbsp;&nbsp; local Bsym = symbol(input, i)&nbsp;&nbsp; <br>
+    &gt;&nbsp;&nbsp;&nbsp; io.write(" * * scan ",i,"/",j," ~
+    ",type(Bsym),"\n")<br>
+    &gt; <br>
+    &gt;&nbsp;&nbsp;&nbsp; if symbol(input, i) then -- terminal symbols
+    are predicates<br>
+    194d207<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp; io.write("Scan mch:", i,",",j, "
+    sym:",inputarg,"&nbsp; ", type(symbol),"&nbsp;
+    in:",type(input),"&nbsp; new item:",i+1,"-","&nbsp;
+    dot/nx:",1,"\n")&nbsp; -- ,next/dot is 1<br>
+    199c212<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("!&nbsp;
+    PRED sym:",symbol,"\n")<br>
+    ---<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("** Pred&nbsp;
+    \n")<br>
+    201c214<br>
+    &lt; -- io.write("Pred test sym:", symbol,"&nbsp;&nbsp; ru-name:",
+    rule.name, "\n")<br>
+    ---<br>
+    &gt; --&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("Pred test
+    ",rule_index," - sym:", symbol," eq? ",&nbsp; rule.name,"\n")<br>
+    206c219,221<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("Pred
+    mch:", i, "&nbsp; ", symbol,"&nbsp; new item:",i,"-","
+    grx:",rule_index,"&nbsp; dot/nx:",1,"\n")&nbsp; -- ,next/dot is 1<br>
+    ---<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("***
+    Pred Add new:", i," Si:", "&nbsp; sym:", symbol,"\n")<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; locals()<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp; --&nbsp;&nbsp;&nbsp; npr = npr +1<br>
+    215,218c230,233<br>
+    &lt; --&nbsp;&nbsp; <br>
+    &lt;&nbsp;&nbsp;&nbsp; for gsi = 1, #grammar do<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if grammar[gsi].name ==
+    grammar.start_rule_name then<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    unsafe_append(S[1], { rule&nbsp; = gsi,<br>
+    ---<br>
+    &gt;&nbsp;&nbsp;&nbsp; local npr=0<br>
+    &gt;&nbsp;&nbsp;&nbsp; for i = 1, #grammar do<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; if grammar[i].name ==
+    grammar.start_rule_name then<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    unsafe_append(S[1], { rule&nbsp; = i,<br>
+    225a241<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("\n\n Build loop
+    #",i,"\n")<br>
+    227a244<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    io.write("Bld inner loop #",j,"\n")<br>
+    235a253,254<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    io.write("&nbsp;&nbsp; *** End of Loop ",i,"\n")<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    print_S(S, Grammar)&nbsp; <br>
+    237c256<br>
+    &lt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("loop:",i," ",j,"
+    ","\n")&nbsp; --&nbsp;&nbsp; symbol,<br>
+    ---<br>
+    &gt;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; io.write("end build
+    loop:",i," ",j," ","\n")&nbsp; --&nbsp;&nbsp; symbol,<br>
+    420,422d438<br>
+    &lt; io.write("input is of Lua type:",type(input),"\n")<br>
+    &lt; io.write("Grammar is of Lua type:",type(Grammar),"\n")<br>
+    &lt; io.write("S two levels is Lua type:",type(S),"\n")<br>
+    424c440<br>
+    &lt; print_S(S,
+    Grammar)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    -- print all the internal state<br>
+    ---<br>
+    &gt; -- print_S(S,
+    Grammar)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    -- print all the internal state<br>
+    kw@L7a:~/km3a/Earley-Parse/Lua-EP-code$ <br>
+  </body>
+</html>

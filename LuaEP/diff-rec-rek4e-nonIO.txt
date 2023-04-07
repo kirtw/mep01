@@ -1,0 +1,154 @@
+0a1,2
+> local LuaRekRunning = "rek4.lua"
+> 
+13a16
+> --********** kw move code ?
+14a18
+> --**********
+102a107
+121a127,144
+>     local fgsi = item.rule
+>     local fdot = item.next
+>     local grul = grammar[fgsi]
+>     local fnx = grul[fdot]
+>     local nxSym = grammar[item.rule][item.next]   
+>     if nxSym ~= fnx then 
+>        end
+>     if type(nxSym) == 'string' then
+>     else
+>        end
+137a161,163
+> -- set is a list of Si vals, ?? integer ~ Si, item is obj/array  
+> --  Call by ref  - updated, ?global scope vs arg ?
+> -- both key/val name and indexed [1:1] tokens in list, SIC!kw
+144c170,171
+<    for i = 1, #set do
+---
+> -- sic i is GLOBAL here !
+>    for i = 1, #set do  
+145a173
+151a180,183
+> ----------
+> 
+> ----------
+155,156c187,198
+<    local item = S[i][j]
+---
+> -- rule S[i,j] ie item just passed, input moved dot to far right.
+> --
+> --                    * * * COMPLETE * * *
+>    local item = S[Si][Sj]
+>    local old_item_index, old_item
+>      local Cst = item.start
+>      local Cend = Si
+>      local Cdot = item.next
+>      local Cgsi = item.rule
+>    local Cset = S[item.start]
+157a200,204
+>       local tokr1= next_symbol(grammar, old_item) 
+>       local ngri= name(grammar, item)
+159,161c206,211
+<          append(S[i], { rule  = old_item.rule,
+<                         next  = old_item.next + 1,
+<                         start = old_item.start })
+---
+>          local newItem = item
+>          newItem.next = item.next + 1
+>          append(S[Si],newItem)
+> --         append(S[Si], { rule  = old_item.rule,
+> --                        next  = old_item.next + 1,
+> --                        start = old_item.start })            
+165,166c215,216
+< 
+---
+> --                     * * * SCAN * * *
+168c218
+<    if symbol(input, i) then -- terminal symbols are predicates
+---
+>    if symbol(inputarg, i) then -- terminal symbols are predicates
+172a223
+175c226
+< 
+---
+> --                  * * * PREDICT * * *
+176a228
+177a230
+181a235
+186c240,241
+---
+> --           * * * * *  BUILD * * * * *
+190,192c245,248
+<    for i = 1, #grammar do
+<       if grammar[i].name == grammar.start_rule_name then
+<          unsafe_append(S[1], { rule  = i,
+---
+> --   
+>    for gsi = 1, #Bgram do
+>       if Bgram[gsi].name == Bgram.start_rule_name then
+>          unsafe_append(S[1], { rule  = gsi,
+195,196c251,252
+<       end
+<    end
+---
+>       end  -- end if
+>    end  -- end for
+202,203c258,259
+<          local symbol = next_symbol(grammar, S[i][j])
+<          if     type(symbol) == "nil"      then complete(S, i, j, grammar)
+---
+>          local symbol = next_symbol(Bgram, S[i][j])
+>          if     type(symbol) == "nil"      then complete(S, i, j, Bgram)
+205c261
+<          elseif type(symbol) == "string"   then predict (S, i,    symbol, grammar)
+---
+>          elseif type(symbol) == "string"   then predict (S, i,    symbol, Bgram)
+210a267
+319a377,400
+> --   for i, set in ipairs(S) do
+>      local set = S[Si]
+>       pp = pretty_printer()
+>       for j, st in ipairs(set) do
+>          pp.line()
+>          pp.col() pp.write(name(grammar, st))
+>          pp.col() pp.write(' ->')
+>          for k, symbol in ipairs(grammar[st.rule]) do
+>             if k == st.next                   then pp.write(' •') end
+>             if     type(symbol) == "string"   then pp.write(' ', symbol)
+>             else                                   error("Impossible symbol")
+>             end
+>          end
+>          if st.next > #grammar[st.rule] then pp.write(' •') end
+>          pp.col() pp.write('  (', st.start-1, ')')
+>       end
+>       pp.print(4)
+>    end
+>            
+334c415
+---
+337c418
+<       else return input:byte(index) == c:byte()
+---
+>       else return input:byte(inPtr) == c:byte()
+343c424
+---
+348c429
+<          local i = input:byte(index)
+---
+>          local i = input:byte(inPtr)
+357c438
+---
+362,363c443,444
+<          return index <= input:len()
+<             and c:find(input:sub(index, index), 1, true) ~= nil
+---
+>          return inPtr <= input:len()
+>             and c:find(input:sub(inPtr, inPtr), 1, true) ~= nil
+370a452,453
+> 
+> 
+388a472
+> 
+389a474,477
+> 
+390a479
+> 

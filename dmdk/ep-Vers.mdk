@@ -1,0 +1,18 @@
+== ep Vers & Change Log
+
+
+Tempting to add logging Structures aux to SC[] 
+    because logic of that is un-seeable, complex, HARD to debug
+    Still need Parse result, Parse tree
+    
+ * 2dec22  v0.5 Working Partially
+    Enhanced output formatting to match Lua State Table Dump
+    0/1  Earley - vs Lua - vs mep 
+        of S, 
+        of dot, 
+        IPe, IPs...
+    
+    Trans Terminology is hardly helpful to me: PRED, SCAN, COMP ???
+    
+
+    

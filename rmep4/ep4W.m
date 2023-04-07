@@ -1,0 +1,192 @@
+ep4W  ;CKW/ESC i31oct22 umbr./ rmep2/ ;20221031-60;Write sr for parser data structures
+;
+;
+;
+;*
+top    D b^dv("No top entry -^"_$T(+0),"ruid")
+;*
+;
+;   tsq.  ^epqMenu
+;*  Trace IR(SSp)=prior SSp=Si.Sj
+TSQ(SS)  ;I '$G(SS) D bug^dv Q
+       I $D(SCF)=0 D bug^dv("NO SCF()","SCF") Q
+       S SS=10.3  ;complete parse
+       USE $P W:$X ! W "Trace SSp- ",SS
+       F qi=1:1  Q:'SS  S Si=$P(SS,"."),Sj=$P(SS,".",2) D W1Sij S SS=$G(IR(SS)) Q:'SS
+       W !
+       Q
+;*
+;*  dot, ruLst : nLst, tokR1, tokTy {R,T, C}
+getR1  I $G(dot)="" D bug^dv Q
+       I 'dot D b^dv("dot NOT zero","dot,ruid,ruab") Q
+       ; dot=1 init, dot points to first in ruLst
+       I $G(ruLst)="" S Q="Err no ruLst arg getR1^"_$T(+0) D b^dv(Q,"Q,dot") Q
+       S nLst=$L(ruLst,",")
+       S tokR1=$P(ruLst,",",dot)
+       I tokR1="" DO  ;
+         .S tokTy="C"
+         .I dot'=(nLst+1) D b^dv("C dot ?","dot,nLst,ruLst,tokR1,tokTy")
+       I tokR1'="" S tokTy="R" I $E(tokR1)?1U S tokTy="T"
+        I $G(Wmo)["tokR1" DO  ;
+           .W:$X ! W "sr tokR1 ",Si,".",Sj," .",dot," in ",ruLst,"' "
+           .W "  ->",tokR1," ty:",tokTy,!
+       Q
+;*  : LST  
+FO(dot,ruLst) D bug^dv Q
+       S LST="" F ti=1:1:$L(ruLst,",") DO  ;
+         .I ti<0 S LST=LST_"      " Q
+         .I ti=dot S LST=LST_"  *   "  ;continue
+         .S tok=$P(ruLst,",",ti) 
+         .I tok="" S tok="      "
+         .S tok=tok_$E("       ",$L(tok),6) I $L(tok)'=7 D b^dv("Err pad","tok,dot,ri")
+         .S LST=LST_tok
+       Q
+;*  Dump GRk and SCF  to mep-SCF.mdk  in dmep  admep to compile
+Wmdk   NEW Q S Q=""  D ^devIB  ; : PB
+       S Fil="mep-SCF.mdk"
+       S devm=PB_"dmep/"_Fil
+       S Q=$$OFW^devIO(devm) I Q'="" Goto Q
+       USE devm
+       W:$X ! W "== mep Tables  ^ep2*  rmep2/  ",!
+       W !!,"--",!," Grammar then SCF State Tables Dump",!!
+       D WSC
+       D WSCLua
+       ;D WGR       
+       W !!,"--",!
+       D CFM^devIO(devm)
+       Goto Q
+;* Common Exit
+Q      Q:$Q Q D:Q'="" qd Q
+Qb     D qd Q:$Q Q Q
+qd     D b^dv("Err ^"_$T(+0),"ruid,ruab,ruLst")
+       Q
+;*
+;*  GRk(ruid)=@grFL,   Gxi(runa,gi)=ruid ?
+FLg0   ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rde_GRk(ruid)
+;
+; This is all static after init setup by IG
+WGR    I $D(GRk)=0 D bug^dv("Array GRk UNDEF.","GRk,Gxi") Q
+       I $D(Gxi)=0 D bug^dv("Array Gxi UNDEF.","GRk,Gxi") Q
+       W !!," Grammar GRk() rules-"
+       D ^ep2IMG ; : grFL
+       NEW ruid,ruab,ina,rugi,ruab,ti,rde,runa,ruLst,tok
+       F ruid=1:1  Q:$D(GRk(ruid))=0    DO  ;
+         .D GFL^kfm(grFL)
+         .S xLst=ruLst_tokCL ; either or
+         .D WG2,WG1
+       Q
+;*  Derive alt fields : rugi
+WG2    S rugi=$P(ruab,".",2)
+       Q
+;*  ruid, @grFL 
+WG1    W:$X ! W " ",ruid," "   NEW x
+       W ?4,ruab," "
+       W ?14," -> ",ruty,"  ",xLst,"  "
+       I Lna'="" W ?40,Lna,"  "
+       I rde'="" S x=40 S:$X>40 x=55 W ?x,rde," "
+       W !
+       Q
+;*
+FLg1   ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rde_GRk(ruid)
+FLi1   ;;itemFL:runa,ruab,ruid,ikey,svSSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+;*  SCF()  Write all, Lua Loup Compatible output lines
+;* Called by Wmdk to save as file
+WSC(M) W !!," Complete Table-",!!
+       NEW Si,Sj    
+       F Si=1:1 Q:$D(SCF(Si))=0  D WS(Si)
+       USE $P W !!
+       Q
+;*  SCF(Si)
+WS(Si,M)  W:$X ! W !,"  SEarly:",Si-1,"   ====++Si ",Si," ++====  "
+       S C=$E(Ins,Si) I C'="" W " In:'",C,"'",!
+       NEW runa,ruab,IPs,IPe,IC,dot,ruLst,nLst,tokR1,ruDone,ruby,rufrm
+       F Sj=1:1 Q:$D(SCF(Si,Sj))=0   D W1Sij  ;
+       W !
+       Q
+;*           
+W1Sq(SSq)  ;
+       S SS=DSQ(SSq),Si=$P(SS,"."),Sj=$P(SS,".",2)
+         ;falls thru  alt entry/SSq vs Si,Sj input
+W1Sij   D GFL^jfm("svSSq,ruid,ruab,ruLst,dot,IPs,IPe,tokR1,tokTy,frm",itemFL) ;
+       D Witem
+       Q
+;*  Write One item  Maximize Utility mep  vs WS ala Earley/LoupLua
+;*  Si,Sj, @itemFL  ruid,ruab,ruLst,dot,IPs,   IPe,tokR1,tokTy
+Witem(M)  NEW i,tok
+       D Itab("10,10,5,8,8,8,12,10,10") ; : tb(i) from width list
+       S M=$G(M) I M'="" S M=M_": " 
+       S IC=$E(Ins,IPs,IPe)
+       W:$X ! 
+       I $G(frm)'="" W ?5,frm,!
+       W M,svSSq," ",?3,Si,".",Sj," ",ruab,"/",ruid,"  " 
+       ;D FO(dot,ruLst) ; : LST
+       ;S FL="runa,IPs,IPe,dot,LST,...
+       W ?tb(2)," -> "
+       W "{",$G(IC),"}  .",dot," "
+       S tb=2 F i=1:1:$L(ruLst,",")+1 S tok=$P(ruLst,",",i) DO  
+         .S tb=tb+1 I dot=i W ?tb(tb),"  *  " S tb=tb+1
+         .I tok'="" W ?tb(tb),tok," "
+       W ?tb(7),$G(tokTy)," ",$G(tokR1)," "
+       W ?tb(8)," {",IPs,"-",$G(IPe),"} "
+       W:$X !
+       Q
+;*
+Itab(WL)   KILL tb S tb=7  NEW w,i
+       I $G(WL)="" S WL="3,3,10,15,15,15,15,20" ; ? something
+       F i=1:1:$L(WL,",") S w=$P(WL,",",i),tb(i)=tb,tb=tb+w
+       Q
+;*     * * * *
+;*  SCF()  Write all, Lua Loup Compatible output lines
+;* Called by Wmdk to save as file
+WSCLua W !!," Complete Lua Table-",!!
+       NEW Si,Sj    
+       F Si=1:1 Q:$D(SCF(Si))=0  D WSL(Si)
+       USE $P W !!
+       Q
+;*  SCF(Si)
+WSL(Si)  W:$X ! W !,"     ====== ",Si-1," ======",!
+       NEW runa,ruab,IPs,IPe,IC,dot,ruLst,nLst,tokR1,ruDone,ruby,rufrm
+       F Sj=1:1 Q:$D(SCF(Si,Sj))=0   DO  ;
+         .D GFL^jfm("svSSq,ruid,ruab,runa,ruLst,dot,IPs,IPe,tokR1,tokTy,frm",itemFL) ;
+         .S Lna=$G(GRk(ruid,"Lna"))
+         .D WLLua
+       W !
+       Q
+;*  Write one item ala Lua Loup format for comparison
+; WNa substitutes full Lua name
+; @itemFL, Si,Sj,  runa, ruLst, dot, IPs
+WLLua()  ;
+       NEW ti,tok
+       W Lna," ",?8," -> "
+       F ti=1:1:$L(ruLst,",")+1 S tok=$P(ruLst,",",ti) DO
+         .I (dot)=ti W " *     "
+         .I tok="" Q  ; no more tok, extra to do dot at end
+         .S ruid=$G(Gxi(tok,1)) I 'ruid S Q="Missing Lna of "_tok Q
+         .S tokLna=$G(GRk(ruid,"Lna"))
+         .I tokLna="" DO  ;
+            ..D b^dv("Err Missing Lna of tok","tokLna,tok,WNa,ti,rulst")
+            ..S tokLna=" ??? "
+         .W tokLna,$J("",10-$L(tokLna))  ;pad to fixed width
+       S LuaIPs=IPs-1
+       I IPs="" S LuaIPs="?"
+       W ?50,"(",LuaIPs,")",!
+       Q
+;*
+;*   INc()   Itb()
+WIN   W:$X ! W !,"Inputs-"   NEW wi
+      I $G(Ins) W !,"In str '",Ins,"'  "
+      W !,"Ip: " F wi=1:1:INc W ?Itb(wi),wi," "
+      W !,"lit " F wi=1:1:INc W ?Itb(wi),INc(wi)," "
+      W !
+      Q
+;* Copy from ^dvs  same as ^dvc
+	;Replace all dbl spaces (or more) with single, and remove starting/ending
+DSP(X)	NEW i F i=0:1 Q:X'["  "  S X=$P(X,"  ")_" "_$P(X,"  ",2,9999)
+	Q $$TSP(X)
+	; Remove start and end spaces (only)
+TSP(X)	NEW i S X=$TR(X,$C(9)_$C(10)_$C(13),"   ")  ;replace tab,lf,cr with space
+	I $E($G(X))=" " F i=1:1:$L(X) I $E(X,i)'=" " S X=$E(X,i,999) Q
+	I $E(X,$L(X))=" " F i=$L(X):-1:1 I $E(X,i)'=" " S X=$E(X,1,i) Q
+	I X=" " S X=""  ; Funny case all spaces  vs end i=0 second line ?
+	Q X
+;*	

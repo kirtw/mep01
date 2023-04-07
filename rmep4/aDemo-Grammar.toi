@@ -1,0 +1,30 @@
+#!
+
+
+
+#  ^ep4RGA ignores # comments and blank lines
+#  fence  ++.. switches mode to terminals
+
+
+#G00   GRammar  rule-name & comma list of rule-names|tokenNa|char
+sum sum,Psum,prod  ;Sum;sum is sum rule +/-
+  prod
+prod prod,Pfac,fac  ;Product; prod is product
+  fac
+fac Cop,sum,Ccp      ;Factor;  f vs (,s,)  with the literal char as its own name
+  num
+num Cdig,num      ;Number;
+  Cdig
+
+++..
+
+#  Terminals  terminal token names;Chars;Lua-name
+Cdig   0123456789;[0-9]; 
+Cop    ( ; '(' ;
+Ccp    ) ; ')' ;
+Psum  +- ;['+-'];
+Pfac  */ ;['*/'];
+
+ ***  end Terminal tokens
+
+ 

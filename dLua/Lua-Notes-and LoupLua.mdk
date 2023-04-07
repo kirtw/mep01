@@ -1,0 +1,59 @@
+== Lua Language Notes re Earley Parser
+        { km3a/   Earley-Parser./  dLua/*  } 7dec22 
+
+    Data Types/ Data Structures 
+    Type is derived from values, not an attribute of variables, not declared
+    type(var) returns a string in {nil, string, table, number, boolean, integer ?}
+
+    Tables
+        Tables are somewhat similar to mumps arrays, multi-level
+        Have subset like an array, indexed by implicit, ordered integer keys, 1:1:#aName
+            # pfx is shortcut for length
+        Can mix key/value nodes and array/integer nodes (and Loup does !)
+
+    In LoupLua Earley Parser, recognizer.lua-
+        Grammar is a mixed table, the rule-list is an array, at second level
+        Rules are an array at first level, thus 'rule' is an integer key pointing into grammar
+            rule is a field of item
+        S is a two level table, comprising the state table or items
+            Level one is an array, index i indicates subsets/groups of parsed rules or items
+            Note i is 1:1 but Loup Displays i-1 to match Earley general algorithm
+                This is a TERRIBLE idea for debugging, straddling the worst 0/1 counting edge!
+            Level two are the items in a subtable, he uses j as index var (sic)
+                Items have three fields: rule, next and start. It is not an array at this third level
+                
+    Syntax is Line-oriented, but many structures are not ended by the <eol>
+        The end statement/keyword is often the syntactic close-block
+        Blocks are not defined with { }  or [ ]
+        
+    Variable Scoping
+        Variable Syntax simple abc = <value>
+            or an array   def = [first,second, third]   and def[2] == "second"  Note starts with 1, not 0.
+            or an object with key/value data  
+            vobj = { name = 'Kirt', kids = { name = 'Ted', name = "Adah }, name='Dave' }
+            
+    Var Scoping has two types global (default) and local using keyword local as declaration and maybe init value.
+            eg local abc
+            local def = 1
+            
+        local is local to enclosing function, no higher or lower (abc is not visible in nested functions)
+
+    Function scoping
+        local also applies to declaration and definition of a named function
+        function is second keyword, followed by <funcName> and ( <args> )
+            then the statements up until an <end> close
+            Note end also closes do-end, if then - end and for then-end
+        which means it is nested if it occurs inside the closing 'end' statement for the parent function.
+        
+    Functions MUST precede their invocation. 
+        Wierd data-looking errors occur otherwise !!! (sic, sic, sic imho kw)
+        Access depends on nesting inside function-end, are global or local
+        
+    Function arguments, inside paren, ordered
+        If a table-type, are by-reference. Note arrays, obj are really tables.
+        If a string, arg is by value.
+        LoupLua reuses i,j all over, frequently as arguments
+            which, in effect, creates new instances of same-named vars. He doesnt change them.
+
+    Functions as events or methods ?  Not encountered yet...
+

@@ -1,0 +1,208 @@
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;								;
+; Copyright (c) 2017-2019 Fidelity National Information		;
+; Services, Inc. and/or its subsidiaries. All rights reserved.  ;
+;								;
+; Copyright (c) 2018-2019 YottaDB LLC and/or its subsidiaries.	;
+; All rights reserved.						;
+;								;
+;	This source code contains the intellectual property	;
+;	of its copyright holder(s), and is made available	;
+;	under a license.  If you do not know the terms of	;
+;	the license, please stop and do not read further.	;
+;								;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+%YGBLSTAT
+	; Gather and report statistics shared by GT.M processes
+	; Note: Application code is permitted to KILL %YGS (the entire
+	; tree), or to hide it with NEW. But application code must
+	; not modify nodes within it.
+	;
+	; As all strings contain only ASCII, code uses "Z" functions to
+	; ensure performance even in UTF-8 mode. As this is a utility
+	; program that is part of GT.M, it assumes it is compiled with
+	; short-circuit expression evaluation ($ydb_side_effects &
+	; $ydb_boolean set to 0 or not defined).
+
+help    ; Usage: mumps -run %YGBLSTAT [--help] [--pid pidlist] [--reg reglist] [--stat statlist]
+	; Program to report statistics shared by processes that have
+	; opted in to share global database access statistics. All
+	; command line flags are optional and can appear in any order
+	; except --help.
+	;  --help          - Display usage information and exit (rest of
+	;                    command line is ignored).
+	;  --pid pid       - pid whose statistics are to be reported.
+	;                    "*" or default is all pids.
+	;  --reg reglist   - region whose statistics are to be reported/
+	;                    "*" or default is all regions in $ydb_gbldir.
+	;  --stat statlist - comma separated list of statistics
+	;                    (subset) of ZSHOW "G" to print. Default is "*"
+	;                    for all statistics. Statistics are always
+	;                    output in the same order as ZSHOW "G"
+	; If invoked with DO %YGBLSTAT, prompts for inputs. Other entryrefs are:
+	;   $$ORDERPID(pid,gld,reg)  - Returns the next pid as specified by gld and reg,
+	;                              first pid if pid="", gld defaults to current global
+	;                              directory, reg defaults to next pid in any region
+	;   $$SHOW(accum,stat)       - Returns the statistic(s) specified by stat (defaults
+	;                              to "*"for all statistics) in string / vector of
+	;                              accumulated statistics in accum.
+	;   $$STAT(pid,stat,gld,reg) - Returns the statistic(s) specified by stat (defaults
+	;                              to all statistics), for process pid (defaults to all
+	;                              processes), for region (defaults to all regions) in
+	;                              global directory gld (defaults to current global direcory).
+	; Note: this program uses external calls, which must be installed.
+version	;0;If the format of %YGS changes, increment the version between the semicolons to ensure %YGS gets reconstructed on a relink
+
+	; Main Program
+	if $stack do PROMPTGO quit      ; if invoked from another program, prompt for inputs, do work, and exit
+	use $principal:(ctrap=$char(3):nocenable:exception="zgoto 0")	   ; terminate on Ctrl-C if invoked from shell
+	set $etrap="set $etrap=""use $principal write $zstatus,! set $etrap=""""zshow """"""*"""""" zgoto 0"""" zhalt 254"""
+	set $etrap=$etrap_" set tmp1=$piece($ecode,"","",2),tmp2=$text(@tmp1)"
+	set $etrap=$etrap_" if $length(tmp2) write $text(+0),@$piece(tmp2,"";"",2),!"
+	set $etrap=$etrap_" set $etrap=""zgoto 0"" zhalt +$extract(tmp1,2,$length(tmp1))"
+	new cmdline,pid,reg
+	set cmdline=$zcmdline
+	set (pid,reg,stat)="*"                  ; Default is all processes, all regions, all statistics
+	set reg="*"
+	for  quit:'$$trimleadingstr^%XCMD(.cmdline,"--")  do ; process options
+	. if $$trimleadingstr^%XCMD(.cmdline,"help") do MSGANDHALT("help")
+	. else  if $$trimleadingstr^%XCMD(.cmdline,"pid") set pid=$$trimleadingdelimstr^%XCMD(.cmdline)
+	. else  if $$trimleadingstr^%XCMD(.cmdline,"reg") set reg=$$trimleadingdelimstr^%XCMD(.cmdline)
+	. else  if $$trimleadingstr^%XCMD(.cmdline,"stat") set stat=$$trimleadingdelimstr^%XCMD(.cmdline)
+	. else  set $ecode=",U249,"
+	write $$STAT(pid,stat,,reg),!
+	quit
+
+INITYGS ; Initialize statistics names and locations in %YGS
+	new i,stat,zsh
+	zshow "g":zsh
+	set %YGS("*")="",zsh=$zpiece(zsh("G",0),"*",3)  ; initialize & strip out global directory and region name
+	for i=2:1:$zlength(zsh,",") do
+	. set stat=$zpiece($zpiece(zsh,",",i),":",1)
+	. set %YGS(i-1)=stat,%YGS(stat)=(i-2)*8+1
+	. set %YGS("*")=%YGS("*")_stat_","
+	set %YGS(0)=i-1,%YGS=((i-1)*8)_"|"_$piece($text(version),";",2)
+	set $zpiece(%YGS(-1),$zchar(0),1+%YGS)="",%YGS(-2)=%YGS-1
+	set %YGS("*")=$zextract(%YGS("*"),1,$zlength(%YGS("*"))-1)
+	quit
+
+MSGANDHALT(label)
+	new j,tmp
+	set $etrap="zgoto 0"
+	for j=0:1 set tmp=$piece($text(@label+j),"; ",2) zhalt:""=tmp 2 write tmp,!
+
+ORDERPID(pid,gld,reg)
+	; Get the next pid as specified by gld and reg, first pid if pid=""
+	; Verify that the pid actually exists
+	new i,nextpid,nextreg,tmp,$zgbldir
+	set pid=$get(pid),reg=$zconvert($get(reg),"U")
+	set:$data(gld) $zgbldir=gld
+	; return next pid in region if only one region specified, otherwise get lowest across regions
+	; if not running on simulated pids, verify that process exists
+	if $zlength(reg)&("*"'=reg) set nextpid=pid do  quit nextpid
+	. for  do  quit:""=nextpid!$zlength($zsearch("/proc/"_nextpid))!$zlength($zsearch("/proc/"_nextpid))
+	. . set nextpid=$order(^%YGS(reg,nextpid))
+	set nextreg="",tmp=999999999999999999     ; start tmp at largest GT.M integer
+	for  set nextreg=$order(^%YGS(nextreg)) quit:""=nextreg  set nextpid=pid do  set:$length(nextpid)&(nextpid<tmp) tmp=nextpid
+	. for  do  quit:""=nextpid!$zlength($zsearch("/proc/"_nextpid))!$zlength($zsearch("/proc/"_nextpid))
+	. . set nextpid=$order(^%YGS(nextreg,nextpid))
+	quit $select(999999999999999999=tmp:"",1:tmp)
+
+PROMPTGO
+	; prompt for inputs, execute
+	set d("io")=$io
+	if '$data(%zdebug) new $etrap set $etrap="zgoto "_$zlevel_":err^"_$text(+0) do
+	. zshow "d":d										; save original $p settings
+	. set x=$piece($piece(d("D",1),"CTRA=",2)," ")
+	. set:""=x x=""""""
+	. set d("use")="$principal:(ctrap="_x
+	. set x=$piece(d("D",1),"EXCE=",2),x=$zwrite($extract(x,2,$length(x)-1))
+	. set:""=x x=""""""
+	. set d("use")=d("use")_":exception="_x_":"_$select($find(d("D",1),"NOCENE"):"nocenable",1:"cenable")_")"
+	. use $principal:(ctrap=$char(3,4):exception="halt:$zeof!($zstatus[""TERMWRITE"")  "_$etrap:nocenable)
+	new gld,pid,reg,stat
+	if $zsearch("")         ; clear $zsearch() context
+	read "Process id / $JOB [default all processes]: ",pid,! set:0'<+pid pid="*"
+	read "Statistics [default all ZSHOW ""G"" statistics]: ",stat,! set:'$zlength(stat) stat="*"
+	write "Global directory [default ",$zgbldir,"]: " read gld,! set:'$zsearch(gld) gld=$zgbldir
+	read "Region list (comma separated) [default all regions]: ",reg,! set:'$zlength(reg) reg="*"
+	write $$STAT(pid,stat,gld,reg),!
+err	use:$data(d("use")) @d("use")
+	use:$data(d("io")) d("io")
+	set $ecode=""
+	quit
+
+SHOW(wkstat,stat)
+	; Generate output from accumulated statistics
+	new i,r,ret,tmp
+	do:$piece($text(version),";",2)>$piece($get(%YGS),"|",2) INITYGS
+	set stat=$get(stat)
+	if ""'=$get(wkstat) do
+	. if %YGS<$zlength(wkstat) set wkstat=$zextract(wkstat,$zlength(wkstat)-%YGS(-2),$zlength(wkstat))
+	. else  set:%YGS>$zlength(wkstat) wkstat=$zextract(%YGS(-1),1,%YGS-$zlength(wkstat))_wkstat	; protect against user error
+	. if 1=$zlength(stat,","),""'=stat,"*"'=stat do                                 ; only one statistic
+	. . if $data(%YGS(stat)) set tmp=%YGS(stat),r=$&gblstat.toulong(.ret,$zextract(wkstat,tmp,tmp+7))
+	. . else  set ret=""
+	. else  do
+	. . set:'$zlength(stat)!("*"=stat) stat=%YGS("*")                               ; default is all statistics
+	. . set ret="",tmp=%YGS("*") for i=1:1:%YGS(0) do
+	. . . set nextstat=$zpiece(tmp,",",i)
+	. . . do:stat[nextstat
+	. . . . set offset=%YGS(nextstat)
+	. . . . set r=$&gblstat.toulong(.num,$zextract(wkstat,offset,offset+7))
+	. . . . set ret=ret_nextstat_":"_num_","
+	. . set ret=$zextract(ret,1,$zlength(ret)-1)
+	else  set ret=""
+	quit ret
+
+STAT(pid,stat,gld,reg)
+	; Report requested statistics
+	; If single pid specified, verify that it exists
+	new i,nextpid,nextreg,nextstat,num,offset,r,ret,statszm1,tlen,tmp,wkstat
+	if $data(gld) new $zgbldir set $zgbldir=gld
+	set pid=$get(pid),reg=$zconvert($get(reg),"U"),stat=$get(stat),tlen=0
+	do:'$data(%YGS) INITYGS
+	set statszm1=%YGS(-2)     ; precalculate values to save recalculation
+	; Gather statistics - as a process may terminate after a $order() to get a pid
+	; and before its statistics are accessed, the access must be wrapped with $get()
+	; and the accessed data must tested for existence with $zlength().
+	; Also test for existence of process relies on existence of /proc/<pid> - $zsigproc()
+	; cannot be used because it requires the target process to have the same userid as the
+	; process executing the function. $zsearch() must be called twice to ensure that it works
+	; despite the context.
+	if $zlength(pid)&(pid=+pid) set nextpid=pid do	    		; one process
+	. if $zlength($zsearch("/proc/"_nextpid))!$zlength($zsearch("/proc/"_nextpid)) do	;process exists
+	. . if $zlength(reg)&("*"'=reg) do		; one process, one region
+	. . . set tmp=$get(^%YGS(reg,pid)),tlen=$zlength(tmp)
+	. . . set wkstat=$select(tlen:$zextract(tmp,tlen-statszm1,tlen),1:"")
+	. . else  do			      		; one process, multiple regions
+	. . . set nextreg="",wkstat=%YGS(-1) for  set nextreg=$order(^%YGS(nextreg)) quit:""=nextreg  do
+	. . . . set nextstat=$get(^%YGS(nextreg,pid)),tmp=$zlength(nextstat),tlen=tlen+tmp
+	. . . . set:tmp r=$&gblstat.accumulate(.wkstat,$zextract(nextstat,tmp-statszm1,tmp))
+	. else  set wkstat=""				; process does not exist
+	else  set wkstat=%YGS(-1) if $zlength(reg)&("*"'=reg) do STATREG(reg)	; all processes one region
+	; all processes, all regions
+	else  set nextreg="" for  set nextreg=$order(^%YGS(nextreg)) quit:""=nextreg  do STATREG(nextreg)
+	quit $select(tlen:$$SHOW(wkstat,stat),1:"")
+
+STATREG(reg)
+	; Accumulate statistics for all processes in a region
+	; Refer to comments above on need to use $get() wrapper & test $zlength()
+	new nextpid,tmp
+	set nextpid="" for  set nextpid=$order(^%YGS(reg,nextpid)) quit:""=nextpid  do
+	. set nextstat=$get(^%YGS(reg,nextpid)),tlen=$zlength(nextstat)
+	. set:tlen r=$&gblstat.accumulate(.wkstat,$zextract(nextstat,tlen-statszm1,tlen))
+	quit
+
+IN(pid,gdir,region)	; report on whether a process can be found in a region
+	quit:'$get(pid) ""
+	new gld,reg
+	set gld=$get(gdir),reg=$zconvert($get(region),"U")
+	if ""'=gld new $zgbldir set $zgbldir=gld
+	set:""=reg reg="*"
+	if "*"=reg do  quit ""'=reg				; any region
+	. for  set reg=$order(^%YGS(reg)) quit:(""=reg)  quit:$data(^%YGS(reg,pid))
+	quit $select('$data(^%YGS(reg)):"",1:$data(^%YGS(reg,pid)))
+
+;	Error message texts - termination by Ctrl-C must be last message
+U249	;"-F-ILLEGALCMDLINE Illegal command line starting with --"_cmdline

@@ -1,0 +1,14 @@
+== rekSV.lua
+
+
+Variable Substitutions
+    inPtr  index (multiple uses, sic)
+    npr      new ctr
+    Si     i  mult uses, here State group, end Input scan ptr
+    Sj     j  inner loop, 1:1:  item ptr
+           item, three part obj, state table content
+              {rule, next, start}
+    dot    next, ptr, 0 - end of list
+           rule comma list of elements
+           start ptr to input, matches Si ?
+             implicit  end, Sj end of input matched so far by item

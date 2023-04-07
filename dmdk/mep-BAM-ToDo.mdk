@@ -1,0 +1,39 @@
+== mep BAM Plus  ToDo
+    {  umbr./  dmep/*  } 15dec22
+
+ 15dec22 1020am  finally BAM  95% complete State table gen
+ 
+ Problem was in getting COMP manipulations of
+    three items at once
+    1.  Sbi=Sci.Sbj~Scj  the "C" status itme
+          Fna is runa from item1
+          Sc2i is ?IPs fromm item1
+    2.  Searching set Sc2i  (also tricky)  each item2
+            looking for tokR1 = Fna
+            each item2 ruid, IPs, dot+1 go into item3 saved
+    3.  item3 is composed and saved (if not dupl ? when )
+        3a. DUpl means ruid-dot-IPs-IPe the same ~ ikey composite
+            bug was false pos dupl, so punted erroneously
+            was using ruid from item1 not item2 (found itself as dupl, duh!)
+            
+ Working correctly until one missing item in section 8
+    and all of 9 is missing
+    Suspect problem with Init trans ?
+    
+ Code CleanUp, keep it working
+    Write smts - stdize, Wmo, Sei/Sej, 
+    frm, trc, ruby
+    
+ ReModularize code - separate MRou: SSC, COMP-SCAN-PRED,  go top Wmo, TT^ep2IMG
+    Why ?  Urge- not enough !  think why urges !
+    Arguments: Clean Up CAREFULLY ?
+    Separate Dupl Test and branch in callers, not in SSC
+        even though similar code #S[S]  and look for dupl
+        dupl index ikey ?
+    
+    
+ ep2W  
+    sr getR1, get
+    custom GFL
+    
+    

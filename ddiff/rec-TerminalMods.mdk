@@ -1,0 +1,47 @@
+== rec  Terminal Mods
+    {km3a/  Earley-Parser./  ddiff/  
+    
+ Replace Functions as terminal tokens - NASTY !
+ 
+ 
+ Grammar
+    rules are lists of tokens
+    tokens are either terminal, meaning they match an input
+      or rules, represented by a string name in ruLst
+      which corresponds to one (or more) rule names, runa/item.name
+    tokens are pulled out from an item ruLst per dot
+        into var tokR1 (meaning first toke to right of dot
+        Specifically tokR1 = $P(ruLst,",",dot+1)
+        It has tokTy derived, and includes "C" meaning complete
+           which is equivalent to dot+1 is beyond ruLst, 
+           which is also when dot=$L(ruLst,",")
+        dot is incremented when SCAN matches an input
+           or a rule is completed
+           
+var symbol is a function reference returned by next_symbol
+    which is essentially returning tokR1
+    as terminal - a function ref to (input,index) by SCAN
+    or rule via managed by PRED
+    or when completed by COMP 
+    
+I had to add arguments to cope with function layers
+    which were controlled by the indirection of symbol
+It also made it crash trying to write out symbol sometimes.
+
+tokTy can be determined for tokR1 (a runa~item.name type)
+    a. if have rule/ruid, ie the grammar integer, below a threshhold is "R"
+    and above is "T"
+    b. A capital first letter of name =?> "T" and manage the grammar
+    c. A ty attribute could be added to grammar table, next to name
+       and set in init loop.
+    d. I partitioned my grammar into rules then terminals
+        and used a fence ++..  line to separate them
+
+BUILD now needs to 
+    access Sbi.Sbj:  ruLst, dot -> tokR1 and tokTy { R, T  or C}
+    and branch/select functions by tokTy:
+        R -> PRED
+        T -> SCAN
+        C -> COMP
+    
+    

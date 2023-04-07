@@ -1,0 +1,18 @@
+epDK1 ;CKW/ESC i5dec22 umbr./ rDK1/ ;20221205-11;DP() Display Process KW
+;
+;Abortive knee-jerk start ??  15dec22  -> .mx
+;
+top   D III
+
+      D Iin("1+(2*3+4)")
+      D IDP  ; nI, dsq      
+      Q
+;*
+III   ;
+      Q
+;*
+Iin(input)   ;
+      Q
+;*  : nI, dsq
+IDP   ;  ***
+      Q
