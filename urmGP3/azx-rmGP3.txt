@@ -1,7 +1,0 @@
-#!    rdir Dependencies of rmGP3    azx-rmGP3.txt
-rmGP3/     Doc Support %G GP  MGbl Dump, text and HGen, Audit GA
-# See gmma/cfg/devyprofile.sh   
-
-rhgen4/    HGen support, not vers sensitive ?
-r          b^dv,  T^dws, dvstk, dvcaller ?
-
