@@ -1,0 +1,14 @@
+==  Parse Overview  mep  rmep4/
+
+
+^ep4go  is module control
+    Sets up devlog
+    Calls grammar setup and compile
+    Calls ^ep4PAR - produces EarleyState Table
+
+^ep4PAR is version 4 of Parse
+    I model the Parse Algorithm as done in Lua pgm
+    I even produce the exact output of Lua from mep to compare
+        The second ; piece of the grammar table 
+        is the string to emulate the Lua 'terminal' output exactly
+    

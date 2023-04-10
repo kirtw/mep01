@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+^dzCzro
+</title>
+<style> 
+.hd  {font-size: 2em;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+</style>
+</head>
+<body>
+<div  class=hd >MRoutine Page ^dzCzro</div><a href=aa-TOC-All.zz2.html >TOC</a><div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rzro3.rd2.html >rzro3/</a></div><div  class=blink ><a href=MR-dzCzro.mr2.html >^dzCzro</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-dzCzro.cb2.html >^dzCzro</a></div><div  class=blink ><a href=CB-dzCzro-top.cb2.html >top</a></div><div  class=blink ><a href=CB-dzCzro-Q.cb2.html >Q</a></div><div  class=blink ><a href=CB-dzCzro-Qb.cb2.html >Qb</a></div><div  class=blink ><a href=CB-dzCzro-az.cb2.html >az</a></div></div><div  class=mcode ><div  class=cdline ><div  class=cdrinum >..1c</div><div  class=cdmcmd >dzCzro(PB,PBL,GBL) ;CKW/ESC i5apr23 gmsa./  rzro3/ ;20230405-50;Compose zroLST from rdir lists</div></div><div  class=cdline ><div  class=cdrinum >..2c</div><div  class=cdmcmd >;</div></div><div  class=cdline ><div  class=cdrinum >..3c</div><div  class=cdmcmd >;   dist $ZTRNLNM</div></div><div  class=cdline ><div  class=cdrinum >..4c</div><div  class=cdmcmd >;</div></div><div  class=cdline ><div  class=cdrinum >..5c</div><div  class=cdmcmd ><a href=CB-mwPET-top.cb2.html >top</a>   NEW Q S Q=""</div></div><div  class=cdline ><div  class=cdrinum >..6c</div><div  class=cdmcmd >      I $G(PBL)="" D bug^dv G <a href=CB-kfm~1-Qb.cb2.html >Qb</a></div></div><div  class=cdline ><div  class=cdrinum >..7c</div><div  class=cdmcmd >      I $G(GBL)="" D bug^dv G <a href=CB-kfm~1-Qb.cb2.html >Qb</a></div></div><div  class=cdline ><div  class=cdrinum >..8c</div><div  class=cdmcmd >      ; Kludge convenience comma list to space list (takes either now)</div></div><div  class=cdline ><div  class=cdrinum >..9c</div><div  class=cdmcmd >      I PBL["," S PBL=$<a href=CB-dzIzro-TR.cb2.html >TR</a>(PBL,","," ") </div></div><div  class=cdline ><div  class=cdrinum >.10c</div><div  class=cdmcmd >      I GBL["," S GBL=$<a href=CB-dzIzro-TR.cb2.html >TR</a>(GBL,","," ")</div></div><div  class=cdline ><div  class=cdrinum >.11c</div><div  class=cdmcmd >      D PB^dzIB(PB)  ; from EnvVars </div></div><div  class=cdline ><div  class=cdrinum >.12c</div><div  class=cdmcmd >      ;D b^dv("Log PB,GB","PB,GB,PBL,GBL")</div></div><div  class=cdline ><div  class=cdrinum >.13c</div><div  class=cdmcmd >      S z=dist_" "_PB_"o("</div></div><div  class=cdline ><div  class=cdrinum >.14c</div><div  class=cdmcmd >      F di=1:1:$L(PBL," ") S r=$P(PBL," ",di) I r'="" D <a href=CB-dzCzro-az.cb2.html >az</a>(r,PB)</div></div><div  class=cdline ><div  class=cdrinum >.15c</div><div  class=cdmcmd >      S z=z_") ou("</div></div><div  class=cdline ><div  class=cdrinum >.16c</div><div  class=cdmcmd >      F di=1:1:$L(GBL," ") S r=$P(GBL," ",di) I r'="" D <a href=CB-dzCzro-az.cb2.html >az</a>(r,GB)</div></div><div  class=cdline ><div  class=cdrinum >.17c</div><div  class=cdmcmd >      S z=z_") "_dist_"/libyottadb.<a href=CB-dzroz-so.cb2.html >so</a> "_dist_"/libyottadbutil.so"</div></div><div  class=cdline ><div  class=cdrinum >.18c</div><div  class=cdmcmd >      S <a href=CB-dzZlog-zro.cb2.html >zro</a>=z</div></div><div  class=cdline ><div  class=cdrinum >.19c</div><div  class=cdmcmd >Q     Q:$Q Q Q:Q=""</div></div><div  class=cdline ><div  class=cdrinum >.20c</div><div  class=cdmcmd ><a href=CB-kfm~1-Qb.cb2.html >Qb</a>    D b^duv(Q,"PBL,GBL,UBL,<a href=CB-dzZlog-zro.cb2.html >zro</a>,z")</div></div><div  class=cdline ><div  class=cdrinum >.21c</div><div  class=cdmcmd >      Q:$Q Q Q</div></div><div  class=cdline ><div  class=cdrinum >.22c</div><div  class=cdmcmd >;*  Add rdir &amp; path B (or $PB/ ) to z, accumulating <a href=CB-dzZlog-zro.cb2.html >zro</a></div></div><div  class=cdline ><div  class=cdrinum >.23c</div><div  class=cdmcmd ><a href=CB-dzCzro-az.cb2.html >az</a>(rdir,B) NEW Q S Q="" ;NEW z,Bn</div></div><div  class=cdline ><div  class=cdrinum >.24c</div><div  class=cdmcmd >      S B=$G(B) I B="" S Q="err B~PB,GB az^"_$T(+0) D bug^dv(Q,"B,PB,GB,rdir,z") G <a href=CB-kfm~1-Qb.cb2.html >Qb</a></div></div><div  class=cdline ><div  class=cdrinum >.25c</div><div  class=cdmcmd >      I rdir["$" DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.26c</div><div  class=cdmcmd >         .S Bn=$P($P(rdir,"$",2),"/"),rdir=$P(rdir,"/",2)</div></div><div  class=cdline ><div  class=cdrinum >.27c</div><div  class=cdmcmd >         .I Bn?1U1"B" S B=$G(@Bn) I B="" D b^dv("Err $*B ","B,Bn,rdir,z,PB,GB") ;</div></div><div  class=cdline ><div  class=cdrinum >.28c</div><div  class=cdmcmd >      ;D b^duv("Log az^"_$T(+0),"B,Bn,rdir,z")</div></div><div  class=cdline ><div  class=cdrinum >.29c</div><div  class=cdmcmd >      I $E(B)'="/" S Q="Err B az^"_$T(+0) D b^duv(Q,"rdir,B,z")</div></div><div  class=cdline ><div  class=cdrinum >.30c</div><div  class=cdmcmd >      S z=z_B_rdir_" "</div></div><div  class=cdline ><div  class=cdrinum >.31c</div><div  class=cdmcmd >      Goto Q</div></div><div  class=cdline ><div  class=cdrinum >.32c</div><div  class=cdmcmd ></div></div><div  class=cdline ><div  class=cdrinum >.33c</div><div  class=cdmcmd >      </div></div></div><div  class=ft >by ^mwHmr 07 APR 2023 10:17 PM</div><h3> 07APR2023 22:17   by ^hgh</h3>
+</body>
+</html>

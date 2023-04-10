@@ -1,0 +1,21 @@
+=  mRou sets, rdir - gmsz rzro3 Formats
+    { gmsa./  rzro3/  } 13nov22    rdir-Formats.mdk  
+
+1.  ydb/gtm  $zro  $ydb_routines  startup env var
+    list of obj dirs, space-delim, sub-source rdirs in ()
+    Formats-
+        $zro string
+        zdir(oi,si)  sequential lists, =rdir durl
+        bash  -profile set env var
+            a. huge, ugly string, full durls refs, ~$zro itself
+            b. large, semi-ugl string $PB/ $GB/  refs
+            c. four or five $zroi parts, combined for gtm_routines
+            d. line each wsp-indent $GB/rdir  \   No comments! Readable
+                  many lines
+        Starter 
+            e. zdir(oi,si)=durl   from zro by ^dzroz     ---ZDIR(oi,si)
+            f. zroCfg  config file, TOI Read, construct, test $zro=izro
+                ^dzRcfg  $PWD/cfg/  
+            g. find r*/  in GB or PB,MB,u*  
+            
+            

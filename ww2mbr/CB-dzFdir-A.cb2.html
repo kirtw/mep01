@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  dzFdir-A - - - trmG^dzFdir</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rzro3.rd2.html >rzro3/</a></div><div  class=blink ><a href=MR-dzFdir.mr2.html >^dzFdir</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-dzFdir.cb2.html >^dzFdir</a></div><div  class=blink ><a href=CB-dzFdir-A.cb2.html >A</a></div></div><div  class=xrline >No 'refs by' found.</div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >..5c</div><div  class=cdmcmd >;* RefBy: <a href=CB-dzs-s2.cb2.html >s2</a>+8^dzs</div></div><div  class=cdline ><div  class=cdrinum >..6c</div><div  class=cdmcmd >A     I $G(sdir)="" D bug^dv Q</div></div><div  class=cdline ><div  class=cdrinum >..7c</div><div  class=cdmcmd >      NEW Q,url,zsurl,x,fi,furl,n,fil,nf  S Q=""</div></div><div  class=cdline ><div  class=cdrinum >..8c</div><div  class=cdmcmd >      S url=$ZPARSE(sdir)</div></div><div  class=cdline ><div  class=cdrinum >..9c</div><div  class=cdmcmd >        I url="" D b^dv("Arg sdir failed ZPARSE","sdir") Q</div></div><div  class=cdline ><div  class=cdrinum >.10c</div><div  class=cdmcmd >        I $E(url,$L(url))="/" S url=$E(url,$L(url)-1)  ;remove terminal /</div></div><div  class=cdline ><div  class=cdrinum >.11c</div><div  class=cdmcmd >      S zsurl=url_"/*.m"</div></div><div  class=cdline ><div  class=cdrinum >.12c</div><div  class=cdmcmd >      D IB^dzIMG  ; SB, GB, PB</div></div><div  class=cdline ><div  class=cdrinum >.13c</div><div  class=cdmcmd >      S x=$ZSEARCH(PB),D2abs=""</div></div><div  class=cdline ><div  class=cdrinum >.14c</div><div  class=cdmcmd >      F fi=0:1 S furl=$ZSEARCH(zsurl) Q:furl=""  DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.15c</div><div  class=cdmcmd >        .S n=$L(furl,"/"),fil=$P(furl,"/",n)</div></div><div  class=cdline ><div  class=cdrinum >.16c</div><div  class=cdmcmd >        .I fi=0 S D2abs=fil</div></div><div  class=cdline ><div  class=cdrinum >.17c</div><div  class=cdmcmd >      I fi S nf="(x "_fi_") " S D2abs=D2abs_nf</div></div><div  class=cdline ><div  class=cdrinum >.18c</div><div  class=cdmcmd >      Q:$Q Q  </div></div><div  class=cdline ><div  class=cdrinum >.19c</div><div  class=cdmcmd >      Q</div></div><div  class=cdline ><div  class=cdrinum >.20c</div><div  class=cdmcmd >;*      </div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>

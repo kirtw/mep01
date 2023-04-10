@@ -20,7 +20,7 @@ TSQ(SS)  ;I '$G(SS) D bug^dv Q
 getR1  I $G(dot)="" D bug^dv Q
        I 'dot D b^dv("dot NOT zero","dot,ruid,ruab") Q
        ; dot=1 init, dot points to first in ruLst
-       I $G(ruLst)="" S Q="Err no ruLst arg getR1^"_$T(+0) D b^dv(Q,"Q,dot") Q
+       I $G(ruLst)="" S Q="Err no ruLst arg getR1^"_$T(+0) D b^dv(Q,"Q,ruLst,ruid,dot") Q
        S nLst=$L(ruLst,",")
        S tokR1=$P(ruLst,",",dot)
        I tokR1="" DO  ;
@@ -32,7 +32,7 @@ getR1  I $G(dot)="" D bug^dv Q
            .W "  ->",tokR1," ty:",tokTy,!
        Q
 ;*  : LST  
-FO(dot,ruLst) D bug^dv Q
+FO(dot,ruLst) ;D bug^dv Q
        S LST="" F ti=1:1:$L(ruLst,",") DO  ;
          .I ti<0 S LST=LST_"      " Q
          .I ti=dot S LST=LST_"  *   "  ;continue
@@ -43,17 +43,18 @@ FO(dot,ruLst) D bug^dv Q
        Q
 ;*  Dump GRk and SCF  to mep-SCF.mdk  in dmep  admep to compile
 Wmdk   NEW Q S Q=""  D ^devIB  ; : PB
-       S Fil="mep-SCF.mdk"
+       S Fil="mep-v4-SCF.mdk"
        S devm=PB_"dmep/"_Fil
        S Q=$$OFW^devIO(devm) I Q'="" Goto Q
        USE devm
-       W:$X ! W "== mep Tables  ^ep2*  rmep2/  ",!
+       W:$X ! W "== mep Tables  ^ep4*  rmep4/  ",!
        W !!,"--",!," Grammar then SCF State Tables Dump",!!
        D WSC
        D WSCLua
        ;D WGR       
        W !!,"--",!
        D CFM^devIO(devm)
+       D SVpg("SCF","SCF and Grammar mdk",devm)
        Goto Q
 ;* Common Exit
 Q      Q:$Q Q D:Q'="" qd Q
@@ -61,6 +62,10 @@ Qb     D qd Q:$Q Q Q
 qd     D b^dv("Err ^"_$T(+0),"ruid,ruab,ruLst")
        Q
 ;*
+SVpg(id,txt,url)
+       NEW Q S Q="" ;I $$arg^?("id,txt,url") Goto Qb
+       D SFL^kfm("txt,url","_^MEg(id)")  ; no *FL
+       Goto Q
 ;*  GRk(ruid)=@grFL,   Gxi(runa,gi)=ruid ?
 FLg0   ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rde_GRk(ruid)
 ;
@@ -116,10 +121,10 @@ Witem(M)  NEW i,tok
        D Itab("10,10,5,8,8,8,12,10,10") ; : tb(i) from width list
        S M=$G(M) I M'="" S M=M_": " 
        S IC=$E(Ins,IPs,IPe)
-       W:$X ! 
-       I $G(frm)'="" W ?5,frm,!
+       W:$X ! W !
+       I $G(frm)'="" W ?5,frm,! ;D b^dv("Log frm","frm")
        W M,svSSq," ",?3,Si,".",Sj," ",ruab,"/",ruid,"  " 
-       ;D FO(dot,ruLst) ; : LST
+       D FO(dot,ruLst) ; : LST
        ;S FL="runa,IPs,IPe,dot,LST,...
        W ?tb(2)," -> "
        W "{",$G(IC),"}  .",dot," "

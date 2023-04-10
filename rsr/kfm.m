@@ -1,5 +1,5 @@
 kfm ;CKW/ESC  i7dec22 umbr./  rmep2/ ;20221207-42;FIle man 2 - kw GFL/SFL, *IMG *FL
-;
+; Replacement for ^dgmg  - was always a terrible mnemonic vs kfm  kirts's FileManager
 ;
 ;
 top   BREAK  HALT  ; not top entry, yet ?
@@ -37,7 +37,7 @@ Q    Q:$Q Q Q:Q=""  ; else fall thru Q not null
 Qb   D qd Q:$Q Q Q
 qd   D b^dv("Err ^"_$T(+0),"Q,SFL,GFL,FL,G,vn,val") Q
 ;*
-;*  from ^qds  Test *FL variable Comment in situ
+;*  from ^qds  Test *FL variable Comment in situ, T^dws
 ;*  Test VFL Comment inline vs actual var
 T(XXXX) NEW FLna,VFL,FL,G,C1,C2,M,D S D=$IO
      S C1=$$^dvby() I $G(C2)="" B

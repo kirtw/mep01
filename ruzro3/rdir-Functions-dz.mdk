@@ -1,0 +1,32 @@
+=  rdir Functions and Conversions  ^dz*  gmsa/ rzro3/
+    {  gmsa/  rzro3/*  } 13nov22    
+# EDME:/home/kw/km3a/gmsa/rzro3/rdir-Functions-^dz.mdk
+
+== profile bash scripts
+    $ydb_routines   EnvVar -->$zro on ydb Start
+        $ZTRNLNM("ydb_routines")
+        
+ydb critically sensitive to correct value, crashes -sucks
+
+bash values very difficult to edit correctly
+    $PB, $GB  helps tremendously
+    $ydb1, $ydb2  keeps lines from being unmanageable
+    $PB/rcfg  \  allows clean one per line, but NO Comments
+    
+Therefore: bash should not be primary format !!!
+
+zroCfg.mdk  text config format is MUCH better
+    Every start  vs changes --> profile regen
+    Every start  - just set $zro, basic starter profile...
+    
+ZDIR(oi,si) is easy to look at, ^dz
+
+Generate text to insert into devy-profile.sh.
+Generate devy-profile.sh completely  or alt to copy test
+Generate separate script to run from devy-profile
+    Then still grep searchable like before
+Regenerate from script - or ^dzX  or ^dzI  something easy
+
+Edit zroCfg.mdk  from pick list, Documentation vers status
+
+

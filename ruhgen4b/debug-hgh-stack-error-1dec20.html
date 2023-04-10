@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>debug-hgh-stack-error-1dec20</title>
+  </head>
+  <body>
+    <h1>debug&nbsp; - error scrape </h1>
+    &nbsp;&nbsp;&nbsp; {&nbsp; km/&nbsp;&nbsp; gmsa/&nbsp; rd3hg/*&nbsp;&nbsp;&nbsp;
+    } 1dec20<br>
+    <br>
+    <br>
+    <br>
+    Caller:A^navmenu:&nbsp;&nbsp;&nbsp; Stack-<br>
+    1&nbsp;&nbsp;&nbsp; mba
+    mba+10&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D ^navmenu&nbsp;&nbsp; ; Compile to ^^MNU(mSys,&nbsp; mSys="... and
+    run it<br>
+    2&nbsp;&nbsp;&nbsp; navmenu
+    A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; S mSys="navmenu" D
+    ^dmnRT(mSys,$T(+0))&nbsp; ; ~SAN&nbsp; $T to RM()<br>
+    3&nbsp;&nbsp;&nbsp; dmnu
+    RUN+9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D @dopLR<br>
+    4&nbsp;&nbsp;&nbsp; gu2Ma
+    B+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D Nav<br>
+    5&nbsp;&nbsp;&nbsp; gu2Ma
+    Nav+3&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D OneP("1 Nav rnav2/&nbsp; ^gu2*&nbsp; Revised Nav olf/iFrame")<br>
+    6&nbsp;&nbsp;&nbsp; gu2Ma
+    OneP&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    OneP(descr)&nbsp;&nbsp; D ^gu2Hgo(devolf,devNav)<br>
+    7&nbsp;&nbsp;&nbsp; gu2Hgo
+    gu2Hgo+18&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; D HGen ; :
+    HTS,HTE,HT, CS<br>
+    8&nbsp;&nbsp;&nbsp; gu2Hgo
+    HGen+12&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D NAV<br>
+    9&nbsp;&nbsp;&nbsp; gu2Hgo
+    NAV+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    F Nsq=1:1:qF&nbsp; S sq=Nsq DO&nbsp; ;<br>
+    10&nbsp;&nbsp; gu2Hgo
+    NAV+9&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    .I Lty="FM" D FM1 Q<br>
+    11&nbsp;&nbsp; gu2Hgo
+    FM1+4&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D ^mbsQFm(sq)&nbsp; ; : mrou, ^devRD to RM(), murlx, m1Ln<br>
+    12&nbsp;&nbsp; mbsQFm
+    A+19&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D ^mbsQTP(mrou)<br>
+    13&nbsp;&nbsp; mbsQTP
+    QTP+11&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D guts<br>
+    14&nbsp;&nbsp; mbsQTP
+    guts+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D ct^hgh(".pre")<br>
+    15&nbsp;&nbsp; hgh
+    ct+13&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    S Q=err D bug^dv("ct Err ","Q,err,ict")<br>
+    16&nbsp;&nbsp; dv
+    bug+2&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    D ^dvstk<br>
+    17&nbsp;&nbsp; dvstk
+    N+1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    zsh "S":%ZSH&nbsp;&nbsp; ; See example below, 2-level array<br>
+    &nbsp; $ETRAP='B&nbsp; ' <br>
+    &nbsp; $ZTRAP='' <br>
+    &nbsp; $ZL=17<br>
+    <br>
+    ** Debug ct+13^hgh:&nbsp; ct Err <br>
+    Q=null<br>
+    err=null<br>
+    ict='.pre'<br>
+    <br>
+    <br>
+  </body>
+</html>

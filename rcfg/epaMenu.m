@@ -25,12 +25,12 @@ Menu	;Text for tdDev  Menu  	Compile  RM()
         ;  op.  dopLR  dopDE	# where dopLR contains ^  or menu mab./exists
         ;  dnxt1  or dnxt2 Syntax: | pipe prefix
   ;;mm. Select from Dev Tennis Main: _Main tdDev Menu  |mm
-  ;;  g4a. p01^epMa ; Std Input, Demo Grammar, ep4
-  ;;  g2.   ^ep2G0  mep Parse demo input, grammar ala Lua
-  ;;  g3.   ^ep3G0  mep ^ep3* dev
-  ;;  gr.   WGR^ep2W Display Grammar
-  ;;  lua.  WSCLua^ep2W  Lua Equiv SCF Dump to console
-  ;;  tsq.  TSQ^ep3W  write reverse trace
+  ;;  zro. Czro^epaUDcp  Update zroStd and zroUcp for umep./
+  ;;  cpu. ^epaUDcp Copy Revised Utilities from gmsa./ into umep./  ru*/  
+  ;;  go. p01^epMa ; Std Input, Demo Grammar, ep4, Parse
+  ;;  lua.  WSCLua^ep4W  Lua Equiv SCF Dump to console
+  ;;  gr.   WGR^ep4W Display Grammar
+  ;;  tsq.  TSQ^ep4W  write reverse trace
   ;;  hr.  ^ep2HGrp  Reverse HGen Table
   ;;  ht. ^ep2HGpt  HGen SCF state Table as HGen Table/Parse Tree
   ;;  d2.  ^ep2Dbg Gen ALL from ikey list
@@ -39,8 +39,9 @@ Menu	;Text for tdDev  Menu  	Compile  RM()
   ;;      ^epaG0   Run RP versiontrial Parser  
   ;;  mbr.  mep^mwMa  HGen mumps Browsing cb data 
   ;;  c.  ^cgzro  Derive zro
-  ;;  cpu. ^epaucp Copy Utilities from gmsa./ into umep./  ur*/
-;;
+  ;;OBS.   Obsolete versions
+  ;;  g2.   ^ep2G0  mep Parse demo input, grammar ala Lua
+  ;;  g3.   ^ep3G0  mep ^ep3* dev
   ;;test.    test menu
   ;;  tix.  tix^tdTRead test sr Xmf in Read Template
   ;;***

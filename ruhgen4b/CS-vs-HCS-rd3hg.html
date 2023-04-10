@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>CS-vs-HCS-rd3hg</title>
+  </head>
+  <body>
+    <h1>CS&nbsp; vs HCS&nbsp;&nbsp; to sort or not</h1>
+    &nbsp;&nbsp;&nbsp; {&nbsp; km/&nbsp;&nbsp; gmsa/&nbsp;&nbsp;
+    rd3hg/*&nbsp;&nbsp;&nbsp; } 17jul20&nbsp;&nbsp; CS-vs-HCS-rd3hg&nbsp;&nbsp;
+    See hghCS code gathered<br>
+    <br>
+    Note sel&nbsp; could occur multiple times, diff places, diff prL<br>
+    <br>
+    Sequence of transactions appearing in css may be important if
+    overlap.<br>
+    <br>
+    Think about this- read css syntax<br>
+    <br>
+    actually two incompatible variants in code ?<br>
+    CS(sel)=prL&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; only one per
+    sel this way - NOT<br>
+    CS(sel,cj)=prL&nbsp;&nbsp;&nbsp; cj is sequence within sel - should
+    be ok, <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; cj could be master cj&nbsp;
+    seq within all entries, still $O thru cj, not 1:1...<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; create separate entries in css
+    (wherever) - last controls if a conflict exists.<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; I should detect conflicts,
+    warn of duplication- should not be any<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; of course sel can aim at
+    particular id or class from many values...&nbsp; <br>
+    <br>
+    CS(<br>
+    <br>
+    <br>
+  </body>
+</html>

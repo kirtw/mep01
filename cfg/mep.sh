@@ -11,7 +11,7 @@ cd /home/kw/$kwsys/$kwmpj    #  $PB
 
 echo "Starting $PB   ^epa"
 
-$ydb_dist/yottadb -R ^epa
+$ydb_dist/yottadb -R ^epaGoInd
 
 
 mur   #  rundown after mumps/ydb exits

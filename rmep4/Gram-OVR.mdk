@@ -1,0 +1,29 @@
+== Grammar Structure in mep
+
+
+Terms-
+rule  is a grammar rule, is given a unique rule-name, mnemonic
+    rulename  is used in rule-lists
+terminal has a name and is associated with a set of characters
+    terminal-name occurs in rule lists
+
+ruLst  is an ordered list of rules or terminals
+    a rule is matched when all of the items in the ruLst are matched with input
+
+A rule name may have one or more alternative ruLst's
+
+INs is a string of input characters to be parsed.
+They may be preprocessed and given a terminal category for efficiency
+
+Later, keywords may be identified and passed as input elements with a terminal-name
+    as lexical preprocessing, again much more efficient than parsing.
+    Eg. D and DO and d and do may be classified as cmdD, treated as terminal
+    
+The structure of the Compiled Grammar, GRk() etc. in vers ep4 is designed
+    for efficiency and human readability
+    eg mnemonic rule-names are used vs rule-number, a meaningless integer in Lua
+    mumps handles mnemonics as efficienctly as integer subscripts
+    
+The trickiest structure is managing multiple alternatives for a single rule
+    ep4 uses a supplemental index  vs a subscripted data structure
+    This is used in 

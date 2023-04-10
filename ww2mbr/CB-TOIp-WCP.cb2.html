@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  TOIp-WCP - - - trmG^TOIp</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rTOI7.rd2.html >rTOI7/</a></div><div  class=blink ><a href=MR-TOIp.mr2.html >^TOIp</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-TOIp.cb2.html >^TOIp</a></div><div  class=blink ><a href=CB-TOIp-Q.cb2.html >Q</a></div><div  class=blink ><a href=CB-TOIp-S9.cb2.html >S9</a></div><div  class=blink ><a href=CB-TOIp-Lpre.cb2.html >Lpre</a></div><div  class=blink ><a href=CB-TOIp-WCP.cb2.html >WCP</a></div><div  class=blink ><a href=CB-TOIp-LC.cb2.html >LC</a></div><div  class=blink ><a href=CB-TOIp-PxSx.cb2.html >PxSx</a></div><div  class=blink ><a href=CB-TOIp-Sx.cb2.html >Sx</a></div><div  class=blink ><a href=CB-TOIp-Px.cb2.html >Px</a></div><div  class=blink ><a href=CB-TOIp-III.cb2.html >III</a></div><div  class=blink ><a href=CB-TOIp-Ilog.cb2.html >Ilog</a></div><div  class=blink ><a href=CB-TOIp-FQT.cb2.html >FQT</a></div><div  class=blink ><a href=CB-TOIp-ER.cb2.html >ER</a></div></div><div  class=xrline >Ref by dloc  cbid: &nbsp;&nbsp;&nbsp;<a href=CB-TOIp.cb2.html >^TOIp</a>&nbsp;&nbsp;&nbsp;40.1 D WCP </div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >.73c</div><div  class=cdmcmd >;*  </div></div><div  class=cdline ><div  class=cdrinum >.74c</div><div  class=cdmcmd >;*  Set WD()  <a href=CB-ep2IMG-T2.cb2.html >T2</a> : nsp, WD(), WDt()</div></div><div  class=cdline ><div  class=cdrinum >.75c</div><div  class=cdmcmd ><a href=CB-TOIp-WCP.cb2.html >WCP</a>  I <a href=CB-ep2IMG-T2.cb2.html >T2</a>["$ " DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.76c</div><div  class=cdmcmd >       .S T=$P(<a href=CB-ep2IMG-T2.cb2.html >T2</a>,"$ ",2,9)</div></div><div  class=cdline ><div  class=cdrinum >.77c</div><div  class=cdmcmd >       .F i=1:1:$L(T) I $E(T,i)'=" " S T=$P(<a href=CB-ep2IMG-T2.cb2.html >T2</a>,"$ ")_$E(T,i,999) Q</div></div><div  class=cdline ><div  class=cdrinum >.78c</div><div  class=cdmcmd >       .D b^dv("Log fudge $-spaces","T2,T")</div></div><div  class=cdline ><div  class=cdrinum >.79c</div><div  class=cdmcmd >       .S <a href=CB-ep2IMG-T2.cb2.html >T2</a>=T</div></div><div  class=cdline ><div  class=cdrinum >.80c</div><div  class=cdmcmd >     S nsp=$L(<a href=CB-ep2IMG-T2.cb2.html >T2</a>," ") I 'nsp D b^dv("Nothing left in T2","Tin,<a href=CB-ep2IMG-T2.cb2.html >T2</a>,c1") Q</div></div><div  class=cdline ><div  class=cdrinum >.81c</div><div  class=cdmcmd >     F wki=1:1:nsp DO  ; ^ is quote marker prefix to Q-name</div></div><div  class=cdline ><div  class=cdrinum >.82c</div><div  class=cdmcmd >        .S WD=$P(<a href=CB-ep2IMG-T2.cb2.html >T2</a>," ",wki)</div></div><div  class=cdline ><div  class=cdrinum >.83c</div><div  class=cdmcmd >     .S WD(wki)=WD  ;may be null</div></div><div  class=cdline ><div  class=cdrinum >.84c</div><div  class=cdmcmd >     .S wd=$$<a href=CB-dvc-LC.cb2.html >LC</a>(WD)</div></div><div  class=cdline ><div  class=cdrinum >.85c</div><div  class=cdmcmd >     .S Wdlc(wki)=wd  ; <a href=CB-KGD-save.cb2.html >Save</a> vs redo $$<a href=CB-dvc-LC.cb2.html >LC</a> in W</div></div><div  class=cdline ><div  class=cdrinum >.86c</div><div  class=cdmcmd >     .S Wpnd(wki)=1   ;Wpnd $O  kill when used, assigned Wty</div></div><div  class=cdline ><div  class=cdrinum >.87c</div><div  class=cdmcmd >     .I WD="" Q</div></div><div  class=cdline ><div  class=cdrinum >.88c</div><div  class=cdmcmd >     .I WD["^" S wqi=+WD,WD(wki)=$G(Qwd(wqi)) D b^dv("Log set from quotes","wki,wqi,WD,wd")</div></div><div  class=cdline ><div  class=cdrinum >.89c</div><div  class=cdmcmd >     Q</div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>

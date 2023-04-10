@@ -19,16 +19,16 @@ ep4PAR  ;CKW/ESC i31oct22 ;20230111-45;Parse Trial IX exploration
 ;    
 top    W !!,"Magic:  Parsing !"
        ;; {I1,BLp1,BLp2,COM,tokR1,SSC,RejDup,SCs,SCse}
-       S Wmo="SSC,RejDup,SCs,SCse"  ; "I1,BLp1,BLp2,tokR1,SSC,SCs,SCse" 
-         S Sei=2,Sej=2 ; Bloop pre/post Stop
+       S Wmo="SSC,RejDup,SCs,SCse"  ;
+         S Sei=2,Sej=2 ; Bloop pre/post Break/Stop  - debug
        ;     
        D main
-       D Wmdk^ep4W  ; Full Table to mep-...mdk in dmep/
+       D Wmdk^ep4W  ; Full Table HGen to mep-...mdk in dmep/
        I $G(devlog)'="" USE $P D WSC^ep4W  ; also to $P
        Q
        ;
 main   ; loop thru INputs, Ip BUILD analog
-       D initSC ; KILL Arrays, SSq=0, First two items
+       D initSC ; KILL Arrays, SSq=0, First two items into SCF
         ;
        F Sbi=1:1 Q:$D(SCF(Sbi))=0  DO  ;
          .I Wmo["BLp1" W !!,"BUILD Outer Loop1 [",Sbi,"] ",!
@@ -193,6 +193,7 @@ SSC(Svi,frm)  ;no NEW Svj- returned for debugging
        ; Svj is new empty node, ie SCF(Svi,Svj    
        D SFL^kfm("ruid,ikey,dot,IPs,IPe,runa,ruab,ruLst,frm,tokR1,tokTy,svSSq",itemFL) ; Si=Svi, Sj=Svj new at end
        D TEX
+       ;D REX  ;
        S log=" + + SSC: q"_SSq_"  "_Si_"."_Sj_"["_IPs_"-"_IPe_"]  ."_dot_" #"_ruid_" "_frm
        W:$X ! W log,!
        ;audit-
@@ -201,7 +202,7 @@ SSC(Svi,frm)  ;no NEW Svj- returned for debugging
          .W:$X ! W "SSC New/nonDup SCF(",Svi,".",Svj,") = "
          .W ?40,ruab,"  '",ruLst,"' ",!
        Q:$Q "New:"_Svi_"."_Svj_"  "_ruab Q
-;*  Index back to sources
+;*  Index back to sources - no refs yet
 REX    S Rex(SSq,dot,SSb)=LST
        Q
 ;*  ruid,IPs,IPe,dot -> ikey
@@ -243,13 +244,13 @@ FLi1  ;;itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SC
 initSC KILL SCF,MEP,MExk
        S SSq=0
        D ^ep2IMG  ; grFL, itemFL
-       D TT^ep2IMG  
-
+       ;D ^kfmUafl("umep") ; already in ^ep2IMG  
        D NFL^kfm(itemFL)
-       S Si=1,Sj=1,ruid=1 D GFL^kfm(grFL) ; ruid, Sum.1, ruLst
+       S ruid=1 D GFL^kfm(grFL) ; ruid, Sum.1, ruLst
        S frm="Init"  ; Initial conditions
        S dot=1,IPs=1,IPe=0
        D getR1^ep4W ; dot, ruLst : tokTy, tokR1,tokCL
+       S Si=1,Sj=1
        ;D SFL^kfm(itemFL)  ; Si,Sj   Alt to SSC, no need to ck dupl
        D SSC(Si,"Init "_ruab)
        ;D ^dv("Log Init 1.1","ruLst")

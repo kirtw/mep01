@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>Man-HGen-hgh-rd3hg</title>
+  </head>
+  <body>
+    <h1>Man-HGen-hgh-rhgen4</h1>
+    &nbsp;&nbsp;&nbsp; {&nbsp; km/&nbsp;&nbsp; gmsa/&nbsp;&nbsp; <a
+      href="./">rhgen4/</a>*&nbsp;&nbsp; <a
+      href="hgh-h4-interface.html">^hgh</a>&nbsp;&nbsp; test: &nbsp; }
+    15nov20&nbsp; rev17apr21&nbsp; See also <a moz-do-not-send="true"
+      href="Man-css.html">Man-css</a>&nbsp; <a moz-do-not-send="true"
+      href="Man-HGen4-Utility-OVR.html">Man-OVR</a>&nbsp; <br>
+    <br>
+    ^hgh has many labels/entry points - has <b>ALL</b> of the entry
+    points.<br>
+    &nbsp;&nbsp; ^hght&nbsp; experiental table generation...<br>
+    <br>
+    Init^hgh&nbsp; - Should be called to clear HT*() and CS() and TI and
+    misc other vars<br>
+    &nbsp;&nbsp;&nbsp; IKH^hgh&nbsp; to only do KILL HT,HTS,HTE,CS...<br>
+    <br>
+    &nbsp;&nbsp;&nbsp; TI(vn)=val&nbsp; for {tb hd ft VL mo cssFil
+    }&nbsp; used as TItb, TImo...<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; tb is tab or html title;&nbsp;
+    hd is Page Header &lt;h1), TIft is substitute footer text<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; TImo [ {NoFt, footer -+
+    flag, BraceLine,&nbsp; NoCache,&nbsp; }<br>
+    HGS^hgh()&nbsp;&nbsp; Gen HTS()&nbsp; html sequence&nbsp; top part
+    of the html page, thru head and open body<br>
+    &nbsp;&nbsp;&nbsp; was HG1^hgh(devh)<br>
+    HGE^hgh()&nbsp; Gen HTS() html sequence end of page, post "guts",
+    was HG2^hgh<br>
+    WH(devh)&nbsp;&nbsp; pulls the arrays HT,HTS,HTE and CSS together
+    and creates the html file.<br>
+    <br>
+    css(sel,parL)&nbsp;&nbsp; add a css entry, sel is .class, #id or
+    tag, may be complex<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; parL is _ list of css attr: value;
+    triples&nbsp;&nbsp; <br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; _ is transformed to space in
+    actual css with quotes as needed<br>
+    &nbsp;&nbsp; See <a href="Man-css.html">Man-css</a> details.<br>
+    &nbsp;&nbsp; devcss defines an external css file if specified at
+    WH^hgh<br>
+    &nbsp;&nbsp;&nbsp;&nbsp; It is good practice early and finally to
+    verify the css via w3c... and the html<br>
+    <br>
+    Layout css - <br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flexrow(parid, child class
+    list)&nbsp;&nbsp; each child may have :n&nbsp; or :xx%<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; flexcol (parid,&nbsp; child class
+    list)&nbsp; vertically allocated child boxes<br>
+    <br>
+    ot(sel)&nbsp; open a div or other tag with id or class per selector
+    (.class, #id,&nbsp; tag)<br>
+    ct(sel)&nbsp; sel is optional which uses the tag stack (if given
+    tests vs stack)<br>
+    &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; ct()&nbsp; pops tag off stack<br>
+    sv(h)&nbsp; Save into HT the html string h<br>
+    &nbsp;&nbsp; svh(h)&nbsp; alt nme, in diff callers<br>
+    br&nbsp;&nbsp; Add a &lt;br/&gt;&nbsp; eol<br>
+    sp(n)&nbsp; generates nbsp (&amp;nbsp;')&nbsp; times&nbsp; n&nbsp;
+    up to max ?30, def one if n null/not spec<br>
+    hr&nbsp;&nbsp; &lt;hr/&gt;&nbsp; horizontal bar<br>
+    LNK(text,href)<br>
+    LINK(text,href)&nbsp;&nbsp; again diff callers diff epoch, same
+    behavior<br>
+    <br>
+    <br>
+    <br>
+  </body>
+</html>

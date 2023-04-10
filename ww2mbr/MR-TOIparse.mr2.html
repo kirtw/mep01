@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+^TOIparse
+</title>
+<style> 
+.hd  {font-size: 2em;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+</style>
+</head>
+<body>
+<div  class=hd >MRoutine Page ^TOIparse</div><a href=aa-TOC-All.zz2.html >TOC</a><div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rTOI7.rd2.html >rTOI7/</a></div><div  class=blink ><a href=MR-TOIparse.mr2.html >^TOIparse</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-TOIparse.cb2.html >^TOIparse</a></div><div  class=blink ><a href=CB-TOIparse-I.cb2.html >I</a></div><div  class=blink ><a href=CB-TOIparse-PXW.cb2.html >PXW</a></div><div  class=blink ><a href=CB-TOIparse-SXW.cb2.html >SXW</a></div></div><div  class=mcode ><div  class=cdline ><div  class=cdrinum >..1c</div><div  class=cdmcmd >TOIparse(Tii)  ;CKW/ESC  i2oct19 ; 20191003-01 ; Temp/Alt  ^TOIp Parse One <a href=CB-hghTemplate-line.cb2.html >Line</a></div></div><div  class=cdline ><div  class=cdrinum >..2c</div><div  class=cdmcmd >  ; in gmsa/  rTOI7/  really this is new TOIp/<a href=CB-TOIn-test.cb2.html >test</a>  -&gt; Stick with ^TOIp (rename entry)</div></div><div  class=cdline ><div  class=cdrinum >..3c</div><div  class=cdmcmd >  ;  TOIp is primary 30mar23</div></div><div  class=cdline ><div  class=cdrinum >..4c</div><div  class=cdmcmd >;</div></div><div  class=cdline ><div  class=cdrinum >..5c</div><div  class=cdmcmd >I   BREAK  KILL WD,Wd,Wdu,Wvn,Wty</div></div><div  class=cdline ><div  class=cdrinum >..6c</div><div  class=cdmcmd >    I $G(<a href=CB-TOIimg-toiFL.cb2.html >toiFL</a>)="" D ^TOIimg</div></div><div  class=cdline ><div  class=cdrinum >..7c</div><div  class=cdmcmd >    D GFL^dvs(<a href=CB-TOIimg-toiFL.cb2.html >toiFL</a>)  ; VNmode, ...</div></div><div  class=cdline ><div  class=cdrinum >..8c</div><div  class=cdmcmd >    S Wbp=";^",Ppx="/@!*#$%.~\|",Psx=".\|!#%&amp;*_-"  ; Allowed Punct sx &amp; px</div></div><div  class=cdline ><div  class=cdrinum >..9c</div><div  class=cdmcmd >    ;</div></div><div  class=cdline ><div  class=cdrinum >.10c</div><div  class=cdmcmd >    S <a href=CB-ep2IMG-T2.cb2.html >T2</a>=$<a href=CB-dzIzro-TR.cb2.html >TR</a>(Tii,Wbp,"        "),T3=$$DSP^dvs(<a href=CB-ep2IMG-T2.cb2.html >T2</a>)</div></div><div  class=cdline ><div  class=cdrinum >.11c</div><div  class=cdmcmd >    F wi=1:1:$L(T3," ") DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.12c</div><div  class=cdmcmd >      .S WD=$P(T3," ",wi),px="",sx="",ty=""</div></div><div  class=cdline ><div  class=cdrinum >.13c</div><div  class=cdmcmd >      .S Wu(wi)=0</div></div><div  class=cdline ><div  class=cdrinum >.14c</div><div  class=cdmcmd >      .S C=$E(WD) I C?1P,Ppx[C S px=$E(WD),WD=$E(WD,2,999) D <a href=CB-TOIparse-PXW.cb2.html >PXW</a></div></div><div  class=cdline ><div  class=cdrinum >.15c</div><div  class=cdmcmd >      .S C=$E(WD,$L(WD)) I C?1P,Psx[C S sx=C,WD=$E(WD,1,$L(WD)-1) D <a href=CB-TOIparse-SXW.cb2.html >SXW</a></div></div><div  class=cdline ><div  class=cdrinum >.16c</div><div  class=cdmcmd >      .S WD(wi)=WD</div></div><div  class=cdline ><div  class=cdrinum >.17c</div><div  class=cdmcmd >      .S Wd(wi)=$$LC^dvs(WD)</div></div><div  class=cdline ><div  class=cdrinum >.18c</div><div  class=cdmcmd >    I VNmode["dt" D ^TOId</div></div><div  class=cdline ><div  class=cdrinum >.19c</div><div  class=cdmcmd >    I VNmode["PAT" D ^TOIpat</div></div><div  class=cdline ><div  class=cdrinum >.20c</div><div  class=cdmcmd >    ; Now <a href=CB-hghTemplate-line.cb2.html >line</a> up wds and <a href=CB-GAscan-vn.cb2.html >vn</a> in order til last takes everything else</div></div><div  class=cdline ><div  class=cdrinum >.21c</div><div  class=cdmcmd >    ;Thru each wi, bump vi/<a href=CB-GAscan-vn.cb2.html >vn</a> when not used yet, Wu-null or 0</div></div><div  class=cdline ><div  class=cdrinum >.22c</div><div  class=cdmcmd >    S vi=1,<a href=CB-GAscan-vn.cb2.html >vn</a>=$P(vnL,",",vi),Qvi=0 </div></div><div  class=cdline ><div  class=cdrinum >.23c</div><div  class=cdmcmd >    F wi=1:1:nwi I 'Wu(wi) DO  Q:Qvi  ;vi done or last wi</div></div><div  class=cdline ><div  class=cdrinum >.24c</div><div  class=cdmcmd >      .S Wvn(wi)=<a href=CB-GAscan-vn.cb2.html >vn</a>,Wu(wi)=1,Wty(wi)="txt",Wvn=<a href=CB-GAscan-vn.cb2.html >vn</a></div></div><div  class=cdline ><div  class=cdrinum >.25c</div><div  class=cdmcmd >      .I $L(vnL,",")&gt;vi S vi=vi+1,<a href=CB-GAscan-vn.cb2.html >vn</a>=$P(vnL,",",vi) Q</div></div><div  class=cdline ><div  class=cdrinum >.26c</div><div  class=cdmcmd >      .DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.27c</div><div  class=cdmcmd >         ..S Wty(wi)="last",Qvi=1</div></div><div  class=cdline ><div  class=cdrinum >.28c</div><div  class=cdmcmd >         ..S WD=WD(wi)</div></div><div  class=cdline ><div  class=cdrinum >.29c</div><div  class=cdmcmd >         ..F wi2=wi+1:1:nwi S WD=WD_" "_WD(wi2),Wu(wi2)=1,Wty(wi2)="la+"</div></div><div  class=cdline ><div  class=cdrinum >.30c</div><div  class=cdmcmd >         ..S WD(wi)=WD,Wd(wi)=$$LC^dvs(WD)</div></div><div  class=cdline ><div  class=cdrinum >.31c</div><div  class=cdmcmd >         ..S Wvn(wi)=<a href=CB-GAscan-vn.cb2.html >vn</a></div></div><div  class=cdline ><div  class=cdrinum >.32c</div><div  class=cdmcmd >    ;</div></div><div  class=cdline ><div  class=cdrinum >.33c</div><div  class=cdmcmd >    Q</div></div><div  class=cdline ><div  class=cdrinum >.34c</div><div  class=cdmcmd >;* px, WD, wi</div></div><div  class=cdline ><div  class=cdrinum >.35c</div><div  class=cdmcmd ><a href=CB-TOIparse-PXW.cb2.html >PXW</a>  S v=$G(TG("PXvn",px)) I v="" Q  ;not regis pox</div></div><div  class=cdline ><div  class=cdrinum >.36c</div><div  class=cdmcmd >     S Wvn(wi)=v,Wty(wi)="px"_px,Wu(wi)=1</div></div><div  class=cdline ><div  class=cdrinum >.37c</div><div  class=cdmcmd >     Q</div></div><div  class=cdline ><div  class=cdrinum >.38c</div><div  class=cdmcmd >;*</div></div><div  class=cdline ><div  class=cdrinum >.39c</div><div  class=cdmcmd ><a href=CB-TOIparse-SXW.cb2.html >SXW</a>  S v=$G(TG("SXvn",sx)) I v="" Q ; Not regis sx</div></div><div  class=cdline ><div  class=cdrinum >.40c</div><div  class=cdmcmd >     S Wvn(wi)=v,Wty(wi)="sx"_sx,Wu(wi)=1</div></div><div  class=cdline ><div  class=cdrinum >.41c</div><div  class=cdmcmd >     Q</div></div><div  class=cdline ><div  class=cdrinum >.42c</div><div  class=cdmcmd >;*</div></div></div><div  class=ft >by ^mwHmr 07 APR 2023 10:17 PM</div><h3> 07APR2023 22:17   by ^hgh</h3>
+</body>
+</html>

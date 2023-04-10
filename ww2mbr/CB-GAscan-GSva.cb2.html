@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  GAscan-GSva - - - trmG^GAscan</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rmGP3.rd2.html >rmGP3/</a></div><div  class=blink ><a href=MR-GAscan.mr2.html >^GAscan</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-GAscan.cb2.html >^GAscan</a></div><div  class=blink ><a href=CB-GAscan-top.cb2.html >top</a></div><div  class=blink ><a href=CB-GAscan-Gscan.cb2.html >Gscan</a></div><div  class=blink ><a href=CB-GAscan-Rec.cb2.html >Rec</a></div><div  class=blink ><a href=CB-GAscan-vn.cb2.html >vn</a></div><div  class=blink ><a href=CB-GAscan-GSva.cb2.html >GSva</a></div><div  class=blink ><a href=CB-GAscan-Q.cb2.html >Q</a></div><div  class=blink ><a href=CB-GAscan-Qbug.cb2.html >Qbug</a></div><div  class=blink ><a href=CB-GAscan-qd.cb2.html >qd</a></div><div  class=blink ><a href=CB-GAscan-DVC.cb2.html >DVC</a></div><div  class=blink ><a href=CB-GAscan-VNone.cb2.html >VNone</a></div><div  class=blink ><a href=CB-GAscan-VAll.cb2.html >VAll</a></div><div  class=blink ><a href=CB-GAscan-VSome.cb2.html >VSome</a></div><div  class=blink ><a href=CB-GAscan-VStray.cb2.html >VStray</a></div><div  class=blink ><a href=CB-GAscan-dbg.cb2.html >dbg</a></div></div><div  class=xrline >No 'refs by' found.</div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >.22c</div><div  class=cdmcmd ><a href=CB-GAscan-GSva.cb2.html >GSva</a> ; Now show VCgv(<a href=CB-GAscan-vn.cb2.html >vn</a>) counts, vs VAgv(Gna,<a href=CB-GAscan-vn.cb2.html >vn</a>)  type codes {All,None,Some,<a href=CB-GAH-Stray.cb2.html >Stray</a>, ...}</div></div><div  class=cdline ><div  class=cdrinum >.23c</div><div  class=cdmcmd >     ;    and Sort by codes VAcv(vc,<a href=CB-GAscan-vn.cb2.html >vn</a>)=""</div></div><div  class=cdline ><div  class=cdrinum >.24c</div><div  class=cdmcmd >     S <a href=CB-GAscan-vn.cb2.html >vn</a>="" F vi=0:1 S <a href=CB-GAscan-vn.cb2.html >vn</a>=$O(VCgv(Gna,<a href=CB-GAscan-vn.cb2.html >vn</a>)) Q:<a href=CB-GAscan-vn.cb2.html >vn</a>=""  DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.25c</div><div  class=cdmcmd >       .S n=$G(VCgv(Gna,<a href=CB-GAscan-vn.cb2.html >vn</a>)),vc=""</div></div><div  class=cdline ><div  class=cdrinum >.26c</div><div  class=cdmcmd >       .I n=nid S vc="All"</div></div><div  class=cdline ><div  class=cdrinum >.27c</div><div  class=cdmcmd >       .E  I 'n S vc="None"</div></div><div  class=cdline ><div  class=cdrinum >.28c</div><div  class=cdmcmd >       .E  S vc="Some"</div></div><div  class=cdline ><div  class=cdrinum >.29c</div><div  class=cdmcmd >       .S VAgv(Gna,<a href=CB-GAscan-vn.cb2.html >vn</a>)=vc,VAcv(vc,<a href=CB-GAscan-vn.cb2.html >vn</a>)=""</div></div><div  class=cdline ><div  class=cdrinum >.30c</div><div  class=cdmcmd >       .I $G(VNgv(Gna,<a href=CB-GAscan-vn.cb2.html >vn</a>))="" S VAcv("Stray",<a href=CB-GAscan-vn.cb2.html >vn</a>)=n</div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>

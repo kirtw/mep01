@@ -1,0 +1,25 @@
+#!
+
+
+#   aa-rhgen4b-gmsa.olf   
+
+# Vers 4b     2dec20 
+#  TSTK (remove tsti)
+#  ct error enhancements
+# flexcol  vs flexvert (both still, dupl code...)
+#  EOL to make html readable, flag variable $G(hghEOL) 
+#        rhgen4b/hgh.m:2:;   WHT  mod for ,!   $G(hghEOL)  See ^mwMod5
+
+#    interferes with format inside pre/code - adds lines
+
+
+#  RefBy: chess  ^ch*
+
+//  $GB/rhgen4b/*.m
+^hgh
+^h4css
+^hght       HGen table/record-row from *FL enhanced list
+
+
+//  $GB/rhgen4b/*.html
+

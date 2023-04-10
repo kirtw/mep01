@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  TOId2-day - - - trmG^TOId2</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rTOI7.rd2.html >rTOI7/</a></div><div  class=blink ><a href=MR-TOId2.mr2.html >^TOId2</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-TOId2.cb2.html >^TOId2</a></div><div  class=blink ><a href=CB-TOId2-A.cb2.html >A</a></div><div  class=blink ><a href=CB-TOId2-B.cb2.html >B</a></div><div  class=blink ><a href=CB-TOId2-dtm.cb2.html >dtm</a></div><div  class=blink ><a href=CB-TOId2-II.cb2.html >II</a></div><div  class=blink ><a href=CB-TOId2-Def.cb2.html >Def</a></div><div  class=blink ><a href=CB-TOId2-SDlst.cb2.html >SDlst</a></div><div  class=blink ><a href=CB-TOId2-Sdef.cb2.html >Sdef</a></div><div  class=blink ><a href=CB-TOId2-d12p.cb2.html >d12p</a></div><div  class=blink ><a href=CB-TOId2-dayp.cb2.html >dayp</a></div><div  class=blink ><a href=CB-TOId2-dtn.cb2.html >dtn</a></div><div  class=blink ><a href=CB-TOId2-Se.cb2.html >Se</a></div><div  class=blink ><a href=CB-TOId2-yr.cb2.html >yr</a></div><div  class=blink ><a href=CB-TOId2-mn.cb2.html >mn</a></div><div  class=blink ><a href=CB-TOId2-day.cb2.html >day</a></div><div  class=blink ><a href=CB-TOId2-nyr.cb2.html >nyr</a></div><div  class=blink ><a href=CB-TOId2-Xdate.cb2.html >Xdate</a></div><div  class=blink ><a href=CB-TOId2-nMon.cb2.html >nMon</a></div><div  class=blink ><a href=CB-TOId2-year.cb2.html >year</a></div><div  class=blink ><a href=CB-TOId2-WKN.cb2.html >WKN</a></div><div  class=blink ><a href=CB-TOId2-dydt.cb2.html >dydt</a></div><div  class=blink ><a href=CB-TOId2-cdjw.cb2.html >cdjw</a></div><div  class=blink ><a href=CB-TOId2-time.cb2.html >time</a></div><div  class=blink ><a href=CB-TOId2-dpr.cb2.html >dpr</a></div></div><div  class=xrline >Ref by fnloc  cbid: &nbsp;&nbsp;&nbsp;<a href=CB-TOId2-dayp.cb2.html >dayp</a>&nbsp;&nbsp;&nbsp;85.1          .S mn=$$mn(p1),day=$$day(p2)</div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >115c</div><div  class=cdmcmd >;*</div></div><div  class=cdline ><div  class=cdrinum >116c</div><div  class=cdmcmd ><a href=CB-TOId2-day.cb2.html >day</a>(d) I $G(d)="" D bug^dv Q</div></div><div  class=cdline ><div  class=cdrinum >117c</div><div  class=cdmcmd >       I d&gt;31 Q ""</div></div><div  class=cdline ><div  class=cdrinum >118c</div><div  class=cdmcmd >       S ndm=$P("31,28,31,30,31,30,31,31,30,31,30,31",",",<a href=CB-TOId2-mn.cb2.html >mn</a>)</div></div><div  class=cdline ><div  class=cdrinum >119c</div><div  class=cdmcmd >       I ndm=28,<a href=CB-TOId2-yr.cb2.html >yr</a>#4,'(<a href=CB-TOId2-yr.cb2.html >yr</a>#400) S ndm=29</div></div><div  class=cdline ><div  class=cdrinum >120c</div><div  class=cdmcmd >       I d&gt;ndm Q ""</div></div><div  class=cdline ><div  class=cdrinum >121c</div><div  class=cdmcmd >       S:d?1n d=0_d </div></div><div  class=cdline ><div  class=cdrinum >122c</div><div  class=cdmcmd >       Q d</div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>

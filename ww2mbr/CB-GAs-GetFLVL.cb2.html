@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  GAs-GetFLVL - - - trmG^GAs</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rmGP3.rd2.html >rmGP3/</a></div><div  class=blink ><a href=MR-GAs.mr2.html >^GAs</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-GAs.cb2.html >^GAs</a></div><div  class=blink ><a href=CB-GAs-top.cb2.html >top</a></div><div  class=blink ><a href=CB-GAs-Q.cb2.html >Q</a></div><div  class=blink ><a href=CB-GAs-Qbug.cb2.html >Qbug</a></div><div  class=blink ><a href=CB-GAs-qd.cb2.html >qd</a></div><div  class=blink ><a href=CB-GAs-arg.cb2.html >arg</a></div><div  class=blink ><a href=CB-GAs-Qa.cb2.html >Qa</a></div><div  class=blink ><a href=CB-GAs-VXN.cb2.html >VXN</a></div><div  class=blink ><a href=CB-GAs-GetFLVL.cb2.html >GetFLVL</a></div><div  class=blink ><a href=CB-GAs-XFL.cb2.html >XFL</a></div><div  class=blink ><a href=CB-GAs-vnid.cb2.html >vnid</a></div></div><div  class=xrline >No 'refs by' found.</div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >.41c</div><div  class=cdmcmd >;*</div></div><div  class=cdline ><div  class=cdrinum >.42c</div><div  class=cdmcmd >;*      Scrape Vars for <a href=CB-GAscan-vn.cb2.html >vn</a>:*FL (or *<a href=CB-dmnDIS-VL.cb2.html >VL</a>)  and two _pieces ?</div></div><div  class=cdline ><div  class=cdrinum >.43c</div><div  class=cdmcmd >;*   local vars : VVA(<a href=CB-dgTES-gfl.cb2.html >gFL</a>)=<a href=CB-dgTES-gfl.cb2.html >gFL</a> temp -&gt; <a href=CB-GAimg-FLVL.cb2.html >FLVL</a>  and VNgv(Gid,<a href=CB-GAscan-vn.cb2.html >vn</a>)=vi ^/ Gidd</div></div><div  class=cdline ><div  class=cdrinum >.44c</div><div  class=cdmcmd ><a href=CB-GAs-GetFLVL.cb2.html >GetFLVL</a>  NEW Vs,VVA  ZSH "V":Vs  ; Vs("V",vi)="&lt;vn&gt;="val"  incl array nodes</div></div><div  class=cdline ><div  class=cdrinum >.45c</div><div  class=cdmcmd >      F vi=1:1 S VE=$G(Vs("V",vi)) Q:$D(Vs("V",vi))=0  DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.46c</div><div  class=cdmcmd >        .S VE=$G(Vs("V",vi))</div></div><div  class=cdline ><div  class=cdrinum >.47c</div><div  class=cdmcmd >        .S <a href=CB-GAscan-vn.cb2.html >vn</a>=$P(VE,"="),val=$P(VE,"=",2,99)</div></div><div  class=cdline ><div  class=cdrinum >.48c</div><div  class=cdmcmd >        .I <a href=CB-GAscan-vn.cb2.html >vn</a>["(" Q</div></div><div  class=cdline ><div  class=cdrinum >.49c</div><div  class=cdmcmd >        .I <a href=CB-GAscan-vn.cb2.html >vn</a>["FL",$P(<a href=CB-GAscan-vn.cb2.html >vn</a>,"FL",2)="" DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.50c</div><div  class=cdmcmd >           ..S gFLna=<a href=CB-GAscan-vn.cb2.html >vn</a></div></div><div  class=cdline ><div  class=cdrinum >.51c</div><div  class=cdmcmd >           ..S VVA(gFLna)=val</div></div><div  class=cdline ><div  class=cdrinum >.52c</div><div  class=cdmcmd >           ..S <a href=CB-dgTES-gfl.cb2.html >gFL</a>=<a href=CB-GAscan-vn.cb2.html >vn</a>,<a href=CB-dgTES-sfl.cb2.html >sfl</a>=@<a href=CB-GAscan-vn.cb2.html >vn</a>,FL=$P(<a href=CB-dgTES-gfl.cb2.html >gFL</a>,"_"),Gid=$P(<a href=CB-dgTES-gfl.cb2.html >gFL</a>,"_",2)</div></div><div  class=cdline ><div  class=cdrinum >.53c</div><div  class=cdmcmd >           ..F fi=1:1:$L(FL,",") S <a href=CB-GAscan-vn.cb2.html >vn</a>=$P(FL,",",vi),VNgv(Gid,<a href=CB-GAscan-vn.cb2.html >vn</a>)=vi_"^/"_Gid</div></div><div  class=cdline ><div  class=cdrinum >.54c</div><div  class=cdmcmd >      S g="",<a href=CB-GAimg-FLVL.cb2.html >FLVL</a>="" F vi=0:1 S g=$O(VVA(g)) Q:g=""  S <a href=CB-GAimg-FLVL.cb2.html >FLVL</a>=<a href=CB-GAimg-FLVL.cb2.html >FLVL</a>_","_g</div></div><div  class=cdline ><div  class=cdrinum >.55c</div><div  class=cdmcmd >      S <a href=CB-GAimg-FLVL.cb2.html >FLVL</a>=$E(<a href=CB-GAimg-FLVL.cb2.html >FLVL</a>,2,999) ; Remove leading comma</div></div><div  class=cdline ><div  class=cdrinum >.56c</div><div  class=cdmcmd >      Q</div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>

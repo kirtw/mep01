@@ -1,0 +1,20 @@
+#! Removed code  TOI7/
+
+
+TOId  14oct19
+;* Set Defaults from Line  ---sic L2 : L2'		No Refs ?
+xDef  D B  ; 
+     D Sdef
+     Q
+;* Save Defaults Ddef()  may be null   - No Ref except unref Def !
+Sdef NEW Dyr,VL,vi,vn S Dyr=$G(Ddef("yr")) ; may carry over year
+     KILL Ddef S VL="d12,yr,mn,day,hr,min,wh"  ;; ?? why not dtFL, why wh
+     D T^dws("dtFL=d12,yr,mn,day,hr,min,wh")
+     F vi=1:1:$L(VL,",") S vn=$P(VL,",",vi),Ddef(vn)=$G(@vn)
+     ;I Ddef("yr")="" S Ddef("yr")=Dyr  ;maybe still null  NOP with above
+     Q
+;* Init temp Ddef()
+IDef  KILL Ddef  S Ddef("yr")=$ZD($H,"YYYY"),Ddef("mn")="01",Ddef("day")=-1,Ddef("apm")="am"
+      Q
+
+      

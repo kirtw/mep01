@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  ep4RGA-RGA - - - trmG^ep4RGA</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rmep4.rd2.html >rmep4/</a></div><div  class=blink ><a href=MR-ep4RGA.mr2.html >^ep4RGA</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-ep4RGA.cb2.html >^ep4RGA</a></div><div  class=blink ><a href=CB-ep4RGA-FLg1.cb2.html >FLg1</a></div><div  class=blink ><a href=CB-ep4RGA-RGA.cb2.html >RGA</a></div><div  class=blink ><a href=CB-ep4RGA-GRR.cb2.html >GRR</a></div><div  class=blink ><a href=CB-ep4RGA-GRT.cb2.html >GRT</a></div></div><div  class=xrline >No 'refs by' found.</div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >..7c</div><div  class=cdmcmd ><a href=CB-ep4RGA-RGA.cb2.html >RGA</a>      KILL GRk,Gxi ; not GRr,Gxq, no longer GRi</div></div><div  class=cdline ><div  class=cdrinum >..8c</div><div  class=cdmcmd >      D ^ep2IMG  ; <a href=CB-ep2IMG-grFL.cb2.html >grFL</a></div></div><div  class=cdline ><div  class=cdrinum >..9c</div><div  class=cdmcmd >      NEW ri,L,<a href=CB-GP6-P1.cb2.html >P1</a>,Lst,ty</div></div><div  class=cdline ><div  class=cdrinum >.10c</div><div  class=cdmcmd >      NEW ruid,T,L,na,gi,ina,ruLst,ruab,rde,dot,IPs,IPe,naLua,tokCL</div></div><div  class=cdline ><div  class=cdrinum >.11c</div><div  class=cdmcmd >       S ruid=0,GRk=0,ty="R"</div></div><div  class=cdline ><div  class=cdrinum >.12c</div><div  class=cdmcmd >       S gi=-99,ina="??"  ; vs <a href=CB-dve-UNDEF.cb2.html >UNDEF</a> if in/ina not found in 1st GR table entry...</div></div><div  class=cdline ><div  class=cdrinum >.13c</div><div  class=cdmcmd >      F ri=1:1:RG S L=$G(RG(ri)) DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.14c</div><div  class=cdmcmd >         .; ina is rule/token name or left hand side, not repeated in my $T table</div></div><div  class=cdline ><div  class=cdrinum >.15c</div><div  class=cdmcmd >         .I L["++.." S ty="T" Q ; fence to change ty to <a href=CB-epaG0-Terminals.cb2.html >Terminals</a> for rest</div></div><div  class=cdline ><div  class=cdrinum >.16c</div><div  class=cdmcmd >         .I $E(L)="#" Q</div></div><div  class=cdline ><div  class=cdrinum >.17c</div><div  class=cdmcmd >         .I $$DSP^dvc(L)="" Q</div></div><div  class=cdline ><div  class=cdrinum >.18c</div><div  class=cdmcmd >         .S ruid=ruid+1</div></div><div  class=cdline ><div  class=cdrinum >.19c</div><div  class=cdmcmd >         .S <a href=CB-GP6-P1.cb2.html >P1</a>=$P(L,";"),Lna=$P(L,";",2),rde=$P(L,";",3)</div></div><div  class=cdline ><div  class=cdrinum >.20c</div><div  class=cdmcmd >         .S na=$P(<a href=CB-GP6-P1.cb2.html >P1</a>," ") DO  </div></div><div  class=cdline ><div  class=cdrinum >.21c</div><div  class=cdmcmd >            ..I na'="" S ina=na,gi=1  ;else leave ina</div></div><div  class=cdline ><div  class=cdrinum >.22c</div><div  class=cdmcmd >            ..E  S gi=gi+1</div></div><div  class=cdline ><div  class=cdrinum >.23c</div><div  class=cdmcmd >            ..S runa=ina</div></div><div  class=cdline ><div  class=cdrinum >.24c</div><div  class=cdmcmd >            ..S ruab=runa_"."_gi</div></div><div  class=cdline ><div  class=cdrinum >.25c</div><div  class=cdmcmd >         .S Lst=$$DSP^dvc($P(<a href=CB-GP6-P1.cb2.html >P1</a>," ",2,99)) ; after na, ruLst or tokCL No spaces vs $C(20)</div></div><div  class=cdline ><div  class=cdrinum >.26c</div><div  class=cdmcmd >         .S ruty=ty</div></div><div  class=cdline ><div  class=cdrinum >.27c</div><div  class=cdmcmd >         .D SFL^kfm("runa,ruab,Lna,rde,ruty",<a href=CB-ep2IMG-grFL.cb2.html >grFL</a>) ; : GRk(ruid,</div></div><div  class=cdline ><div  class=cdrinum >.28c</div><div  class=cdmcmd >         .  S GRk=ruid ; Count</div></div><div  class=cdline ><div  class=cdrinum >.29c</div><div  class=cdmcmd >         .S Gxi(runa,gi)=ruid       </div></div><div  class=cdline ><div  class=cdrinum >.30c</div><div  class=cdmcmd >         .I ty="R" D <a href=CB-ep4RGA-GRR.cb2.html >GRR</a> Q</div></div><div  class=cdline ><div  class=cdrinum >.31c</div><div  class=cdmcmd >         .I ty="T" D <a href=CB-ep4RGA-GRT.cb2.html >GRT</a> Q</div></div><div  class=cdline ><div  class=cdrinum >.32c</div><div  class=cdmcmd >         .D b^dv("Err grammar ^"_$T(+0),"ruid,runa,ruab,ty,Lst,ruLst")</div></div><div  class=cdline ><div  class=cdrinum >.33c</div><div  class=cdmcmd >       KILL RG  ;Cleanup</div></div><div  class=cdline ><div  class=cdrinum >.34c</div><div  class=cdmcmd >       Q</div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>

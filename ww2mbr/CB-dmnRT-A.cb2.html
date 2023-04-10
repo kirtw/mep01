@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  dmnRT-A - - - trmG^dmnRT</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rmenu3.rd2.html >rmenu3/</a></div><div  class=blink ><a href=MR-dmnRT.mr2.html >^dmnRT</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-dmnRT.cb2.html >^dmnRT</a></div><div  class=blink ><a href=CB-dmnRT-A.cb2.html >A</a></div><div  class=blink ><a href=CB-dmnRT-Q.cb2.html >Q</a></div><div  class=blink ><a href=CB-dmnRT-SRM.cb2.html >SRM</a></div></div><div  class=xrline >Ref by dmr  cbid: &nbsp;&nbsp;&nbsp;<a href=CB-dmnu-newmSys.cb2.html >newmSys^dmnu</a>&nbsp;&nbsp;&nbsp;73.2 I mnuMRou'="" GOTO A^dmnRT </div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >..5c</div><div  class=cdmcmd >A     NEW Q  S Q=""</div></div><div  class=cdline ><div  class=cdrinum >..6c</div><div  class=cdmcmd >      I $G(mSys)="" S Q="Arg mSys ?" D b^dv(Q,"mSys") Goto Q</div></div><div  class=cdline ><div  class=cdrinum >..7c</div><div  class=cdmcmd >      S mpreVL=$G(mpreVL)  ; <a href=CB-epaMenu-dis.cb2.html >dis</a> var list</div></div><div  class=cdline ><div  class=cdrinum >..8c</div><div  class=cdmcmd >      I $G(mnuMRou)="" D b^dv("Where ?","mnuMRou")  DO</div></div><div  class=cdline ><div  class=cdrinum >..9c</div><div  class=cdmcmd >        .I $T(^dzCallBy)'="" D ^dzCallBy DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.10c</div><div  class=cdmcmd >           ..I caller["^dmn" Q</div></div><div  class=cdline ><div  class=cdrinum >.11c</div><div  class=cdmcmd >           ..S mnuMRou=caller</div></div><div  class=cdline ><div  class=cdrinum >.12c</div><div  class=cdmcmd >      I mnuMRou="" S Q="Err No <a href=CB-dzZlog-menu.cb2.html >menu</a> source mnuMRou" D b^dv(Q,"Q,mSys,mnuMRou") Goto Q</div></div><div  class=cdline ><div  class=cdrinum >.13c</div><div  class=cdmcmd >      S T=$T(Menu^@mnuMRou)</div></div><div  class=cdline ><div  class=cdrinum >.14c</div><div  class=cdmcmd >        I T="" S Q="Can't find Menu^@mnuMRou" D b^dv(Q,"Q,mnuMRou,mSys") Goto Q</div></div><div  class=cdline ><div  class=cdrinum >.15c</div><div  class=cdmcmd >        D <a href=CB-dmnRT-SRM.cb2.html >SRM</a>  ; mnuMRou $T : RM()</div></div><div  class=cdline ><div  class=cdrinum >.16c</div><div  class=cdmcmd >        ; actually cannot override, does G ^dmnu next below</div></div><div  class=cdline ><div  class=cdrinum >.17c</div><div  class=cdmcmd >        I $G(mpreLR)="" S mpreLR="dis^dmnDIS"  ; default, caller <a href=CB-dvc-can.cb2.html >can</a> override in ^MNU(mSys,0,"dmnDIS")=&lt;DashBd-entryRef&gt;</div></div><div  class=cdline ><div  class=cdrinum >.18c</div><div  class=cdmcmd >        I mpreLR'["dis^",mpreLR'["dmnDIS"  DO   Goto Q</div></div><div  class=cdline ><div  class=cdrinum >.19c</div><div  class=cdmcmd >          .S Q="mpreLR must be &lt;entryref  dis^ " </div></div><div  class=cdline ><div  class=cdrinum >.20c</div><div  class=cdmcmd >          .D b^dv(Q,"mpreLR,mSys") </div></div><div  class=cdline ><div  class=cdrinum >.21c</div><div  class=cdmcmd >        S ^MNU(mSys,0,"mpreLR")=mpreLR  ;not null</div></div><div  class=cdline ><div  class=cdrinum >.22c</div><div  class=cdmcmd >        KILL ^MNU(mSys,0,"mpreVL")</div></div><div  class=cdline ><div  class=cdrinum >.23c</div><div  class=cdmcmd >        I mpreVL'="" S ^MNU(mSys,0,"mpreVL")=mpreVL</div></div><div  class=cdline ><div  class=cdrinum >.24c</div><div  class=cdmcmd >        S ^MNU(mSys,0,"mnuMRou")=mnuMRou  ; source mrou for <a href=CB-epaMenu-Menu.cb2.html >Menu</a> data</div></div><div  class=cdline ><div  class=cdrinum >.25c</div><div  class=cdmcmd >        ;D ^dmnCom(mSys)  ; RM() -&gt; ^MNU(mSys) and set "mSysCur")=mSys</div></div><div  class=cdline ><div  class=cdrinum >.26c</div><div  class=cdmcmd >        ;G ^dmnu</div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>

@@ -1,8 +1,8 @@
-epGRdemo ;CKW/ESC i14feb23
-;  : RG() of Demo Grammar
+epGRdemo ;CKW/ESC i14feb23 umep./ rmep4/ ;20230408-52;Read Grammar File, MUMPS to RG()
+;  : RG() of MUMPS Grammar
 ;
 ;*  : RG()  aDemo-Grammar.toi
-GR00  S devRG="/home/kw/km3a/umep/rmep4/aDemo-Grammar.toi"
+GR00  S devRG="/home/kw/km3a/umep/rmep4/aM1-Grammar.toi"  ;MUMPS Elemental
       S Q=$$^devRD(devRG,,"RG") I Q'="" Goto Qb
       Goto Q
 ;*

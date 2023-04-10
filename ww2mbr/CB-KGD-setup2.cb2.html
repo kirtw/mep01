@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  KGD-setup2 - - - trmG^KGD</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rmGP3.rd2.html >rmGP3/</a></div><div  class=blink ><a href=MR-KGD.mr2.html >^KGD</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-KGD.cb2.html >^KGD</a></div><div  class=blink ><a href=CB-KGD-ERRgd.cb2.html >ERRgd</a></div><div  class=blink ><a href=CB-KGD-EXITgd.cb2.html >EXITgd</a></div><div  class=blink ><a href=CB-KGD-LOOPgd.cb2.html >LOOPgd</a></div><div  class=blink ><a href=CB-KGD-KGSEL.cb2.html >KGSEL</a></div><div  class=blink ><a href=CB-KGD-GD.cb2.html >GD</a></div><div  class=blink ><a href=CB-KGD-CALL.cb2.html >CALL</a></div><div  class=blink ><a href=CB-KGD-init.cb2.html >init</a></div><div  class=blink ><a href=CB-KGD-main.cb2.html >main</a></div><div  class=blink ><a href=CB-KGD-inter.cb2.html >inter</a></div><div  class=blink ><a href=CB-KGD-setup.cb2.html >setup</a></div><div  class=blink ><a href=CB-KGD-setup2.cb2.html >setup2</a></div><div  class=blink ><a href=CB-KGD-it.cb2.html >it</a></div><div  class=blink ><a href=CB-KGD-pat.cb2.html >pat</a></div><div  class=blink ><a href=CB-KGD-start.cb2.html >start</a></div><div  class=blink ><a href=CB-KGD-search.cb2.html >search</a></div><div  class=blink ><a href=CB-KGD-save.cb2.html >save</a></div><div  class=blink ><a href=CB-KGD-prt.cb2.html >prt</a></div><div  class=blink ><a href=CB-KGD-help.cb2.html >help</a></div><div  class=blink ><a href=CB-KGD-cur.cb2.html >cur</a></div><div  class=blink ><a href=CB-KGD-nonfatal.cb2.html >nonfatal</a></div><div  class=blink ><a href=CB-KGD-ERR.cb2.html >ERR</a></div><div  class=blink ><a href=CB-KGD-LOOP.cb2.html >LOOP</a></div><div  class=blink ><a href=CB-KGD-U257.cb2.html >U257</a></div><div  class=blink ><a href=CB-KGD-U258.cb2.html >U258</a></div></div><div  class=xrline >No 'refs by' found.</div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >.93c</div><div  class=cdmcmd ><a href=CB-KGD-setup2.cb2.html >setup2</a>  ;Handles the case of a range argument</div></div><div  class=cdline ><div  class=cdrinum >.94c</div><div  class=cdmcmd >        NEW p,q,x,di,beg1</div></div><div  class=cdline ><div  class=cdrinum >.95c</div><div  class=cdmcmd >        S p=$L(g1,":")</div></div><div  class=cdline ><div  class=cdrinum >.96c</div><div  class=cdmcmd >        I p&lt;2 S nfe=2 D <a href=CB-KGD-nonfatal.cb2.html >nonfatal</a> Q</div></div><div  class=cdline ><div  class=cdrinum >.97c</div><div  class=cdmcmd >        ELSE  I p&gt;2 S q=$L(g1,"""")-1 F x=2:2:q S $P(g1,"""",x)=$<a href=CB-dzIzro-TR.cb2.html >TR</a>($P(g1,"""",x),":","a")</div></div><div  class=cdline ><div  class=cdrinum >.98c</div><div  class=cdmcmd >        DO  ;</div></div><div  class=cdline ><div  class=cdrinum >.99c</div><div  class=cdmcmd >        . S beg=$P(g1,":",1),end=$P(g1,":",2)</div></div><div  class=cdline ><div  class=cdrinum >100c</div><div  class=cdmcmd >        . NEW $ETRAP,$ESTACK S $ETRAP="S nfe=2 D nonfatal",beg1=$QSUBSCRIPT(beg,0),end=$QSUBSCRIPT(end,0)</div></div><div  class=cdline ><div  class=cdrinum >101c</div><div  class=cdmcmd >        Q:nfe&gt;0</div></div><div  class=cdline ><div  class=cdrinum >102c</div><div  class=cdmcmd >        S di=$L(beg),beg=$E(g,1,di),end=$E(g,di+2,$L(g))</div></div><div  class=cdline ><div  class=cdrinum >103c</div><div  class=cdmcmd >        S:$F(beg,"(")'=0 $E(beg,$F(beg,"(")-1,$L(beg))=""</div></div><div  class=cdline ><div  class=cdrinum >104c</div><div  class=cdmcmd >        S:$E(beg)="^" $E(beg)=""</div></div><div  class=cdline ><div  class=cdrinum >105c</div><div  class=cdmcmd >        S:$F(end,"(")'=0 $E(end,$F(end,"(")-1,$L(end))=""</div></div><div  class=cdline ><div  class=cdrinum >106c</div><div  class=cdmcmd >        S:$E(end)="^" $E(end)=""</div></div><div  class=cdline ><div  class=cdrinum >107c</div><div  class=cdmcmd >        S g=beg_":"_end</div></div><div  class=cdline ><div  class=cdrinum >108c</div><div  class=cdmcmd >        Q</div></div><div  class=cdline ><div  class=cdrinum >109c</div><div  class=cdmcmd > </div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>

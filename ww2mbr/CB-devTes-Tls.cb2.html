@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+CB:trmG
+</title>
+<style> 
+.xrline  {background-color: khaki;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+</style>
+</head>
+<body>
+<h1>CodeBlock Page  devTes-Tls - - - trmG^devTes</h1>
+<div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rdev3.rd2.html >rdev3/</a></div><div  class=blink ><a href=MR-devTes.mr2.html >^devTes</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-devTes.cb2.html >^devTes</a></div><div  class=blink ><a href=CB-devTes-A.cb2.html >A</a></div><div  class=blink ><a href=CB-devTes-cQ.cb2.html >cQ</a></div><div  class=blink ><a href=CB-devTes-T.cb2.html >T</a></div><div  class=blink ><a href=CB-devTes-tdef.cb2.html >tdef</a></div><div  class=blink ><a href=CB-devTes-targ.cb2.html >targ</a></div><div  class=blink ><a href=CB-devTes-ta1.cb2.html >ta1</a></div><div  class=blink ><a href=CB-devTes-tmpj.cb2.html >tmpj</a></div><div  class=blink ><a href=CB-devTes-Tr.cb2.html >Tr</a></div><div  class=blink ><a href=CB-devTes-tls.cb2.html >tls</a></div><div  class=blink ><a href=CB-devTes-Tls.cb2.html >Tls</a></div></div><div  class=xrline >Ref by fnloc  cbid: &nbsp;&nbsp;&nbsp;<a href=CB-devTes-ta1.cb2.html >ta1</a>&nbsp;&nbsp;&nbsp;50.1        S Q=$$Tls(Q,devls,lsFil,"log/",lsBase) I Q'="" S Qarg=Qarg_Q_","   </div><br/><div  class=xrline >Ref by fnloc  cbid: &nbsp;&nbsp;&nbsp;<a href=CB-devTes-tls.cb2.html >tls</a>&nbsp;&nbsp;&nbsp;75.1          S Qt=$$Tls("",devls,,,lsBase,"ls")</div><br/><div  class=mcode ><div  class=cdline ><div  class=cdrinum >.78c</div><div  class=cdmcmd >;*      </div></div><div  class=cdline ><div  class=cdrinum >.79c</div><div  class=cdmcmd ><a href=CB-devTes-Tls.cb2.html >Tls</a>(Qt,<a href=CB-devIO-dev.cb2.html >dev</a>,Fil,Fol,<a href=CB-KG0-base.cb2.html >Base</a>,xstem)</div></div><div  class=cdline ><div  class=cdrinum >.80c</div><div  class=cdmcmd >  S Qv=$G(Q) NEW Q  NEW <a href=CB-kfm~1-qd.cb2.html >Qd</a>,Qf,Qp,<a href=CB-kfm~1-Qb.cb2.html >Qb</a>,Qs,Qq</div></div><div  class=cdline ><div  class=cdrinum >.81c</div><div  class=cdmcmd >  S Q=""   ; Tricky Qv= 'Q by caller', <a href=CB-KGD-save.cb2.html >save</a> before new Q, hides caller Q</div></div><div  class=cdline ><div  class=cdrinum >.82c</div><div  class=cdmcmd >  I $G(<a href=CB-devIO-dev.cb2.html >dev</a>)'="" S <a href=CB-kfm~1-qd.cb2.html >Qd</a>=(<a href=CB-devIO-dev.cb2.html >dev</a>=$G(devls)) I '<a href=CB-kfm~1-qd.cb2.html >Qd</a> S Q=Q_"ls-<a href=CB-devIO-deverr.cb2.html >devErr</a>,"</div></div><div  class=cdline ><div  class=cdrinum >.83c</div><div  class=cdmcmd >  I $G(Fil)'="" S Qf=(Fil=$G(iFil)) I 'Qf S Q=Q_"ls-filErr,"  D b^dv("Tls <a href=CB-dzroz-Err.cb2.html >Err</a> ","Fil,iFil,lsFil")</div></div><div  class=cdline ><div  class=cdrinum >.84c</div><div  class=cdmcmd >  I $G(Fol)'="" S Qp=(Fol=$G(lsFol)) I 'Qp S Q=Q_"ls-folErr," D b^dv("Tr <a href=CB-dzroz-Err.cb2.html >Err</a> ","Fol,iFol,lsFol")</div></div><div  class=cdline ><div  class=cdrinum >.85c</div><div  class=cdmcmd >  I $G(<a href=CB-KG0-base.cb2.html >Base</a>)'="" S <a href=CB-kfm~1-Qb.cb2.html >Qb</a>=(<a href=CB-KG0-base.cb2.html >Base</a>=$G(lsBase)) I '<a href=CB-kfm~1-Qb.cb2.html >Qb</a> S Q=Q_"ls-BaseErr,"</div></div><div  class=cdline ><div  class=cdrinum >.86c</div><div  class=cdmcmd >  I $G(stem)'="" S Qs=(xstem=$G(stem)) I 'Qs S Q=Q_"ls-stemErr,"</div></div><div  class=cdline ><div  class=cdrinum >.87c</div><div  class=cdmcmd >  I $G(Qt)'="" S Qq=(Qt=Qv) I 'Qq S Q=Q_" Diff Q <a href=CB-dzroz-Err.cb2.html >Err</a>." </div></div><div  class=cdline ><div  class=cdrinum >.88c</div><div  class=cdmcmd >  Q Q</div></div></div><div  class=xrline >No RDIR refs found.</div><br/><h3> 07APR2023 22:17   by by ^mwHcb  at 07 APR 2023 10:17 PM</h3>
+</body>
+</html>
