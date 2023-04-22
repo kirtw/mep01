@@ -1,5 +1,5 @@
 kfm ;CKW/ESC  i7dec22 umbr./  rmep2/ ;20221207-42;FIle man 2 - kw GFL/SFL, *IMG *FL
-;
+;  Replaces ^dgmg - a terrible mnemonic  vs Kirt's FileManager is perfect
 ;
 ;
 top   BREAK  HALT  ; not top entry, yet ?
@@ -35,21 +35,7 @@ NFL(SFL,GFL)   NEW Q,FL,I,G,vn,vi,val S Q=""
 ;* Common Q
 Q    Q:$Q Q Q:Q=""  ; else fall thru Q not null
 Qb   D qd Q:$Q Q Q
-qd   D b^dv("Err ^"_$T(+0),"Q,SFL,GFL,FL,G,vn,val") Q
+qd   D b^dv("Err ^"_$T(+0),"Q,SFL,GFL,FL,G,vn,val,vi") Q
 ;*
-;*  from ^qds  Test *FL variable Comment in situ
-;*  Test VFL Comment inline vs actual var
-T(XXXX) NEW FLna,VFL,FL,G,C1,C2,M,D S D=$IO
-     S C1=$$^dvby() I $G(C2)="" B
-     S FLna=$P(XXXX,"="),VFL=$P(XXXX,"=",2,99)
-     I FLna[":" S FLna=$P(XXXX,":"),VFL=$P(XXXX,":",2,99)
-       I FLna="" D b^dv(" Arg T^qds needs VFL=","XXXX,FLna,C2") Q
-     I $D(@FLna)=0 USE $P W:$X ! DO  W M,! Q
-       .S M="in "_C2_",  T^qds,  VFL '"_FLna_"' is UNDEF D ^*IMG - "
-     I @FLna'=VFL USE $P W:$X ! DO  
-       .W "  ",FLna," in ^",C2,"    does not match Comment XXXX -",!
-       .W FLna,":",?8,@FLna,!
-       .W "XXXX:",?8,VFL,!
-     USE D  ; in case b^dv does USE $P
-     Q
+
      

@@ -1,0 +1,11 @@
+
+
+work log 22apr23 umep  umep./ awkLog/   
+
+Make all utility copies read-only  chmod 555
+Access should be via LUser/owner kw only (not gp kw, not world, but ?)
+
+Note cd requires x permission of directory. 1bit
+but ls (ll) requires +r, 4bit.
+
+

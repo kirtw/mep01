@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+^devRM
+</title>
+<style> 
+.hd  {font-size: 2em;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+</style>
+</head>
+<body>
+<div  class=hd >MRoutine Page ^devRM</div><a href=aa-TOC-All.zz2.html >TOC</a><div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rdev3.rd2.html >rdev3/</a></div><div  class=blink ><a href=MR-devRM.mr2.html >^devRM</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-devRM.cb2.html >^devRM</a></div><div  class=blink ><a href=CB-devRM-top.cb2.html >top</a></div><div  class=blink ><a href=CB-devRM-Q.cb2.html >Q</a></div><div  class=blink ><a href=CB-devRM-Qb.cb2.html >Qb</a></div></div><div  class=mcode ><div  class=cdline ><div  class=cdrinum >..1c</div><div  class=cdmcmd >devRM(murl) ;CKW/ESC i8apr23 gmsa./ rdev3/ ;20230408-69;Read a ydb-mumps file to RM()</div></div><div  class=cdline ><div  class=cdrinum >..2c</div><div  class=cdmcmd >;  : RM(),  mrou</div></div><div  class=cdline ><div  class=cdrinum >..3c</div><div  class=cdmcmd >;</div></div><div  class=cdline ><div  class=cdrinum >..4c</div><div  class=cdmcmd ><a href=CB-mwPET-top.cb2.html >top</a>   NEW Q S Q="" KILL RM S RM=0</div></div><div  class=cdline ><div  class=cdrinum >..5c</div><div  class=cdmcmd >      NEW z,nsl,mfil</div></div><div  class=cdline ><div  class=cdrinum >..6c</div><div  class=cdmcmd >      I $G(murl)="" D bug^dv Q</div></div><div  class=cdline ><div  class=cdrinum >..7c</div><div  class=cdmcmd >      S nsl=$L(murl,"/"),mfil=$P(murl,"/",nsl)</div></div><div  class=cdline ><div  class=cdrinum >..8c</div><div  class=cdmcmd >      I mfil'[".m" D b^dv("Err m file name *.m ?","mfil,murl,nsl")</div></div><div  class=cdline ><div  class=cdrinum >..9c</div><div  class=cdmcmd >      S mrou=$P(mfil,".m")</div></div><div  class=cdline ><div  class=cdrinum >.10c</div><div  class=cdmcmd >      S z=$ZPARSE(murl) I z="" D b^dv("Err murl does not exist","murl") Q</div></div><div  class=cdline ><div  class=cdrinum >.11c</div><div  class=cdmcmd >      S Q=$$^devRD(murl,,"RM")</div></div><div  class=cdline ><div  class=cdrinum >.12c</div><div  class=cdmcmd >      ;</div></div><div  class=cdline ><div  class=cdrinum >.13c</div><div  class=cdmcmd >Q     Q:$Q Q  Q:Q=""</div></div><div  class=cdline ><div  class=cdrinum >.14c</div><div  class=cdmcmd ><a href=CB-kfm~1-Qb.cb2.html >Qb</a>    S Q="IB <a href=CB-dzroz-Err.cb2.html >Err</a> ^"_$T(+0) D b^duv(Q,"zroA,dist,SB,PB,GB")</div></div><div  class=cdline ><div  class=cdrinum >.15c</div><div  class=cdmcmd >      Q:$Q Q Q</div></div><div  class=cdline ><div  class=cdrinum >.16c</div><div  class=cdmcmd >      </div></div></div><div  class=ft >by ^mwHmr 16 APR 2023 11:32 PM</div><h3> 16APR2023 23:32   by ^hgh</h3>
+</body>
+</html>

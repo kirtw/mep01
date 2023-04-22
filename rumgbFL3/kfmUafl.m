@@ -1,4 +1,4 @@
-kfmUafl(PB) ;CKW/ESC i8apr23 gmsa./ rmgbFL3/ ;20230408-77;Audit ;; *F:: comments
+kfmUafl(PB) ;CKW/ESC i8apr23 gmsa./ rmgbFL3/ ;20230408-77;Audit ;; *FL: comments
 ; Replaces functionality of T^dws
 ;
 ;  Input is *FL values as locals, ie d ^**IMG as usual, then ^kfmUafl

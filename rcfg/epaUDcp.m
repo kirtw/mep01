@@ -1,5 +1,5 @@
-epaUDcp ;CKW/ESC i5apr23 umep./ rcfg/ ;20230405-02; Update zroStd, zroUcp;  Copy gmsa./ rdirs to ur*/ in umep
-;
+epaUDcp ;CKW/ESC i5apr23 umep./ rcfg/ ;20230405-02; Update zro*;Copy gmsa./ rdirs to ur*/ in umep
+;   zroStd and zroUcp
 ;
 ;
 top    ;
@@ -11,17 +11,18 @@ top    ;
 ;* Recalculate zroStd and zroUcp from lists PBL,GBL, UBL
 Czro   D IIL ; PBL, GBL, UBL    
        D zroCSU  ; modified UBL -> zroStd, zroUcp in ^ZWZ(zrid~"umep",
-       D b^dv("Log zroStd, zroUcp calculation ur* ","zroStd,zroUcp")
+       D ^dv("Log zroStd, zroUcp calculation ur* ","zroStd,zroUcp") W !,zroStd,!!,zroUcp,!!
        Q
 ;* Copy GBL utilities to UBL ru* rdirs
 CPu    D IIL ;  : zrid='umep', PB, PBL, GBL, UBL
        I $zro["ruzro" D b^dv("Do not run this op from alias mep, zroUcp Self-contained config","zroUcp") Q 
        ; Copy files incl *.m from gmsa./  to umep./ modified rdir's ru* inside umep
        ;  Remove only *.m files first, copy all files
-       ;    vs Remove rudir completely  urdir/
+       ;    vs Remove rudir completely  rudir/
        F di=1:1:$L(GBL," ") S grdir=$P(GBL," ",di) I grdir'="" DO  ;  
          .D grur ; grdir : urdir, Src~gurl, Des~uurl
-         .S Z="cd "_PB_"; rm -rfv "_urdir_"; mkdir -p "_Des_"; cd "_Des_" ;rm *.m -v ; cp -rv "_Src_"/* "_Des
+         .S chm1="chmod -R 777 "_Des_";",chm2="chmod -R 555 "_Des_";"
+         .S Z="cd "_PB_"; rm -rfv "_urdir_"; mkdir -p "_Des_"; cd "_Des_" ;"_chm1_"rm *.m -v ; cp -rv "_Src_"/* "_Des_"; "_chm2
          .U $P W:$X ! W Z,!
          .ZSY Z
        U $P W " Completed Util Copies.",!,"UBL:",UBL,!!

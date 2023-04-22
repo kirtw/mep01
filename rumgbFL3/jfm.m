@@ -1,5 +1,5 @@
-kfm ;CKW/ESC  i7dec22 umbr./  rmep2/ ;20221207-42;FIle man 2 - kw GFL/SFL, *IMG *FL
-;
+kfm ;CKW/ESC  i7dec22 gmsa./  rmgbFL3/ ;20221207-42;FIle man 2 - kw GFL/SFL, *IMG *FL
+;   test variant of ^kfm  
 ;
 ;
 top   BREAK  HALT  ; not top entry, yet ?
