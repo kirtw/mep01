@@ -8,11 +8,11 @@ top   NEW Q S Q=""
       ; Kludge convenience comma list to space list (takes either now)
       I PBL["," S PBL=$TR(PBL,","," ") 
       I GBL["," S GBL=$TR(GBL,","," ")
-      D ENV^dzIB  ; from PB
-      ;D b^dv("Log PB,GB","PB,GB,PBL,GBL")
+      D ENVdist^dzIB  ; from Env devy vars (?)
+        D b^dv("Log PB,GB from EnvVars ^"_$T(+0),"dist,PB,GB,PBL,GBL")
       S z=dist_" "_PB_"o("
       F di=1:1:$L(PBL," ") S r=$P(PBL," ",di) I r'="" D az(r,PB)
-      S z=z_") ou("
+      S z=z_") "_PB_"ou("
       F di=1:1:$L(GBL," ") S r=$P(GBL," ",di) I r'="" D az(r,GB)
       S z=z_") "_dist_"/libyottadb.so "_dist_"/libyottadbutil.so"
       S zro=z
@@ -24,7 +24,7 @@ az(rdir,B) NEW Q S Q="" ;NEW z,Bn
       S B=$G(B) I B="" S Q="err B~PB,GB az^"_$T(+0) D bug^dv(Q,"B,PB,GB,rdir,z") G Qb
       I rdir["$" DO  ;
          .S Bn=$P($P(rdir,"$",2),"/"),rdir=$P(rdir,"/",2)
-         .I Bn?1U1"B" S B=$G(@Bn) I B="" D b^dv("Err $*B ","B,Bn,rdir,z,PB,GB") ;
+         .I Bn?1.2U1"B" S B=$G(@Bn) I B="" D b^dv("Err $*B ","B,Bn,rdir,z,PB,GB") ;
       ;D b^duv("Log az^"_$T(+0),"B,Bn,rdir,z")
       I $E(B)'="/" S Q="Err B az^"_$T(+0) D b^duv(Q,"rdir,B,z")
       S z=z_B_rdir_" "

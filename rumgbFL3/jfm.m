@@ -1,4 +1,4 @@
-kfm ;CKW/ESC  i7dec22 gmsa./  rmgbFL3/ ;20221207-42;FIle man 2 - kw GFL/SFL, *IMG *FL
+kfm ;CKW/ESC  i7dec22 gmsa./  rmgbFL3/ ;20221207-42;File man 2 - kw GFL/SFL, *IMG *FL
 ;   test variant of ^kfm  
 ;
 ;
@@ -45,7 +45,7 @@ qd   D b^dv("Err ^"_$T(+0),"Q,SFL,GFL,FL,G,vn,val") Q
 ;*
 ;*  from ^qds  Test *FL variable Comment in situ
 ;*  Test VFL Comment inline vs actual var
-T(XXXX) NEW FLna,VFL,FL,G,C1,C2,M,D S D=$IO
+xT(XXXX) NEW FLna,VFL,FL,G,C1,C2,M,D S D=$IO
      S C1=$$^dvby() I $G(C2)="" B
      S FLna=$P(XXXX,"="),VFL=$P(XXXX,"=",2,99)
      I FLna[":" S FLna=$P(XXXX,":"),VFL=$P(XXXX,":",2,99)
@@ -59,34 +59,5 @@ T(XXXX) NEW FLna,VFL,FL,G,C1,C2,M,D S D=$IO
      USE D  ; in case b^dv does USE $P
      Q
 ;*
-;   Vna names, counts, Vns saved fields, Vng GFL refs, Vnn NFL refs
-;   fn outside *FL
-;   S Vna(vn)=$G(Vna(vn))+1 
-;   Analyze  vs *FL, strays, unref, no sets, null gets
-;   Fields in multiple lists, multiple G's
-III   KILL Vna,Vns,Vng,Vnn,Vni
-      Q
-;*
-A   D ^ep2IMG  ; grFL, itemFL
-    D II(grFL)
-    D II(itemFL)
-    S vn=0 F vi=0:1 S vn=$O(Vna(vn)) Q:vn=""  DO  ;
-      .I $G(Vni(vn))="" W:$X ! W vn," Outside *FL- " DO  ;
-        ..S cvs=$G(Vns(vn)),cvg=$G(Vng(vn)),cvn=$G(Vnn(vn))
-        ..W "  #SFL:",cvs,",  #GFL:",cvg,",  #NFL:",cvn,!
-    Q
-;*
-II(IFL)  S FL=$P(IFL,"_")
-    F vi=1:1:$L(FL,",") S vn=$P(FL,",",vi),Vni(vn)=vi
-    Q
-;*    
-TJ  D III
-    D ^ep2IMG
-    D NFL^jfm(grFL),NFL^jfm(itemFL)
-    S ruid=100,ruab="abc.1",ruLst="abc,def,Pper",dot=0
-    S Si=1,Sj=1
-    F k=1:1:10 D SFL^jfm(grFL),SFL^jfm(itemFL)
-    F k=1:1:20 D GFL^jfm(grFL)
-    S xyz=98 D SFL^jfm("xyz",grFL)
-    D A
-    Q
+
+

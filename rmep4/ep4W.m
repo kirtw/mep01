@@ -67,14 +67,14 @@ SVpg(id,txt,url)
        D SFL^kfm("txt,url","_^MEg(id)")  ; no *FL
        Goto Q
 ;*  GRk(ruid)=@grFL,   Gxi(runa,gi)=ruid ?
-FLg0   ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rde_GRk(ruid)
+FLg0   ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rude_GRk(ruid)
 ;
 ; This is all static after init setup by IG
 WGR    I $D(GRk)=0 D bug^dv("Array GRk UNDEF.","GRk,Gxi") Q
        I $D(Gxi)=0 D bug^dv("Array Gxi UNDEF.","GRk,Gxi") Q
        W !!," Grammar GRk() rules-"
-       D ^ep2IMG ; : grFL
-       NEW ruid,ruab,ina,rugi,ruab,ti,rde,runa,ruLst,tok
+       D ^epaIMG ; : grFL
+       NEW ruid,ruab,ina,rugi,ruab,ti,rude,runa,ruLst,tok
        F ruid=1:1  Q:$D(GRk(ruid))=0    DO  ;
          .D GFL^kfm(grFL)
          .S xLst=ruLst_tokCL ; either or
@@ -88,11 +88,11 @@ WG1    W:$X ! W " ",ruid," "   NEW x
        W ?4,ruab," "
        W ?14," -> ",ruty,"  ",xLst,"  "
        I Lna'="" W ?40,Lna,"  "
-       I rde'="" S x=40 S:$X>40 x=55 W ?x,rde," "
+       I rude'="" S x=40 S:$X>40 x=55 W ?x,rude," "
        W !
        Q
 ;*
-FLg1   ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rde_GRk(ruid)
+FLg1   ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rude_GRk(ruid)
 FLi1   ;;itemFL:runa,ruab,ruid,ikey,svSSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
 ;*  SCF()  Write all, Lua Loup Compatible output lines
 ;* Called by Wmdk to save as file

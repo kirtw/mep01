@@ -25,8 +25,6 @@ Menu	;Text for tdDev  Menu  	Compile  RM()
         ;  op.  dopLR  dopDE	# where dopLR contains ^  or menu mab./exists
         ;  dnxt1  or dnxt2 Syntax: | pipe prefix
   ;;mm. Select from Dev Tennis Main: _Main tdDev Menu  |mm
-  ;;  zro. Czro^epaUDcp  Update zroStd and zroUcp for umep./
-  ;;  cpu. ^epaUDcp Copy Revised Utilities from gmsa./ into umep./  ru*/  
   ;;  go. p01^epMa ; Std Input, Demo Grammar, ep4, Parse
   ;;  lua.  WSCLua^ep4W  Lua Equiv SCF Dump to console
   ;;  gr.   WGR^ep4W Display Grammar
@@ -36,9 +34,11 @@ Menu	;Text for tdDev  Menu  	Compile  RM()
   ;;  d2.  ^ep2Dbg Gen ALL from ikey list
   ;;  t.   T^dvn  Test new debugger
   ;;  tj. TJ^jfm  Test jfm vn analyzer
-  ;;      ^epaG0   Run RP versiontrial Parser  
   ;;  mbr.  mep^mwMa  HGen mumps Browsing cb data 
-  ;;  c.  ^cgzro  Derive zro
+  ;;  zro. Czro^epaUDcp  Update zroStd and zroUcp for umep./
+  ;;  cpu. ^epaUDcp Copy Revised Utilities from gmsa./ into umep./  ru*/  
+  ;;  fl.  audFL^epMa Audit code comments to show grFL & itemFL
+  ;;  L1.  ^ep00  Test Mod MRou First line of ep11
   ;;OBS.   Obsolete versions
   ;;  g2.   ^ep2G0  mep Parse demo input, grammar ala Lua
   ;;  g3.   ^ep3G0  mep ^ep3* dev

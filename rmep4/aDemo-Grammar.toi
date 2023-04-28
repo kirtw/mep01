@@ -1,14 +1,15 @@
-#!  Demo Lua Grammar Expression File  
+#!  Demo mep ala Lua Grammar Demo Expression File  
 #    { umep./   rmep4/ 
+
 #EDME:vim /home/kw/km3a/umep/rmep4/aDemo-Grammar.toi
 
 
 #  ^ep4RGA ignores # comments and blank lines
-#  fence  ++ .. switches mode to terminals
-#  rule-name  list(comma) of rules or terminal-rules
+#  OBS vs name?1U or ?1L  : fence  ++ .. switches mode to terminals
+#  rule-name  list(comma-delim) of tokens, rules or terminals
 #     indented following lines are alternate rules for same rule-name
 
-#G00   Grammar  rule-name & comma list of rule-names|tokenNa|char
+#G00   Grammar  rule-name & comma list of tokens: rule-names|TerminalNames ;rude ;LuaName
 sum sum,Psum,prod  ;Sum;sum is sum rule +/-
   prod
 prod prod,Pfac,fac  ;Product; prod is product

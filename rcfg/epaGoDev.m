@@ -16,7 +16,7 @@ top    	S $ETRAP="B"
     S zroStd=$G(^ZWZ(zrid,"zroStd"))
 ;;Config epa choice:
     ; zroStd refs umep./ and gmsa./ for utilities
-    I zroStd="" W !!,"? zroUcp null ? " BREAK
+    I zroStd="" W !!,"? zroStd null ? " BREAK
     S $zro=zroStd
     ;Now regular start, compile
 	D ^dzzl($zro)  ; deletes *.o and recompiles to o/*.o  and ou/*.o  for gmsa, gmma, gmfd, umfd

@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+HGen
+</title>
+<style> 
+.row  {background: lightgray;}
+table  {border: 1px solid black;border-collapse: collapse;}
+th  {border: 1px solid black;border-collapse: collapse;}
+td  {border: 1px solid black;border-collapse: collapse;}
+td  {width:10em}
+.tcell  {border: 1px solid black;}
+.tcellsp  {border: 1px solid yellow;background:lightblue;}
+</style>
+</head>
+<body>
+<table >
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+1
+</td>
+<td  class=.tcell >
+2
+</td>
+<td  class=.tcell >
+3
+</td>
+<td  class=.tcell >
+4
+</td>
+<td  class=.tcell >
+5
+</td>
+<td  class=.tcell >
+6
+</td>
+<td  class=.tcell >
+7
+</td>
+<td  class=.tcell >
+8
+</td>
+<td  class=.tcell >
+9
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+1
+</td>
+<td  class=.tcell >
++
+</td>
+<td  class=.tcell >
+(
+</td>
+<td  class=.tcell >
+2
+</td>
+<td  class=.tcell >
+*
+</td>
+<td  class=.tcell >
+3
+</td>
+<td  class=.tcell >
++
+</td>
+<td  class=.tcell >
+4
+</td>
+<td  class=.tcell >
+)
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+Cdig{1}
+</td>
+<td  class=.tcell >
+Psum{+}
+</td>
+<td  class=.tcell >
+Cop{(}
+</td>
+<td  class=.tcell >
+Cdig{2}
+</td>
+<td  class=.tcell >
+Pfac{*}
+</td>
+<td  class=.tcell >
+Cdig{3}
+</td>
+<td  class=.tcell >
+Psum{+}
+</td>
+<td  class=.tcell >
+Cdig{4}
+</td>
+<td  class=.tcell >
+Ccp{)}
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+num{1}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+num{2}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+num{3}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+num{4}
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+fac{1}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+fac{2}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+fac{3}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+fac{4}
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+prod{1}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+prod{2}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+prod{4}
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+sum{1}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell  colspan=3>
+prod.1:3{2*3}
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell  colspan=5>
+sum.1:5{2*3+4}
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell  colspan=7>
+fac.1:7{(2*3+4)}
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell  colspan=7>
+prod.2:7{(2*3+4)}
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell  colspan=9>
+sum.1:9{1+(2*3+4)}
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+10
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+11
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+12
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+13
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+14
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+15
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+16
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+17
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+18
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+19
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+<tr >
+<td  class=.tcell >
+20
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+<td  class=.tcell >
+ 
+</td>
+</tr>
+</table>
+<h3> 28APR2023 01:49   by  ^ep2HGpt</h3>
+</body>
+</html>

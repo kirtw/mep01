@@ -11,14 +11,20 @@ Q     Q:$Q Q  Q:Q=""
 Qb    S Q="IB Err ^"_$T(+0) D b^duv(Q,"zroA,dist,SB,PB,GB")
       Q:$Q Q Q
 ; Env Vars at Start ydb : dist, SB,PB,GB,MB,W2B, zrodevy,zgldevy
-ENV() NEW Q S Q=""
+ENV(EVL) NEW Q,i,ev,v S Q=""
+      I $G(EVL)="" S EVL="PWD,SB,PB,GB,MB,W2B"  ;
       S dist=$ZTRNLNM("ydb_dist") I dist="" S dist=$ZTRNLNM("gtm_dist")
       S zrodevy=$ZTRNLNM("ydb_routines")
       S zgldevy=$ZTRNLNM("ydb_gbldir")
-      S EVL="PWD,SB,PB,GB,MB,W2B" F i=1:1:$L(EVL,",") S ev=$P(EVL,",",i) DO  ;
+      F i=1:1:$L(EVL,",") S ev=$P(EVL,",",i) DO  ;
         .S v=$ZTRNLNM(ev)
         .I ev["B" S v=v_"/"  ;env var vs sys var convention adjust for terminal /
         .S @ev=v
+      Goto Q
+;*
+; Env Vars at Start ydb : dist only
+ENVdist() NEW Q S Q=""
+      S dist=$ZTRNLNM("ydb_dist") I dist="" S dist=$ZTRNLNM("gtm_dist")
       Goto Q
 ;*
 ;*  from zro : SB,PB,GB,MB,W2B, dist, mpjDir, zrid'

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>
+^devWM
+</title>
+<style> 
+.hd  {font-size: 2em;}
+body  {font-size:100%;}
+.cdline  {font-family: "Courier New", monospace;   font-size: 1em;}
+.cdline  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+.cdrinum  {flex: 1;}
+.cdlabel  {flex: 5;}
+.cdmcmd  {flex: 94;}
+.cdline  {white-space:pre-wrap; }
+.cdmcmd  {text-indent:5px white-space:pre-wrap;}
+.cdline  {background-color:gray}
+.cdrinum  {background-color:gold; width:100px ; margin-right:5px}
+.cdlabel  {background-color:lightblue}
+.cdmcmd  {background-color:lightpink}
+a  {margin:5px 0px 5px 0px;}
+.brcln  {display: flex; flex-direction: row; flex-wrap: nowrap; justify-content: space-between; }
+a  {flex: 1;}
+.blink  {flex: 1;}
+.brcln  {white-space:pre-wrap; flex-wrap: wrap;}
+.brcln  {font-size: 1.4em; font-family: "Courier New", monospace; }
+.blink  {margin-left: 10px;margin-right: 10px;text-decoration: none;}
+.blink  {padding-left: 5px; padding-right: 20px;border: black solid 1px;}
+.blink  {background-color: lightpink;}
+.cursor  {background-color:lightyellow;}
+</style>
+</head>
+<body>
+<div  class=hd >MRoutine Page ^devWM</div><a href=aa-TOC-All.zz2.html >TOC</a><div  class=brcln ><a href=aa-TOC-All.zz2.html >TOC</a><div  class=blink ><a href=RD-rdev3.rd2.html >rdev3/</a></div><div  class=blink ><a href=MR-devWM.mr2.html >^devWM</a></div><div  class=blink ><a href=./ >ww2m/*</a></div><div  class=blink ><a href=CB-devWM.cb2.html >^devWM</a></div><div  class=blink ><a href=CB-devWM-top.cb2.html >top</a></div><div  class=blink ><a href=CB-devWM-Q.cb2.html >Q</a></div><div  class=blink ><a href=CB-devWM-Qb.cb2.html >Qb</a></div><div  class=blink ><a href=CB-devWM-L1.cb2.html >L1</a></div></div><div  class=mcode ><div  class=cdline ><div  class=cdrinum >..1c</div><div  class=cdmcmd >devWM(murl) ;CKW/ESC i8apr23 gmsa./ rdev3/ ;20230408-69;Write RM() asa ydb-mumps file</div></div><div  class=cdline ><div  class=cdrinum >..2c</div><div  class=cdmcmd >; murl (mrou.m) : RM(),  mrou</div></div><div  class=cdline ><div  class=cdrinum >..3c</div><div  class=cdmcmd >;</div></div><div  class=cdline ><div  class=cdrinum >..4c</div><div  class=cdmcmd ><a href=CB-kfmUafl-top.cb2.html >top</a>   NEW Q S Q=""</div></div><div  class=cdline ><div  class=cdrinum >..5c</div><div  class=cdmcmd >      NEW z,nsl,mfil</div></div><div  class=cdline ><div  class=cdrinum >..6c</div><div  class=cdmcmd >      I $G(murl)="" D bug^dv Q</div></div><div  class=cdline ><div  class=cdrinum >..7c</div><div  class=cdmcmd >      I $D(RM)'=11 S Q="Err no RM()" D bug^dv(Q,"Q,RM,murl") G <a href=CB-kfmUafl-Qb.cb2.html >Qb</a></div></div><div  class=cdline ><div  class=cdrinum >..8c</div><div  class=cdmcmd >      S nsl=$L(murl,"/"),mfil=$P(murl,"/",nsl)</div></div><div  class=cdline ><div  class=cdrinum >..9c</div><div  class=cdmcmd >      I mfil'[".m" S Q="Err m file name *.m ?" Goto <a href=CB-kfmUafl-Qb.cb2.html >Qb</a></div></div><div  class=cdline ><div  class=cdrinum >.10c</div><div  class=cdmcmd >      S mrou=$P(mfil,".m")</div></div><div  class=cdline ><div  class=cdrinum >.11c</div><div  class=cdmcmd >      S z=$ZPARSE(murl) I z="" S Q="Err murl - "_z Goto <a href=CB-kfmUafl-Qb.cb2.html >Qb</a></div></div><div  class=cdline ><div  class=cdrinum >.12c</div><div  class=cdmcmd >      D <a href=CB-dmnu-L1.cb2.html >L1</a> ; update <a href=CB-TOId2-time.cb2.html >time</a> stamp, $P;3 of Ln1 </div></div><div  class=cdline ><div  class=cdrinum >.13c</div><div  class=cdmcmd >      S Q=$$^devWF(.RM,murl)</div></div><div  class=cdline ><div  class=cdrinum >.14c</div><div  class=cdmcmd >      ;</div></div><div  class=cdline ><div  class=cdrinum >.15c</div><div  class=cdmcmd >Q     Q:$Q Q  Q:Q=""</div></div><div  class=cdline ><div  class=cdrinum >.16c</div><div  class=cdmcmd ><a href=CB-kfmUafl-Qb.cb2.html >Qb</a>    S Q="IB <a href=CB-dzroz-Err.cb2.html >Err</a> ^"_$T(+0) D b^duv(Q,"zroA,dist,SB,PB,GB")</div></div><div  class=cdline ><div  class=cdrinum >.17c</div><div  class=cdmcmd >      Q:$Q Q Q</div></div><div  class=cdline ><div  class=cdrinum >.18c</div><div  class=cdmcmd >;*</div></div><div  class=cdline ><div  class=cdrinum >.19c</div><div  class=cdmcmd >;*    Get First <a href=CB-hghTemplate-line.cb2.html >Line</a>, <a href=CB-dmnu-L1.cb2.html >L1</a> c=update 3rd ; piece timestamp replace in RM(1)</div></div><div  class=cdline ><div  class=cdrinum >.20c</div><div  class=cdmcmd ><a href=CB-dmnu-L1.cb2.html >L1</a>    S L=$G(RM(1))</div></div><div  class=cdline ><div  class=cdrinum >.21c</div><div  class=cdmcmd >      S <a href=CB-dmnu-L1.cb2.html >L1</a>=$<a href=CB-dzIzro-TR.cb2.html >TR</a>(L,$C(9)," ")</div></div><div  class=cdline ><div  class=cdrinum >.22c</div><div  class=cdmcmd >      S Lb1=$P(<a href=CB-dmnu-L1.cb2.html >L1</a>," ")</div></div><div  class=cdline ><div  class=cdrinum >.23c</div><div  class=cdmcmd >      S Lp2=$P(<a href=CB-dmnu-L1.cb2.html >L1</a>,";",2),Lp3=$P(<a href=CB-dmnu-L1.cb2.html >L1</a>,";",3),Lp4=$P(<a href=CB-dmnu-L1.cb2.html >L1</a>,";",4,999)</div></div><div  class=cdline ><div  class=cdrinum >.24c</div><div  class=cdmcmd >      S DH=$H,Now=$ZD(DH,"YYYYMMDD")</div></div><div  class=cdline ><div  class=cdrinum >.25c</div><div  class=cdmcmd >      S CD=$P(DH,",",2)*100\(24*60*60)  ; centi-<a href=CB-TOId2-day.cb2.html >day</a></div></div><div  class=cdline ><div  class=cdrinum >.26c</div><div  class=cdmcmd >      S L1ts=Now_"-"_CD</div></div><div  class=cdline ><div  class=cdrinum >.27c</div><div  class=cdmcmd >      S $P(<a href=CB-dmnu-L1.cb2.html >L1</a>,";",3)=L1ts</div></div><div  class=cdline ><div  class=cdrinum >.28c</div><div  class=cdmcmd >      S RM(1)=<a href=CB-dmnu-L1.cb2.html >L1</a></div></div><div  class=cdline ><div  class=cdrinum >.29c</div><div  class=cdmcmd >      Q</div></div><div  class=cdline ><div  class=cdrinum >.30c</div><div  class=cdmcmd >;*</div></div></div><div  class=ft >by ^mwHmr 28 APR 2023 03:28 AM</div><h3> 28APR2023 03:28   by ^hgh</h3>
+</body>
+</html>

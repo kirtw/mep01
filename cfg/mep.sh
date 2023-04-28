@@ -9,7 +9,7 @@ cd /home/kw/$kwsys/$kwmpj    #  $PB
 
 . cfg/devy-profile.sh   # : $ydb_routines, $ydb_gbldir  $ydb_dist
 
-echo "Starting $PB   ^epa"
+echo "Starting $PB   ^epaGoInd"
 
 $ydb_dist/yottadb -R ^epaGoInd
 

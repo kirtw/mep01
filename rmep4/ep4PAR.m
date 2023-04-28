@@ -36,8 +36,8 @@ main   ; loop thru INputs, Ip BUILD analog
        I Wmo["BLp1" W:$X ! W "End BUILD Outer Loop1 [",Sbi,"] ",!
        Q
 ;*
-FLg5  ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rde_GRk(ruid)
-FLi5  ;;itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+;;grFL:runa,ruab,rugi,ruty,ruLst,nLst,tokCL,nLCL,Lna,rude_GRk(ruid)
+;;itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
 ;* Si,Sj
 BI1    S Si=Sbi,Sj=Sbj
        D GFL^kfm(itemFL) ; Si,Sj : ru*...
@@ -238,13 +238,13 @@ PZE(M,VL) USE $P W !!," *****  "
       I X["." D b^dv("Pause ",VL)
       Q
 ;*
-FLg1  ;;grFL:runa,ruab,ruty,ruLst,nLst,tokCL,nLCL,Lna,rde_GRk(ruid)
-FLi1  ;;itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
+;;grFL:runa,ruab,rugi,ruty,ruLst,nLst,tokCL,nLCL,Lna,rude_GRk(ruid)
+;;itemFL:runa,ruab,ruid,ikey,SSq,IPs,IPe,dot,ruLst,tokR1,tokTy,ruby,frm_SCF(Si,Sj)
 ;*
 initSC KILL SCF,MEP,MExk
        S SSq=0
-       D ^ep2IMG  ; grFL, itemFL
-       ;D ^kfmUafl("umep") ; already in ^ep2IMG  
+       D ^epaIMG  ; grFL, itemFL
+       ;D ^kfmUafl("umep") ; already in ^epaIMG  
        D NFL^kfm(itemFL)
        S ruid=1 D GFL^kfm(grFL) ; ruid, Sum.1, ruLst
        S frm="Init"  ; Initial conditions

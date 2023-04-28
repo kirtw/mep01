@@ -10,7 +10,7 @@ top   D I0  ; Init, ?Ins if not def
       D HG
       Q
 ;*
-I0    D ^ep2IMG  ;
+I0    D ^epaIMG  ;
       I $G(Ins)="" D IIn
       S yi=1
       Q
@@ -79,6 +79,7 @@ HG    S Fil="RPT.2.html" D ^devIB ; : PB
       S devh=PB_"dmep/"_Fil
       D Init^hgh    S hghEOL=1
       D Hcss
+      S TIft="^"_$T(+0)
       ;
       D HGS^hgh
       D guts

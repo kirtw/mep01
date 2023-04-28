@@ -1,5 +1,5 @@
 epGRdemo ;CKW/ESC i14feb23
-;  : RG() of Demo Grammar
+; File aDemo-Grammar.toi  : RG() of Demo Grammar
 ;
 ;*  : RG()  aDemo-Grammar.toi
 GR00  S devRG="/home/kw/km3a/umep/rmep4/aDemo-Grammar.toi"

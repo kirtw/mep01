@@ -11,7 +11,7 @@ top    	S $ETRAP="B"
         .I mpj["umep" Q
         .S Q="Cur Dir must be mpj ('umep') upon start mumps and ^"_$T(+0) 
         .D b^dv(Q,"mpj,PWD")
-    ;  Note also compiles ^epa itself ???  works
+    ;  Note also compiles ^epaGoInd itself ???  works
     S zrid="umep"
     S zroUcp=$G(^ZWZ(zrid,"zroUcp"))
 ;;Config epa choice:
