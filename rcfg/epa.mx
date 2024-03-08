@@ -1,4 +1,5 @@
 epa  ;CKW/ESC  i31oct22 rcfg/ ;20221031-07;Start Earley Parser Menu umep./ zroStd or zroUcp
+;OBS See ^epaGoDev and ^epaGoInd
 ;
 ; input config:  $PWD must be umep, $zro bash is primary
 ;

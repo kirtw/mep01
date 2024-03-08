@@ -1,0 +1,102 @@
+==  Grammar 0.1 mumps parts
+
+
+# Punctuations as themselves 
+# See CRGtok^ppGRI to create GRt(tokt)   List of Punctuations is in //tokt Line See PUL
+//tokt   {,.^%$#@!()[]'":=_   
+N
+L
+U
+A
+P
+
+C
+sp1.
+wsp.
+Wd.
+Vn.
+qs.
+int.
+#  + - N [.] N   not exponent form yet
+num.  
+nex.
+Qwd.
+Swd.
+Hwd.
+
+//GR    GRna  &   GRru
+mCmds:Top level, start for now, grab
+   Hcmd/Hwd.
+   Qcmd/Qwd.
+   Scmd/Swd.
+   Kcmd/Kwd.
+#  Test Errors by Aud^ppGRI
+   XXyy.
+   ZZWW
+   ZZZaaaaaaaaa123
+
+Hcmd:Hang is simple
+   Hwd. sp1.     Exp   
+   
+Qcmd: Quit command
+     Qwd. ecQcmd
+ecQcmd:  post cmd conditional
+     : Cpc Qce
+     sp1. Qarg
+
+Qce: Quit end variants
+     wsp2.
+     sp1. Exp
+  
+Scmd:Set Command
+     Swd. sp1. Sce
+Sce: Set command end
+   Svn = Exp
+   ( SvnL ) = Exp
+SvnL: List of Set vars
+    Svn , SvnL
+    Svn
+Svn:  Var Name, Set side
+    Vn.
+SvnL:  list continuation, Svn
+    , SvnL
+
+Kcmd:Kill command
+    Kwd. wsp1. eKcmd
+eKcmd:  End of Kill Cmd
+    sp1.    
+    ( SvnL )
+    Vna.
+
+
+Exp:Expression
+   Svn
+   unop. Exp
+   Svn bop. Exp
+   Vlit
+bop: Binary operator
+   +
+   -
+   < =
+   *
+   _
+Vlit: Literal value in code, quote or number
+   Vlqt/"
+   Vlnum
+Vlqt: Literal Quoted string
+   " Lstr "
+
+
+Svn: Set Var Name  -- also $E, $P on left of Scmd - later
+   ^ mGvn (  argL )
+   ^ mGvn
+   Vn. ( argL )
+   Vn.
+
+ALVn: Array or Local Var name
+     Vn.
+
+
+//m   mumps test code
+S X=A
+//

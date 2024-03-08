@@ -1,0 +1,39 @@
+== Next token sr
+
+
+Next may be null, or eol as specific char/token
+
+Ususally returns one Punct or a CharType (A, U/L, N, P )
+    and C the Char, Clc as lower-case
+    
+TokenType 
+     Vna  X1,X2 and finds end of name (% AN )
+     Key   tested for keyword/lc, types cmdw, funw, SVC, SFN, misc ? open
+        K0 return canonic value
+     I integer
+     N unsigned number, zero/one decimal point, literal
+     Q quoted string, incl escaped dbl quote, literal
+        Q1 value sans start-end quotes
+
+;*  X2 : X2', Ct, C, Kt
+NXC S X2=X2+1,C=$E(EX,X2)
+    I C="" S C=EOL,Ct="e" Q
+    I C?1P S Ct="p" Q
+    I C?1N DO  Q
+      .F i=X2:1 I $E(EX,i)'?1N S X2=i,Ct="i" Q
+      .S C=$E(EX,X2) I C="." DO  S Ct="n",X2=i Q
+         ..F i=X2+1:1 I $E(EX,i)'?1N Q
+    I C="%"!(C?1A) DO  S Ct="v",X2=i Q
+      .F i=X2+1:1 I $E(EX,i)'?AN  Q
+      .S wd=$E(EX,X1,X2),wdl=$J(wd,"L")
+      .S Kt=$G(KEY(wdl))
+      .I Kt'="" 
+    I C="""" DO  S Ct="q"
+    I C?1P S Ct="p" Q
+    ; ctrl, tab, EOL ?
+    D b^dv("Unsure","C,X1,X2,Ct")
+    Q
+    
+    
+    
+     

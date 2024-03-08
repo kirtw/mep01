@@ -1,0 +1,55 @@
+== Trial Rules Set
+
+
+rule may not be met by null string
+
+name: [%] 1A [A.] 1N [N.]
+gvna: ^ name
+gvn:  ^ name subs
+subs:  ( esub  [ , esub ]. )    Subscript list in paren
+sarg:  ( earg  [ , earg ].n )   Arg list in paren
+esub:  expr
+earg:  expr
+
+exprb  expr corced to boolean value 0/1
+expri  expr coerced to integer
+exprn  expr coercd to number (canonic string)
+exprs  expr coerced to string
+exprv  exprs coerced to legal var name ?.1"%"1.A.1.N, $L<32 
+
+@Indirection various syntactic element replacements-
+exprv or-
+expratvar expr coerced to a var name or error
+expratcmd expr coerced to cmd syntax or error
+
+expr:  A slvn
+       A Anvn
+       ^ gvn ( subs 
+       " litQS
+       N litN
+       $ spfvar
+       $ svnfun ( sarg
+       $$ entryRef [sarg]
+       unop expr
+       @ indExpr
+       ( expr )
+       expr1 bop expr2
+       
+unop   
+unopb  { ' }   boolean valued unary operator(s)
+unopn  { + - }  numeric valued unary operators
+
+bop  bbop   Boolean valued binary op  {< > = '= <= >= [ ] ? } 
+     ibop   Integer valued binary op  { # }
+     nbop   Numeric valued   { + - * / }
+     sbop   String valued binary op   { _ }  
+
+entryRef1   label
+           label + offset
+           ^ mRouName
+           label ^ mRouName
+           
+entryRef   entryRef1 ( sarg )
+
+
+

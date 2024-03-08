@@ -25,6 +25,7 @@ Menu	;Text for tdDev  Menu  	Compile  RM()
         ;  op.  dopLR  dopDE	# where dopLR contains ^  or menu mab./exists
         ;  dnxt1  or dnxt2 Syntax: | pipe prefix
   ;;mm. Select from Dev Tennis Main: _Main tdDev Menu  |mm
+  ;;  t.  ^parT  Test parm parser
   ;;  go. p01^epMa ; Std Input, Demo Grammar, ep4, Parse
   ;;  lua.  WSCLua^ep4W  Lua Equiv SCF Dump to console
   ;;  gr.   WGR^ep4W Display Grammar
@@ -32,7 +33,7 @@ Menu	;Text for tdDev  Menu  	Compile  RM()
   ;;  hr.  ^ep2HGrp  Reverse HGen Table
   ;;  ht. ^ep2HGpt  HGen SCF state Table as HGen Table/Parse Tree
   ;;  d2.  ^ep2Dbg Gen ALL from ikey list
-  ;;  t.   T^dvn  Test new debugger
+  ;;  tdvn.   T^dvn  Test new debugger
   ;;  tj. TJ^jfm  Test jfm vn analyzer
   ;;  mbr.  mep^mwMa  HGen mumps Browsing cb data 
   ;;  zro. Czro^epaUDcp  Update zroStd and zroUcp for umep./

@@ -1,4 +1,4 @@
-epaGoInd  ;CKW/ESC  i31oct22 rcfg/ ;20221031-07;Start Earley Parser Menu umep./ zroUcp self-contained
+epaGoInd  ;CKW/ESC  i31oct22 rcfg/ ;20221031-07;Start Earley Parser Menu umep./ zroUcp self-contained Utilities copy
 ;
 ; input config:  $PWD must be umep, $zro bash is primary
 ;

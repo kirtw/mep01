@@ -28,7 +28,7 @@ grur   S urdir="ru"_$E(grdir,2,99)
        Q
 ;* mpjD~umep ; UBL, PBL, GBL, PB,SB,GB
 IIL    S zrid="umep",mpjDir=zrid
-       D mpjIB^dzIB(mpjDir) ; PB, SB from mpjD: umep
+       D mpjIB^dzIO(mpjDir) ; PB, SB from mpjD: umep
        S PBL="rcfg rmep4 rmePT1 rsr"  ;  rxmep1 OBS ^epaG0, ^epaPAR
        S GBL="rdve1 rzro3 rmgbFL3 rmGP3 rmenu3 rTOI7 rhgen4b rdev3 rd2c rddv3"
        S UBL="" F di=1:1:$L(GBL," ") S grdir=$P(GBL," ",di) DO  ;

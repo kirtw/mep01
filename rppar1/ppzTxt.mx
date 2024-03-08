@@ -1,0 +1,99 @@
+ppzTxt      Text removed
+
+
+II^ppITK
+II    S In="S X=Y"
+      KILL TKi,TKc,TKs,TKe S TX=0
+      S TK(1,"tkcod")="Swd.",TK(1,"tks")="S"
+      S TK(2,"tkcod")="sp1.",TK(2,"tks")=" "
+      S TK(3,"tkcod")="Vwd.",TK(3,"tks")="X"
+      S TK(4,"tkcod")="=",TK(4,"tks")="="
+      S TK(5,"tkcod")="Vwd.",TK(5,"tks")="Y"
+      S TK(6,"tkcod")="eol.",TK(6,"tks")=$C(10)
+      ;
+      Q
+      
+      
+^ppPAR    recursive code...
+;*  OBS        
+        S Q=$$RR(RUL,Rn,LST)  ; Recursive sr is effective Stack
+        I 'QRU D b^dv("Parse Failed ","RUL,Rn") G Qb
+        B
+        G Q
+        -------
+^ppIMG rev
+top    ;
+       S tokFL="tkcod,tks,tkcs,tkce_TKV(tki)"
+       S grulFL="grab,grun,gran,grulst,grde_GRv(gri)"
+       ;
+       S VVL="tokFL,grulFL"
+       Q
+       
+       -------------
+;*   mumps Grammar TOI table       
+mGR    ;
+;;Qcmd: Quit command
+;;     Qwd. ecQcmd.
+;;ecQcmd:  
+;;     : Cpc Qce
+;;     wsp1. Qarg
+;;
+;;Qce: Quit end variants
+;;     wsp2.
+;;     wsp1. Exp
+;;  
+;;Scmd:Set Command
+;;     Swd. wsp1. Sce
+;;Sce: Set command end
+;;   Svn = Exp
+;;   ( SvnL ) = Exp
+;;SvnL: List of Set vars
+;;    Svn , SvnL
+;;    Svn
+;;     
+;;Kcmd:Kill command
+;;    Kwd. wsp1. eKcmd
+;;eKcmd:  End of Kill Cmd
+;;    wsp1.    ;;Kill wsp2.  Kill All Locals and Arrays
+;;    ( SvnL )
+;;    Vna.
+;;
+;;
+;;Exp:Expression
+;;   Svn
+;;   unop. Exp
+;;   Svn bop. Exp
+;;SvnL:  Set Var Name List
+;;   Svn , SvnL
+;;   Svn
+;;
+;;Svn: Set Var Name
+;;   ^ mGvn (  argL )
+;;   ^ mGvn
+;;   ALvn ( argL )
+;;   ALvn
+;;
+;;ALVn: Array or Local Var name
+;;     Vwd.
+;;
+;;***
+;
+;
+mT     ;Terminal codes  -in TKc  Input Array
+;;N:0|1|2|3|4|5|6|7|8|9|0
+;;U:A|...Z
+;;L:a|...z
+;;A: U | L
+;;wd A wde | ?
+;;wde A | N   ;$L<31
+;;
+;;
+;;wsplb Sp | tab
+;;wsp1 Sp
+;;wsp2 Sp Sp
+;;wsp wsp1 ! wsp1 wsp
+;;eol $C(10) lf  simulated by end of line in text src file
+;;Scom S|s|SET|set
+;;Vwd Var op start % then Alpha
+
+;*

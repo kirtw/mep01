@@ -1,0 +1,34 @@
+== Rules preprocessing ?
+
+
+Input from string EX full line with possible label or null-label.
+
+Rules have start-ptr and end ptr, not equal, X1,X2 etc.
+
+null does not satisfy any rule.
+
+Preprocess  var, keyword
+
+Names:
+    lvn   [%] 1A .A .n   N digits are terminal only ? Not in ydb  X1a2 works
+    ^ gvn
+    avn ( sarg )
+    
+Conventionally some uses are lc or uc...  parsed as such ?
+
+Names - special cases - $L>32  trailing non-significant ?  Really BAD idea!!!
+    1U, 1L  1"%" sic  %
+    All U, All L
+    Cap  1U.1L
+    Mixed UL
+    Include N's     does it matter ?  Analyze for interest, classify/count
+    
+% or A triggers full varname being returned, X1,X2
+
+Rule Ptrs - stack, inherit, esp start
+
+$$R  returns 0/1 passed and X1,X2 consumed
+
+Rule must pass once triggered by 1st char or it is a syntax error !
+
+    X1,X2  $E into EX

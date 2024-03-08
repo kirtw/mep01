@@ -1,0 +1,108 @@
+ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen GR*  Grammar tables for mpp
+;
+;
+;
+;  Fields of Grammar table are per grulFL  AND granFL, stem gr*
+;;grulFL:grde_GRv(grab)
+;
+;;grab:s mnemonic ref to rules in rulelst's (mnemonic, not gran) key in GRv
+;;grde:Doc descr of grab
+;;granFL:grulst,gopsr,tokL_GRc(gran)
+;;grulst;spdelim List of tokens, either terminal in TKv or grab  rule name (not gran)
+;;tokL:special list of tokt which may start gran, $P(tokL," ") is punct list, rest sp $P tokt's
+;;gopsr: post proc sr, in ^ppPO, def =grab, mult gran same sr ?  vs grab_grun (not dot in label)
+;
+;*  Parse Table - also set of Arrays, PT*()
+;PTan  also/or subsc of PT*'s
+; PT1, PT2  ptrs to Input token list (equiv to Input char ptrs start/end~current
+;PTc  Current ptr into rule, number done when partial
+;
+;* 7mar24 ReFactor- remove gri/gki, use grab as subscr of GRv
+;   GRv is not count anymore, rsq?
+;* Stdize GRc for kfm, granFL
+;*
+top    D IRDGR 
+       D CRGru ; RG() : GRv(grab),GRc(gran)->grulst
+       D CRGtok
+       Q
+;*    Read Grammar File, multiple sections to RG()     
+IRDGR  KILL RG,GRna,GRr     S GRc=0,rsq=0,gri=0  D ^ppIMG
+       S gFil="mGR1a.mdk",gFol="rppar1/"
+       D IB^mepIO ; PB umep./
+       S devrg=PB_gFol_gFil
+       S Q=$$^devRD(devrg,,"RG") I Q'="" G Qb
+       I 'RG S Q="Empty GR grammar file " G Qb
+       ;
+       Q
+;*  RG() :  GRna, GRc, GXsq
+;;grulFL:grab,grun,gran,grulst,grde_GRv(gri)
+;*   GRc(gran)=grulst, space delim tokens, term[".", Punct ?1P  or grab  rule
+;*
+CRGru    NEW Q I $$arg^pps("RG") G Qb
+       KILL GRv S GRv=0,grun=1,grab="?",gri=0,grri="?"
+       S gi0=0 F gi=1:1:RG S L=$G(RG(gi)) I $E(L,1,2)="//",L["GR" S gi0=gi Q
+       I 'gi0 S Q="Err did not find //GR in RG("_gi G Qb
+       F gi=gi0+1:1:RG S L=$G(RG(gi)) Q:L["//"  DO  ;
+         .I $E(L)="#" Q ;skip comment # first char of line only
+         .S Esp=$E(L)=" "
+         .S L=$$DSP^dvc(L)
+         .S P1=$P(L," "),P2=$P(L," ",2,99)     
+         .I 'Esp DO  I Q'="" G Qb
+            ..; No indentation, new grab
+            ..S grab=$P(P1,":"),grun=0,grri=gi
+            ..S gran=grab_"."_grun
+            ..S grde=P2
+            ..D SFL^kfm("grab,grde",grulFL) ; : GRv(gri
+            ..S rsq=rsq+1  I rsq'=gri D b^dv("dupl gri ~ rsq","rsq,gri")
+            ..S GXsq(rsq)=grab,GXsq=rsq
+         .I Esp DO  Q
+            ..;Indented line, next grun/gran
+            ..S grun=grun+1
+            ..S gran=grab_"."_grun
+            ..S grulst=L
+            ..S GRc(gran)=grulst
+       G Q
+;*  //GRt  :  GRt(tok)=tok
+CRGtok NEW Q S Q=""  I $$arg^pps("RG") G Qb
+       KILL GRt S GRt=0,gti=0  NEW gi,gi0,PUL,pi,P,tok,L,L1
+       S gi0=0 F gi=1:1:RG S L=$G(RG(gi)) I $E(L,1,2)="//",L["tokt" S gi0=gi Q
+       I 'gi0 S Q="Err did not find //GR in RG("_gi G Qb
+       S PUL=$P(L," ",2,999)
+         F pi=1:1:$L(PUL) S P=$E(PUL,pi) I P'=" " S GRt(P)=P  ;Literal Punct
+       F gi=gi0+1:1:RG S L=$G(RG(gi)) Q:L["//"  DO  ;
+         .S L1=$$DSP^dvc(L),tok=$P(L1," ")
+         .I tok="" Q
+         .I tok'["." S tok=tok_"."
+         .S GRt(tok)=tok
+       G Q
+;*
+Q      Q:$Q Q Q:Q=""
+Qb     D b^dv("Err ^"_$T(+0),"Q,RG,devrg,gi,grab,gran") Q:$Q Q  Q
+;*
+;;grulFL:grab,grun,gran,grulst,grde_GRv(gri)
+;;grulstFL:grulst_GRc(gran)"
+Aud    NEW Q S Q=""  I $D(GRv)<9 S Q="GRv is UNDEF" G Qb
+       F gri=1:1:GRv DO  ;
+         .D GFL^kfm("grab",grulFL) ; GRv(gri
+         .I grab="" D b^dv("Err grab GRv(gri","gri,grab") Q
+         .F n=1:1 S gran=grab_"."_n S grulst=$G(GRc(gran)) Q:grulst=""  DO  ;
+            ..F tki=1:1:$L(grulst," ") S tok=$P(grulst," ",tki) I tok'="" DO  ;
+                ...I tok?1P S tp=$G(GRt(tok)) DO  Q
+                     ....I tp="" D b^dv("Undef P tok","tp,tok,tki,grulst,grab,gran") Q
+                     ....Q
+                ...I tok["." S tp=$G(GRt(tok)) DO  Q
+                     ....I tp="" D b^dv("Undef tok","tp,tok,tki,grulst,grab,gran") Q
+                ...I $D(GRv(tok))=0 D b^dv("Undef rule ","tok,tp,tki,grulst,grab,gran") Q
+      G Q
+       
+;*  ^GXsq(rsq)=grab GRna(), GRc
+;;grulFL:
+WGR    W !!,"Grammar -",!
+       F rsq=1:1:GXsq S grab=$G(^GXsq(rsq)) DO  ;
+         .S gri=rsq D GFL^kfm(grulFL) ; GRna(gri,
+         .S grulst=$G(GRc(gran))
+         .W:$X ! W "  ",grab," ",?10,grde,!
+         .F grun=1:1 S gran=grab_"."_grun Q:$D(GRc(gran))=0  DO  ;
+            ..S grulst=$G(GRc(gran))
+            ..W:$X ! W ?4,gran,"- ",?15,grulst," "
+       Q

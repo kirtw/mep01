@@ -1,0 +1,15 @@
+== Design Issues TOC
+
+
+EOL as explicit char added to Input (and EOF)
+TK(ti)  Preprocessing multi-char input chunks, as TK(ti)=tokt,cs,ce,str
+
+Proprocessing code in ^ppINtok   LM : TK(ti) one line of mumps, plus/minus label-args
+
+Grammar has two sub-data-structures:
+   1. GRna  named rules
+   2. gran  sub-alternatives, 1 or more, in order, each with token-rule-list
+    
+    tokens in token-rule-lists (grulst) are 1) terminals tokt or sub-rules tokr~grab
+    lists embody a sequence, effectively AND for every element (in order!)
+    sub-alternatives embody an OR function

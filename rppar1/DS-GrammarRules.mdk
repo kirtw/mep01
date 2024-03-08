@@ -1,0 +1,21 @@
+==   DataStructure  Grammar Rules
+
+
+The grammar as a table driven definition has the folowing structure
+
+Array (or mGbl later ?)   GRk(
+
+Executable Part of Grammar
+    grab  mnemonic rule, ?allow-hyphens
+    gran  grab alt with sfx .grun  (1:1 ) order important
+    grulst  space delim list of either sub-rule or terminal token code ([".")
+    
+Algorithm takes next on list
+    If terminal - matches input token ->Pass (Incr token, incr next, if done - pass,pop)
+            no match, fails current, pop next alt
+    If rule, push (rule, tok-ptr)
+    
+Stack includes gran, grulst (for convenience vs repeated lookup),
+Table not required vs stack because only one active rule, passes or fails (error)
+     There is no backup or multiple partial rules in progress...
+     

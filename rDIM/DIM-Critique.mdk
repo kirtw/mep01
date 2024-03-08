@@ -1,0 +1,19 @@
+==  DIM* Critique
+
+
+Not table-grammar driven
+Many SAC rules built in - rejects many language features
+    Upper case everything !
+    Doesnt handle lc or mixed case keywords
+
+Many look-ahead syntax cheats- buggy ?
+
+STK  not clean  for expr nesting
+    pfx $, $$, ^, @,   and (  popped by )
+     pfx "  closed by "  (Note special inside dbl quote as escaped " )
+      separator ,  ends term, starts another
+      term as arg or subscript or cmd separator
+    
+Tricky GoTo  State of parse
+    but some D-srs  (^dim1, LABEL, VV, )
+    

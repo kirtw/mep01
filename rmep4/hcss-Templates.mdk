@@ -1,0 +1,56 @@
+== hcss Templates
+    EDME  {  gmsa./  rhgen4b/*  } 22jul23
+
+;;Background-color
+;Background-color:PaleGreen 98FB98
+;Background-color:Wheat F5DEB3
+;Background-color:Linen FAF0F5
+;Background-color:Cyan 00FFFF
+;Background-color:LightBlue ADD8E6
+;Background-color:LightYellow FFFFE0
+;Background-color:Khaki F0E68C
+;Background-color:LightGray D3D3D3
+;Background-color:PaleTurquoise AFEEEE
+;Background-color:Lavender E6E6FA
+;Background-color:Tan D2B48C
+;
+;
+Hcss  ;D flexrow^hgh(".row",".tcell")  ^ep2HGpt1
+      D css^hgh(".row","background: lightgray;")
+      D css^hgh("table","border: 1px solid black;border-collapse: collapse;")
+      D css^hgh("th","border: 1px solid black;border-collapse: collapse;")
+      D css^hgh("td","border: 1px solid black;border-collapse: collapse;")
+      D css^hgh("td","width:10em")
+      D css^hgh(".tcell","border: 1px solid black;")
+      D css^hgh(".tcellsp","border: 1px solid yellow;background:lightblue;")
+      
+Hcss  ;D flexrow^hgh(".row",".tcell")   ^ep2HGrp
+      D css^hgh(".row","background: lightgray;")
+      D css^hgh("table","border: 1px solid black;border-collapse: collapse;")
+      D css^hgh("th","border: 1px solid black;border-collapse: collapse;")
+      D css^hgh("td","border: 1px solid black;border-collapse: collapse;")
+      D css^hgh("td","width:10em")
+      D css^hgh(".tcell","border: 1px solid black;")
+      D css^hgh(".tcellsp","border: 1px solid yellow;background:lightblue;")
+      Q
+
+gmsa/rmGP3/GAH.m
+Hcss    D css^hgh(".line","font-size: 1.2em; background-color: lightblue;")  
+        D css^hgh(".line","write-space: pre-wrap;")
+        D flexrow^hgh(".line",".h1td:1 .h2td:1 .h3td:4")
+        D css^hgh(".lnFL","font-size: 1.4em; background-color: lightyellow;")
+        
+Hcss    D css^hgh(".line","font-size: 2em; background-color: lightblue;")  ^hghTemplate\umep\ruhgen4b
+        D css^hgh(".line","write-space: pre-wrap;")
+        D flexrow^hgh(".line",".h1td:1 .h2td:1")
+
+hcss    D css^hgh("mab.","background-color:yellow")
+        D css^hgh("op.","background-color:pink")
+
+
+
+
+--==
+EDME:vim /home/kw/km3a/umep/rmep4/hcss-Templates.mdk
+
+--==

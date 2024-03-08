@@ -1,0 +1,28 @@
+==  @mpp Data Structures
+
+
+RM(ri) is raw mumps source, gtm/ydb variant, <MRou>.m
+
+Lines are ri=1:1:RM   serial, not sparse, usu not blank ?
+
+LM is text of one line, including optional label and then (<args>)
+
+Preprocessor for clarity debugging and efficiency ^ppINtok
+Performs the following tasks-
+  1. handling cr lf variants, 
+    removes cr in Linux files $C(13) before lf $C(10) actual EOL
+  2. Adds char EOL at end of line for parser to process and EOF $C(14) at end of file.
+  3. Handles tabs $C(9) by converting to 
+      a. one space, 
+      b. some number of spaces ala typwriter tab-sets
+  4. Accumulates words, chars and digits contiguously without intervening punctuation.
+      a. Keyword, case-nostic matching, eg SET -> Scod. from any form s S set SET
+      b. Open param keywords, matched from dictionary
+      c. Words otherwise, eg var names, mrou names  ?pfx %, pfx ^, next char (
+  5. wsp  white space -multiple spaces, ?EOL, tab, accumulated to one wsp. token
+  6. Quotes wrapping literals, embedded spaces, dbl quote embedded dbl-quote-char 
+      b. potential for single quotes handling, back ticks, ... as one token
+  7. Numbers, digits, + and -, ?$ pfx, embedded spaces...  MAYBE
+  8. Forces sfx dot ("Scmd.") on all tkcod values as terminal token cue
+  
+  

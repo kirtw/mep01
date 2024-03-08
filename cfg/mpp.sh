@@ -1,4 +1,4 @@
-#!/bin/bash          mep.sh    in k*/ <mpj> /cfg/   @mep
+#!/bin/bash          mpp.sh    in k*/ <mpj> /cfg/       @mpp
 
 #  parameters as $PWD base folder, then by devy-profile.sh
 #   Assumes $PWD is base of ten8 or ten8a
@@ -9,9 +9,10 @@ cd /home/kw/$kwsys/$kwmpj    #  $PB
 
 . cfg/devy-profile.sh   # : $ydb_routines, $ydb_gbldir  $ydb_dist
 
-echo "Starting $PB   ^parGo  IBzro^mepIO   ^parmenu"
+echo "Starting $PB   ^ppGo  ppIBzro^mepIO   ^ppMenu   in rppar1/ "
 
-$ydb_dist/yottadb -R ^pareGo    # parMenu
+$ydb_dist/yottadb -R ^ppGo
+Go    # ppMenu  mumps table parser ^pp*
 
 
 mur   #  rundown after mumps/ydb exits

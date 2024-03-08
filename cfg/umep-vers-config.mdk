@@ -1,0 +1,23 @@
+== mep Variants and config Versions  27nov23
+
+
+mep  MUMPS Earley Parser  exercise
+
+    27nov23  now added ^par*   Quick table driven and label-state Algorithm
+        intended to be functional and accurate in MBR
+        
+mepx.sh  (was mep.sh) is No-interaction parser, Independent Utilities ru*/ Copy
+    $PWD and finds ?
+    Starter ^epaGoInd
+    
+    $zro  from zro
+    
+    
+mepd.sh  Starter ^epaGoDev 
+
+
+mep  Starter ^mepGoMenu    does ^epaMenu
+
+
+        
+    

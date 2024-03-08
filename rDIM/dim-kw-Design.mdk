@@ -1,0 +1,37 @@
+== dim-kw Parser
+
+
+Table driven  - Earley table generally
+
+
+rules
+ruleid, ruleN, ruab, ruty 
+
+Alt rules - same place, 
+
+Key role of trigger char or charTy {A, L, U, N, P?, C? }
+    which starts rule, thence pass or fail - no fallback to another rule.
+    
+Rule is list of ruleitems
+    rulitem is 1) literal chars or Cty
+        2) rule2
+        3) ?
+Matched rule  has Is,Ie ptrs to input EX, $E(EX,Is,Ie) string
+
+Sequence of RuleItems  nxtRule-ptr
+Ptr to Input  II satisfied so far
+
+Mumps is degenerate case of Earley grammar - what implications ?
+
+VarNa is ?1A.a.1N.N  ends in (
+
+Lit literals  num, quoted string
+
+Int integer, 1N.N
+SignedInt +Int | -Int
+Num  SignedInt . Int     rules about canonic, decimal trailing 0, leading 0. only
+
+Dol  $ xsp sInt . ?2N exactly or no period/no cents
+
+Preprocess tokens, varname, numbers, quotes, comments - or dynamically scan chars
+Then tokens vs chars is the input sequence (Not good)
