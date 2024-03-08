@@ -4,8 +4,10 @@ ppMa ;CKW/ESC i8feb24 umep./  rppar1/ ;2024-0208-03;  Profiles
 ;
 LM     W:$X ! W "Starting LM^ppMa ",!
        D ^ppGRI  ; GRv...
-       D ^ppITK  ; TK()  for S X=Y eol
-       D WTK^ppINtk 
+       D ^ppITK  ; TKv()  for S X=Y eol
+         ;D pze^dv("Log LM^ppMa","GRv,GRc,TKv")
+       D ^ppWTK ; Write TKv()
+         ;D pze^dv("See TKv ","TKv")
        D ^ppPAR
        Q
        

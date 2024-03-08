@@ -51,13 +51,6 @@ II    KILL TKc,TKs S TKc=0,TKs=0,ti=0
       ;
       Q
 ;*
-;*  Write TKv()
-;;tokFL:tkcod,tks,tkcs,tkce_TKv(ti)
-WTK   W !!  NEW 
-      F ti=1:1:TKv  DO  ;
-        .D GFL^kfm(tokFL)
-        .W:$X ! W tkcod,"  ",?15,"'",tks,"'   {",tkcs,"-",tkce,"} ",!
-      Q
 ;*  KY(lc)=<tokKY>  eg Scom. s set
 IKY   KILL KY S KY=0
       F I=1:1 S T=$T(KEYS+I),L=$P(T,";;",2,9) Q:T["***"  Q:T=""  I L'="" DO  ;

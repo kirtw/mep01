@@ -1,0 +1,26 @@
+==  git umep./ log  8mar24 fri
+    {  umep./  log/*   
+
+git push worked umep./              To github.com:kirtw/mep01.git
+
+gitpre
+git add *
+git commit -m "...
+git push
+
+
+kw@L7a:~/km3a/umep$ git push
+Enter passphrase for key '/home/kw/.ssh/id_ed25519': 
+Enumerating objects: 115, done.
+Counting objects: 100% (115/115), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (95/95), done.
+Writing objects: 100% (96/96), 84.40 KiB | 5.27 MiB/s, done.
+Total 96 (delta 24), reused 0 (delta 0)
+remote: Resolving deltas: 100% (24/24), completed with 16 local objects.
+To github.com:kirtw/mep01.git
+   3c452eb..a7587a9  main -> main
+
+Also tar rppar1/  B3a/umep/  
+   and all of umep -> B3a/ umep
+   

@@ -10,7 +10,7 @@ ppPAR ;CKW/ESC i7feb24 umep./ rppar1/ ;2024-0208-01;mumps table parser
 ; Pop when finish a rule
 ; Look at next token when terminal comes up in rule, ie ["."
 ;;tokFL:tkcod,tks,tkcs,tkce_TKv(tki)
-top     KILL STK S STK=0
+top     KILL STK S STK=0  D ^ppIMG
         S tki=1 D GFL^kfm(tokFL) ; tki : tkcod,tks, tkcs,tkce
         S TKc=tkcod
         S grabC="mCmds",RnC=1,grunC=1  ;Starting top rule 'mCmds', ptr RnC
@@ -22,15 +22,39 @@ T1      D GRU(grabC,grunC,RnC) ; : gran,grulst, toty, tok
             .D DLST 
             .I STK=1 D bug^dv("STK empty","STK") Q
             .D POP 
-        I toty="T",tok=TKc D TT1 G XE:TKc="",rulDUN:'RnC G T1  ;End of TK inlut, tki/TKc=""
+        I toty="T"  DO  G XE:TKc="",rulDUN:'RnC G T1  ;End of TK inlut, tki/TKc=""
+          .S tok=TKc D TT1 
         I toty'="R" D bug^dv("toty R or T","toty") G Qb
-stkFL  ;;stkFL:grabC,grunC,grulst,RnC_STK(STK)
+        ; toty is "R" here
+
         D PSH  ; 
         S RnC=1,grabC=tok,grunC=1
         G T1
+stkFL  ;;stkFL:grabC,grunC,grulst,RnC_STK(STK)        
 XE      D b^dv("Found end of input on term match","TKc,tki,grabC,grabN,RnC")
         ;  ? what next
         Q
+;*  Bump RnC ptr into grulst
+;*  RnC, grulst, gran : RnC', toty, tok, 
+IRn  S RnC=RnC+1,tok=$P(grulst," ",RnC)
+     I tok="" S RnC=0,toty="Done"
+     E  S toty="R" I tok?1P!(tok[".") S toty="T"
+     Q
+;*  Bump grun/gran
+;*  grabC, grunC, grnun : granC' (null no more in grabC), grunC', grulst
+Iun  NEW Q I $$arg^pps("grunC,grabC") G Qb
+     S grunC=grunC+1
+     I grunC>grnun S grunC="",granC="" Q
+     S granC=grabC_"."_grunC
+     S gran=granC D GFL^kfm("grulst",granFL)
+     Q
+;*   Bump Input token tki', tkcod~TKc,tks,tkcs,tkce
+;;  : 'tki (null) => no more inputs, Done
+Iin  NEW Q I $$arg^pps("tki") G Qb
+     S tki=tki+1
+     I tki>TKv S tki="" D NFL^kfm(tokFL) Q
+     D GFL^kfm(tokFL) ; TKv(tki
+     Q
 ;*        
 rulDUN  ; log grabC/grunC  tkcs,tkce  tkis,tkie, rul-str'
         ; needs gran from GRU(...      post-SR gran
@@ -69,7 +93,7 @@ TT1   ;S grce=tkce
         
 
 ;* : gran, grulst/gran, tok, toty
-GRU(grabA,grunA,RnA) NEW Q I $$arg^pps("grabA,granA,RnA") G Qb
+GRU(grabA,grunA,RnA) NEW Q I $$arg^pps("grabA,grunA,RnA") G Qb
     S gran=grabA_"."_grunA
     D GFL^kfm("grulst",granFL) ; GRc(gran,
       ;S grulst=$G(GRc(gran))

@@ -8,9 +8,11 @@ ppTokVars ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0207-41;Vars and FL Doc  mumps 
 ;;tkty  s -> Terminal vs rule code
 ;;
 ;    Grammar rules   gr*  
-;;grulFL:grab,grun,gran,grlst,grde_GRv(gri)
-;;grcod  ~grab Rule name, ref in other rules list
-;;grcdn  ~gran  grcod + .i  alt variant number
+;;grulFL:grde,grnun,grri_GRv(grab)  # gr* stem
+;;grab  ~grab Rule name, ref in other rules list
+;;
+;;granFL:grulst,gropsr,grtt_GRc(gran)  # gr* stem
+;;gran  ~gran  grcod + .i  alt variant number
 ;;grulst   Rule List, space delim
 ;;
 ;; Parse Table  States
@@ -20,22 +22,8 @@ ppTokVars ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0207-41;Vars and FL Doc  mumps 
 ;;
 
 ;*  Grammar fields
-;;gab ruleab
-;;gan rulab qualified by .i alternate id if multiple exist, .1 if only one
-;;  GRq is seq list, space delim, tokens or ruleab's
-IG    KILL GR S GR=0
-      S GR(1.1)="Scom:"
-;*  Grammar Table - toi ?
-;Spaces never explicit in grammar rules, space delim for sequence
-;gcod:  sets the rule ab code, no explicit dot unless alt .n
-;No quotes around punct, representing itself
-;wsp treated as token, preprocessed  then is good as delimiter in rules
-;Scom is set command words, eg S or s or set or SET, token preprocessed
-;Vwd. is token for var name, %, n after Alpha
-;A. is Alpha, N. is digit
-;Int.  maybe as integer, signed or not ?
-;
-GR    ;
-;;Scom:Swd. wsp. Vn = Exp
-;;Vn:Vwd.
-;;Exp:Vn
+;;grab:s,sub/GRv rule abbr, mnemonic key, ?1A5.20AN
+;;gran:s,sub/GRc rulab qualified by .i alternate id - one or more
+;;  GXsq is seq list, space delim, tokens or ruleab's
+;;
+

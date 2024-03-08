@@ -1,9 +1,10 @@
 ppIMG ;CKW/ESC i5dec22 umep./ rcfg/ ;2024-0302-91; ^pp*table mumps parser- FL vars
 ;  rev primary copy like copy copies
-;
+;  audFL^  Audit copies
+;  IKILLFL^ Kill loc var for ALL fields (not *FL vars)
 
-;*
-top2   NEW Q,VVL,fi,xFL,FL,T,x2  S Q=""
+;* : VVL, *FL
+top2   NEW Q,fi,xFL,FL,T,x2  S Q=""
        S VVL="grulFL,tokFL,granFL"
        F fi=1:1:$L(VVL,",")  DO  ;
          .S xFL=$P(VVL,",",fi)
@@ -13,10 +14,17 @@ top2   NEW Q,VVL,fi,xFL,FL,T,x2  S Q=""
          .I x2'=xFL D b^dv("Err src name","x2,xFL,T,fi,VVL") Q
          .S @xFL=FL
        G Q
+;*  Init All loc vars in *FL  KILL or Set Null
+IKILLFL  D ^ppIMG ; VVL,*FL
+       NEW vi,vn,xFL,FL
+       F fi=1:1:$L(VVL,",") S xFL=$P(VVL,",",fi) DO  ;
+         .S FL=$P(xFL,"_")
+         .F vi=1:1:$L(FL,",") S vn=$P(FL,",",vi) KILL @vn  ;; KILL vs Set Null?
+       Q
 ;*
 tokFL  ;;tokFL:tkcod,tks,tkcs,tkce_TKv(tki)
 grulFL ;;grulFL:grde,grnun,grri_GRv(grab)
-granFL ;;granFL:grulst,gopsr,grtt_GRc(gran)
+granFL ;;granFL:grulst,gropsr,grtt_GRc(gran)
 ;
 ;*
 Q      Q:$Q Q Q:Q=""
