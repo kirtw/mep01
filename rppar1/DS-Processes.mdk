@@ -1,0 +1,26 @@
+==  Design Issues - Processes
+
+
+Matching an input terminal-token (tki, tkcod)
+    with a terminal-token in a rule-list (grulst)
+    
+Passing a rule, grab by passing one of its sub-alternatives
+
+gran's have the grulst's  so are actually the things passed in parsing.
+
+Failing a rule, ie an Rtok/~grab by failing all of its sub-grans
+    means the rule which referenced it, fails, unwinding recursively
+    until there are more grans to try.
+    
+My terminal-start hypothesis is that each gran that starts with a terminal-token
+    can only be passed if the tkcod matches and the whole gran can be rejected if not
+    I believe each grab can have a terminal-subset-list which can be used to decide
+        fail immediately if tki/TKc/tkcod is not in its term-subs-list
+        
+This terminal-subset-list is ideally suited to a subscript or set of subscripts.
+    The whole set of terminal-tokens is defined in GRt(
+    and for any one gran, can be structured as GXtt(gran,tokt)=RnC  or any non-null value
+    Test  S tit=$G(GXtt(gran,TKc))  tit null fails gran (and grab)
+    
+Further only one gran should exist for each TKc
+    so DS could be by grab,  GXtb(grab,tokt)=gran  and should be unique

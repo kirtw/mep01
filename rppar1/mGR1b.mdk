@@ -54,15 +54,12 @@ Sce: Set command end
    Svn = Exp
    ( SvnL ) = Exp
 SvnL: List of Set vars
+    Svn , SvnL
     Svn
-cSvnL:  list continuation, Svn
-    , cSvnL    
-Svn: Set Var Name  -- also $E, $P on left of Scmd - later
-   ^ mGvn (  argL )
-   ^ mGvn
-   Vn. ( argL )
-   Vn.
-
+Svn:  Var Name, Set side
+    Vn.
+SvnL:  list continuation, Svn
+    , SvnL
 
 Kcmd:Kill command
     Kwd. wsp1. eKcmd
@@ -96,7 +93,11 @@ Vlqt: Literal Quoted string
    " Lstr "
 
 
-
+Svn: Set Var Name  -- also $E, $P on left of Scmd - later
+   ^ mGvn (  argL )
+   ^ mGvn
+   Vn. ( argL )
+   Vn.
 
 ALVn: Array or Local Var name
      Vn.

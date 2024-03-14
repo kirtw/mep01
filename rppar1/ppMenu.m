@@ -26,18 +26,18 @@ Menu	;Text for Menu  	Compile  RM()
         ;  op.  dopLR  dopDE	# where dopLR contains ^  or menu mab./exists
         ;  dnxt1  or dnxt2 Syntax: | pipe prefix
 ;;mm. Select from pp Parse mumps Main: _Main pp Menu  |mm
-;;     LM^ppMa  Test Parser on pre-fab TK() S X=A
-;; t.   T1^ppMa Init, Parse
-;;     ^ppGRI  Generate GM(rgan  Grammar Table
-;;     Aud^ppGRI  Audit refs
-;;     WGR^ppGRI  Write Grammar
+;; gri. GRI^ppMa  Generate GRv(grab, GRc(gran Grammar Tables devlog
+;; demo. demo^ppMa  Fudge PTx Data for HGen
+;; p.  LM^ppMa  Test Parser on pre-fab TK() S X=A
+;;     ^ppWGR  Write Grammar
+;;     ^ppWGRt  Write Grammar Terminal tokens tokt (1P or contain dot)
+;;     ^ppWTK  Write Terminal Input Tokens TKv()  
 ;;     la^dv  List Arrays
 ;;     IKILLFL^ppIMG Kill locals, strays
-;;     ^ppIRM  Gen RM() test data
-;;     ^ppINtk Gen Tokens from RM()
-;;     WTK^ppINtk  Writ TK*
+;;     ^ppINtk PreProcess Input Tokens TKv() from RM() //m  mumps test fodder m-code
+;; t.   T1^ppMa Init, Parse
 ;;ChEv.  Change Every Menu
-;;g1.   g1^ppzCGEV  gopsr to gropsr
+;;  g1. g1^ppzCGEV  Change Every rppar1/  See ppzCGEV
 ;;
   ;;OBS.   Obsolete versions
   ;;test.    test menu

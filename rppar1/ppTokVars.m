@@ -8,7 +8,7 @@ ppTokVars ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0207-41;Vars and FL Doc  mumps 
 ;;tkty  s -> Terminal vs rule code
 ;;
 ;    Grammar rules   gr*  
-;;grulFL:grde,grnun,grri_GRv(grab)  # gr* stem
+;;grabFL:grde,grnun,grri_GRv(grab)  # gr* stem
 ;;grab  ~grab Rule name, ref in other rules list
 ;;
 ;;granFL:grulst,gropsr,grtt_GRc(gran)  # gr* stem

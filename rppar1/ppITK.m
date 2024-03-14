@@ -16,8 +16,8 @@ top   KILL TKv S tki=0,TKv=0
 TKC  ;; Fudge TKv()  tkcod tks 
 ;;Swd. S 1 1
 ;;sp1. _ 2 2
-;;Vwd. X 3 3
+;;Vn. X 3 3
 ;;= = 4 4
-;;Vwd. Y 5 5
+;;Vn. Y 5 5
 ;;eol.
 ;  ***

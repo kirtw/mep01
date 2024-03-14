@@ -3,13 +3,20 @@
 
 EOL as explicit char added to Input (and EOF)
 TK(ti)  Preprocessing multi-char input chunks, as TK(ti)=tokt,cs,ce,str
+   Not always uniquely predictable, not much context (S as cmd, var, keyword?)
+        Not clear how much to chunk (or is it clear in mumps?)
 
 Proprocessing code in ^ppINtok   LM : TK(ti) one line of mumps, plus/minus label-args
 
 Grammar has two sub-data-structures:
-   1. GRna  named rules
+   1. GRna(or ~grab)  named rules, grab (mnemonic), gab occurs in rule-lists (grulst)
+        and can be satisfied by one or more alternatives, gran's
    2. gran  sub-alternatives, 1 or more, in order, each with token-rule-list
     
     tokens in token-rule-lists (grulst) are 1) terminals tokt or sub-rules tokr~grab
     lists embody a sequence, effectively AND for every element (in order!)
     sub-alternatives embody an OR function
+    
+toty  used as sr return {T,R  actual tokens, LE, DUN,Err?  confused...}
+
+

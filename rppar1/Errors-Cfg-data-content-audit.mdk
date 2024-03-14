@@ -1,0 +1,15 @@
+== Errors  - Grammar Data File
+    {  umep./   rppar1/*   } 12mar24
+    
+Grammar File  - gFil, ... devg)
+    File not Found, empty ?
+    Start //GR  reqd (? not found)  - other //markers/ fences ( fence syntax ?4P )
+    
+Line Formats toi-In grri link to line num ri in File for editing
+    toi-Out Use stb^dv3/^dv3  mult fields/cols (?hgen td)  with hdr, one line
+
+NoIndent    grab:   grde
+    grab format ?1A1.10AN  ?hyphens
+    
+    
+Indent   grun+=  ->gran  (sub to grab)

@@ -1,4 +1,4 @@
-ppWTK   ;CKW/ESC i8mar24 umep./ rppar1/ ;2024-0308-48; Write TKv  @tkFL
+ppWTK   ;CKW/ESC i8mar24 umep./ rppar1/ ;2024-0308-48; Write TKv() Terminal Input Tokens  @tokFL
 ;
 ;
 ;*  Write TKv()

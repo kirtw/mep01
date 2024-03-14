@@ -1,6 +1,128 @@
 ppzTxt      Text removed
 
+^ppPAR-
+---
+;*        
+        D bln^dv3("L1")
+        W:$X ! W "Tgrab:Processing ",grab,"  ",grun,"  tok#",Rn,"  tok:",tok,"/",toty,"  vs I:",tki,"=",TKc,!
+        D pze^pps("Log End Tgran","QT,gran")
+        G Q
+        
+----- PSH/POP replaced with recursive srs Tgrab, Tgran, Ttok
 
+;;stkFL:grab,grun,gran,grulst,Rn_STK(STK)       
+XE      D b^dv("Found end of input on term match","TKc,tki,grab,grabN,Rn")
+        ;  ? what next
+        Q
+--
+;*  STK()  stkFL   Write Stack   
+WSTK  NEW Istk,gran,grab,grun,grnun,grulst,Rn  D stb^dv3("S","STK:4,gran:8,grulst:25")
+      I 'STK W "Stack is empty",! Q
+      F Istk=1:1:STK DO  ;
+        .D GFL^kfm(stkFL)
+        .D bln^dv3("S")
+      W ! Q       
+;*
+PSH  ;;stkFL:grab,grun,gran,grulst,Rn_STK(STK)
+     S STK=STK+1
+     W:$X ! W "Psh onto Stack #",STK,"  grab:",grab,"  and gran:",gran,"  at Rn:",Rn,"   from grulst: <",grulst,"> ",!
+       W " Now process tok:",tok,!
+     D SFL^kfm(stkFL)
+     Q
+;*  : gran, Rn, grulst, gposr
+POP  I STK<1 D bug^dv("POP too many, STK empty STK=0","STK") Q
+     W:$X ! W "Done with grab:",grab,"  in POP."
+     D GFL^kfm(stkFL) 
+     S STK=STK-1
+     W:$X ! W "Popped grab:",grab," at Rn:",Rn,"  ",!
+     Q
+------
+;*  Removed from Sgran- OBS
+      I grun>grnun DO  Q
+         .S QB=QN  D b^dv("Log end of grun
+         .D b^dv("Err not here, caller test un vs grnun","QB,QN,grun,grnun,grab")
+         .S grun="",gran=""
+      Q
+----
+;*
+xNEWgrab W:$X ! W "NEWgrab starting from ",gran,"#",Rn," ->",tok,!
+        D PSH
+        S grab=tok,grun=1,Rn=1
+        Q
+xPASSgrab
+        Q
+;;stkFL:grab,grun,grulst,Rn_STK(STK) 
+; log grab/grun  tkcs,tkce  grts,grte, rul-str'
+xPASSgran D GFL^kfm("gropsr",granFL) ; GRc(gran,
+        W:$X ! W "Finished lst of ",gran,"   ",grulst,"  <",grstr,">  ",!
+        I gropsr'="" DO  ; If null, do nothing
+          .I gropsr'["^" S gropsr=gropsr_"^ppPO"
+          .S sr=$T(@gropsr) I sr="" D bug^dv Q
+          .D @gropsr
+        S grte=tki I 'grts D b^dv("Err no grts value","grts,grte,gran") Q
+        D SFL^kfm("grab,grstr,grts,grte","_PTx(pti,grts)")
+        S substr=grstr ; pre pop
+        D POP ; restore grab,grun, Rn
+        S grstr=grstr_substr
+        ;Bump Rn
+        D IRn
+        Q
+----
+;*
+xDLST    ;Finished grulst
+        BREAK
+        Q
+xDUN     BREAK  ;Finished whole parse Line TKv()
+        Q
+----  TermNO end-
+F2    D Iun  ; QN, Qgrun
+        I QN="" S QN="F"
+      D POP  ;
+      D IRn  I 'Rn G F2 
+      W:$X ! W "TTX POP Failed ",gran,"  at ",Rn," ",tok,! 
+      D pze^pps("TTXend POP","STK")
+      G F2
+----
+      DO  G XE:TKc="",rulDUN:'RnC G T1  ;End of TKv inlut, tki/TKc=""
+          .I tok=TKc D TT1
+          .D TTX  ;Match Fails rule
+----
+;*  
+lstDUN  ;
+        I STK=1 D bug^dv("STK empty","STK") Q
+        S pti=pti+1
+        D SVgrab ;
+        D POP
+        D IRn
+        Q
+----  -> IRn
+        S RnC=RnC+1 I RnC>$L(grulst," ") S RnC=0 G rulDUN
+        S tok=$P(grulst," ",RnC) I tok="" D bug^dv Q
+        S grabC=tok,RnC=1,grunC=1 
+        Q
+---------
+^ppPAR  obs recursive sr
+;*  Recursive sr Rule ~ Stack
+;*  RN ptr into LST - grulst
+;*  : QRU Pass 1/Fail 0    $$RR is Q bug
+;* 1st arg TOK becomes RUL
+RR(TOK,Rn,LST)  NEW Q I $$arg^pps("RUL,Rn,LST") G Qb
+       S LQ=$G(GRc(RUL)) I LQ'=LST S Q="Err LST vs RUL" G Qb
+R1     S TOK=$P(LST," ",Rn)
+       I TOK=""  S QRU=1 Q
+       I TOK["."  DO  Q  ;  terminal
+         .I TKc=TOK Q ;matches term tok
+         .D ERP S Q="Err" ;Parse Error
+       ;Here TOK is new rule
+       DO  G Q
+         .S Q=$$RR(TOK,1)
+         .  I 'QRU G Q
+         .S Rn=Rn+1,TOK=$P(LST," ",Rn)
+         .S Q=$$RR(TOK,Rn)
+       S Q="Fall-to-End" 
+       G Qb  ;should not get here
+ERP    Q
+----------
 II^ppITK
 II    S In="S X=Y"
       KILL TKi,TKc,TKs,TKe S TX=0

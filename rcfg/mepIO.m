@@ -22,7 +22,7 @@ IB      D IBsys ; : SB, GB
 ppIBzro  ;
        D IB  ; umep
        S PBL="rcfg,rppar1,../umbr/rmbrme"  ;umad./ rzdoc temp
-       S GBL="rmenu3,rzro3,rhgen5,rmgbFL3,rdbg4,rcor1,rdev4,rsrc1,rmGP4,rerr1" ;,rzdoc
+       S GBL="rmide1,rmenu3,rzro3,rhgen5,rmgbFL3,rdbg4,rcor1,rdev4,rsrc1,rmGP4,rerr1" ;,rzdoc
        D ^dzCzro(PB,PBL,GBL) ; : zro
        ;caller compiles, caller sets $zro=
        Q
