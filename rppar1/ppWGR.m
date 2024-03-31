@@ -11,7 +11,7 @@ WGR    W !!,"Grammar -",!
          .W:$X ! W "  ",grab," ",?10,grde,"    ln:",grri,!
          .F grun=1:1:grnun S gran=grab_"."_grun DO  ;
             ..D GFL^kfm(granFL)  ; GRc(gran , grulst, grtt, gropsr, grnun
-            ..W:$X ! W ?4,gran,"- ",?15,grtt,"  "
+            ..W:$X ! W ?4,gran,"  ",?15,grtt,"  "
             ..W ?30,$P(grulst,"_"),?50,$P(grulst,"_",2),?70,"post:",gropsr,!
        Q
 ;*

@@ -1,6 +1,38 @@
 ppzTxt      Text removed
 
+;* Rn, grulst  : QT
+granTOK S QT=$$^ppPAtok ;  Rn, grulst : QT(QT null pass, else fail), toty, tok, grstr
+
+        I QT="???" D bug^dv("Err TestTOK vs QT out","QT,Rn,tok,toty,grstr")
+        Q
+        
+^ppPAtok
+    I toty="R" DO  G QG
+       .I tok="" DO  Q  ;aud debug
+          ..I Rn S toty="",Rn=0,QN="" Q ;tok null because finished list grulst
+          ..D b^dv("Err why Rn already zero/null","Rn,gran,grab,grun")
+          ..S toty="E?",QN=""
+       .S DD=$D(GRv(tok)) I DD=0 S QG="Undef tokg '"_tok_"'" G QG
+       .;S Q=$$audTOKg(tok) I Q'="" S QG=Q Q ; vs GRv(tokk
+       .D pze^pps("Log pre trv","tok,toty,StkP")
+       .S QB=$$^ppPAgrab(tok,StkP+1) ; Recursive : QB
+       .D pze^pps("Log post trv","QB,StkP,tok")
+       .S QG=QB I QG'="" Q
+       .S grstr=grstr_$G(gstr)    ;Results here
 ^ppPAR-
+----  REFactor  26mar  combine Gtok & TestTOK  in ^ppPA2 now
+;* toty, tok, grstr : QT, grstr'
+TestTOK() NEW QT S QT="??" I $$arg^pps("tok,toty") G QT
+      NEW QN,QB
+      I toty="R"  DO  G QT
+
+      I toty'="T" S Q="Err toty in Ttok" D bug^dv(Q,"Q,toty,tok,Rn,grulst") G Qb
+ 
+QT    Q:$Q QT  
+      D bug^dv("Err TestTOK $Q/$$ mode","QT,tok")
+      Q
+---  24mar  top comments
+lost !
 ---
 ;*        
         D bln^dv3("L1")

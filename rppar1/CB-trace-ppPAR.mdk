@@ -1,0 +1,34 @@
+==   CB of ^ppPAR   
+
+
+#    I am Having difficulty Visualizing the code and var flow to Debug!
+
+#    Printing takes 3-4 pages, breaks un-naturally
+#    Naming CB's seems to need longer names, harder to maintain, Change-Every
+#    
+#    mdk vs olf file herein ???
+
+
+^ppPAR  Parse One line of mumps, LM, from mRou, ri
+
+top     as above
+    TRVgrab("mCmd")   of the top rule in the grammar
+    Pass/Fail  QB
+    
+TRVgrab(grab, STK)  and
+    FOR Gn=1:1  -> gran (grun    TRVgran
+
+TRVgran
+    grulst, grnun : QN
+    FOR Rn=1:1:grnun   tok, toty   GTok, Ttok
+    
+Gtok  decides toty from tok
+
+Ttok  toty, tok 
+
+Iin   Increments tki, gets next TKc, tkcod, tks, tkcs, tkce
+IRn   Increment Rn, get next tok from grulst
+Ign   Increment gran within grab
+
+
+

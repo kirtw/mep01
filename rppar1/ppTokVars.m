@@ -7,6 +7,9 @@ ppTokVars ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0207-41;Vars and FL Doc  mumps 
 ;;tkcod s token code, terminal code
 ;;tkty  s -> Terminal vs rule code
 ;;
+;;tokt s Token cod =tkcod, some tok
+;;tokgrFL:ttde_GRt(tkcod)
+;;
 ;    Grammar rules   gr*  
 ;;grabFL:grde,grnun,grri_GRv(grab)  # gr* stem
 ;;grab  ~grab Rule name, ref in other rules list
@@ -26,4 +29,10 @@ ppTokVars ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0207-41;Vars and FL Doc  mumps 
 ;;gran:s,sub/GRc rulab qualified by .i alternate id - one or more
 ;;  GXsq is seq list, space delim, tokens or ruleab's
 ;;
-
+;;gFil:Grammar Source FileName  in rppar1/ currently
+;;devgr:Grammar source file uri
+;;devlog: Log source file
+;;deverr: Pgm-Error/bug Log File
+;;devGR:Grammar HGen
+;;devMR:Mumps Routine Text and TXv(txi,
+;;

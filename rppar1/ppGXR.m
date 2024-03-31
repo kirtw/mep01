@@ -20,8 +20,8 @@ top KILL GXby S GXby=0  ;GXby(grab,gran)=grulst
 ;* Recursive 
 ;*
 G1(grabC,Lev)  
-    NEW grulst,gran,RnC,un
-    D Gab ; grabC : grnun, grde, RnC=1, gran, 
+    NEW grulst,gran,Rn,un
+    D Gab ; grabC : grnun, grde, Rn=1, gran, 
       I 'grnun Q ;undef ref, ignore here
     F un=1:1:grnun DO  I Q'="" G Qb
       .D Gran(grabC,un)
@@ -30,11 +30,11 @@ G1(grabC,Lev)
       .D Trv2(Lev)
     Q
 ;*  Lev' grabC,grunC,gran,grulst  
-Trv2(Lev) NEW RnC
+Trv2(Lev) NEW Rn
      D SLG ; grabC,Lev
        I QS'="" Q
-     F RnC=1:1:$L(grulst," ") DO  ;
-      .D Gtok ; grulst, RnC : toty, tok
+     F Rn=1:1:$L(grulst," ") DO  ;
+      .D Gtok ; grulst, Rn : toty, tok
       .I toty'="R" Q
       .S GXby(tok,gran)=grulst
       .S Lev=Lev+1 
@@ -61,9 +61,9 @@ Gran(grabA,grunA) NEW Q I $$arg^pps("grabA,grunA") G Qb
 Glst D GFL^kfm("grulst,gropsr",granFL) ; GRc(gran : grulst
      I grulst="" D b^dv("Err missing grulst/gran","gran,grab,Lev")
      Q
-;*  grulst, RnC : toty, tok   ?RnC not beyond grulst here ?
-Gtok  S tok=$P(grulst," ",RnC) 
-      I tok="" D b^dv("Null tok in grulst","tok,grulst,RnC,granC,grabC") Q
+;*  grulst, Rn : toty, tok   ?Rn not beyond grulst here ?
+Gtok  S tok=$P(grulst," ",Rn) 
+      I tok="" D b^dv("Null tok in grulst","tok,grulst,Rn,granC,grabC") Q
       S toty="R" I tok?1P!(tok[".") S toty="T"
       Q
 ;* Save Level of grab

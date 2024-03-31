@@ -35,7 +35,7 @@ guts   D ot("table")
        D ct,breol^hgh
        D ot("tr"),htr("Str:") F tki=1:1:TKv D ot("th"),gt,sv(tks),ct
        D ct,breol^hgh
-       F pti=1:1:PTx D gp1 DO  ;
+       F pti=1:1  Q:$D(PTx(pti))=0  D gp1 DO  ;
          .D ot("tr"),htr("Row "_pti)
          .F tki=1:1:TKv D ot("td"),gp2,sv(td),ct
          .D ct("tr")
@@ -49,7 +49,7 @@ htr(x)  D ot("td"),sv(x),ct Q
 gp1   D GFL^kfm(pt1FL) Q
 ;;pt2FL:gran,grts,grte,grstr_PTx(pti,tki)
 gp2   D GFL^kfm(pt2FL)
-      S td=grab_"\n"_grstr
+      S td=grab_$C(12)_grstr
       S nspan=grte-grts+1
       Q
 ;;tokFL:

@@ -1,0 +1,29 @@
+==  mpp-devlog
+    {  umep./   rppar1/*
+    
+    
+devlog HGen     esp for ^ppMA processes
+
+Init  devlog^devIO    
+    a.  Inputs  Fil and Fol, PB?
+    b.  Does Init HGS^hgh  html prelim  and <pre>
+    c.  guts is just write to devh  raw text in 
+Close-
+    d.  Close does HGE and WH^hgh
+
+       D IB^mepIO  S Q=$$devlog^devIO("mppLM-log.3.html","ww2x/")  ;HGen
+         I Q'="" G Qb
+       USE $G(devlog)
+       guts - write to $IO/devlog 
+       
+       D clog^devlog  ;HGS^hgh equiv, not actual refs
+       
+Note this HGen is old-style, copy-like old ^hgh, HGS^hgh, HGE 
+    All code is in ^devlog  part of gmsa./ rdev4/  ^dev*
+    
+Destination Bookmarks-
+--==
+devrgG0:/home/kw/km3a/umep/rppar1/mGR0a.mdk
+devrgG1:/home/kw/km3a/umep/rppar1/mGR1a.mdk
+devlog-LM:/home/kw/km3a/umep/ww2x/mppLM-log.3.html
+devlog-GRIaud:

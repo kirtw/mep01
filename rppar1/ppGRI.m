@@ -1,6 +1,7 @@
 ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen GR*  Grammar tables for mpp
 ;
 ;
+; ReFactor maybe:  tkcod  vs tokt  in tokgrFL, et. al
 ;
 ;  Fields of Grammar table are per grabFL  AND granFL, stem gr*
 ;;grabFL:grde,grnun,grri_GRv(grab)
@@ -14,7 +15,7 @@ ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen GR*  Grammar tables fo
 ;;gran:s grab.grun eg Exp.1, "Exp.2"  subscript of GRc esp grulst- rule list
 ;;grulst;spdelim List of tokens, either terminal in TKv or grab  rule name (not gran)
 ;;   1st sp piece may have term after / from grammar file,  gran may be attached to _2
-;;toktL:special list of tokt's which may start gran, $P(tokL," ") is punct list, rest $P(sp tokt's
+;;toktPUL:special list of tokt's which may start gran, $P(tokL," ") is punct list, rest $P(sp tokt's
 ;;gropsr: post proc sr, in ^ppPO, def =grab, mult gran same sr ?  vs grab_grun (not dot in label)
 ;
 
@@ -22,27 +23,41 @@ ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen GR*  Grammar tables fo
 ;   GRv is not count anymore, rsq?
 ;* Stdize GRc for kfm, granFL
 ;*
-top    ;
-       D IRDGR 
+;*  RG() with //GG marker for grammar source, //tokt  marker for terminal token ids, //m for mumps code
+top    NEW Q I $$arg^pps("RG") G Qb
        D CRGru ; RG() : GRv(grab),GRc(gran)->grulst, GXsq(rsq)=grab
        D CRGtokt ; GRt(tokt, GXtsq(tsq)=tokt
        ;devlog still open for caller continuation  CFW^devlog(devlog)
+       G Q
+;*
+Q      Q:$Q Q Q:Q=""
+Qb     D b^dv("Err ^"_$T(+0),"Q,RG,devrg,gi,grab,gran") Q:$Q Q  Q
+;* op no params
+G0     S gFil="mGR0a.mdk"   ; in rppar1/ !
+       D IRDGR(gFil) 
+       D ^ppGRI  ; RG() : GRv...
+       Q
+;*
+G1     S gFil="mGR1a.mdk"
+       D IRDGR(gFil) 
+       D ^ppGRI
        Q
 ;*    Read Grammar File, multiple sections to RG()     
-IRDGR  NEW Q S Q="" 
+IRDGR(gFil)  NEW Q,D I $$arg^pps("gFil") G Qb 
+       S D=$IO
        KILL RG,GRv,GRc     S GRv=0,GRc=0,rsq=0  D ^ppIMG
-       S gFil="mGR1a.mdk",gFol="rppar1/"
+       S gFol="rppar1/"
        D IB^mepIO ; PB umep./
        S devrg=PB_gFol_gFil
        S Q=$$^devRD(devrg,,"RG") I Q'="" G Qb
        I 'RG S Q="Empty GR grammar file " G Qb
        ;
-       G Q
+       USE D G Q
 ;*  RG() :  GRna, GRc, GXsq
 ;;grabFL:grde,grnun,grri_GRv(grab)
 ;*   GRc(gran)=grulst, space delim tokens, term[".", Punct ?1P  or grab  rule
 ;*
-CRGru    NEW Q I $$arg^pps("RG") G Qb
+CRGru  NEW Q I $$arg^pps("RG") G Qb
        KILL GRv,GRc S grun=1,grab="?",grri="?"
        S gi0=0 F gi=1:1:RG S L=$G(RG(gi)) I $E(L,1,2)="//",L["GR" S gi0=gi Q
        I 'gi0 S Q="Err did not find //GR in RG("_gi G Qb
@@ -73,6 +88,7 @@ CRGru    NEW Q I $$arg^pps("RG") G Qb
        W:$X ! W "Completed Grammar composition CRGru^"_$T(+0)_"  GRv, GRc, GXsq ",!
        G Q
 ;*  GRt  :  GRt(tokt)=tokt  Index of terminal token names, including certain Punct
+;;tokgFL:ttde,ttri_GRt(tokt)
 CRGtokt NEW Q S Q=""  I $$arg^pps("RG") G Qb
        NEW gi,gi0,PUL,tsq,P,tokt,L,L1
        KILL GRt,GXtsq,GXtt S GXtt=0,gti=0,GXtsq=0 
@@ -86,14 +102,13 @@ CRGtokt NEW Q S Q=""  I $$arg^pps("RG") G Qb
        F gi=gi0+1:1:RG S L=$G(RG(gi)) Q:L["//"  Q:L["***"  DO  ;
          .S L1=$$DSP^dvc(L) ;L1 tokt
          .S tokt=$P(L1," ")
+         .S ttde=$P(L1," ",2,9) I ttde="" S ttde=tokt
+         .S ttri=gi
          .I tokt="" Q  ;Ignore blank line
          .I tokt'["." S tokt=tokt_"."
-         .S GRt(tokt)=tokt
-         .S tsq=tsq+1,GXtsq(tsq)=tokt
-       W:$X ! W "Finished CRGtok^"_$T(+0)_"  Composing GRt  Terminal token db.",!
+         .D SFL^kfm("ttde,ttri",tokgrFL) ; GRt(tokt, 
+         .S tsq=tsq+1,GXtsq(tsq)=tokt,GXtsg=tsq
+       W:$X ! W "Finished CRGtok^"_$T(+0)_"  Composing GRt(tokt,  Terminal token db.",!
        G Q
-;*
-Q      Q:$Q Q Q:Q=""
-Qb     D b^dv("Err ^"_$T(+0),"Q,RG,devrg,gi,grab,gran") Q:$Q Q  Q
 ;*
 

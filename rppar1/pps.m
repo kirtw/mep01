@@ -1,4 +1,4 @@
-pps ;CKW/ESC i3mar24 umep./ rppar1/ ;2024-0303-76;SR for ^pp*
+pps ;CKW/ESC i3mar24 umep./ rppar1/ ;2024-0327-97;SR for ^pp*
 ;
 ;
 ;
@@ -24,17 +24,22 @@ Qa      S argQ=Q,argRet=(Q'=""),argDolQ=$Q,argVL=VL
 ;*
 ;*  Dense, One line vers of pze
 pze(M,VL) ;
-      NEW X,D S D=$IO USE $P W:$X !
+      NEW X,D S D=$IO
       S VL=$G(VL) ;I VL="" S VL="mrid,M,VL"  ;sic crazy
       S M=$G(M)
       I VL'="" D WVL(VL)
+      USE $P I $G(devlog)'="" W:$X ! W "devlog:",devlog,!
+      I $G(deverr)'="" W:$X ! W "deverr:",deverr,!
+      I D'=$P,D'=$G(devlog) W:$X ! W "Current $IO not $P:",D,!
       W:$X ! W " *** pze ***  ",M     
       W " Pause ( . for Dir Mode )  <ret> "
       READ ":",X,!!
       I X["." D ^dvstk,b^dv("dot Break out of pze- ",VL) ; Dir Mode Break
+      USE D
       Q
-WVL(VL) NEW D,d,vi,vn,val,ln   S D=$IO USE $P
-   I $L(VL)="" Q
+WVL(VL) NEW D,d,vi,vn,val,ln   
+   I $G(VL)="" Q
+   ;S D=$IO USE $P
    F vi=1:1:$L(VL,",") S vn=$P(VL,",",vi) I vn?.1"%"1A.an DO  ;
      .W:$X ! W " ",vn,": "
      .S d=$D(@vn),val=$G(@vn)
@@ -46,5 +51,6 @@ WVL(VL) NEW D,d,vi,vn,val,ln   S D=$IO USE $P
      .W $E(val,1,vw)
      .I ln>50 W !,?10,"...:",$E(val,vw+1,vw+60) W:ln>vw+60 "+"
      .W !
+   ;USE D 
    Q
 ;*

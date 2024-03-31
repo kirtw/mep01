@@ -5,7 +5,7 @@ ppIMG ;CKW/ESC i5dec22 umep./ rcfg/ ;2024-0302-91; ^pp*table mumps parser- FL va
 
 ;* : VVL, *FL
 top2   NEW Q,fi,xFL,FL,T,x2  S Q=""
-       S VVL="grabFL,tokFL,granFL,stkFL,pt1FL,pt2FL"
+       S VVL="grabFL,granFL,tokFL,tokgrFL,stkFL,pt1FL,pt2FL"  ;comma list labels/*FL names
        F fi=1:1:$L(VVL,",")  DO  ;
          .S xFL=$P(VVL,",",fi)
          .I xFL="" D bug^dv Q
@@ -23,11 +23,11 @@ IKILLFL  D ^ppIMG ; VVL,*FL
        Q
 ;*
 tokFL  ;;tokFL:tkcod,tks,tkcs,tkce_TKv(tki)
+tokgrFL ;;tokgrFL:ttde,ttri_GRt(tokt)
 grabFL ;;grabFL:grde,grnun,grri_GRv(grab)
 granFL ;;granFL:grulst,gropsr,grtt_GRc(gran)
 ;
-stkFL  ;;stkFL:grabC,grunC,gran,grulst,RnC_STK(STK)
-;
+stkFL  ;;stkFL:grabS,Lev_STK(StkP)
 pt1FL  ;;pt1FL:Lev_PTx(pti)
 pt2FL  ;;pt2FL:gran,grts,grte,grstr_PTx(pti,tki)
 ;

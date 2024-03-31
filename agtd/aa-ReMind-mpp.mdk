@@ -1,0 +1,30 @@
+==   @mpp  ReMind  OVR Review
+
+
+@mpp is variant of parser for MUMPS, in mumps with a 
+table driven approach and post-element sr for MBR-like processes.
+
+rules are serial lists of tokens, all of which must pass to pass the rule.
+Tokens are either Terminal or rule tokens.
+Rule tokens, designated by a grab mnemonic may havee several alternative subrules.
+Subrules are sequential and numbered 1:1. Each sub rule has a gran identifier
+A gran is formed by the grab mnemonic with an integer suffix.
+Actual rule-lists, grulst, belong to gran's, not grab's.
+A grab has a description in grde.
+
+For example
+   grab="Kcmd"  has grde of 'Kill command rule.
+     gran= Kcmd.1  which has a space-delimited grulst="Kwd. sp1. Karg"
+   Here Kwd. is a terminal token (tokt) which represents one of K KILL k kill etc.
+
+Terminal tokens are directly related to inputs to the parser, ie that to be parsed.
+Terminal token names end in a dot or are simply one punct character.
+Rules are mnemonic with no dot in the name.
+
+The grammar is defined in a text file with a loose structure, human typeable but unambiguous.
+
+A grab value starts a line with no indentation. The rest of the line is grde, the description.
+Subsequent lines are alternatives or gran's with no new name and derived from preceding grab.
+
+Lists are space-delimited tokens, wither terminal or sub-rules.
+
