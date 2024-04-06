@@ -1,0 +1,23 @@
+==  DS-PTx  Grid General Results of Parse
+
+
+Lines 1-3  from TKv(tki)  Input tokens  with row header labels
+   Should be at bottom, after PTx which starts broad to details
+
+
+Then PTx Array -> Parse grid
+
+StkP is first subscript, 1:1  as many as defined $D(PTx(pti)
+    pti is StkP in 
+    grab/gran set 1:1  StkP incr with each recursion of ^ppPAgrab
+    Although may test mult alts of grab as gn=1:1  only one passes
+Thus certain fields are ambiguously assigned to grab or gran
+    grab-  grabFL  grnun, grde, gropsr ?    grts & grte (and derivative grstr, grnspan)
+       grab F gn=1:1:grnun  gran=grab.gn   gn~grun
+    gran-  grun, grab/parent, granFL:  grulst, nlst,  QN pass/fail
+       grun F Rn=1:1:nlst  tok, toty  
+         Now all in grulst must pass, either terminal toty="T" QT, grte
+         
+           or tok -> grab  recurse ^ppPAgrab(tok,stkP+1) : QB, grte2
+    
+PTx(pti,ptcj,   grte, gran(grab/gn), -> grstr, grnspan

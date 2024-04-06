@@ -1,0 +1,50 @@
+==  Log-scrape  G0  K X
+
+
+Option 1  #1  LM^ppMa-   -
+Starting LM^ppMa 
+Completed Grammar composition CRGru^ppGRI  GRv, GRc, GXsq 
+Finished CRGtok^ppGRI  Composing GRt(tokt,  Terminal token db.
+Finished ^ppITK  tki:3 codes
+
+Audit of TK(tki,  tki end:3 completed.  ok?
+
+
+Kwd.           'K'   {1-1} 
+sp1.           '_'   {2-2} 
+Vna.           'X'   {3-3} 
+ TKv: ARRAY+Str 3
+ *** pze ***  See TKv  Pause ( . for Dir Mode )  <ret> :
+
+--nxt In:1  Kwd. K
+ InitGRAB           StkP grab       grde 
+InitGRAB: 1    mCmds      level, start for no* 
+InitGRAN: 1    mCmds.1    1    Kcmd 
+ InitGRAB           StkP grab       grde 
+InitGRAB: 2    Kcmd       command 
+InitGRAN: 2    Kcmd.1     1    Kwd. sp1. eKcmd 
+termPASS: Kcmd.1.1   Kcmd.1     1    Kwd. sp1. eKcmd           Kwd.     T     
+--nxt In:2  sp1. _
+ StkP: 2
+ gran: Kcmd.1
+ grts: 1
+ grte: 2
+ *** pze ***  Dupl PTx Pause ( . for Dir Mode )  <ret> :
+
+termPASS: Kcmd.1.2   Kcmd.1     2    Kwd. sp1. eKcmd           sp1.     T     
+--nxt In:3  Vna. X
+ InitGRAB           StkP grab       grde 
+InitGRAB: 3    eKcmd      End of Kill Cmd 
+InitGRAN: 3    eKcmd.1    1    Karg 
+ InitGRAB           StkP grab       grde 
+InitGRAB: 4    Karg       Kill argument 
+InitGRAN: 4    Karg.1     1    Vna. 
+termPASS: Karg.1.1   Karg.1     1    Vna.                      Vna.     T     
+granPASS:            Karg.1     1    Vna.                      Vna.     T     
+grabPASS:            Karg       Karg.1     3    3    U*R* U*grulst                  Vna.     T     
+granPASS:            eKcmd.1    1    Karg                      Karg     R     
+grabPASS:            eKcmd      eKcmd.1    3         U*R* U*grulst                  Karg     R     
+granPASS:            Kcmd.1     3    Kwd. sp1. eKcmd           eKcmd    R     
+grabPASS:            Kcmd       Kcmd.1     1    2    U*R* U*grulst                  eKcmd    R     
+granPASS:            mCmds.1    1    Kcmd                      Kcmd     R     
+grabPASS:            mCmds      mCmds.1    1         U*R* U*grulst                  Kcmd     R     

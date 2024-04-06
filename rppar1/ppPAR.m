@@ -1,9 +1,9 @@
-ppPAR ;CKW/ESC i7feb24 umep./ rppar1/ ;2024-0327-97;mumps table mumps parser
+ppPAR ;CKW/ESC i7feb24 umep./ rppar1/ ;2024-0401-45;mumps table mumps parser
 ;  TKv(tki)  Input tokenized
 ;  GRv(   GRt( ...
 ;   : PX(
 ;
-;;tokFL:tkcod,tks,tkcs,tkce_TKv(tki)
+;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 top     NEW Q I $$arg^pps("TKv,GRv,GRc,GRt") G Qb
           KILL (TKv,GRv,GRc,GRt)  ; debug
         D ^ppIMG
@@ -18,7 +18,7 @@ top     NEW Q I $$arg^pps("TKv,GRv,GRc,GRt") G Qb
         G Q  ;top Done, line LM and TKv(tki,  -> PTx, etc. 
 ;*
 ;;pt1FL:Lev_PTx(pti)
-;;pt2FL:gran,grts,grte,grstr_PTx(pti,tki)        
+;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
 ;*
 
 ;*

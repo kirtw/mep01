@@ -17,16 +17,50 @@ sp1.           '_'   {2-2}
 Vna.           'X'   {3-3} 
  TKv: ARRAY+Str 3
 --nxt In:1  Kwd. K
-STK  grab       grde 
-InitGRAB: 0 mCmds level, start for no* 
-STK  gran       Rn   grulst                    tok      toty gropsr 
-InitGRAN: A*S* mCmds.1 1 Kcmd                  U*tok    U*t*  
- tok: Kcmd
- toty: R
- StkP: 0
-STK  grab       grde 
-InitGRAB: A*S* Kcmd command 
-STK  gran       Rn   grulst                    tok      toty gropsr 
-InitGRAN: A*S* Kcmd.1 1 Kwd. sp1. eKcmd        U*tok    U*t*  
-termPASS: Kcmd Kcmd.1 1    Kwd. sp1. eKcmd           Kwd.     T     
+InitGRAB  StkP:     grab       grts grde 
+InitGRAB  StkP:     grab       grts grde 
+InitGRAB: StkP=1    mCmds      1    level, start for no* 
+InitGRAN  StkP:     gran       Rn   grulst 
+InitGRAN: StkP=1    mCmds.1    1    Kcmd 
+InitGRAB  StkP:     grab       grts grde 
+InitGRAB  StkP:     grab       grts grde 
+InitGRAB: StkP=2    Kcmd       1    command 
+InitGRAN  StkP:     gran       Rn   grulst 
+InitGRAN: StkP=2    Kcmd.1     1    Kwd. sp1. eKcmd 
+termPASS  gnn        gran       Rn   grulst                    tokt     toty gropsr     gnC        gnts gnte 
+termPASS  gnn        gran       Rn   grulst                    tokt     toty gropsr     gnC        gnts gnte 
+termPASS: Kcmd.1.1   Kcmd.1     1    Kwd. sp1. eKcmd           Kwd.     T               U*gnC      1    1 
 --nxt In:2  sp1. _
+termPASS  gnn        gran       Rn   grulst                    tokt     toty gropsr     gnC        gnts gnte 
+termPASS  gnn        gran       Rn   grulst                    tokt     toty gropsr     gnC        gnts gnte 
+termPASS: Kcmd.1.2   Kcmd.1     2    Kwd. sp1. eKcmd           sp1.     T               U*gnC      1    2 
+--nxt In:3  Vna. X
+InitGRAB  StkP:     grab       grts grde 
+InitGRAB  StkP:     grab       grts grde 
+InitGRAB: StkP=3    eKcmd      3    End of Kill Cmd 
+InitGRAN  StkP:     gran       Rn   grulst 
+InitGRAN: StkP=3    eKcmd.1    1    Karg 
+InitGRAB  StkP:     grab       grts grde 
+InitGRAB  StkP:     grab       grts grde 
+InitGRAB: StkP=4    Karg       3    Kill argument 
+InitGRAN  StkP:     gran       Rn   grulst 
+InitGRAN: StkP=4    Karg.1     1    Vna. 
+termPASS  gnn        gran       Rn   grulst                    tokt     toty gropsr     gnC        gnts gnte 
+termPASS  gnn        gran       Rn   grulst                    tokt     toty gropsr     gnC        gnts gnte 
+termPASS: Karg.1.1   Karg.1     1    Vna.                      Vna.     T               U*gnC      3    3 
+granPASS  QN         gran       gnC        Rn   grulst                    tok      toty gropsr 
+granPASS:            Karg.1     3:3/       1    Vna.                      Vna.     T     
+grabPASS  QB:           grab       gran       grts grte gropsr 
+grabPASS: QB=           Karg       Karg.1     3    3     
+granPASS  QN         gran       gnC        Rn   grulst                    tok      toty gropsr 
+granPASS:            eKcmd.1    3:3/       1    Karg                      Karg     R     
+grabPASS  QB:           grab       gran       grts grte gropsr 
+grabPASS: QB=           eKcmd      eKcmd.1    3    3     
+granPASS  QN         gran       gnC        Rn   grulst                    tok      toty gropsr 
+granPASS:            Kcmd.1     3:3/       3    Kwd. sp1. eKcmd           eKcmd    R     
+grabPASS  QB:           grab       gran       grts grte gropsr 
+grabPASS: QB=           Kcmd       Kcmd.1     1    3     
+granPASS  QN         gran       gnC        Rn   grulst                    tok      toty gropsr 
+granPASS:            mCmds.1    3:3/       1    Kcmd                      Kcmd     R     
+grabPASS  QB:           grab       gran       grts grte gropsr 
+grabPASS: QB=           mCmds      mCmds.1    1    3     

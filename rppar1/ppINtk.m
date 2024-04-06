@@ -10,7 +10,7 @@ ppINtk  ;CKW/ESC i7feb24  umep./  rppar1/ ;2024-0207-70;Parse input LM to tokens
 ;;tkce:i Ptr to last char in input included in this token
 ;
 ;
-;;tokFL:tkcod,tks,tkcs,tkce_TKv(tki)
+;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 top   D II  ;TKc
       D IKY  ; KY() key word for TKk(ky)=<Tok>  choose TKk vs TKc wd by context/rule
       I $D(RM)'=11 D bug^dv Q

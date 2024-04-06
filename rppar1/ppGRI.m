@@ -10,8 +10,8 @@ ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen GR*  Grammar tables fo
 ;;grri:link back to source in RG(gi)  grammar file
 ;;grnun:i Number of gran alts  explicit here vs scattered logic testing gran's
 ;
-;;granFL:grulst,gropsr,tokL,grTTL_GRc(gran)
-;;grun:i 1:1 dot sfx in gran  implicit from $P(gran.2)  not needed actually vs gran
+;*   needed actually vs grabFL
+;;granFL:grulst,gropsr,grtt_GRc(gran)
 ;;gran:s grab.grun eg Exp.1, "Exp.2"  subscript of GRc esp grulst- rule list
 ;;grulst;spdelim List of tokens, either terminal in TKv or grab  rule name (not gran)
 ;;   1st sp piece may have term after / from grammar file,  gran may be attached to _2

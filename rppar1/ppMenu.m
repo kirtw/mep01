@@ -33,6 +33,7 @@ Menu	;Text for Menu  	Compile  RM()
 ;;     ^ppWGRt  Write Grammar Terminal tokens tokt (1P or contain dot)
 ;;     ^ppWTK  Write Terminal Input Tokens TKv()  
 ;;     la^dv  List Arrays
+;;     audFL^ppIMG
 ;; tk. TXU^ppMa  ppTXU Audit values in TK(
 ;;aud.  Audit Menu
 ;; ag. ^ppGXO GRv,...

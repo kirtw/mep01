@@ -1,6 +1,11 @@
 pps ;CKW/ESC i3mar24 umep./ rppar1/ ;2024-0327-97;SR for ^pp*
 ;
 ;
+stbtse  D stb^dv3("tse","M,grab,gran, ^,StkP,tsq,tse")
+        Q
+tse(M)  S tse=$G(grts)_"::"_$G(grte)_"  "_$G(gnts)_":"_$G(gnte)
+        D bln^dv3("tse")
+        Q
 ;
 ;*  Sets Q null or err, saves caller from having to do this, sic bug if ;out
 ;;  label(arg1,arg2) NEW Q I $$arg^cmds("arg1,arg3") Goto Q ;shared exit

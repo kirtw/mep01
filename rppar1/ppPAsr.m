@@ -10,11 +10,11 @@ POP(StkP)  ;  actually StkP=StkP-1  but dont reset loc vars ---
     D GFL^kfm("grabS,Lev_STK(StkP)") ; STK(StkP,
     ;
     Q
-WSTK  D stb^dv3("STK","StkP:4,grab:10,grun:4,gran:12,grulst:40,Rn:4")
+WSTK  D stb^dv3("Wstk","StkP:3,tki:3,grab:10,grun:4,gran:12,grulst:40,Rn:4")
     NEW grab,grun,gran,grulst,Rn
-    F STK=1:1:STK DO  ;
+    F STK=1:1:StkP DO  ;
       .D GFL^kfm(stkFL) ; STK(StkP,
-      .D bln^dv3("STK")
+      .D bln^dv3("Wstk")
     W ! Q
 ;*
 ;*  trq
@@ -23,7 +23,7 @@ trc(M,VL) I $$arg^pps("M,VL") D bug^dv Q
     I gran="KCmd.1" D b^dv("Log trc","M,StkP,trq,grab,gran,Rn,grulst")
     Q
 ;*
-;;tokFL:tkcod,tks,tkcs,tkce_TKv(tki)
+;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 ;*   Bump Input token :  QI, tki', tkcod~TKc,tks,tkcs,tkce
 Iin  NEW Q I $$arg^pps("tki") G Qb
      S tki=tki+1

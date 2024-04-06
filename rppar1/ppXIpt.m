@@ -8,7 +8,7 @@ top    KILL PTx S PTx=0
        Q
        ;       
 ;;pt1FL:Lev_PTx(pti)
-;;pt2FL:grab,gran,grts,grte,grstr,nspan_PTx(pti,tki)
+;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
        ;
 LD     F I=1:1 S T=$T(PTx+I) Q:T=""  Q:T["***"  S L=$P(T,";;",2,99) DO
          .S pti=$P(L," "),PTx(pti)=pti,PTx=pti

@@ -19,7 +19,7 @@ GRI    KILL  ;
 
 ;*       
 LM     W:$X ! W "Starting LM^ppMa ",!
-       ;D IB^mepIO  S Q=$$devlog^devIO("mppLM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
+       D IB^mepIO  S Q=$$devlog^devIO("mppLM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
        USE $G(devlog)
        D G0^ppGRI  ; GRv...
        D ^ppITK  ; TKv()  for S X=Y eol
@@ -29,8 +29,9 @@ LM     W:$X ! W "Starting LM^ppMa ",!
          D pze^pps("See TKv ","TKv")
        D ^ppPAR
        D clog^devlog  ;HGS^hgh equiv, not actual refs
-;;pt2FL:gran,grts,grte,grstr_PTx(pti,tki)
+;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
        D ^ppHPT  ; HGen PTx(pti,tki,   @pt2FL  grid  PI
+       I $G(devlog)'="" W !,"devlog:",devlog,"  ... Completed.",!
        Q
 ;*
 demo   W:$X ! W "Demo PTx Data",!

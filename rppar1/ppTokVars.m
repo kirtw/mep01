@@ -2,19 +2,19 @@ ppTokVars ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0207-41;Vars and FL Doc  mumps 
 ;
 ;  RM()  ri, rj  -> TK(ti)  {tna, 
 ;  TK(ti)   tokens  
-;;tokFL:tkcod,tks,tkcs,tkce_TKV(ti)
+;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 ;;tks s  Input string chars, eg var name %abc, or punct ^
 ;;tkcod s token code, terminal code
 ;;tkty  s -> Terminal vs rule code
 ;;
 ;;tokt s Token cod =tkcod, some tok
-;;tokgrFL:ttde_GRt(tkcod)
+;;tokgrFL:ttde,ttri_GRt(tokt)
 ;;
 ;    Grammar rules   gr*  
-;;grabFL:grde,grnun,grri_GRv(grab)  # gr* stem
+;;grabFL:grde,grnun,grri_GRv(grab)
 ;;grab  ~grab Rule name, ref in other rules list
 ;;
-;;granFL:grulst,gropsr,grtt_GRc(gran)  # gr* stem
+;;granFL:grulst,gropsr,grtt_GRc(gran)
 ;;gran  ~gran  grcod + .i  alt variant number
 ;;grulst   Rule List, space delim
 ;;

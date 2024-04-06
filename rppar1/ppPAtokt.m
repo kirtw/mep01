@@ -1,7 +1,7 @@
-ppPAtokt(tokt)  ;CKW/ESC i26mar24 umep./ rppar1/ ;2024-0327-97;Terminal tokt process 
+ppPAtokt(tokt)  ;CKW/ESC i26mar24 umep./ rppar1/ ;2024-0401-45;Terminal tokt process 
 ;
 ;
-;  tokt, toty="T" : QT
+;  tokt, toty="T" : QT, gnte'
     NEW Q,DD,QTest  I $$arg^pps("tokt,toty") G Qb
       I toty'="T" D bug^dv G Qb
     S DD=$D(GRt(tokt)) I DD=0 S Q="Undef tokt '"_tokt_"'" G Qb    
@@ -9,6 +9,7 @@ ppPAtokt(tokt)  ;CKW/ESC i26mar24 umep./ rppar1/ ;2024-0327-97;Terminal tokt pro
     I 'QTest S QT="X tokt-Failed"_TKc_"'="_tokt D TermNO G Q
     D TermMch  
     S QT="" ;QTest matches !
+    ;above before bumping tki, here
     D Iin^ppPAsr    ;Now bump tki, TKc, tk*
     I QI'="",tki=""   ;No more input
     G Q
@@ -18,8 +19,9 @@ Qb     D b^dv("Err ^"_$T(+0),"Q,RG,devrg,gi,grab,gran") Q:$Q Q  Q
 ;*
 ;* Terminal matched Input tokt=TKc~tkcod/Input tki : TKc null means finished TKv input
 ;  Bumps both Input, tki, and rule ptr, Rn, after finding a terminal match
-TermMch   S grce=tki,grstr=grstr_tks
-      D SFL^kfm("gran,grstr","_PTx(tkcs,StkP)")
+TermMch   S gnte=tki
+      I $D(PTx(StkP,gnts,"gnte")) ;D ^dv("Dupl PTx","StkP,gran,gnts,gnte")
+      D SFL^kfm("gran,gnts,gnte","_PTx(StkP,gnts)")
       ;W:$X ! W "TermMch ",tokt," in ",gran," #",Rn,"  vs tki:",tki,"  <",tks,"> ->",grstr,!
       D bln^dv3("termPASS")
       Q
