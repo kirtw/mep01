@@ -1,0 +1,93 @@
+==  trace grte-gnte  6apr24  
+
+
+kw@L7a:~/km3a/umep/rppar1$ grep gnn -n ppPA*.m
+ppPAgrab.m:29:        ;D pze^pps("Pop gnts","gran,grts,gnts,grte,gnte,gnn,grC")        
+ppPAgran.m:16:          .S gnn=gran_"."_Rn_"/"_StkP
+ppPAgran.m:17:          .D toty ; grulst, Rn : tok, toty, gnn
+ppPAgran.m:31:;* gran, Rn, grulst : toty, tok, gnn 
+ppPAgran.m:40:        I gran="Karg.1",gnte'=3 D b^dv("Err gnte","grte,gran,gnn")
+ppPAinit.m:22:    D stb^dv3("termPASS","gnn:10,gran:10,Rn:4,grulst:25,tokt:8,toty:2,gropsr:10,gnC:10,gnts:3,gnte:3,#")
+ppPAinit.m:23:    D stb^dv3("termFAIL","gnn:10,grab:10,gran:10,Rn:4,grulst:25,tok:8,toty:2,gropsr:10,#")
+ppPAtokt.m:30:TermNO S QT="X:"_tokt_" at "_$G(gnn)
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ grep grts -n ppPA*.m  
+ppPAgrab.m:7:        NEW grde,grri,grnun,grun,gran,grulst,gropsr,Rn,tok,toty,gn ; not grts,grte,grstr
+ppPAgrab.m:9:        S grun=1 S QB="??"  S grts=tki
+ppPAgrab.m:27:          ; xx S grts=$G(gnts)
+ppPAgrab.m:29:        ;D pze^pps("Pop gnts","gran,grts,gnts,grte,gnte,gnn,grC")        
+ppPAgran.m:5:        NEW Rn,grulst,Rn,QT,grstr,grts,grte S Rn=1  ;not gnts,gnte
+ppPAgran.m:11:        ;I $G(grts)'=$G(gnts) D b^dv("Mismatch *ts","grts,gnts,gran,grab,StkP")        
+ppPAgran.m:23:             ..S Q=$$^ppPAgrab(tok,StkP+1)  ; :QB, grts,grte
+ppPAgran.m:43:        I $G(gnts)="" D b^dv("Err null gnts granPASS","gran,gnts,gnte,grab,grts,grte")
+ppPAinit.m:14:    D stb^dv3("InitGRAB","StkP:4/,grab:10,grts:4,grde:20,#")
+ppPAinit.m:15:    D stb^dv3("grabPASS","QB:10/,grab:10,gran:10,grts:4,grte:4,gropsr:10")
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ grep gnts -n ppPA*.m 
+ppPAgrab.m:14:          .S Q=$$^ppPAgran(gran)   ; QN, gnts,gnte
+ppPAgrab.m:27:          ; xx S grts=$G(gnts)
+ppPAgrab.m:29:        ;D pze^pps("Pop gnts","gran,grts,gnts,grte,gnte,gnn,grC")        
+ppPAgran.m:3:;* $$Q, gran (valid not >grnun) : QN, gnts,gnte if QN null/pass gran/grun is a successful alternative in grab
+ppPAgran.m:5:        NEW Rn,grulst,Rn,QT,grstr,grts,grte S Rn=1  ;not gnts,gnte
+ppPAgran.m:9:        S gnts=tki,nlst=$L(grulst," "),gnte=""
+ppPAgran.m:11:        ;I $G(grts)'=$G(gnts) D b^dv("Mismatch *ts","grts,gnts,gran,grab,StkP")        
+ppPAgran.m:12:        ;S PTx(StkP,gnts,"gran")=gran
+ppPAgran.m:13:        I $G(gnts)="" D b^dv("Err gnts null","gnts,gnte,gran")
+ppPAgran.m:14:        D SFL^kfm("gran,gnts_PTx(StkP,gnts)")
+ppPAgran.m:21:             ..I QT="",$G(gnte)="" D b^dv("Err ret gnte by termMCH","gran,gnts,gnte")
+ppPAgran.m:25:             ..S gnte=$G(grte)  ; also gnts?
+ppPAgran.m:38:;* gran, gnts, gnte :
+ppPAgran.m:41:        S nospan=gnte-gnts+1 S:nospan=1 nospan=""
+ppPAgran.m:42:        S gnC=$G(gnts)_":"_$G(gnte)_"/"_$G(nospan)   
+ppPAgran.m:43:        I $G(gnts)="" D b^dv("Err null gnts granPASS","gran,gnts,gnte,grab,grts,grte")
+ppPAgran.m:44:        D SFL^kfm("gnts,gnte,gnC","_PTx(StkP,gnts)")
+ppPAgran.m:46:        ;D pze^dv("Log granPASS","QT,grulst,gnts,gnte")        
+ppPAinit.m:22:    D stb^dv3("termPASS","gnn:10,gran:10,Rn:4,grulst:25,tokt:8,toty:2,gropsr:10,gnC:10,gnts:3,gnte:3,#")
+ppPAR.m:21:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+ppPAtokt.m:23:      I $D(PTx(StkP,gnts,"gnte")) ;D ^dv("Dupl PTx","StkP,gran,gnts,gnte")
+ppPAtokt.m:24:      D SFL^kfm("gran,gnts,gnte","_PTx(StkP,gnts)")
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ grep gnte -n ppPA*.m 
+ppPAgrab.m:14:          .S Q=$$^ppPAgran(gran)   ; QN, gnts,gnte
+ppPAgrab.m:26:        S grte=$G(gnte)
+ppPAgrab.m:29:        ;D pze^pps("Pop gnts","gran,grts,gnts,grte,gnte,gnn,grC")        
+ppPAgran.m:3:;* $$Q, gran (valid not >grnun) : QN, gnts,gnte if QN null/pass gran/grun is a successful alternative in grab
+ppPAgran.m:5:        NEW Rn,grulst,Rn,QT,grstr,grts,grte S Rn=1  ;not gnts,gnte
+ppPAgran.m:9:        S gnts=tki,nlst=$L(grulst," "),gnte=""
+ppPAgran.m:13:        I $G(gnts)="" D b^dv("Err gnts null","gnts,gnte,gran")
+ppPAgran.m:19:             ..S Q=$$^ppPAtokt(tok)  ;  : QT, gnte'
+ppPAgran.m:21:             ..I QT="",$G(gnte)="" D b^dv("Err ret gnte by termMCH","gran,gnts,gnte")
+ppPAgran.m:25:             ..S gnte=$G(grte)  ; also gnts?
+ppPAgran.m:38:;* gran, gnts, gnte :
+ppPAgran.m:40:        I gran="Karg.1",gnte'=3 D b^dv("Err gnte","grte,gran,gnn")
+ppPAgran.m:41:        S nospan=gnte-gnts+1 S:nospan=1 nospan=""
+ppPAgran.m:42:        S gnC=$G(gnts)_":"_$G(gnte)_"/"_$G(nospan)   
+ppPAgran.m:43:        I $G(gnts)="" D b^dv("Err null gnts granPASS","gran,gnts,gnte,grab,grts,grte")
+ppPAgran.m:44:        D SFL^kfm("gnts,gnte,gnC","_PTx(StkP,gnts)")
+ppPAgran.m:46:        ;D pze^dv("Log granPASS","QT,grulst,gnts,gnte")        
+ppPAinit.m:22:    D stb^dv3("termPASS","gnn:10,gran:10,Rn:4,grulst:25,tokt:8,toty:2,gropsr:10,gnC:10,gnts:3,gnte:3,#")
+ppPAR.m:21:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+ppPAtokt.m:4:;  tokt, toty="T" : QT, gnte'
+ppPAtokt.m:22:TermMch   S gnte=tki
+ppPAtokt.m:23:      I $D(PTx(StkP,gnts,"gnte")) ;D ^dv("Dupl PTx","StkP,gran,gnts,gnte")
+ppPAtokt.m:24:      D SFL^kfm("gran,gnts,gnte","_PTx(StkP,gnts)")
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ 
+kw@L7a:~/km3a/umep/rppar1$ grep grte -n ppPA*.m
+ppPAgrab.m:7:        NEW grde,grri,grnun,grun,gran,grulst,gropsr,Rn,tok,toty,gn ; not grts,grte,grstr
+ppPAgrab.m:26:        S grte=$G(gnte)
+ppPAgrab.m:29:        ;D pze^pps("Pop gnts","gran,grts,gnts,grte,gnte,gnn,grC")        
+ppPAgran.m:5:        NEW Rn,grulst,Rn,QT,grstr,grts,grte S Rn=1  ;not gnts,gnte
+ppPAgran.m:23:             ..S Q=$$^ppPAgrab(tok,StkP+1)  ; :QB, grts,grte
+ppPAgran.m:25:             ..S gnte=$G(grte)  ; also gnts?
+ppPAgran.m:40:        I gran="Karg.1",gnte'=3 D b^dv("Err gnte","grte,gran,gnn")
+ppPAgran.m:43:        I $G(gnts)="" D b^dv("Err null gnts granPASS","gran,gnts,gnte,grab,grts,grte")
+ppPAinit.m:15:    D stb^dv3("grabPASS","QB:10/,grab:10,gran:10,grts:4,grte:4,gropsr:10")
+kw@L7a:~/km3a/umep/rppar1$

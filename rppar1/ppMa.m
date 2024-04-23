@@ -19,6 +19,7 @@ GRI    KILL  ;
 
 ;*       
 LM     W:$X ! W "Starting LM^ppMa ",!
+       D stbtse^pps S tsq=0 ; def tse
        D IB^mepIO  S Q=$$devlog^devIO("mppLM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
        USE $G(devlog)
        D G0^ppGRI  ; GRv...

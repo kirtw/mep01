@@ -1,24 +1,24 @@
-ppIMG ;CKW/ESC i5dec22 umep./ rcfg/ ;2024-0302-91; ^pp*table mumps parser- FL vars
-;  rev primary copy like copy copies
+ppIMG ;CKW/ESC i5dec22 umep./ rppar1/ ;2024-0413-01; ^pp* table mumps parser- FL vars
 ;  audFL^  Audit copies
 ;  IKILLFL^ Kill loc var for ALL fields (not *FL vars)
 
 ;* : VVL, *FL
-top2   NEW Q,fi,xFL,FL,T,x2  S Q=""
-       S VVL="grabFL,granFL,tokFL,tokgrFL,stkFL,pt2FL"  ;comma list labels/*FL names
+top   NEW Q,fi,xFL,FL,T,x2  S Q=""
+       S VVL="grabFL,granFL,tokFL,tokgrFL,stkFL,pt2FL,sgrabFL,sgranFL"  ;comma list labels/*FL names
             ; remove pt1FL
-       F fi=1:1:$L(VVL,",")  DO  ;
+       FOR fi=1:1:$L(VVL,",")  DO  ;
          .S xFL=$P(VVL,",",fi)
          .I xFL="" D bug^dv Q
          .S @xFL=""  ; def init
-         .S T=$T(@xFL),T=$P(T,";;",2),x2=$P(T,":"),FL=$P(T,":",2,99)
+         .S T=$T(@xFL) I T="" D b^dv("Err xFL("_xFL_") in VVL (^ppIMG) no label","T,xFL,VVL,fi")
+         .S T=$P(T,";;",2),x2=$P(T,":"),FL=$P(T,":",2,99)
          .I x2'=xFL D b^dv("Err src name","x2,xFL,T,fi,VVL") Q
          .S @xFL=FL
        G Q
 ;*  Init All loc vars in *FL  KILL or Set Null
 IKILLFL  D ^ppIMG ; VVL,*FL
        NEW vi,vn,xFL,FL
-       F fi=1:1:$L(VVL,",") S xFL=$P(VVL,",",fi) DO  ;
+       FOR fi=1:1:$L(VVL,",") S xFL=$P(VVL,",",fi) DO  ;
          .S FL=$P(xFL,"_")
          .F vi=1:1:$L(FL,",") S vn=$P(FL,",",vi) KILL @vn  ;; KILL vs Set Null?
        Q
@@ -26,15 +26,18 @@ IKILLFL  D ^ppIMG ; VVL,*FL
 tokFL  ;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 tokgrFL ;;tokgrFL:ttde,ttri_GRt(tokt)
 grabFL ;;grabFL:grde,grnun,grri_GRv(grab)
-granFL ;;granFL:grulst,gropsr,grtt_GRc(gran)
+granFL ;;granFL:grulst,gropsr_GRc(gran)
 ;
-stkFL  ;;stkFL:grabS,Lev_STK(StkP)
+sgrabFL  ;;sgrabFL:grab,grnun,grts,grte,grde_HQT(StkP)
+sgranFL  ;;sgranFL:gran,gnts,gnte,grulst_HQT(StkP)
+;
+stkFL  ;;stkFL:grab_STK(StkP)
 pt1FL  ;;pt1FL:Lev_PTx(StkP)
 pt2FL  ;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
 ;
 ;*
 Q      Q:$Q Q Q:Q=""
-Qb     D b^dv("Err ^"_$T(+0),"Q,RUL,TOK,Rn,QRU") Q:$Q Q  Q
+Qb     D b^dv("Err ^"_$T(+0),"Q,VVL,") Q:$Q Q  Q
 ;*  
 ;
 ;*   By caller, once each startup ^cmdMenu    

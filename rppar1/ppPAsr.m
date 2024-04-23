@@ -2,14 +2,29 @@ ppPAsr ;CKW/ESC umep./ rppar1/ ;2024-0327-97; Increment srs Iin  tki
 ;
 ;
 
-;;stkFL:grabS,Lev_STK(StkP)
-PSH(StkP)  S Lev=StkP S grabS=grab
-    D SFL^kfm(stkFL)  ; Save, not actually stack function vs recursive save Tgrab/Tgran
+;;stkFL:
+PSHb()  S sty="grab"
+    D SFL^kfm("sty,grab,grts,grte",stkFL)  ; Save, not actually stack function vs recursive save Tgrab/Tgran
+    S StkP=StkP+1
     Q
-POP(StkP)  ;  actually StkP=StkP-1  but dont reset loc vars ---
-    D GFL^kfm("grabS,Lev_STK(StkP)") ; STK(StkP,
+PSHn()  S Lev=StkP,sty="gran"
+    D SFL^kfm("sty,gran,gnts_STK(StkP)")
+    S StkP=StkP+1
+    Q
+POPb()  ;  actually StkP=StkP-1  but dont reset loc vars ---
+    I StkP<2 D b^dv("Err Stk UnderFlop pop","StkP") Q
+    S StkP=StkP-1
+    D GFL^kfm("sty,gnts",stkFL) ; STK(StkP,
+    I sty'="grab" D bug^dv("Stk sync pop/push sty grab","sty,StkP,grab,gran")
     ;
     Q
+POPn()  ;  actually StkP=StkP-1  but dont reset loc vars ---
+    I StkP<2 D b^dv("Err Stk UnderFlop pop","StkP") Q
+    S StkP=StkP-1
+    D GFL^kfm("gnts",stkFL) ; STK(StkP,
+    I sty'="gran" D bug^dv("Stk sync pop/push sty gran","sty,StkP,grab,gran")
+    ;
+    Q    
 WSTK  D stb^dv3("Wstk","StkP:3,tki:3,grab:10,grun:4,gran:12,grulst:40,Rn:4")
     NEW grab,grun,gran,grulst,Rn
     F STK=1:1:StkP DO  ;

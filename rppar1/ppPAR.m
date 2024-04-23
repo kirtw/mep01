@@ -11,8 +11,9 @@ top     NEW Q I $$arg^pps("TKv,GRv,GRc,GRt") G Qb
         S (QS,QT,QN,QB,QI,QA)="???"  ; just in case  Null pass, not null fails
         S tki=0 D Iin^ppPAsr ; TKv(tki,  :  tki=1,  -> tkcod,tks, tkcs,tkce 
         S grab="mCmds",Rn=1,grun=1  ;Starting top rule 'mCmds', ptr Rn
+        S StkP=0
         ;
-        S Q=$$^ppPAgrab(grab,StkP) ; : QB
+        S Q=$$^ppPAgrab(grab) ; : QB
         I QB'="" D b^dv("Err Final/Initial grab mCmds ","QQ,QB,grab")
         ; gstr ?  
         G Q  ;top Done, line LM and TKv(tki,  -> PTx, etc. 

@@ -1,11 +1,18 @@
 pps ;CKW/ESC i3mar24 umep./ rppar1/ ;2024-0327-97;SR for ^pp*
 ;
 ;
-stbtse  D stb^dv3("tse","M,grab,gran, ^,StkP,tsq,tse")
+stbtse  D stb^dv3("tse","M:15,grab:10,gran:10, ^,Stk:4,tsq:3,tse:15")
         Q
-tse(M)  S tse=$G(grts)_"::"_$G(grte)_"  "_$G(gnts)_":"_$G(gnte)
+tse1(M,grab)  S tsq=$G(tsq)+1
+        S tse=$G(grts)_"::"_$G(grte)
         D bln^dv3("tse")
+        D SFL^kfm("grab,grts,grte,tse,tsq_PGQ(grab)")
         Q
+tse2(M,gran)  S tsq=$G(tsq)+1
+        S tse=$G(gnts)_":"_$G(gnte)
+        D bln^dv3("tse")
+        D SFL^kfm("gran,gnts,gnte,tse,tsq_PGQ(gran)")
+        Q        
 ;
 ;*  Sets Q null or err, saves caller from having to do this, sic bug if ;out
 ;;  label(arg1,arg2) NEW Q I $$arg^cmds("arg1,arg3") Goto Q ;shared exit
@@ -29,10 +36,12 @@ Qa      S argQ=Q,argRet=(Q'=""),argDolQ=$Q,argVL=VL
 ;*
 ;*  Dense, One line vers of pze
 pze(M,VL) ;
-      NEW X,D S D=$IO
+      NEW X,D,%ZSH S D=$IO
       S VL=$G(VL) ;I VL="" S VL="mrid,M,VL"  ;sic crazy
       S M=$G(M)
       I VL'="" D WVL(VL)
+      zsh "s":%ZSH  S %c=$G(%ZSH("S",2)) I %c="" S %c="caller"      
+      W:$X ! W " ^pps  *** pze ***  by "_%c_"- ",M,!           
       USE $P I $G(devlog)'="" W:$X ! W "devlog:",devlog,!
       I $G(deverr)'="" W:$X ! W "deverr:",deverr,!
       I D'=$P,D'=$G(devlog) W:$X ! W "Current $IO not $P:",D,!

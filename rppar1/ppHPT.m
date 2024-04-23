@@ -13,13 +13,14 @@ top    NEW Q I $$arg^pps("PTx")
        S TIhd="Parse Table Grid"
        S TIft="  by ^"_$T(+0)
        S TItb="^ppPT"
+       S TImo="BraceLine"
        S TIVL="devrg,devlog"
        D Hcss
        D HGS^hgh
        D guts
        D HGE^hgh
        D WH^hgh(devh)
-       W:$X ! W "Comlpeted ",$G(devh,"? devh"),!
+       W:$X ! W "Completed ",$G(devh,"? devh"),!
        Q
 ;*
 Hcss   ;
@@ -37,18 +38,26 @@ guts  D ot("table")
       D ct,breol^hgh
       F pti=1:1  Q:$D(PTx(pti))=0  D rows  ;
        ;
-      D ot("tr"),htr("tokt:") F tki=1:1:TKv D ot("th"),gt,sv(tkcod),ct
+      D htk  ;optional
+      D ct("table")  D breol^hgh
+      Q
+;*  hgen two lines of tk      
+htk   D ot("tr"),htr("tokt:") F tki=1:1:TKv D ot("th"),gt,sv(tkcod),ct
       D ct,breol^hgh
       D ot("tr"),htr("Str:") F tki=1:1:TKv D ot("th"),gt,sv(tks),ct
       D ct,breol^hgh  
-       D ct("table")  D breol^hgh
-       Q 
+      Q 
 ;*
 ;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
-gt   D GFL^kfm(tokFL) Q ; TKv(tki, @tokFL
+gt   D GFL^kfm(tokFL) ; TKv(tki, @tokFL
+     Q
 ;*
 ;* pti~StkP, gnts~tki  
-rows  D ot("tr"),htr("StkP "_pti_"a")
+rows  
+      D r1,r2,r3
+      Q
+;*      
+r1    D ot("tr"),htr("StkP "_pti_"a")
       F tki=1:1:TKv DO  
          .D gp2 
          .I arg3="" D ot("td .tdt1")
@@ -56,8 +65,9 @@ rows  D ot("tr"),htr("StkP "_pti_"a")
          .D sv(tdt1),ct 
          .I nspan>1 S tki=tki+nspan-1
       D ct("tr")
+      Q
       ;
-      D ot("tr"),htr(" "_pti_"b")
+r2    D ot("tr"),htr(" "_pti_"b")
       F tki=1:1:TKv DO  ;
         .D gp2 
         .I arg3'="" D ota^hgh("td .tdt2",,arg3)  ; colspan
@@ -65,8 +75,9 @@ rows  D ot("tr"),htr("StkP "_pti_"a")
         .D sv(tdt2),ct 
         .I nspan>1 S tki=tki+nspan-1
       D ct("tr")  
+      Q
       ;
-      D ot("tr"),htr(" "_pti_"c")            
+r3    D ot("tr"),htr(" "_pti_"c")            
       F tki=1:1:TKv DO  ;
         .D gp2 
         .I arg3'="" D ota^hgh("td .tdt3",,arg3)  ; colspan
@@ -75,7 +86,6 @@ rows  D ot("tr"),htr("StkP "_pti_"a")
         .I nspan>1 S tki=tki+nspan-1            
       D ct("tr")         
       D breol^hgh
-      ;
       Q
 ;* line header literal
 htr(x)  D ot("td"),sv(x),ct Q
@@ -96,11 +106,11 @@ gp2   NEW Q I $$arg^pps("pti,tki") G Qb
       S tdt3=grulst
       S nspan=gnte-gnts+1
       S gnC=$G(gnts)_":"_$G(gnte)_"/"_$G(nospan)     
-      S tdt2=gnC_" "_gnstr
+      S tdt2=gnstr
       I 'gnts S tdt3="|"
       KILL colspan I nspan>1 S colspan=nspan  ;D b^dv("Log colspan","gran,nspan")
       S arg3="" I nspan>1 S arg3="colspan="""_nspan_""""
-      ; ^ot^hgh Fudge vs ota("td" ,clslst ,atpar)  atpar="colspan=""2""
+      ; ^ot^hgh Fudge vs ota("td" ,clslst ,atpar) eg,  atpar="colspan=""2""
       G Q
 ;*
 Q      Q:$Q Q Q:Q=""

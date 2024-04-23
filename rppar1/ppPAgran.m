@@ -2,11 +2,11 @@ ppPAgran(gran)  ;CKW/ESC umep./ rppar1/ ;2024-0401-45;Parse gran
 ;
 ;* $$Q, gran (valid not >grnun) : QN, gnts,gnte if QN null/pass gran/grun is a successful alternative in grab
 TRVgran NEW Q I $$arg^pps("grun,grab") G Qb
-        NEW Rn,grulst,Rn,QT,grstr,grts,grte S Rn=1  ;not gnts,gnte
+        NEW grulst,Rn,QT,QB
         D GFL^kfm("grulst,gropsr",granFL) ; gran, GRc(gran : grulst, gropsr  
-        D PSH^ppPAsr(StkP) ;
-        S QN="??",grstr="<"
-        S gnts=tki,nlst=$L(grulst," "),gnte=""
+        D PSHn^ppPAsr() ; 
+        S QN="??"   ; S grstr="<"
+        S gnts=tki,gnte="?",nlst=$L(grulst," ")
         D bln^dv3("InitGRAN")
         ;I $G(grts)'=$G(gnts) D b^dv("Mismatch *ts","grts,gnts,gran,grab,StkP")        
         ;S PTx(StkP,gnts,"gran")=gran
@@ -20,9 +20,11 @@ TRVgran NEW Q I $$arg^pps("grun,grab") G Qb
              ..S QN=QT
              ..I QT="",$G(gnte)="" D b^dv("Err ret gnte by termMCH","gran,gnts,gnte")
           .I toty="R"  DO  Q ;
-             ..S Q=$$^ppPAgrab(tok,StkP+1)  ; :QB, grts,grte
+             ..;NEW grts,grte
+             ..S Q=$$^ppPAgrab(tok)  ; :QB, grts,grte
              ..S QN=QB
              ..S gnte=$G(grte)  ; also gnts?
+             ..I gnte="" D b^dv("Err post grab","gran,tok,grte,gnte")
           .D bug^dv
         ; falls thru if passed all Rn/tok in grulst 
         D granPASS
@@ -32,7 +34,7 @@ QN      G Q
 toty   I $$arg^pps("Rn,grulst,gran") G Qb
     S tok=$P(grulst," ",Rn) I tok="" D bug^dv G Qb
     I (tok?1P)!(tok[".") S toty="T",QTest=(TKc=tok)
-    E  S toty="R"
+    E  S toty="R" KILL QTest
       I tok="" S toty="X" D bug^dv S QG="tok Err null" G Qb
     Q
 ;* gran, gnts, gnte :
@@ -41,9 +43,13 @@ granPASS S QN=""
         S nospan=gnte-gnts+1 S:nospan=1 nospan=""
         S gnC=$G(gnts)_":"_$G(gnte)_"/"_$G(nospan)   
         I $G(gnts)="" D b^dv("Err null gnts granPASS","gran,gnts,gnte,grab,grts,grte")
-        D SFL^kfm("gnts,gnte,gnC","_PTx(StkP,gnts)")
+        D SFL^kfm("gnte,gnC","_PTx(StkP,gnts)")
         D bln^dv3("granPASS")
-        ;D pze^dv("Log granPASS","QT,grulst,gnts,gnte")        
+        ;D pze^dv("Log granPASS","QT,grulst,gnts,gnte")
+tsqbFL  ;;tsqbFL:grab,grnun,grts,grte,grde,grri_HQT(StkP)
+tsqnFL  ;;tsqnFL:gran,gnts,gnte,grulst_HQT(StkP)
+        S HQxn(gran,StkP)=""
+        D POPn^ppPAsr
         Q
 granFAIL D bln^dv3("granFAIL")
          D pze^dv("Log granFAIL","QN,QT,gran")

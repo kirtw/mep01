@@ -34,6 +34,7 @@ Menu	;Text for Menu  	Compile  RM()
 ;;     ^ppWTK  Write Terminal Input Tokens TKv()  
 ;;     la^dv  List Arrays
 ;;     audFL^ppIMG
+;; mbr. ^mbrofme  Refresh MBR
 ;; tk. TXU^ppMa  ppTXU Audit values in TK(
 ;;aud.  Audit Menu
 ;; ag. ^ppGXO GRv,...
