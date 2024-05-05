@@ -1,4 +1,4 @@
-mepIO  ;CKW/ESC i10jul23 umep./ rppar1/ ;2023-0710-25; IO sr and IB for ^cmd* in umad./
+mepIO  ;CKW/ESC i10jul23 umep./ rcfg/ ;2023-0710-25; IO sr and IB for ^cmd* in umad./
 ;   See also cmdIO
 ;
 ;*
@@ -21,7 +21,7 @@ IB      D IBsys ; : SB, GB
 ;*  : zro  saved by caller, $zro set by caller
 ppIBzro  ;
        D IB  ; umep
-       S PBL="rcfg,rppar1,../umbr/rmbrme"  ;umad./ rzdoc temp
+       S PBL="rcfg,rppar2,rppar1,../umbr/rmbrme"  ;umad./ rzdoc temp
        S GBL="rmide1,rmenu3,rzro3,rhgen5,rmgbFL3,rdbg4,rcor1,rdev4,rsrc1,rmGP4,rerr1" ;,rzdoc
        D ^dzCzro(PB,PBL,GBL) ; : zro
        ;caller compiles, caller sets $zro=
@@ -29,7 +29,7 @@ ppIBzro  ;
 ;*   @mpp  mpp.sh ^ppGo
 IBzro  ;  vs IBzro^mas   duplicate here ?  different ( mad bash)
        D IB  ; umep
-       S PBL="rcfg,rppar1,rmep2,rmep4,rmePT1,rsr,rxmep1,rDIM,../umbr/rmbrme"  ;umad./ rzdoc temp
+       S PBL="rcfg,rppar2,rppar1,rmep2,rmep4,rmePT1,rsr,rxmep1,rDIM,../umbr/rmbrme"  ;umad./ rzdoc temp
        S GBL="rmenu3,rzro3,rhgen5,rmgbFL3,rdbg4,rcor1,rdev4,rsrc1,rmGP4,rerr1" ;,rzdoc
          ;remove rd2vl, ^dvc only in rsrc1/ now   umbr access via umbr./ rmbeme/^mbrofme
        D ^dzCzro(PB,PBL,GBL) ; : zro

@@ -18,6 +18,24 @@ GRI    KILL  ;
 ;
 
 ;*       
+LMp2   W:$X ! W "Starting LMp2^ppMa ^p2PAR  ",!
+       D stbtse^pps S tsq=0 ; def tse
+       D IB^mepIO  S Q=$$devlog^devIO("mppLM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
+       USE $G(devlog)
+       D G0^ppGRI  ; GRv...
+       D ^ppITK  ; TKv()  for S X=Y eol
+         ;D pze^pps("Log LM^ppMa","GRv,GRc,TKv")
+       D ^ppTXU  ;Audit TKv  vs GRt()  etc.
+       D ^ppWTK ; Write TKv()
+         D pze^pps("See TKv ","TKv")
+       D ^p2PAR  ;STK, non-recursive  rppar2/ ^p2PAR One big MRou
+       D clog^devlog  ;HGS^hgh equiv, not actual refs
+;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+       D ^ppHPT  ; HGen PTx(pti,tki,   @pt2FL  grid  PI
+       I $G(devlog)'="" W !,"devlog:",devlog,"  ... Completed.",!
+       Q
+;*
+;*     ^ppPAR recursive  
 LM     W:$X ! W "Starting LM^ppMa ",!
        D stbtse^pps S tsq=0 ; def tse
        D IB^mepIO  S Q=$$devlog^devIO("mppLM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
