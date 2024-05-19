@@ -36,7 +36,7 @@ Hcss   ;
 guts  D ot("table")
       D ot("tr"),htr("tki:") F tki=1:1:TKv D ot("th"),sv(tki),ct
       D ct,breol^hgh
-      F pti=1:1  Q:$D(PTx(pti))=0  D rows  ;
+      S pti="" F ptj=0:1  S pti=$O(PTx(pti))  Q:pti=""  D rows  ;
        ;
       D htk  ;optional
       D ct("table")  D breol^hgh

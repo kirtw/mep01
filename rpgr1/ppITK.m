@@ -5,7 +5,8 @@ ppITK ;CKW/ESC i7mar24 umep./ rppar1/ ;2024-0307-60;Create TKv() fudge from $TEX
 ;*
 top   KILL TKv S tki=0,TKv=0
       F I=1:1 S T=$T(TK0+I),L=$P(T,";;",2,99) Q:L["***"  Q:L=""  DO  ;
-        .S tkcod=$P(L," "),tks=$P(L," ",2) S:tks="" tks=" "
+        .I L["LM:" S LM=$P(L,":",2,999),TKv(0,"LM")=LM Q
+        .S tkcod=$P(L," "),tks=$P(L," ",2) S:tks="" tks=" "   ; TOIcustom
         .S tkcs=$P(L," ",3),tkce=$P(L," ",4)
         .S tki=tki+1
         .D SFL^kfm("tkcod,tks,tkcs,tkce_TKv(tki)")
@@ -23,6 +24,7 @@ TKC  ;; Fudge TKv()  tkcod tks
 ;  ***
 
 TK0  ;; Fudge simplest TK  K X
+;;LM:K X;;
 ;;Kwd. K 1 1
 ;;sp1. _ 2 2
 ;;Vna. X 3 3

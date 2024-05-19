@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head><title>Log</title>
+
+</head>
+<h1>Log File</h1>
+<pre>
+Completed Grammar composition CRGru^ppGRI  GRv, GRc, GXsq 
+Finished CRGtok^ppGRI  Composing GRt(tokt,  Terminal token db.
+Finished ^ppITK  tki:3 codes
+
+Audit of TK(tki,  tki end:3 completed.  ok?
+
+
+Kwd.           'K'   {1-1} 
+sp1.           '_'   {2-2} 
+Vna.           'X'   {3-3} 
+ TKv: ARRAY+Str 3
+ ^pps  *** pze ***  by LMp2+9^ppMa- See TKv 
+--nxt In:1  Kwd. K
+InitGRAB: mCmds      0    1    level, start for no* 
+>InitGRAN>gran       StkP gnts grts grulst 
+InitGRAN: mCmds.1    1    1    1    Kcmd 
+InitGRAB: Kcmd       2    1    command 
+>InitGRAN>gran       StkP gnts grts grulst 
+InitGRAN: Kcmd.1     3    1    1    Kwd. sp1. eKcmd 
+termPASS: Kcmd.1.1/4 Kcmd.1     1    Kwd. sp1. eKcmd           Kwd.     T               U*gnC      1    1 
+--nxt In:2  sp1. _
+termPASS: Kcmd.1.2/4 Kcmd.1     2    Kwd. sp1. eKcmd           sp1.     T               U*gnC      1    2 
+--nxt In:3  Vna. X
+InitGRAB: eKcmd      4    3    End of Kill Cmd 
+>InitGRAN>gran       StkP gnts grts grulst 
+InitGRAN: eKcmd.1    5    3    3    Karg 
+InitGRAB: Karg       6    3    Kill argument 
+>InitGRAN>gran       StkP gnts grts grulst 
+InitGRAN: Karg.1     7    3    3    Vna. 
+termPASS: Karg.1.1/8 Karg.1     1    Vna.                      Vna.     T               U*gnC      3    3 
+>granPASS>QN  gran       gnC        gnts gnte Rn   grulst                    tok      toty gropsr 
+granPASS:     Karg.1     3:3/       3    3    1    Vna.                      Vna.     T     
+Caller:top+5^ppMenu:    Stack-
+1    ppGo top+18             D ^ppMenu  ; Compiles menu ^MNU(mSys and MU() and runs ^dmnu
+2    ppMenu top+5               D ^dmnu(mSys,$T(+0),"mSys,evdt,gid,prid")  ; ^MNU(0,"mSysCur")  and go with menu
+3    dmnu RUN+9                 D @dopLR
+4    ppMa LMp2+10               D ^p2PAR  ;STK, non-recursive  rppar2/ ^p2PAR One big MRou
+5    p2PAR LPgran        LPgran  I Rn=nlst D granPASS G Qgran  ; Any tok Fail causes QN Fail
+6    p2PAR tsqnFL+2              D POPn
+7    p2PAR POPn+3            I sty'="gran" D bug^dv("Stk sync pop/push sty gran","sty,StkP,grab,gran")
+8    dv bug+2               D ^dvstk
+9    dvstk N+1              zsh "S":%ZSH   ; See example below, 2-level array
+  $ETRAP='B' 
+  $ZTRAP='' 
+  $ZL=9
+

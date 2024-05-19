@@ -1,0 +1,134 @@
+==   grne  Removal vs grte single field  15may24
+
+
+kw@L7a:~/km3a/umep$ grep gnts -n r*/p2*.m
+     46     221    3546
+Note only ^p2*   vs grammar below 
+
+
+rpgr1/p2PSR.m:9:;*  gnts,gnte : gnstr, tn~colspan
+rpgr1/p2PSR.m:12:     I '$G(gnts) S Q="arg:gnts="_gnts G Qb  ;of gran
+rpgr1/p2PSR.m:14:     S tn=gnte-gnts+1 I tn<1 S Q="arg order gnts-gnte" G Qb
+rpgr1/p2PSR.m:16:     S gnstr="" F tkj=gnts:1:gnte S str=$G(TKv(tkj,"str")),gnstr=gnstr_str
+rpgr1/p2PSR.m:32:Qb     D b^dv("Err Post granPASS sr gropsr in ^"_$T(+0),"Q,grab,gran,gnts,gnte,colspan,gnstr")
+rpgr1/p2PSR.m:35:;Inputs  grab,gran,  gnts,gnte start/end token ptrs : colspan, gnstr string from Input
+rpgr1/p2PSR.m:44:     I $E(tks)'?1A,$E(tks)'="%" D b^dv("Err post granPASS","tki,tks,gran,grab,gnts,gnte") Q  ; Ignore
+rpgr1/p2PSR.m:45:     D TX2 ; gnts,gnte : colspan, gnstr
+
+rppar2/p2HPT.m:35:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+rppar2/p2HPT.m:55:;* pti~StkP, gnts~tki  
+rppar2/p2HPT.m:97:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+rppar2/p2HPT.m:98:; pti~StkP,  ptj=gnts  
+rppar2/p2HPT.m:100:      D GFL^kfm("gran,gnts,gnte_PTx(pti,tki)") ; gran, gnts,gnte
+rppar2/p2HPT.m:102:      S gnstr="'" F tkx=gnts:1:gnte DO  
+rppar2/p2HPT.m:107:      S nspan=gnte-gnts+1
+rppar2/p2HPT.m:108:      S gnC=$G(gnts)_":"_$G(gnte)_"/"_$G(nospan)     
+rppar2/p2HPT.m:110:      I 'gnts S tdt3="|" 
+
+rppar2/p2IMG.m:35:sgranFL  ;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+rppar2/p2IMG.m:38:pt2FL  ;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts) 
+
+rppar2/p2Ma.m:33:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+rppar2/p2Ma.m:51:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+
+rppar2/p2PAinit.m:18:    D stb^dv3("InitGRAN","gran:10,StkP:4\,gnts,grts,grulst:25,#")
+rppar2/p2PAinit.m:19:    D stb^dv3("granPASS","QN:3,gran:10,gnC:10,gnts:3,gnte:3,Rn:4,grulst:25,tok:8,toty:2,#")
+rppar2/p2PAinit.m:22:    D stb^dv3("termPASS","gnn:10,gran:10,Rn:4,grulst:25,tokt:8,toty:2,gropsr:10,gnC:10,gnts:3,gnte:3")
+
+rppar2/p2PAR.m:57:;*gran (valid not >grnun) : QN, gnts,gnte if QN null/pass gran/grun is a successful alt in grab
+rppar2/p2PAR.m:87:        S gnte=$G(grte)  ; also gnts?
+rppar2/p2PAR.m:116:        S gnts=tki,gnte="?",nlst=$L(grulst," ")
+rppar2/p2PAR.m:120:        ;I $G(grts)'=$G(gnts) D b^dv("Mismatch *ts","grts,gnts,gran,grab,StkP")        
+rppar2/p2PAR.m:121:        I $G(gnts)="" D b^dv("Err gnts null","gnts,gnte,gran")
+rppar2/p2PAR.m:145:;* gran, gnts, gnte :
+rppar2/p2PAR.m:148:        S nospan=gnte-gnts+1 S:nospan<2 nospan=""
+rppar2/p2PAR.m:149:        S gnC=$G(gnts)_":"_$G(gnte) I nospan S gnC=gnC_"/"_$G(nospan)   
+rppar2/p2PAR.m:150:        I $G(gnts)="" D ^dv("Err null gnts granPASS","gran,gnts,gnte,grab,grts,grte")
+rppar2/p2PAR.m:152:          .D b^dv("Log gropsr","gropsr,gran,gnts,gnte,tki,tks")
+rppar2/p2PAR.m:153:        D SFL^kfm("gnte,gnC,gropsr","_PTx(StkP,gnts)")
+rppar2/p2PAR.m:155:        ;D pze^dv("Log granPASS","QT,grulst,gnts,gnte")
+rppar2/p2PAR.m:157:tsqnFL  ;;tsqnFL:gran,gnts,gnte,grulst_HQT(StkP)
+rppar2/p2PAR.m:169:      S gnC=$G(gnts)_":"_$G(gnte)_"/"_$G(nospan) 
+rppar2/p2PAR.m:170:      I $D(PTx(StkP,gnts,"gnte")) ;D ^dv("Dupl PTx","StkP,gran,gnts,gnte")
+rppar2/p2PAR.m:171:      D SFL^kfm("gran,gnts,gnte","_PTx(StkP,gnts)")
+rppar2/p2PAR.m:195:;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+rppar2/p2PAR.m:226:;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+rppar2/p2PAR.m:253:      D stb^dv3("Wstkn","StkP:3,sty:5,tki:3,gran:10,gnts:3,gnte:3,grulst:40")
+rppar2/p2PAR.m:256:    NEW sty,StkP,grab,grri,grnun,grde,grts,grte,Gn,grun,gran,gnts,gnte,grulst,gropsr,Rn,tok,gnn,gtki
+rppar2/p2s.m:12:        S tse=$G(gnts)_":"_$G(gnte)
+rppar2/p2s.m:14:        D SFL^kfm("gran,gnts,gnte,tse,tsq_PGQ(gran)")
+kw@L7a:~/km3a/umep$ grep gnts -n r*/p2*.m|wc
+
+***************gnte  here, mostly same
+kw@L7a:~/km3a/umep$ grep gnte -n r*/p2*.m|wc 
+     48     238    3706
+kw@L7a:~/km3a/umep$ grep gnte -n r*/p2*.m
+rpgr1/p2PSR.m:9:;*  gnts,gnte : gnstr, tn~colspan
+rpgr1/p2PSR.m:13:     I '$G(gnte) S Q="arg:gnte="_gnte G Qb
+rpgr1/p2PSR.m:14:     S tn=gnte-gnts+1 I tn<1 S Q="arg order gnts-gnte" G Qb
+rpgr1/p2PSR.m:16:     S gnstr="" F tkj=gnts:1:gnte S str=$G(TKv(tkj,"str")),gnstr=gnstr_str
+rpgr1/p2PSR.m:32:Qb     D b^dv("Err Post granPASS sr gropsr in ^"_$T(+0),"Q,grab,gran,gnts,gnte,colspan,gnstr")
+rpgr1/p2PSR.m:35:;Inputs  grab,gran,  gnts,gnte start/end token ptrs : colspan, gnstr string from Input
+rpgr1/p2PSR.m:44:     I $E(tks)'?1A,$E(tks)'="%" D b^dv("Err post granPASS","tki,tks,gran,grab,gnts,gnte") Q  ; Ignore
+rpgr1/p2PSR.m:45:     D TX2 ; gnts,gnte : colspan, gnstr
+rppar2/p2HPT.m:35:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+rppar2/p2HPT.m:97:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+rppar2/p2HPT.m:100:      D GFL^kfm("gran,gnts,gnte_PTx(pti,tki)") ; gran, gnts,gnte
+rppar2/p2HPT.m:102:      S gnstr="'" F tkx=gnts:1:gnte DO  
+rppar2/p2HPT.m:107:      S nspan=gnte-gnts+1
+rppar2/p2HPT.m:108:      S gnC=$G(gnts)_":"_$G(gnte)_"/"_$G(nospan)     
+rppar2/p2IMG.m:35:sgranFL  ;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+rppar2/p2IMG.m:38:pt2FL  ;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+rppar2/p2Ma.m:33:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+rppar2/p2Ma.m:51:;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
+rppar2/p2PAinit.m:19:    D stb^dv3("granPASS","QN:3,gran:10,gnC:10,gnts:3,gnte:3,Rn:4,grulst:25,tok:8,toty:2,#")
+rppar2/p2PAinit.m:22:    D stb^dv3("termPASS","gnn:10,gran:10,Rn:4,grulst:25,tokt:8,toty:2,gropsr:10,gnC:10,gnts:3,gnte:3")
+rppar2/p2PAR.m:57:;*gran (valid not >grnun) : QN, gnts,gnte if QN null/pass gran/grun is a successful alt in grab
+rppar2/p2PAR.m:87:        S gnte=$G(grte)  ; also gnts?
+rppar2/p2PAR.m:88:        I gnte="" D b^dv("Err post grab","gran,tok,grte,gnte")
+rppar2/p2PAR.m:116:        S gnts=tki,gnte="?",nlst=$L(grulst," ")
+rppar2/p2PAR.m:121:        I $G(gnts)="" D b^dv("Err gnts null","gnts,gnte,gran")
+rppar2/p2PAR.m:126:;  tokt, toty="T" : QT, gnte', QTest
+rppar2/p2PAR.m:145:;* gran, gnts, gnte :
+rppar2/p2PAR.m:147:        I gran="Karg.1",gnte'=3 D b^dv("Err gnte","grte,gran,gnn")
+rppar2/p2PAR.m:148:        S nospan=gnte-gnts+1 S:nospan<2 nospan=""
+rppar2/p2PAR.m:149:        S gnC=$G(gnts)_":"_$G(gnte) I nospan S gnC=gnC_"/"_$G(nospan)   
+rppar2/p2PAR.m:150:        I $G(gnts)="" D ^dv("Err null gnts granPASS","gran,gnts,gnte,grab,grts,grte")
+rppar2/p2PAR.m:152:          .D b^dv("Log gropsr","gropsr,gran,gnts,gnte,tki,tks")
+rppar2/p2PAR.m:153:        D SFL^kfm("gnte,gnC,gropsr","_PTx(StkP,gnts)")
+rppar2/p2PAR.m:155:        ;D pze^dv("Log granPASS","QT,grulst,gnts,gnte")
+rppar2/p2PAR.m:157:tsqnFL  ;;tsqnFL:gran,gnts,gnte,grulst_HQT(StkP)
+rppar2/p2PAR.m:168:TermMch   S gnte=tki
+rppar2/p2PAR.m:169:      S gnC=$G(gnts)_":"_$G(gnte)_"/"_$G(nospan) 
+rppar2/p2PAR.m:170:      I $D(PTx(StkP,gnts,"gnte")) ;D ^dv("Dupl PTx","StkP,gran,gnts,gnte")
+rppar2/p2PAR.m:171:      D SFL^kfm("gran,gnts,gnte","_PTx(StkP,gnts)")
+rppar2/p2PAR.m:188:        S grte=$G(gnte) 
+rppar2/p2PAR.m:189:           I grte="" D b^dv("Err grte/gnte","grab,gran,grte,gnte")
+rppar2/p2PAR.m:191:        I grab="Karg",grte'=3 D b^dv("Err grte grabPASS","grab,gran,grte,gnte")
+rppar2/p2PAR.m:195:;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+rppar2/p2PAR.m:226:;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+rppar2/p2PAR.m:253:      D stb^dv3("Wstkn","StkP:3,sty:5,tki:3,gran:10,gnts:3,gnte:3,grulst:40")
+rppar2/p2PAR.m:256:    NEW sty,StkP,grab,grri,grnun,grde,grts,grte,Gn,grun,gran,gnts,gnte,grulst,gropsr,Rn,tok,gnn,gtki
+rppar2/p2s.m:12:        S tse=$G(gnts)_":"_$G(gnte)
+rppar2/p2s.m:14:        D SFL^kfm("gran,gnts,gnte,tse,tsq_PGQ(gran)")
+
+
+granFL      ********************
+kw@L7a:~/km3a/umep$ grep granFL -n r*/p2*.m |wc
+     13      53     972
+
+rppar2/p2IMG.m:7:       S VVL="grabFL,granFL,tokFL,tokgrFL,pt2FL,sgrabFL,sgranFL,stokFL"  ;comma list labels/*FL names
+rppar2/p2IMG.m:30:granFL ;;granFL:grulst,gropsr,grtt_GRc(gran)
+rppar2/p2IMG.m:35:sgranFL  ;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+
+rppar2/p2PAR.m:114:        D GFL^kfm("grulst",granFL) ; gran, GRc(gran : grulst
+rppar2/p2PAR.m:195:;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+rppar2/p2PAR.m:215:    D SFL^kfm(sgranFL) ; : STK(StkP)
+rppar2/p2PAR.m:226:;;sgranFL:gran,sty,gnts,gnte,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+rppar2/p2PAR.m:238:    D GFL^kfm(sgranFL) ; STK(StkP,
+rppar2/p2PAR.m:250:;*  STK(), StkP, sgrabFL, sgranFL 
+rppar2/p2PAR.m:257:    NEW T,L,xFL,SKx,sgrabFL,sgranFL,stokFL
+rppar2/p2PAR.m:258:    F xFL="sgrabFL","sgranFL","stokFL" S T=$T(@xFL^p2IMG),L=$P(T,";;",2),L=$P(L,":",2),@xFL=L
+rppar2/p2PAR.m:268:        ..D GFL^kfm(sgranFL) ; STK(StkP,
+rppar2/p2PAR.m:299:     D GFL^kfm("grulst",granFL)
+

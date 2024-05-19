@@ -1,0 +1,36 @@
+==  FORK  gnte vs grte
+    EDME  { umep/  agtd/*  } 15may24    folder: todo, log, doc, dbg steps alog/gnte/
+    
+Done:  Removed gnte in favor of grte only - works  5pm 15may24
+  See Removed  alog/gnte/
+--==
+EDME:vim 
+alog:umep/alog/gnte/
+Removed:/home/kw/km3a/umep/alog/gnte/gnte-Removed.mlog.mdk
+--==
+
+
+Really All grammar fields could start with gr* stem
+    regardless whether in grab/GRv or gran/GRc.
+    Both are equal, do NOT need two vars -> eliminate gnte and gnts
+    
+    
+Do GRv  and GRc need to be separate
+    GRv(grab
+    GRc(gran            vs GRn( ?
+    
+grde is really grab-specific  and grri  ref to area of grammar source table
+
+QUESTION:
+    Are separate grte and gnte needed ?
+    When Gn changes, never need to go back to gn*
+    grts gets set in grabI  and does not change for any Gn/gran
+    grte/gnte  gets set when granPASSes  and not separate values.
+    granPASS implies immediate grabPASS, though diff levels in modules
+    grte could be global to everything under GOgrab  DO grab(grab)
+        ie NEW in grab  but not in gran
+    
+NO:  use only grte, grts (Remove gnts, gnte )
+
+Steps-
+    grep gnte

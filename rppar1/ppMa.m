@@ -27,12 +27,12 @@ LMp2   W:$X ! W "Starting LMp2^ppMa ^p2PAR  ",!
          ;D pze^pps("Log LM^ppMa","GRv,GRc,TKv")
        D ^ppTXU  ;Audit TKv  vs GRt()  etc.
        D ^ppWTK ; Write TKv()
-         D pze^pps("See TKv ","TKv")
+         ;D pze^pps("See TKv ","TKv")
        D ^p2PAR  ;STK, non-recursive  rppar2/ ^p2PAR One big MRou
        D clog^devlog  ;HGS^hgh equiv, not actual refs
 ;;pt2FL:gran,gnts,gnte_PTx(StkP,gnts)
        D ^ppHPT  ; HGen PTx(pti,tki,   @pt2FL  grid  PI
-       I $G(devlog)'="" W !,"devlog:",devlog,"  ... Completed.",!
+       I $G(devlog)'="" U $P W !,"devlog:",devlog,"  ... Completed.",!
        Q
 ;*
 ;*     ^ppPAR recursive  

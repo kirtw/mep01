@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+<head><title>Log</title>
+
+</head>
+<h1>Log File</h1>
+<pre>
+Completed Grammar composition CRGru^ppGRI  GRv, GRc, GXsq 
+Finished CRGtok^ppGRI  Composing GRt(tokt,  Terminal token db.
+Finished ^ppITK  tki:3 codes
+
+Audit of TK(tki,  tki end:3 completed.  ok?
+
+
+Kwd.           'K'   {1-1} 
+sp1.           '_'   {2-2} 
+Vna.           'X'   {3-3} 
+--nxt In:1  Kwd. K
+InitGRAB: mCmds      0    1    level, start for no* 
+
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='mCmds' 
+QB='??' 
+StkP=0
+Gn=0
+grts=1
+grte='???' 
+grnun=5
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: mCmds.1    0    1    Hcmd 
+PSHb- grab:mCmds#1
+PSHn- gran:mCmds.1#2
+InitGRAB: Hcmd       2    1    is simple 
+
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='Hcmd' 
+QB='??' 
+StkP=2
+Gn=0
+grts=1
+grte='???' 
+grnun=1
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: Hcmd.1     2    1    Hwd. sp1. Exp 
+TTX x Hcmd.1 Failed at Hwd.   [Hwd. sp1. Exp] #1
+>termFAIL>gnn        grab       gran       Rn   grulst                    tok      toty gropsr 
+termFAIL: Hcmd.1.1/2 Hcmd       Hcmd.1     1    Hwd. sp1. Exp             Hwd.     T     
+ ^p2s  *** pze ***  by TermNO+3^p2PAR- Log End TermNO
+>granFAIL>QN         gran       Rn   grulst                    tok      toty gropsr 
+granFAIL: X:Hwd. at* Hcmd.1     1    Hwd. sp1. Exp             Hwd.     T     
+ ^p2s  *** pze ***  by granFAIL+1^p2PAR- Log granFAIL
+
+** Debug Qgran+2^p2PAR:  Qgran FAILed
+StkP=2
+QT='X:Hwd. at Hcmd.1.1/2' 
+QN='X:Hwd. at Hcmd.1.1/2' 
+gran='Hcmd.1' 
+gnn='Hcmd.1.1/2' 
+Rn=1
+Gn=1
+
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='Hcmd' 
+QB='X:Hwd. at Hcmd.1.1/2' 
+StkP=2
+Gn=1
+grts=1
+grte='?' 
+grnun=1
+>grabFAIL>QB:           grab       QB         QG         QT 
+grabFAIL: QB=Failed Hcmd * Hcmd    Failed Hc* ???        X:Hwd. at* 
+ ^p2s  *** pze ***  by grabFAIL+2^p2PAR- grabFAIL: Syntax Err?
+POPn- gran:mCmds.1#2
+POPb-argPOP grab:mCmds#1
+
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='mCmds' 
+QB='X:Hwd. at Hcmd.1.1/2' 
+StkP=0
+Gn=1
+grts=1
+grte='?' 
+grnun=5
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: mCmds.2    0    1    Kcmd 
+PSHb- grab:mCmds#1
+PSHn- gran:mCmds.2#2
+InitGRAB: Kcmd       2    1    command 
+
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='Kcmd' 
+QB='??' 
+StkP=2
+Gn=0
+grts=1
+grte='???' 
+grnun=1
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: Kcmd.1     2    1    Kwd. sp1. Kcmd2 
+termPASS: Kcmd.1.1/2 Kcmd.1     1    Kwd. sp1. Kcmd2           Kwd.     T               U*gnC      1    1 
+--nxt In:2  sp1. _
+termPASS: Kcmd.1.2/2 Kcmd.1     2    Kwd. sp1. Kcmd2           sp1.     T               U*gnC      1    2 
+--nxt In:3  Vna. X
+PSHb- grab:Kcmd#3
+PSHn- gran:Kcmd.1#4
+InitGRAB: Kcmd2      4    3    End of Kill Cmd 
+
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='Kcmd2' 
+QB='??' 
+StkP=4
+Gn=0
+grts=3
+grte='???' 
+grnun=1
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: Kcmd2.1    4    3    Karg 
+PSHb- grab:Kcmd2#5
+PSHn- gran:Kcmd2.1#6
+InitGRAB: Karg       6    3    Kill argument 
+
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='Karg' 
+QB='??' 
+StkP=6
+Gn=0
+grts=3
+grte='???' 
+grnun=1
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: Karg.1     6    3    Vna. 
+termPASS: Karg.1.1/6 Karg.1     1    Vna.                      Vna.     T    Karg^p2PSR U*gnC      3    3 
+
+** Debug granPASS+8^p2PAR:  Log gropsr
+gropsr='Karg^p2PSR' 
+gran='Karg.1' 
+grts=3
+grte=3
+tki=3
+tks=null
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Karg.1     3:3        3    3    1    Vna.                      Vna.     T 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Karg       Karg.1     3    3    Karg^p2PSR 
+
+** Debug Qgrab+4^p2PAR:  Log Qgrab-Karg.1 to QRtok
+StkP=6
+RetB='QRtok' 
+grab='Karg' 
+gran='Karg.1' 
+gropsr='Karg^p2PSR' 
+QN=null
+
+** Debug QRtok+1^p2PAR:  Log QRtok finished GOgrab pre POP
+grab='Karg' 
+QB=null
+POPn- gran:Kcmd2.1#6
+POPb-QRtok grab:Kcmd2#5
+
+** Debug QRtok+5^p2PAR:  Log post POP QRtok-
+StkP=4
+QB=null
+QN=null
+QT=null
+grab='Kcmd2' 
+Gn=1
+gran='Kcmd2.1' 
+grts=3
+grte=3
+Rn=1
+gnn='Karg.1.1/6' 
+
+** Debug QRtok+7^p2PAR:  Log QRtok to LPgran
+QB=null
+QN=null
+gran='Kcmd2.1' 
+Rn=1
+tok='Karg' 
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Kcmd2.1    3:3        3    3    1    Karg                      Karg     T 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Kcmd2      Kcmd2.1    3    3     
+
+** Debug QRtok+1^p2PAR:  Log QRtok finished GOgrab pre POP
+grab='Kcmd2' 
+QB=null
+POPn- gran:Kcmd.1#4
+POPb-QRtok grab:Kcmd#3
+
+** Debug QRtok+5^p2PAR:  Log post POP QRtok-
+StkP=2
+QB=null
+QN=null
+QT=null
+grab='Kcmd' 
+Gn=1
+gran='Kcmd.1' 
+grts=1
+grte=3
+Rn=3
+gnn='Karg.1.1/6' 
+
+** Debug QRtok+7^p2PAR:  Log QRtok to LPgran
+QB=null
+QN=null
+gran='Kcmd.1' 
+Rn=3
+tok='Kcmd2' 
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Kcmd.1     1:3/3      1    3    3    Kwd. sp1. Kcmd2           Kcmd2    T 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Kcmd       Kcmd.1     1    3     
+
+** Debug QRtok+1^p2PAR:  Log QRtok finished GOgrab pre POP
+grab='Kcmd' 
+QB=null
+POPn- gran:mCmds.2#2
+POPb-QRtok grab:mCmds#1
+
+** Debug QRtok+5^p2PAR:  Log post POP QRtok-
+StkP=0
+QB=null
+QN=null
+QT=null
+grab='mCmds' 
+Gn=2
+gran='mCmds.2' 
+grts=1
+grte=3
+Rn=1
+gnn='Karg.1.1/6' 
+
+** Debug QRtok+7^p2PAR:  Log QRtok to LPgran
+QB=null
+QN=null
+gran='mCmds.2' 
+Rn=1
+tok='Kcmd' 
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     mCmds.2    1:3/3      1    3    1    Kcmd                      Kcmd     T 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     mCmds      mCmds.2    1    3     
+
+** Debug top+15^p2HPT:  Err devlog value gone.
+devlog=UNDEF.
+TIVL=devrg,devlog
+devrg='/home/kw/km3a/umep/rppar2/mGR0a.mdk' 
+devlog=UNDEF.

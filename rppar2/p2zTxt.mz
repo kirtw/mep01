@@ -1,0 +1,28 @@
+p2zTxt  ; extra text removed from mRou ^p2*   15may24
+
+
+
+************
+;;tqs
+rppar2/p2PAR.m:tsqbFL  ;;tsqbFL:grab,grnun,grts,grte,grde,grri_HQT(StkP)
+rppar2/p2PAR.m:tsqnFL  ;;tsqnFL:gran,gnts,gnte,grulst_HQT(StkP)
+
+^p2s
+stbtse  D stb^dv3("tse","M:15,grab:10,gran:10, ^,Stk:4,tsq:3,tse:15")
+        Q
+tse1(M,grab)  S tsq=$G(tsq)+1
+        S tse=$G(grts)_"::"_$G(grte)
+        D bln^dv3("tse")
+        D SFL^kfm("grab,grts,grte,tse,tsq_PGQ(grab)")
+        Q
+tse2(M,gran)  S tsq=$G(tsq)+1
+        S tse=$G(gnts)_":"_$G(gnte)
+        D bln^dv3("tse")
+        D SFL^kfm("gran,gnts,gnte,tse,tsq_PGQ(gran)")
+        Q  
+        
+*****
+
+
+
+

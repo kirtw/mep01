@@ -1,0 +1,44 @@
+==   aa-Remind-mpp.mdk
+
+
+Overview to Quickly get code back in Mind
+
+@mpp   is mumps parser, in mumps, with table-grammar
+    and GOTO structured parser.
+    
+Input is currently one line of mumps code, in var LM
+
+Input actually generated at TKv(tki) terminal codes
+    Anticipating pre-processor to do special things efficiently
+    Gathering words, with mumps-special cases like ^ and % pfx
+    Maybe special indirection handling ?
+    
+Preprocessor code will depend on what works in the grammar
+    and maybe efficiency of preprocessor vs just cranking it out in parser
+    
+Grammar Table and Parts-
+    grab is a grammar term, defined with alternatives (OR) in 
+    
+    gran is the sub-alternatives, numbered Gn=1:1:grnun
+        and mnemonically used as gran= grab_"."_Gn
+
+Single file, terminal codes, grammar table and test mumps code
+    
+        
+Parsing gran successfully is one:one related to parsing its grab
+
+Each gran has a rule list, grulst of tokens
+    Each token is either a terminal token (toty="T")
+      or a reference to a grab value elsewhere in the grammar table
+      
+    A gran rule is passed when every token is passed
+        granPASS implies its grab is passed
+        
+    A terminal token is passed iff it matches the next terminal in the Input
+        tki is the Input terminal ptr, starts with 1:1 til last in the mumnps input line
+        
+    TKc is the current tkcod value from tki
+    TKv(tki) @tokFL (sic vs trmFL)   tk*, tkcod, tks, tkts,tkte ptrs to chars in LM
+    
+    
+    

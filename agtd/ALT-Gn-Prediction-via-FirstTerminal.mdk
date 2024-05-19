@@ -1,0 +1,32 @@
+==  Alt Gn Prediction by First-Terminal each grab/gran
+   EDME {   umep/   agtd/*  } 15may24
+   
+--==
+EDME:vim /home/kw/km3a/umep/agtd/ALT-Gn-Prediction-via-FirstTerminal.mdk
+--==
+
+Characteristic of MUMPS is next char (ALWAYS ?) determines syntax alternative path.
+
+
+^%  pfx  Var names  vs none
+Vars Start with A after pfx
+spaces  SP1 single space between Cmd and Arg  vs wsp in other psitions
+
+Labels  vs unlabeled lines
+space tab here in actual syntax vs preprocess of MRou text to remove ?
+    tab visual importance in reading MRou
+    
+dot lines, unlabeled/unnamed module
+    number of dots as indentation
+    
+END/sfx  chars
+    , comma as list continuation vs sp as done with list
+    :  as post-Cmd conditional expression/switch branch
+    :  and post-argument switch/branch
+    ; as comment, end of line  (dble ;; maintain comment access in obj/runtime
+       Note ; vs dot syntax Gotchas
+
+
+My * convention as codeblock divider, runtime and visual
+
+

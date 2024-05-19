@@ -1,0 +1,60 @@
+==   GOTO-Recursion-FORK
+    EDME  {  umep/   agtd/*  } 15may24
+    
+--==
+EDME:vim /home/kw/km3a/umep/agtd/GOTO-Recursion-Fork-OVR-15may24.mdk
+--==
+
+Decide Correctly, Once and For all
+    DO not procrastinate and Maintain two Versions
+    
+    
+A.  Current  GOTO and STK()
+    STK Restores vars- esp grab/gran, Gn, Rn
+    RetB is kludge flag to create recursion
+        Really GOTO pattern is not variable except g=GOgrab recursion
+        
+    Revising to TRY predictive alt choice by start-term lists by grab
+        Derived by trace of grammar refs -code somewhere, not working?
+        
+    Confusion over duplicate terminals without context
+        eg KILL could be KCmd or Var or Label or MRou or mGblName
+            depending on context of syntax
+        Preprocessor does not know (might guess ?) context
+        Value of preprocessing K KILL kill k to KCmd vs extra grammar to do it.
+        
+        Value of preprocessing Var names, Pfx % or ^  Sfx (
+            Funky rules like not A1b2  ?
+            
+B.  Make GOgrab a subroutine, recursive from tok
+
+    GOTOs replaced by FOR Gn  and FOR Rn
+        Modules for grab - main recursive ? StkP as Arg vs SYS var global scope
+        Module for gran, submodules granPASS, granFAIL
+        
+        
+        QB, QN, QT  return vars of modules
+    POP is replaced by NEW and arg of grab module
+        Arg:  grab  and derive its properties grnun, ?term tables -> Gn
+        NEW:  for convenience secondary vars
+            of grab- grnun, grde, grri  link to grammar definititon, for debugging
+                and Gn -> gran
+            of gran-  grulst (& nlst=$L), gropsr
+                Var Rn thru lgrulst -> tok's
+            tok:toty T or R  
+                T terminal  compare, Qtest 1/0 ->QT 1/0
+                R  recurse tok is new grab -> QB -> QT and Quit/Recursive
+        Note QB is not in NEW or ARG, but returned across levels of recursion
+        Similarly  grte -> gnte across recursion quit  - fudge vars qnte ?
+        
+II.    Guide Gn alt by table of first-terminal possibilities
+        Index, by gran of all poss start terms, merged Gns for grab
+           then actual next term, tki->tkcod/TKc lookup -> Gn
+            lookup return more than one poss Gn for given terminal~tkcod ???
+
+    
+    Still STK(StkP  save vars so can see FUll picture of Vars
+    PSH renamed Save ?
+    
+Variant 
+        

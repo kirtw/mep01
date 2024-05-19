@@ -1,0 +1,15 @@
+==  Debug Trace Manual   K X
+
+/home/kw/km3a/umep/rppar1/mGR0a.mdk
+
+
+StkP   grab/gran    ts:te   grulst
+1       mCmds       1:3     
+2       mCmds.1     1:3     KCmd
+3  grab    Kcmd
+4  gran    KCmd.1   1:1     Kwd. sp1. Kcmd2
+5  grab    KCmd2    3:3
+6  gran    KCmd2.1             Karg
+7  grab    Karg
+8  gran    Karg.1    3:3       Vna.
+

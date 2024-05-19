@@ -1,5 +1,6 @@
 ==  trace grte-gnte  6apr24  
 
+See Remove gnte  - redundant, simplified 15may24
 
 kw@L7a:~/km3a/umep/rppar1$ grep gnn -n ppPA*.m
 ppPAgrab.m:29:        ;D pze^pps("Pop gnts","gran,grts,gnts,grte,gnte,gnn,grC")        

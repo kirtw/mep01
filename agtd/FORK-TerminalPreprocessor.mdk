@@ -1,0 +1,28 @@
+==  FORK  Terminal Preprocessor vs Chars in Grammar Rules
+
+
+Is more complicated
+Was useful logically in debugging parser, BUT...
+    to remove the many iterations of single char processing as a grammar rule
+    These are mind-numbing to single-step debugging
+    
+Now that version is working, may be cleaner to add chars to grammar now.
+    And Remove pre-processor
+    Remove TKv(tki
+    Replace with TCv(tci   char ptr, always one char, no tkcs/tkce
+        Maybe no TK* Array needed, vs C=$E(LM,tkc)
+    
+PROBLEMS with preprocessor
+    Redundant terminal values result
+    Alt-terminals span diff number of chars
+    Esp confusing in syntax errors, eg KIL as Kcmd vs Var ???
+    
+    Debugging may be tricky, theoreticall unclean ! 
+    May waste time on this debugging
+    
+    Alt terminals may screw up MUMPS' start-char-syntax unambiguous path
+        Efficiency and Simplicity
+
+
+
+    

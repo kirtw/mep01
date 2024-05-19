@@ -1,0 +1,28 @@
+==    ToDo-mep-mpp    15may24
+
+
+GOTO version is now working - No-Fail, No-Alt Grammar
+    K X
+    Preprocessed TKv(tki)  all single char
+    PTx is nice, with a few glitches - good concept
+    gropsr - post process working, ^p2PSR subroutines when label matches grab
+        mess of vars, processing, srs...
+        
+Variant Predicting which alt by first char/terminals
+    This would be cleaner mod in recursive sr version
+
+        
+Variant with recursive sr (single grab)
+    Wait to fork til aux stuff is much farther along 
+    (Avoid two code bases to move in parallel!)
+    OR  Final Decision and proceed on Correct Fork
+    
+    
+Debug carefully
+    alt fail
+    syntax error - tok fail, unwind, coherent error message ?
+    mult-char Vna
+    mult char Kcmd  -
+    
+Decision-
+    Maintain preporocessor and words as terminals  vs

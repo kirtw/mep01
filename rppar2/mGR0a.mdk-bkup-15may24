@@ -1,0 +1,80 @@
+==  Grammar 0.1 mumps parts     Simplest, No fail K X
+
+
+# Punctuations as themselves 
+# See CRGtok^ppGRI to create GRt(tokt)   List of Punctuations is in //tokt Line See PUL
+//tokt   {,.^%$#@!()[]'":=_   
+N
+L
+U
+A
+P
+
+C
+sp1.
+wsp.
+eol.
+Wd.
+Vna.
+qs.
+int.
+#  + - N [.] N   not exponent form yet
+num.  
+nex.
+Qwd.
+Swd.
+Hwd.
+Kwd.
+
+//GR    GRna  &   GRru
+mCmds:Top level, start for now, grab
+   Kcmd
+   Hcmd
+#  Test Errors by Aud^ppGRI
+   XXyy.
+   ZZWW
+   ZZZaaaaaaaaa123
+
+Kcmd:Kill command
+    Kwd. sp1. Kcmd2
+Kcmd2:  End of Kill Cmd
+    Karg
+Karg  Kill argument
+    Vna.
+
+Hcmd:Hang is simple
+   Hwd. sp1.  Exp   
+
+Exp:Expression
+   Svn
+   unop. Exp
+   Svn bop Exp
+   Vlit
+unop:  Unary Operators
+   +
+   -
+bop: Binary operator
+   +
+   -
+   < =
+   > =
+#  Not unary op ?
+   ! <
+   *
+   _
+Vlit: Literal value in code, quote or number
+   Vlqt
+   Vlnum
+Vlqt: Literal Quoted string
+   " Lstr "
+
+
+ALVn: Array or Local Var name
+     Vn.
+
+
+//m   mumps test code
+K X
+//TK
+Kwd. sp1. Vna.
+//

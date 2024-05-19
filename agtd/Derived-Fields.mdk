@@ -1,0 +1,28 @@
+==   Derived fields => Calc where - ?Store
+
+
+Derived fields
+
+
+   ***  by ^ppGRI derive and store GRc
+grnun = num of rule alternatives   Gn=1:1:grnun
+
+nlst  = $L(grulst," ")      grnlst
+gropsr, labels^p2PSR + grab => gropsr loc var, ?GRc
+grsynsr   ditto,   -> QN+QB 0/1    ?32char max names
+
+keys-
+    grab ~ tok in rule grulst
+    gran grab.Gn
+    
+tok -> toty {T R ?}  sr in ^p2PAR  ala tokt now, cleaner def
+
+grab @grabFL GRv(grab   grde, grri, grnun/2
+gran @granFL GRc(gran   grulst, gropsr, gropsyn
+
+Results of parsing, StkP, 
+    grab
+    gran  grts, grte, => grstr, colspan
+    
+   ***  Currently in ^ppHPT  (sic) derive elsewhere, store
+     

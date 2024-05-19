@@ -1,5 +1,4 @@
-ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen GR*  Grammar tables for mpp
-;
+ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen/TOIcustom from RG() GR* GRv,GRc,GRt  Grammar tables
 ;
 ; ReFactor maybe:  tkcod  vs tokt  in tokgrFL, et. al
 ;
@@ -16,7 +15,7 @@ ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen GR*  Grammar tables fo
 ;;grulst;spdelim List of tokens, either terminal in TKv or grab  rule name (not gran)
 ;;   1st sp piece may have term after / from grammar file,  gran may be attached to _2
 ;;toktPUL:special list of tokt's which may start gran, $P(tokL," ") is punct list, rest $P(sp tokt's
-;;gropsr: post proc sr, in ^ppPO, def =grab, mult gran same sr ?  vs grab_grun (not dot in label)
+;;gropsr: post proc sr, in ^ppPSR/^p2PSR - not in GRc, derived later,  see granI^p2PAR
 ;
 
 ;* 7mar24 ReFactor- remove gri/gki, use grab as subscr of GRv
@@ -33,20 +32,24 @@ top    NEW Q I $$arg^pps("RG") G Qb
 Q      Q:$Q Q Q:Q=""
 Qb     D b^dv("Err ^"_$T(+0),"Q,RG,devrg,gi,grab,gran") Q:$Q Q  Q
 ;* op no params
-G0     S gFil="mGR0a.mdk"   ; in rppar1/ !
-       D IRDGR(gFil) 
+G0     S gFil="mGR0a.mdk",gFol="rppar2/"   ; in rppar2/
+       D IRDGR(gFil,gFol) 
        D ^ppGRI  ; RG() : GRv...
        Q
 ;*
-G1     S gFil="mGR1a.mdk"
-       D IRDGR(gFil) 
+G1     S gFil="mGR1a.mdk",gFol="rppar1/"
+       D IRDGR(gFil,gFol) 
        D ^ppGRI
        Q
+;*
+G3     S gFil="mGR0a.mdk",gFol="rppar1/"   ; in rppar1/
+       D IRDGR(gFil,gFol) 
+       D ^ppGRI  ; RG() : GRv...
+       Q
 ;*    Read Grammar File, multiple sections to RG()     
-IRDGR(gFil)  NEW Q,D I $$arg^pps("gFil") G Qb 
+IRDGR(gFil,gFol)  NEW Q,D I $$arg^pps("gFil,gFol") G Qb 
        S D=$IO
        KILL RG,GRv,GRc     S GRv=0,GRc=0,rsq=0  D ^ppIMG
-       S gFol="rppar1/"
        D IB^mepIO ; PB umep./
        S devrg=PB_gFol_gFil
        S Q=$$^devRD(devrg,,"RG") I Q'="" G Qb
@@ -61,6 +64,7 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
        KILL GRv,GRc S grun=1,grab="?",grri="?"
        S gi0=0 F gi=1:1:RG S L=$G(RG(gi)) I $E(L,1,2)="//",L["GR" S gi0=gi Q
        I 'gi0 S Q="Err did not find //GR in RG("_gi G Qb
+       I $G(devrg)'="" S GRv(0,"devrg")=devrg
        F gi=gi0+1:1:RG S L=$G(RG(gi)) Q:L["//"  DO  ;
          .I $E(L)="#" Q ;skip comment # first char of line only
          .S Esp=$E(L)=" "
@@ -73,7 +77,7 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
             ..I grab="" D b^dv("Err grab grab","grab,gi,P1,P2,L") G Qb
             ..I grab'?1A.10AN D b^dv("Err format of grab in grammar file","grab,gi,L") G Qb
             ..S D=$D(GRv(grab)) I D D b^dv("Dupl grab:","grab,grri") G Qb
-            ..S gran=grab_"."_grun
+            ..;S gran=grab_"."_grun
             ..S grde=P2
             ..D SFL^kfm("grde,grri",grabFL) ; : GRv(grab
             ..S rsq=rsq+1
@@ -82,7 +86,7 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
             ..;Indented line, next grun/gran
             ..S grun=grun+1,grnun=grun
             ..S gran=grab_"."_grun
-            ..S grulst=L
+            ..S grulst=L          
             ..D SFL^kfm("grulst",granFL)
             ..D SFL^kfm("grnun",grabFL)
        W:$X ! W "Completed Grammar composition CRGru^"_$T(+0)_"  GRv, GRc, GXsq ",!

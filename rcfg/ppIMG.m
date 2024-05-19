@@ -26,7 +26,7 @@ IKILLFL  D ^ppIMG ; VVL,*FL
 tokFL  ;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 tokgrFL ;;tokgrFL:ttde,ttri_GRt(tokt)
 grabFL ;;grabFL:grde,grnun,grri_GRv(grab)
-granFL ;;granFL:grulst,gropsr_GRc(gran)
+granFL ;;granFL:grulst,gropsr,grtt_GRc(gran)
 ;
 ;;  Stack STK(StkP) in ^p2PAR  All grab vars incl grab, ditto All gran vars incl gran
 sgrabFL  ;;sgrabFL:grab,grnun,grts,grte,grde_HQT(StkP)  ;StkP odd

@@ -15,7 +15,31 @@ Audit of TK(tki,  tki end:3 completed.  ok?
 Kwd.           'K'   {1-1} 
 sp1.           '_'   {2-2} 
 Vna.           'X'   {3-3} 
- TKv: ARRAY+Str 3
- ^pps  *** pze ***  by LMp2+9^ppMa- See TKv 
 --nxt In:1  Kwd. K
 InitGRAB: mCmds      0    1    level, start for no* 
+>InitGRAN>gran       StkP gnts grts grulst 
+InitGRAN: mCmds.1    0    1    1    Kcmd 
+PSHb- grab:mCmds#1
+PSHn- gran:mCmds.1#2
+InitGRAB: Kcmd       2    1    command 
+>InitGRAN>gran       StkP gnts grts grulst 
+InitGRAN: Kcmd.1     2    1    1    Kwd. sp1. Kcmd2 
+termPASS: Kcmd.1.1/2 Kcmd.1     1    Kwd. sp1. Kcmd2           Kwd.     T               1:1/       1    1 
+--nxt In:2  sp1. _
+termPASS: Kcmd.1.2/2 Kcmd.1     2    Kwd. sp1. Kcmd2           sp1.     T               1:2/       1    2 
+--nxt In:3  Vna. X
+PSHb- grab:Kcmd#3
+PSHn- gran:Kcmd.1#4
+InitGRAB: Kcmd2      4    3    End of Kill Cmd 
+>InitGRAN>gran       StkP gnts grts grulst 
+InitGRAN: Kcmd2.1    4    3    3    Karg 
+PSHb- grab:Kcmd2#5
+PSHn- gran:Kcmd2.1#6
+InitGRAB: Karg       6    3    Kill argument 
+>InitGRAN>gran       StkP gnts grts grulst 
+InitGRAN: Karg.1     6    3    3    Vna. 
+termPASS: Karg.1.1/6 Karg.1     1    Vna.                      Vna.     T    Karg^ppPO  3:3/       3    3 
+>granPASS>QN  gran       gnC        gnts gnte Rn   grulst                    tok      toty 
+granPASS:     Karg.1     3:3        3    3    1    Vna.                      Vna.     T 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Karg       Karg.1     3    3    Karg^ppPO 

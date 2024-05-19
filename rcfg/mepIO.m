@@ -19,6 +19,15 @@ IB      D IBsys ; : SB, GB
 ;*
 ;*  shared most mep/umep./ variants 
 ;*  : zro  saved by caller, $zro set by caller
+p2IBzro  ;
+       D IB  ; umep
+       S PBL="rcfg,rppar2,rpgr1,../umbr/rmbrme"  ;umad./ rzdoc temp
+       S GBL="rmide1,rmenu3,rzro3,rhgen5,rmgbFL3,rdbg4,rcor1,rdev4,rsrc1,rmGP4,rerr1" ;,rzdoc
+       D ^dzCzro(PB,PBL,GBL) ; : zro
+       ;caller compiles, caller sets $zro=
+       Q
+;*  shared most mep/umep./ variants 
+;*  : zro  saved by caller, $zro set by caller
 ppIBzro  ;
        D IB  ; umep
        S PBL="rcfg,rppar2,rppar1,../umbr/rmbrme"  ;umad./ rzdoc temp
@@ -26,7 +35,7 @@ ppIBzro  ;
        D ^dzCzro(PB,PBL,GBL) ; : zro
        ;caller compiles, caller sets $zro=
        Q
-;*   @mpp  mpp.sh ^ppGo
+;*   mpp.sh ^ppGo
 IBzro  ;  vs IBzro^mas   duplicate here ?  different ( mad bash)
        D IB  ; umep
        S PBL="rcfg,rppar2,rppar1,rmep2,rmep4,rmePT1,rsr,rxmep1,rDIM,../umbr/rmbrme"  ;umad./ rzdoc temp

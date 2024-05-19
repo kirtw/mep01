@@ -1,0 +1,34 @@
+==  Removed gnts,gnte  15may24
+    { umep/  alog/  gnte/*  }
+    
+--==
+EDME:vim /home/kw/km3a/umep/alog/gnte/gnte-Removed.mlog.mdk
+--==
+
+Analysis  -hopeful if not complete
+Many refs to gnte and gnts
+
+Plunged into code changes
+    Remove gnts and gnte from granFL  and sgranFL
+    Change or edit  gnte to grte  (and remove gnts refs)
+    
+Debug after a number of mods - seemed to work
+Clean up gropsr  in ^p2PSR  - was a mess, not because of gnte...
+
+Followed by Grammar mods and debugging
+    Move mGR0a.mdk  combo grammar file  from rppar1/  to rppar2/
+    Modify ^ppGRI  profiles to use var gFol to find file
+    
+Edit rppar2/  mGR0a.mdk 
+    Change order in mCmds  HCmd above KCmd  so HCmd must fail to get to KCmd.
+    Bug in Qgrab going back to LPgrab, missing POP
+    Fix in Qgrab+1,  Add D POP
+    Added pze monitor in LPgrab  -note MCmd has grnun=5  some crazy grammar tests?
+  Seems to work KCmd in output graph again  5pm 15may24
+  
+
+  
+  
+  
+  
+    
