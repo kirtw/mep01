@@ -25,11 +25,12 @@ Svna NEW Q I $$arg^p2s("tki") G Qb
      Q
 ;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 ;* tki, LM, cbid, Vna :  XRV() for MBR code analysis
-XRna(VarActTy)  NEW Q I $$arg^p2s("tki,TKv,VarActTy") G Qb 
+XRna(VarActTy)  NEW Q I $$arg^p2s("tki,Vna,TKv,VarActTy") G Qb 
      I $G(cbid)="" S cbid="TestLine"
-     I $G(LM)="" S LM=$G(TKv(0,"LM")) I LM="" S LM="K X"  ; sic fudge/kludge
-     I Vna["(" S Vna=$P(tks,"("),VAarg=$P($P(tks,"(",2),")")
-     S XRV(Vna,cbid,VarActTy)=LM  ; for MBR xref Vars
+     I $G(LM)="" S LM=$G(TKv(0,"LM")) I LM="" S LM="K X,Y"  ; sic fudge/kludge
+     S ssVna=Vna I Vna["(" S ssVna=$P(Vna,"("),VAarg=$P($P(Vna,"(",2),")")
+     I ssVna="" D b^dv("Lost Vna ","ssVna,Vna,tks,tki") Q
+     S XRV(ssVna,cbid,VarActTy)=LM  ; for MBR xref Vars
      Q
 ;*     
 Q      Q:$Q Q Q:Q=""

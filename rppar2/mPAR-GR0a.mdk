@@ -1,40 +1,18 @@
-==  Grammar 0.1 mumps parts     Simplest, No fail K X
+==   mPAR-GR0a.mdk      in umep/ rppar2/
+#   rev 19may24  2pm
 
-
-# Punctuations as themselves 
-# See CRGtok^ppGRI to create GRt(tokt)   List of Punctuations is in //tokt Line See PUL
-//tokt   {,.^%$#@!()[]'":=_   
-N.
-L.
-U.
-A.
-P.
-
-C.
-sp1.
-wsp.
-eol.
-Wd.
-Vna.
-qs.
-int.
-#  + - N [.] N   not exponent form yet
-num.  
-nex.
-Qwd.
-Swd.
-Hwd.
-Kwd.
 
 //GR    GRna  &   GRru
 LblLine:  Top Level with label and/or start-sp1
    Label sp1. mCmds
-# linestart comment
-   Comment  
+   ; Comment
+   sp1. mCmds
+# Comment content after semicolon (or dbl ;; ?)
+
 mCmds:Top level, start for now, grab
    Hcmd
    Kcmd
-   Comment
+   ; Comment
 
 #  Test Errors by Aud^ppGRI
    XXyy.
@@ -65,9 +43,9 @@ Karg:  Kill argument
 KVnlst: List of Vars to Kill
     Vna. eKVnlst
     
-[eKVnlst:  end of comma list of KVars , optionionally null
+eKVnlst:opnull  end of comma list of KVars 
     , KVnlst
-
+    opnull.
 
 Hcmd:Hang is simple
    Hwd. sp1.  Exp   
@@ -100,9 +78,4 @@ Na:  Name of var, mGbl, label, sans (args)
 ALVn: Array or Local Var name, with % or ^ pfx
      Vna.
 
-
-//m   mumps test code
-K X
-//TK
-Kwd.K sp1. Vna.X_K X
-//
+//    end

@@ -1,0 +1,16 @@
+==  Extend Grammar to Lists
+    {  umep/   agtd/*  } 19may24
+
+eg. VarList  comma separated
+
+VarList = Var VarEnd
+VarLend = , Var | Var
+
+Var = ^ Vn VnEnd
+    | % Vn VnEnd
+    | Vn VnEnd
+    
+Vn = A. 
+
+
+KILL VnLst  

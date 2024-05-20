@@ -59,15 +59,8 @@ Kcmd:Kill command
     Kwd. sp1. Kcmd2
 Kcmd2:  End of Kill Cmd
     Karg
-Karg:  Kill argument
-    KVnlst
-    
-KVnlst: List of Vars to Kill
-    Vna. eKVnlst
-    
-[eKVnlst:  end of comma list of KVars , optionionally null
-    , KVnlst
-
+Karg  Kill argument
+    Vna.
 
 Hcmd:Hang is simple
    Hwd. sp1.  Exp   
@@ -104,5 +97,5 @@ ALVn: Array or Local Var name, with % or ^ pfx
 //m   mumps test code
 K X
 //TK
-Kwd.K sp1. Vna.X_K X
+Kwd. sp1. Vna.
 //

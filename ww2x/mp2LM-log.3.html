@@ -7,14 +7,23 @@
 <pre>
 Completed Grammar composition CRGru^ppGRI  GRv, GRc, GXsq 
 Finished CRGtok^ppGRI  Composing GRt(tokt,  Terminal token db.
-Finished ^ppITK  tki:3 codes
 
-Audit of TK(tki,  tki end:3 completed.  ok?
+** Debug top+4^ppITK:  dbl spaces in $T 
+L2=', , 4 4' 
+L=',  , 4 4' 
+tki=3
+TLab='TK1' 
+I=5
+Finished ^ppITK  tki:5 codes
+
+Audit of TK(tki,  tki end:5 completed.  ok?
 
 
 Kwd.           'K'   {1-1} 
 sp1.           '_'   {2-2} 
 Vna.           'X'   {3-3} 
+,              ','   {4-4} 
+Vna.           'Y'   {5-5} 
 --nxt In:1  Kwd. K
 InitGRAB: mCmds      0    1    level, start for no* 
 
@@ -25,7 +34,7 @@ StkP=0
 Gn=0
 grts=1
 grte='???' 
-grnun=5
+grnun=6
 >InitGRAN>gran       StkP grts grulst 
 InitGRAN: mCmds.1    0    1    Hcmd 
 PSHb- grab:mCmds#1
@@ -80,7 +89,7 @@ StkP=0
 Gn=1
 grts=1
 grte='?' 
-grnun=5
+grnun=6
 >InitGRAN>gran       StkP grts grulst 
 InitGRAN: mCmds.2    0    1    Kcmd 
 PSHb- grab:mCmds#1
@@ -128,121 +137,69 @@ grts=3
 grte='???' 
 grnun=1
 >InitGRAN>gran       StkP grts grulst 
-InitGRAN: Karg.1     6    3    Vna. 
-termPASS: Karg.1.1/6 Karg.1     1    Vna.                      Vna.     T    Karg^p2PSR U*gnC      3    3 
+InitGRAN: Karg.1     6    3    KVnlst 
+PSHb- grab:Karg#7
+PSHn- gran:Karg.1#8
+InitGRAB: KVnlst     8    3    List of Vars to Kill 
 
-** Debug granPASS+8^p2PAR:  Log gropsr
-gropsr='Karg^p2PSR' 
-gran='Karg.1' 
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='KVnlst' 
+QB='??' 
+StkP=8
+Gn=0
 grts=3
-grte=3
-tki=3
-tks=null
->granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     Karg.1     3:3        3    3    1    Vna.                      Vna.     T 
->grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     Karg       Karg.1     3    3    Karg^p2PSR 
+grte='???' 
+grnun=1
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: KVnlst.1   8    3    Vna. eKVnlst 
+termPASS: KVnlst.1.* KVnlst.1   1    Vna. eKVnlst              Vna.     T               U*gnC      3    3 
+--nxt In:4  , ,
+PSHb- grab:KVnlst#9
+PSHn- gran:KVnlst.1#10
+InitGRAB: eKVnlst    10   4    end of comma list o* 
 
-** Debug Qgrab+4^p2PAR:  Log Qgrab-Karg.1 to QRtok
-StkP=6
-RetB='QRtok' 
-grab='Karg' 
-gran='Karg.1' 
-gropsr='Karg^p2PSR' 
-QN=null
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='eKVnlst' 
+QB='??' 
+StkP=10
+Gn=0
+grts=4
+grte='???' 
+grnun=2
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: eKVnlst.1  10   4    , KVnlst 
+termPASS: eKVnlst.1* eKVnlst.1  1    , KVnlst                  ,        T               U*gnC      4    4 
+--nxt In:5  Vna. Y
+PSHb- grab:eKVnlst#11
+PSHn- gran:eKVnlst.1#12
+InitGRAB: KVnlst     12   5    List of Vars to Kill 
 
-** Debug QRtok+1^p2PAR:  Log QRtok finished GOgrab pre POP
-grab='Karg' 
-QB=null
-POPn- gran:Kcmd2.1#6
-POPb-QRtok grab:Kcmd2#5
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='KVnlst' 
+QB='??' 
+StkP=12
+Gn=0
+grts=5
+grte='???' 
+grnun=1
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: KVnlst.1   12   5    Vna. eKVnlst 
+termPASS: KVnlst.1.* KVnlst.1   1    Vna. eKVnlst              Vna.     T               U*gnC      5    5 
+PSHb- grab:KVnlst#13
+PSHn- gran:KVnlst.1#14
+InitGRAB: eKVnlst    14   5    end of comma list o* 
 
-** Debug QRtok+5^p2PAR:  Log post POP QRtok-
-StkP=4
-QB=null
-QN=null
-QT=null
-grab='Kcmd2' 
-Gn=1
-gran='Kcmd2.1' 
-grts=3
-grte=3
-Rn=1
-gnn='Karg.1.1/6' 
-
-** Debug QRtok+7^p2PAR:  Log QRtok to LPgran
-QB=null
-QN=null
-gran='Kcmd2.1' 
-Rn=1
-tok='Karg' 
->granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     Kcmd2.1    3:3        3    3    1    Karg                      Karg     T 
->grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     Kcmd2      Kcmd2.1    3    3     
-
-** Debug QRtok+1^p2PAR:  Log QRtok finished GOgrab pre POP
-grab='Kcmd2' 
-QB=null
-POPn- gran:Kcmd.1#4
-POPb-QRtok grab:Kcmd#3
-
-** Debug QRtok+5^p2PAR:  Log post POP QRtok-
-StkP=2
-QB=null
-QN=null
-QT=null
-grab='Kcmd' 
-Gn=1
-gran='Kcmd.1' 
-grts=1
-grte=3
-Rn=3
-gnn='Karg.1.1/6' 
-
-** Debug QRtok+7^p2PAR:  Log QRtok to LPgran
-QB=null
-QN=null
-gran='Kcmd.1' 
-Rn=3
-tok='Kcmd2' 
->granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     Kcmd.1     1:3/3      1    3    3    Kwd. sp1. Kcmd2           Kcmd2    T 
->grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     Kcmd       Kcmd.1     1    3     
-
-** Debug QRtok+1^p2PAR:  Log QRtok finished GOgrab pre POP
-grab='Kcmd' 
-QB=null
-POPn- gran:mCmds.2#2
-POPb-QRtok grab:mCmds#1
-
-** Debug QRtok+5^p2PAR:  Log post POP QRtok-
-StkP=0
-QB=null
-QN=null
-QT=null
-grab='mCmds' 
-Gn=2
-gran='mCmds.2' 
-grts=1
-grte=3
-Rn=1
-gnn='Karg.1.1/6' 
-
-** Debug QRtok+7^p2PAR:  Log QRtok to LPgran
-QB=null
-QN=null
-gran='mCmds.2' 
-Rn=1
-tok='Kcmd' 
->granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     mCmds.2    1:3/3      1    3    1    Kcmd                      Kcmd     T 
->grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     mCmds      mCmds.2    1    3     
-
-** Debug top+15^p2HPT:  Err devlog value gone.
-devlog=UNDEF.
-TIVL=devrg,devlog
-devrg='/home/kw/km3a/umep/rppar2/mGR0a.mdk' 
-devlog=UNDEF.
+** Debug LPgrab^p2PAR:  Log LPgrab
+grab='eKVnlst' 
+QB='??' 
+StkP=14
+Gn=0
+grts=5
+grte='???' 
+grnun=2
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: eKVnlst.1  14   5    , KVnlst 
+TTX x eKVnlst.1 Failed at ,   [, KVnlst] #1
+>termFAIL>gnn        grab       gran       Rn   grulst                    tok      toty gropsr 
+termFAIL: eKVnlst.1* eKVnlst    eKVnlst.1  1    , KVnlst                  ,        T     
+ ^p2s  *** pze ***  by TermNO+3^p2PAR- Log End TermNO
