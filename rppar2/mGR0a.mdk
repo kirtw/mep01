@@ -1,16 +1,16 @@
-==  Grammar 0.1 mumps parts     Simplest, No fail K X
+==  Grammar 0.1 mumps parts     Simplest, No fail K X  K X,Y
 
 
 # Punctuations as themselves 
 # See CRGtok^ppGRI to create GRt(tokt)   List of Punctuations is in //tokt Line See PUL
 //tokt   {,.^%$#@!()[]'":=_   
-N.
-L.
-U.
-A.
-P.
+NN.
+LL.
+UU.
+AA.
+PP.
 
-C.
+CC.
 sp1.
 wsp.
 eol.
@@ -32,8 +32,8 @@ LblLine:  Top Level with label and/or start-sp1
 # linestart comment
    Comment  
 mCmds:Top level, start for now, grab
-   Hcmd
    Kcmd
+   Hcmd   
    Comment
 
 #  Test Errors by Aud^ppGRI
@@ -44,7 +44,7 @@ mCmds:Top level, start for now, grab
 Comment: Semicolon comment
    ; AllCom
 AllCom: Text of comment, anything to EOL
-   E. [E.]
+   EE. [E.]
    
 Label:  Line label/codeblock ref, arg/formal-args
    Na eLab
@@ -63,21 +63,20 @@ Karg:  Kill argument
     KVnlst
     
 KVnlst: List of Vars to Kill
-    Vna. eKVnlst
+    Vna. [eKVnlst
     
 [eKVnlst:  end of comma list of KVars , optionionally null
     , KVnlst
-
 
 Hcmd:Hang is simple
    Hwd. sp1.  Exp   
 
 Exp:Expression
    Svn
-   unop. Exp
+   [unop. Exp
    Svn bop Exp
    Vlit
-unop:  Unary Operators
+[unop:  Unary Operators
    +
    -
 bop: Binary operator

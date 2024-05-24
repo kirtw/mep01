@@ -12,7 +12,7 @@ Aud    NEW Q,ng,nan I $$arg^pps("GRv,GRc,GXsq") G Qb
          .I grab="" D b^dv("Err grab GXsq(rsq","rsq,grab")  G Qb
          .S ng=ng+1
          .D GFL^kfm(grabFL) ; GRv(grab,    grri, grde, grnun     
-         .I grab'?1A.10AN S Q="Err grab format 1A.10AN " G Qb
+         .I grab'?.1"["1A.10AN S Q="Err grab format 1A.10AN " G Qb
          .F grun=1:1:grnun S gran=grab_"."_grun DO  ;
             ..D GFL^kfm("grulst",granFL)  ; GRc(gran,
             ..S nan=nan+1

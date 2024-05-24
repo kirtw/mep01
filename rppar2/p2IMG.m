@@ -31,7 +31,7 @@ granFL ;;granFL:grulst,gropsr,grtt_GRc(gran)
 ;
 ;;  Stack STK(StkP) in ^p2PAR  All grab vars incl grab, ditto All gran vars incl gran
 ;* StkP odd for grab, even for gran
-sgrabFL  ;;sgrabFL:grab,sty,RetB,grnun,Gn,grun,grts,grte,grde,grri_STK(StkP)
+sgrabFL  ;;sgrabFL:grab,sty,grnun,grts,grte,grde,grri_STK(StkP)
 ;*  remove gnts,gnte,
 sgranFL  ;;sgranFL:gran,sty,grulst,nlst,Rn,tok,gropsr,gropsyn,grstr_STK(StkP)
 stokFL   ;;stokFL:gnn,sty,gtki_STK(StkP)

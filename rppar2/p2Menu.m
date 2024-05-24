@@ -26,8 +26,8 @@ Menu	;Text for Menu  	Compile  RM()
         ;  op.  dopLR  dopDE	# where dopLR contains ^  or menu mab./exists
         ;  dnxt1  or dnxt2 Syntax: | pipe prefix
 ;;mm. Select from p2 Parse mumps Main: _Main p2 Menu  |mm
-;; p2. LMp2^p2Ma Test Parser on pre-fab TK() S X=A   p2PAR
-;; gri. GRI^p2Ma  Generate GRv(grab, GRc(gran Grammar Tables devlog
+;; p. LMp2^p2Ma Test Parser on pre-fab TK() S X=A   p2PAR GOTO or p3PAR recursive
+;; gri. GRI^ppMa  Generate GRv(grab, GRc(gran Grammar Tables devlog
 ;; demo. demo^p2Ma  Fudge PTx Data for HGen
 ;;     ^ppWGR  Write Grammar
 ;;     ^ppWGRt  Write Grammar Terminal tokens tokt (1P or contain dot)

@@ -26,180 +26,80 @@ Vna.           'X'   {3-3}
 Vna.           'Y'   {5-5} 
 --nxt In:1  Kwd. K
 InitGRAB: mCmds      0    1    level, start for no* 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='mCmds' 
-QB='??' 
-StkP=0
-Gn=0
-grts=1
-grte='???' 
-grnun=6
->InitGRAN>gran       StkP grts grulst 
-InitGRAN: mCmds.1    0    1    Hcmd 
 PSHb- grab:mCmds#1
-PSHn- gran:mCmds.1#2
-InitGRAB: Hcmd       2    1    is simple 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='Hcmd' 
-QB='??' 
-StkP=2
-Gn=0
-grts=1
-grte='???' 
-grnun=1
 >InitGRAN>gran       StkP grts grulst 
-InitGRAN: Hcmd.1     2    1    Hwd. sp1. Exp 
-TTX x Hcmd.1 Failed at Hwd.   [Hwd. sp1. Exp] #1
->termFAIL>gnn        grab       gran       Rn   grulst                    tok      toty gropsr 
-termFAIL: Hcmd.1.1/2 Hcmd       Hcmd.1     1    Hwd. sp1. Exp             Hwd.     T     
- ^p2s  *** pze ***  by TermNO+3^p2PAR- Log End TermNO
->granFAIL>QN         gran       Rn   grulst                    tok      toty gropsr 
-granFAIL: X:Hwd. at* Hcmd.1     1    Hwd. sp1. Exp             Hwd.     T     
- ^p2s  *** pze ***  by granFAIL+1^p2PAR- Log granFAIL
-
-** Debug Qgran+2^p2PAR:  Qgran FAILed
-StkP=2
-QT='X:Hwd. at Hcmd.1.1/2' 
-QN='X:Hwd. at Hcmd.1.1/2' 
-gran='Hcmd.1' 
-gnn='Hcmd.1.1/2' 
-Rn=1
-Gn=1
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='Hcmd' 
-QB='X:Hwd. at Hcmd.1.1/2' 
-StkP=2
-Gn=1
-grts=1
-grte='?' 
-grnun=1
->grabFAIL>QB:           grab       QB         QG         QT 
-grabFAIL: QB=Failed Hcmd * Hcmd    Failed Hc* ???        X:Hwd. at* 
- ^p2s  *** pze ***  by grabFAIL+2^p2PAR- grabFAIL: Syntax Err?
-POPn- gran:mCmds.1#2
-POPb-argPOP grab:mCmds#1
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='mCmds' 
-QB='X:Hwd. at Hcmd.1.1/2' 
-StkP=0
-Gn=1
-grts=1
-grte='?' 
-grnun=6
->InitGRAN>gran       StkP grts grulst 
-InitGRAN: mCmds.2    0    1    Kcmd 
-PSHb- grab:mCmds#1
-PSHn- gran:mCmds.2#2
+InitGRAN: mCmds.1    1    1    Kcmd 
+PSHn-GRAN gran:mCmds.1#2
 InitGRAB: Kcmd       2    1    command 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='Kcmd' 
-QB='??' 
-StkP=2
-Gn=0
-grts=1
-grte='???' 
-grnun=1
->InitGRAN>gran       StkP grts grulst 
-InitGRAN: Kcmd.1     2    1    Kwd. sp1. Kcmd2 
-termPASS: Kcmd.1.1/2 Kcmd.1     1    Kwd. sp1. Kcmd2           Kwd.     T               U*gnC      1    1 
---nxt In:2  sp1. _
-termPASS: Kcmd.1.2/2 Kcmd.1     2    Kwd. sp1. Kcmd2           sp1.     T               U*gnC      1    2 
---nxt In:3  Vna. X
 PSHb- grab:Kcmd#3
-PSHn- gran:Kcmd.1#4
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: Kcmd.1     3    1    Kwd. sp1. Kcmd2 
+PSHn-GRAN gran:Kcmd.1#4
+termPASS: Kcmd.1.1/4 Kcmd.1     1    Kwd. sp1. Kcmd2           Kwd.     T               U*gnC      1    1 
+--nxt In:2  sp1. _
+termPASS: Kcmd.1.2/4 Kcmd.1     2    Kwd. sp1. Kcmd2           sp1.     T               U*gnC      1    2 
+--nxt In:3  Vna. X
 InitGRAB: Kcmd2      4    3    End of Kill Cmd 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='Kcmd2' 
-QB='??' 
-StkP=4
-Gn=0
-grts=3
-grte='???' 
-grnun=1
->InitGRAN>gran       StkP grts grulst 
-InitGRAN: Kcmd2.1    4    3    Karg 
 PSHb- grab:Kcmd2#5
-PSHn- gran:Kcmd2.1#6
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: Kcmd2.1    5    3    Karg 
+PSHn-GRAN gran:Kcmd2.1#6
 InitGRAB: Karg       6    3    Kill argument 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='Karg' 
-QB='??' 
-StkP=6
-Gn=0
-grts=3
-grte='???' 
-grnun=1
->InitGRAN>gran       StkP grts grulst 
-InitGRAN: Karg.1     6    3    KVnlst 
 PSHb- grab:Karg#7
-PSHn- gran:Karg.1#8
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: Karg.1     7    3    KVnlst 
+PSHn-GRAN gran:Karg.1#8
 InitGRAB: KVnlst     8    3    List of Vars to Kill 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='KVnlst' 
-QB='??' 
-StkP=8
-Gn=0
-grts=3
-grte='???' 
-grnun=1
->InitGRAN>gran       StkP grts grulst 
-InitGRAN: KVnlst.1   8    3    Vna. eKVnlst 
-termPASS: KVnlst.1.* KVnlst.1   1    Vna. eKVnlst              Vna.     T               U*gnC      3    3 
---nxt In:4  , ,
 PSHb- grab:KVnlst#9
-PSHn- gran:KVnlst.1#10
-InitGRAB: eKVnlst    10   4    end of comma list o* 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='eKVnlst' 
-QB='??' 
-StkP=10
-Gn=0
-grts=4
-grte='???' 
-grnun=2
 >InitGRAN>gran       StkP grts grulst 
-InitGRAN: eKVnlst.1  10   4    , KVnlst 
-termPASS: eKVnlst.1* eKVnlst.1  1    , KVnlst                  ,        T               U*gnC      4    4 
+InitGRAN: KVnlst.1   9    3    Vna. [eKVnlst 
+PSHn-GRAN gran:KVnlst.1#10
+termPASS: KVnlst.1.* KVnlst.1   1    Vna. [eKVnlst             Vna.     T               U*gnC      3    3 
+--nxt In:4  , ,
+InitGRAB: [eKVnlst   10   4    end of comma list o* 
+PSHb- grab:[eKVnlst#11
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: [eKVnlst.1 11   4    , KVnlst 
+PSHn-GRAN gran:[eKVnlst.1#12
+termPASS: [eKVnlst.* [eKVnlst.1 1    , KVnlst                  ,        T               U*gnC      4    4 
 --nxt In:5  Vna. Y
-PSHb- grab:eKVnlst#11
-PSHn- gran:eKVnlst.1#12
 InitGRAB: KVnlst     12   5    List of Vars to Kill 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='KVnlst' 
-QB='??' 
-StkP=12
-Gn=0
-grts=5
-grte='???' 
-grnun=1
->InitGRAN>gran       StkP grts grulst 
-InitGRAN: KVnlst.1   12   5    Vna. eKVnlst 
-termPASS: KVnlst.1.* KVnlst.1   1    Vna. eKVnlst              Vna.     T               U*gnC      5    5 
 PSHb- grab:KVnlst#13
-PSHn- gran:KVnlst.1#14
-InitGRAB: eKVnlst    14   5    end of comma list o* 
-
-** Debug LPgrab^p2PAR:  Log LPgrab
-grab='eKVnlst' 
-QB='??' 
-StkP=14
-Gn=0
-grts=5
-grte='???' 
-grnun=2
 >InitGRAN>gran       StkP grts grulst 
-InitGRAN: eKVnlst.1  14   5    , KVnlst 
-TTX x eKVnlst.1 Failed at ,   [, KVnlst] #1
->termFAIL>gnn        grab       gran       Rn   grulst                    tok      toty gropsr 
-termFAIL: eKVnlst.1* eKVnlst    eKVnlst.1  1    , KVnlst                  ,        T     
- ^p2s  *** pze ***  by TermNO+3^p2PAR- Log End TermNO
+InitGRAN: KVnlst.1   13   5    Vna. [eKVnlst 
+PSHn-GRAN gran:KVnlst.1#14
+termPASS: KVnlst.1.* KVnlst.1   1    Vna. [eKVnlst             Vna.     T               U*gnC      5    5 
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     KVnlst.1   5:5        5    5    2    Vna. [eKVnlst             [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     KVnlst     KVnlst.1   5    5     
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     KVnlst.1   4:5/2      4    5    2    , KVnlst                  [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     [eKVnlst   [eKVnlst.1 4    5     
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     [eKVnlst.1 3:5/3      3    5    2    Vna. [eKVnlst             [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     KVnlst     KVnlst.1   3    5     
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     KVnlst.1   3:5/3      3    5    1    KVnlst                    [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Karg       Karg.1     3    5    Karg^p2PSR 
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Karg.1     3:5/3      3    5    1    Karg                      [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Kcmd2      Kcmd2.1    3    5     
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Kcmd2.1    1:5/5      1    5    3    Kwd. sp1. Kcmd2           [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Kcmd       Kcmd.1     1    5     
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Kcmd.1     1:5/5      1    5    1    Kcmd                      [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     mCmds      mCmds.1    1    5     
+
+** Debug top+15^p2HPT:  Err devlog value gone.
+devlog=UNDEF.
+TIVL=devrg,devlog
+devrg='/home/kw/km3a/umep/rppar2/mGR0a.mdk' 
+devlog=UNDEF.

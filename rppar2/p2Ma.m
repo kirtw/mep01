@@ -1,26 +1,11 @@
 p2Ma ;CKW/ESC i8feb24 umep./  rppar2/ ;2024-0513-51;  Profiles
 ;
 ;
-GRI    KILL  ;
-       D IB^mepIO  S Q=$$devlog^devIO("GRI-log.3.html","ww2x/")  ;HGen
-         I Q'="" G Qb
-       USE $G(devlog)
-       D G0^ppGRI  ; mGR0a.mdk  : GRv, GRc, GXsq
-       D ^ppITK ; Gen TKv(tki)  precompiled input terminals 'K X'  KCmd. sp1. Vna.
-       D ^ppWTK
-         S D=$IO I D'["log" D b^dv("$IO~D not devlog - ","D,devlog") USE devlog
-       D ^ppWGR
-       D ^ppGXU  ;Undef refs
-       D ^ppGXR  ;Nesting Refs
-       D clog^devlog  ; devlog implicit, tests $G(devlog)
-       W:$X ! W "End of GR Analysis-  GRI^"_$T(+0),!
-       Q
-;
 
 ;*       
 LMp2   NEW Q S Q=""  
        W:$X ! W "Starting LMp2^p2Ma ^p2PAR  ",!
-       D IB^mepIO  S Q=$$devlog^devIO("mp2LM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
+       D IB^mepIO  S Q=$$devlog^devIO("mp3LM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
        I $G(devlog)'="" USE devlog
        E  D b^dv("Err no devlog","devlog")
        D G0^ppGRI  ; mGR0a.mdk in rppar2/ : GRv...
@@ -29,10 +14,13 @@ LMp2   NEW Q S Q=""
        D ^ppTXU  ;Audit TKv  vs GRt()  etc.
        D ^ppWTK ; Write TKv()
          ;D pze^p2s("See TKv ","TKv")
-       USE devlog D ^p2PAR  ;STK, non-recursive  rppar2/ ^p2PAR One big MRou
+       USE devlog 
+       ;D ^p2PAR  ;STK, non-recursive  rppar2/ ^p2PAR One big MRou
+       D ^p3PAR  ; Recursive + STK, toty{T,R,E}
        I $G(devlog)'="" U $P W !,"devlog:",devlog,"  ... Completed.",!
        D ^p2HPT  ; HGen PTx(pti,tki,   @pt2FL  grid  PI
-       D clog^devlog  ;devlog CLOSE      
+       D clog^devlog  ;devlog CLOSE 
+       I $D(Q)=0 D b^dv("Err Q killed ?","Q")
        G Q
 ;*
 ;*

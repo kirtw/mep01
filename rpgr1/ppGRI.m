@@ -75,7 +75,7 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
             ..; No indentation, new grab
             ..S grab=$P(P1,":"),grun=0,grri=gi
             ..I grab="" D b^dv("Err grab grab","grab,gi,P1,P2,L") G Qb
-            ..I grab'?1A.10AN D b^dv("Err format of grab in grammar file","grab,gi,L") G Qb
+            ..I grab'?.1"["1A.10AN D b^dv("Err format of grab in grammar file","grab,gi,L") G Qb
             ..S D=$D(GRv(grab)) I D D b^dv("Dupl grab:","grab,grri") G Qb
             ..;S gran=grab_"."_grun
             ..S grde=P2
@@ -87,8 +87,9 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
             ..S grun=grun+1,grnun=grun
             ..S gran=grab_"."_grun
             ..S grulst=L          
+            ..S t1tt="" I gran["[" S t1tt=$P(grulst," ")
             ..D SFL^kfm("grulst",granFL)
-            ..D SFL^kfm("grnun",grabFL)
+            ..D SFL^kfm("grnun,t1tt",grabFL)
        W:$X ! W "Completed Grammar composition CRGru^"_$T(+0)_"  GRv, GRc, GXsq ",!
        G Q
 ;*  GRt  :  GRt(tokt)=tokt  Index of terminal token names, including certain Punct

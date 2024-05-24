@@ -16,7 +16,6 @@ GRI    KILL  ;
        W:$X ! W "End of GR Analysis-  GRI^"_$T(+0),!
        Q
 ;
-
 ;*       
 LMp2   W:$X ! W "Starting LMp2^ppMa ^p2PAR  ",!
        D stbtse^pps S tsq=0 ; def tse

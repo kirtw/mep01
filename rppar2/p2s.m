@@ -21,7 +21,7 @@ arg(VL)  NEW ARY,FL,vn,vi,D S Q=""  ; Q is NOT NEWed here, but set null or retur
         S argNvi=vi
 Qa      S argQ=Q,argRet=(Q'=""),argDolQ=$Q,argVL=VL
         I Q'="" D ^dvstk,b^dv(Q,"Q,argVL")
-        Q Q'=""  ; $$ is not Q, but 0/1 if ERR for branching I $$arg
+        Q Q'=""  ; $$ is not Q, but 0/1 if ERR for branching I $$arg G Qb
 ;*
 ;*  Local modified vers of pze^dv 
 pze(M,VL) ;

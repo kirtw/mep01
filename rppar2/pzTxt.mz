@@ -1,7 +1,22 @@
 p2zTxt  ; extra text removed from mRou ^p2*   15may24
 
 
-
+---  p3PAR 23may24
+*  Bump Rn ptr into grulst
+;*  Rn', grulst : QN, Rn', toty, tok
+IRn  NEW Q I $$arg^p2s("Rn,grulst") G Qb
+     S Rn=Rn+1,tok=$P(grulst," ",Rn),toty=""
+     I tok="" S Rn="",QN="" G Qb
+     S toty="R" I tok?1P!(tok[".") S toty="T"
+     G Q
+;*  Bump grun/gran
+;*  grun', grnun : QN, grun', gran, grulst
+Iun  NEW Q I $$arg^p2s("grun,grab,grnun") G Qb
+     S grun=grun+1,QN=grun ; in progress
+     I grun>grnun S QN="",grun="" G Q
+     S gran=grab_"."_grun
+     D GFL^kfm("grulst",granFL)
+     G Q
 ************
 ;;tqs
 rppar2/p2PAR.m:tsqbFL  ;;tsqbFL:grab,grnun,grts,grte,grde,grri_HQT(StkP)
