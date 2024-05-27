@@ -1,10 +1,9 @@
-p3PAR ;CKW/ESC i7feb24 umep./ rppar1/ ;2024-0521-75;mumps table, recurse mods, mumps parser
+p3PAR ;CKW/ESC i7feb24 umep./ rppar1/ ;2024-0523-99;mumps table, recurse mods, mumps parser
 ;  TKv(tki)  Input tokenized
 ;
 ;
 ;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 top     NEW Q I $$arg^p2s("TKv,GRv,GRc,GRt") G Qb
-          KILL (TKv,GRv,GRc,GRt,Q)  ; debug
         D ^p2IMG
         D ^p2PAinit
         S (QT,QN,QB,QI,QG)="???"  ; just in case  Null pass, not null fails
@@ -55,11 +54,6 @@ N2      S QN=QT D granFAIL
 
 
 
-
-
-
-
-
 ;*  Rn, grulst, gran : 
 TOK(Rn)  NEW Q I $$arg^p2s("Rn") G Qb
        S gnn=gran_"."_Rn_"/"_StkP
@@ -88,8 +82,6 @@ GRtok   ;D PSH("GRtok")
         I QB="" S grte=popte
         G Q
 ;*
-
-;*
 grabI NEW Q I $$arg^p2s("grab,StkP") G Qb
      S QB="??"   ;must be set by     
      S grts=tki,grte="???"
@@ -116,6 +108,7 @@ granI   NEW Q I $$arg^p2s("gran") G Qb
         D bln^dv3("InitGRAN")
         S Rn="?",tok="??"  ;for PHSn               
         G Q
+;*  Print Page Break  111  
 ;*
 Ttok ;  QT null pass, else fails
 ;  tokt, toty="T" : QT, grte', QTest
@@ -128,7 +121,6 @@ Ttok ;  QT null pass, else fails
     D Iin    ;Now bump tki, TKc, tk*
     I QI'="",tki=""  D b^dv("End of TKc(tki)","tki,QI")  ;No more input
     G Q
-;*  Print Page Break  111    
 ;*
 ;* gran, Rn, grulst : tok, toty, QTest
 toty  NEW Q I $$arg^p2s("Rn,grulst,gran") B  G Qb
@@ -146,7 +138,7 @@ granPASS S QN=""
         ;S gnC=$G(grts)_":"_$G(grte) I nospan S gnC=gnC_"/"_$G(nospan)   
         I $G(grts)="" D ^dv("Err null grts granPASS","gran,grts,grte,grab")
         I $G(gropsr)'="" DO   D @gropsr ;post pass process
-          .D b^dv("Log gropsr","gropsr,gran,grts,grte,tki,tks")
+          .D ^dv("Log gropsr","gropsr,gran,grts,grte,tki,tks")
         ;D SFL^kfm("grte,gnC,gropsr","_PTx(StkP,grts)")
 ;
       D der2
@@ -185,11 +177,9 @@ TermNO S QT="X:"_tokt_" at "_$G(gnn)
       D bln^dv3("termFAIL")
       D pze^p2s("Log End TermNO","QT,QI,tokt,tki,TKc")
       Q
-;*
-p2PAsr ;CKW/ESC umep./ rppar1/ ;2024-0327-97; Increment srs Iin  tki
 ;*      
-;;sgrabFL:grab,sty,grnun,Gn,grun,grts,grte,grde,grri_STK(StkP)
-;;sgranFL:gran,sty,grulst,nlst,Rn,tok,gropsr_STK(StkP)
+;;sgrabFL:grab,sty,grnun,grts,grte,grde,grri_STK(StkP)
+;;sgranFL:gran,sty,grulst,nlst,Rn,tok,gropsr,gropsyn,grstr_STK(StkP)
 ;;stokFL:gnn,sty,gtki_STK(StkP)
 ;*
 grabFAIL S QB="Failed "_grab_" x"_$G(gnn) 

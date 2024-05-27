@@ -1,7 +1,18 @@
 p2Ma ;CKW/ESC i8feb24 umep./  rppar2/ ;2024-0513-51;  Profiles
 ;
 ;
-
+GRI    KILL  ;
+       D IB^mepIO  
+       S Q=$$devlog^devIO("GRI-log.3.html","ww2x/")  ;HGen
+         I Q'="" G Qb
+       USE $G(devlog)
+       D G0^ppGRI  ; : GRv, GRc, GXsq
+       D ^ppWGR
+       D ^ppGXU  ;Undef refs
+       D ^ppGXR  ;Trace-Nesting Refs
+       D clog^devlog  ; devlog implicit, tests $G(devlog)
+       W:$X ! W "End of GR Analysis-  GRI^"_$T(+0),!
+       Q
 ;*       
 LMp2   NEW Q S Q=""  
        W:$X ! W "Starting LMp2^p2Ma ^p2PAR  ",!
@@ -16,6 +27,7 @@ LMp2   NEW Q S Q=""
          ;D pze^p2s("See TKv ","TKv")
        USE devlog 
        ;D ^p2PAR  ;STK, non-recursive  rppar2/ ^p2PAR One big MRou
+            KILL (TKv,GRv,GRc,GRt,GXsq,Q)  ; debug
        D ^p3PAR  ; Recursive + STK, toty{T,R,E}
        I $G(devlog)'="" U $P W !,"devlog:",devlog,"  ... Completed.",!
        D ^p2HPT  ; HGen PTx(pti,tki,   @pt2FL  grid  PI

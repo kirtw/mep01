@@ -8,5 +8,14 @@ Terminal Codes
 
 mumps code preprocessing ?TKv(tki   
 
-Grammar  TOIc, GRv(grab,   GRc(gran   Indices: GXsq(sq)=grab
+Grammar  TOIc, GRv(grab,   GRc(gran   GRt(tokt
+        Indices: GXsq(sq)=grab   Compile Sequence, unique, easy All grab
+
+
+Grammar Trace - traverse  grab-gran and grulst
+    ^ppGXU  Undef refs Grammar Audit, UnRefed grabs
+        Index gropsr, E-type grabs
+    ^ppGXR  
+        Derive and store t1tt  of  E type rules
+        Derive t1tk-> Gn  for all grabs
 

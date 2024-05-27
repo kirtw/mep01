@@ -4,7 +4,7 @@ ppGXR ;CKW/ESC i8mar24 umep./ rppar1/ ;2024-0308-55;Trace/Traverse Grammar struc
 ;  GRc(gran  grulst, gropsr, 
 ;  GRt(tokt   terminal tokens
 ;   :  GXby(grab,gran)= ... grulst
-;   :  GXlev(grab)=...Lev
+;   :  GXlev(grab)=...Lev   Detet looping, prev encountered in traversal
 ;   :  
 ;
 top KILL GXby S GXby=0  ;GXby(grab,gran)=grulst
@@ -14,6 +14,7 @@ top KILL GXby S GXby=0  ;GXby(grab,gran)=grulst
     S grabC="mCmds",Lev=0
     D G1(grabC,Lev)
     ;
+    D UnRef  ;grabs not traversed
     W:$X ! W "Finished Traversal  by ^"_$T(+0),!
     D la^dv
     Q
@@ -35,8 +36,11 @@ Trv2(Lev) NEW Rn
        I QS'="" Q
      F Rn=1:1:$L(grulst," ") DO  ;
       .D Gtok ; grulst, Rn : toty, tok
-      .I toty'="R" Q
-      .S GXby(tok,gran)=grulst
+      .I toty'="T" Q  ; vs R & E types
+      .S Rtok=$D(GXby(tok))
+      .  I $G(GXby(tok,gran))'="" D b^dv("Mult refs ?ok","grab,gran,Rn,grulst,tok")
+      .S GXby(tok,gran)=grulst ;
+      .I Rtok Q  ;Already traversed tok
       .S Lev=Lev+1 
       .D G1(tok,Lev) ;Recursive
     Q     

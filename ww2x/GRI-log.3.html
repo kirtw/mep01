@@ -6,60 +6,111 @@
 <h1>Log File</h1>
 <pre>
 Completed Grammar composition CRGru^ppGRI  GRv, GRc, GXsq 
-Finished CRGtok^ppGRI  Composing GRt  Terminal token db.
-Finished ^ppITK  tki:4 codes
-
-
-
-Kwd.           'K'   {1-1} 
-sp1.           '_'   {2-2} 
-Vna.           'X'   {3-3} 
-eol.           ' '   {-} 
+1: A.   A         Array or Local Var name, with % or ^ pfx
+2: B.   B         Array or Local Var name, with % or ^ pfx
+3: C.   C         Array or Local Var name, with % or ^ pfx
+4: D.   D         Array or Local Var name, with % or ^ pfx
+5: E.   E         Array or Local Var name, with % or ^ pfx
+6: F.   F         Array or Local Var name, with % or ^ pfx
+7: G.   G         Array or Local Var name, with % or ^ pfx
+8: H.   H         Array or Local Var name, with % or ^ pfx
+9: I.   I         Array or Local Var name, with % or ^ pfx
+10: J.  J         Array or Local Var name, with % or ^ pfx
+11: K.  K         Array or Local Var name, with % or ^ pfx
+12: L.  L         Array or Local Var name, with % or ^ pfx
+13: M.  M         Array or Local Var name, with % or ^ pfx
+14: N.  N         Array or Local Var name, with % or ^ pfx
+15: O.  O         Array or Local Var name, with % or ^ pfx
+16: P.  P         Array or Local Var name, with % or ^ pfx
+17: Q.  Q         Array or Local Var name, with % or ^ pfx
+18: R.  R         Array or Local Var name, with % or ^ pfx
+19: S.  S         Array or Local Var name, with % or ^ pfx
+20: T.  T         Array or Local Var name, with % or ^ pfx
+21: U.  U         Array or Local Var name, with % or ^ pfx
+22: V.  V         Array or Local Var name, with % or ^ pfx
+23: W.  W         Array or Local Var name, with % or ^ pfx
+24: X.  X         Array or Local Var name, with % or ^ pfx
+25: Y.  Y         Array or Local Var name, with % or ^ pfx
+26: Z.  Z         Array or Local Var name, with % or ^ pfx
+Finished CRGtok^ppGRI  Composing GRt(tokt,  Terminal token db.
 
 
 Grammar -
-  mCmds   level, start for now, grab    ln:29
-    mCmds.1                   Kcmd                                    post:
-    mCmds.2                   Hcmd                                    post:
-    mCmds.3                   XXyy.                                   post:
-    mCmds.4                   ZZWW                                    post:
-    mCmds.5                   ZZZaaaaaaaaa123                         post:
-  Kcmd    command    ln:37
-    Kcmd.1                    Kwd. sp1. eKcmd                         post:
-  eKcmd   End of Kill Cmd    ln:39
-    eKcmd.1                   Karg                                    post:
-  Karg    Kill argument    ln:41
-    Karg.1                    Vna.                                    post:
-  Hcmd    is simple    ln:44
-    Hcmd.1                    Hwd. sp1. Exp                           post:
-  Exp         ln:47
-    Exp.1                     Svn                                     post:
-    Exp.2                     unop. Exp                               post:
-    Exp.3                     Svn bop Exp                             post:
-    Exp.4                     Vlit                                    post:
-  unop    Unary Operators    ln:52
-    unop.1                    +                                       post:
-    unop.2                    -                                       post:
-  bop     Binary operator    ln:55
-    bop.1                     +                                       post:
-    bop.2                     -                                       post:
-    bop.3                     < =                                     post:
-    bop.4                     > =                                     post:
-    bop.5                     ! <                                     post:
-    bop.6                     *                                       post:
-    bop.7                                                             post:
-  Vlit    Literal value in code, quote or number    ln:64
-    Vlit.1                    Vlqt                                    post:
-    Vlit.2                    Vlnum                                   post:
-  Vlqt    Literal Quoted string    ln:67
-    Vlqt.1                    " Lstr "                                post:
-  ALVn    Array or Local Var name    ln:71
-    ALVn.1                    Vn.                                     post:
+  LblLine Top Level with label and/or start-sp1    ln:30
+    LblLine.1                 Label sp1. mCmds    
+    LblLine.2                 Comment             
+  mCmds   level, start for now, grab    ln:34
+    mCmds.1                   Kcmd                
+    mCmds.2                   Hcmd                
+    mCmds.3                   Comment             
+    mCmds.4                   XXyy.               
+    mCmds.5                   ZZWW                
+    mCmds.6                   ZZZaaaaaaaaa123     
+  Comment Semicolon comment    ln:44
+    Comment.1                 ; AllCom            
+  AllCom  Text of comment, anything to EOL    ln:46
+    AllCom.1                  EE. [E.]            
+  Label   Line label/codeblock ref, arg/formal-args    ln:49
+    Label.1                   Na eLab             
+  eLab    op arg    ln:51
+    eLab.1                    ( fArg eArgL        
+  eArgL       ln:53
+    eArgL.1                   , fArg )            
+  fArg    formal label arg    ln:55
+    fArg.1                    LVna                
+  Kcmd    command    ln:58
+    Kcmd.1                    Kwd. sp1. Kcmd2     
+  Kcmd2   End of Kill Cmd    ln:60
+    Kcmd2.1                   Karg                
+  Karg    Kill argument    ln:62
+    Karg.1                    KVnlst              
+  KVnlst  List of Vars to Kill    ln:65
+    KVnlst.1                  KVn [eKVnlst        
+  KVn     Single Kill Var    ln:68
+    KVn.1                     Vna.                
+  [eKVnlst end of comma list of KVars , optionionally null    ln:71
+    [eKVnlst.1                , KVnlst            
+  Hcmd    is simple    ln:74
+    Hcmd.1                    Hwd. sp1. Exp       
+  Exp         ln:77
+    Exp.1                     Svn                 
+    Exp.2                     [unop. Exp          
+    Exp.3                     Svn bop Exp         
+    Exp.4                     Vlit                
+  [unop   Unary Operators    ln:82
+    [unop.1                   +                   
+    [unop.2                   -                   
+  bop     Binary operator    ln:85
+    bop.1                     +                   
+    bop.2                     -                   
+    bop.3                     < =                 
+    bop.4                     > =                 
+    bop.5                     ! <                 
+    bop.6                     *                   
+    bop.7                                         
+  Vlit    Literal value in code, quote or number    ln:94
+    Vlit.1                    Vlqt                
+    Vlit.2                    Vlnum               
+  Vlqt    Literal Quoted string    ln:97
+    Vlqt.1                    " Lstr "            
+  Na      Name of var, mGbl, label, sans (args)    ln:100
+  ALVn    Array or Local Var name, with % or ^ pfx    ln:102
+    ALVn.1                    Vna.                
+Undef tokt/GRt by ^ppGXU  sp1.   in Label sp1. mCmds   
 Undef tokt/GRt by ^ppGXU  XXyy.   in XXyy.   
 Undef grab rule-name ^ppGXU  ZZWW   in ZZWW   
 Undef grab rule-name ^ppGXU  ZZZaaaaaaaaa123   in ZZZaaaaaaaaa123   
+Undef ?1P tok/Term  ^ppGXU  ;   in ; AllCom   
+Undef tokt/GRt by ^ppGXU  EE.   in EE. [E.]   
+Undef tokt/GRt by ^ppGXU  [E.]   in EE. [E.]   
+Undef grab rule-name ^ppGXU  LVna   in LVna   
+Undef tokt/GRt by ^ppGXU  Kwd.   in Kwd. sp1. Kcmd2   
+Undef tokt/GRt by ^ppGXU  sp1.   in Kwd. sp1. Kcmd2   
+Undef tokt/GRt by ^ppGXU  Vna.   in Vna.   
+Undef tokt/GRt by ^ppGXU  Hwd.   in Hwd. sp1. Exp   
+Undef tokt/GRt by ^ppGXU  sp1.   in Hwd. sp1. Exp   
 Undef grab rule-name ^ppGXU  Svn   in Svn   
-Undef tokt/GRt by ^ppGXU  unop.   in unop. Exp   
+Undef tokt/GRt by ^ppGXU  [unop.   in [unop. Exp   
 Undef grab rule-name ^ppGXU  Svn   in Svn bop Exp   
 Undef ?1P tok/Term  ^ppGXU  +   in +   
 Undef ?1P tok/Term  ^ppGXU  -   in -   
@@ -71,64 +122,46 @@ Undef ?1P tok/Term  ^ppGXU  <   in ! <
 Undef ?1P tok/Term  ^ppGXU  *   in *   
 Undef grab rule-name ^ppGXU  Vlnum   in Vlnum   
 Undef grab rule-name ^ppGXU  Lstr   in " Lstr "   
-Undef tokt/GRt by ^ppGXU  Vn.   in Vn.   
+Undef tokt/GRt by ^ppGXU  Vna.   in Vna.   
 
-tot  num grabs ng:11   num gran's  nan:26
+tot  num grabs ng:22   num gran's  nan:38
 
-
-** Debug SLG+1^ppGXR:  Gram Data Err Loop 
-grabC='Exp' 
-oLev=2
-Lev=3
-
-** Debug SLG+1^ppGXR:  Gram Data Err Loop 
-grabC='Exp' 
-oLev=2
-Lev=3
-
-** Debug SLG+1^ppGXR:  Gram Data Err Loop 
-grabC='Exp' 
-oLev=2
-Lev=3
-
-** Debug SLG+1^ppGXR:  Gram Data Err Loop 
-grabC='Exp' 
-oLev=2
-Lev=3
-
-** Debug SLG+1^ppGXR:  Gram Data Err Loop 
-grabC='Exp' 
-oLev=2
-Lev=5
-
-** Debug SLG+1^ppGXR:  Gram Data Err Loop 
-grabC='Exp' 
-oLev=2
-Lev=5
-
-** Debug SLG+1^ppGXR:  Gram Data Err Loop 
-grabC='Exp' 
-oLev=2
-Lev=5
-
-** Debug SLG+1^ppGXR:  Gram Data Err Loop 
-grabC='Exp' 
-oLev=2
-Lev=5
+Looking for Unreferenced grab's named rules
+LblLine  Top Level with label and/or start-sp1   
+Comment  Semicolon comment   
+AllCom  Text of comment, anything to EOL   
+Label  Line label/codeblock ref, arg/formal-args   
+eLab  op arg   
+eArgL     
+fArg  formal label arg   
+Kcmd  command   
+Kcmd2  End of Kill Cmd   
+Karg  Kill argument   
+KVnlst  List of Vars to Kill   
+KVn  Single Kill Var   
+[eKVnlst  end of comma list of KVars , optionionally null   
+Hcmd  is simple   
+Exp     
+[unop  Unary Operators   
+bop  Binary operator   
+Vlit  Literal value in code, quote or number   
+Vlqt  Literal Quoted string   
+Na  Name of var, mGbl, label, sans (args)   
+ALVn  Array or Local Var name, with % or ^ pfx   
+ found   x21  by UnRef^ppGXR
 Finished Traversal  by ^ppGXR
 ** Arrays-
-Array GRc has 26 nodes and 26 with SubNodes
-Array GRt has 38 nodes and 1 with SubNodes
-Array GRv has 11 nodes and 11 with SubNodes
-Array GXby has 13 nodes and 13 with SubNodes
-Array GXlev has 9 nodes
-Array GXsq has 11 nodes
-Array GXtsq has 37 nodes
-Array GXur has 5 nodes
-Array GXut has 8 nodes
-Array RG has 80 nodes and 1 with SubNodes
-Array TKv has 4 nodes and 4 with SubNodes
+Array GRc has 38 nodes and 38 with SubNodes
+Array GRt has 91 nodes and 73 with SubNodes
+Array GRv has 23 nodes and 23 with SubNodes
+Array GXby has 1 nodes and 1 with SubNodes
+Array GXlev has 1 nodes
+Array GXsq has 22 nodes
+Array GXtsq has 90 nodes
+Array GXur has 6 nodes
+Array GXut has 14 nodes
+Array RG has 111 nodes and 1 with SubNodes
 
-End of Log File -/home/kw/km3a/umep/ww2x/GRI-log.3.html  04:41 21MAR24
+End of Log File -/home/kw/km3a/umep/ww2x/GRI-log.3.html  09:22 26MAY24
 </pre>
 </html>

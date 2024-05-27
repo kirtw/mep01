@@ -1,0 +1,33 @@
+==  GXU Audit of Grammars
+
+
+^ppGXU    single version
+
+
+Processes  Arrays  GRv(grab,  GRc(gran  and GRt(tokt
+
+Name clean up - ReFactor-
+    GRt subscript is terminal id, tok when toty is T
+     --- tokt -> grat  for terminal token type in GRt(grat  
+     --- @tokFL -> @gratFL
+      
+Push toty logic into Grammar compile ^ppGRI
+    Logic  
+        tok sfx . 'T', include Letter generated tok names eg a. A.
+                    and punct (from PUL list) represented literally in grulst
+        tok pfx[  'E'  Different pass logic as Optional opnull rules, esp list ends
+                    passes for grulst continuation if doesnt start, t1tt fails
+                    If t1tt matches, treats as toty R
+        
+        others toty="R" Others tok is grab, recursive rule
+        
+Note logical SubTypes of toty, not per se yet
+    Special cases in GXU  adds err to end of toty
+    
+    T has subtypes, ?1P, ?1A  vs sfx-dot names  Terminal Tests vs input TKv/TKc
+    
+    E has special pass null behaviour but otherwise as if R grab
+    
+    R is recursive grab-value as tok in grulst
+        E is like subtype of R ?  No dependency in PAR 
+        

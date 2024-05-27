@@ -93,7 +93,6 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
        W:$X ! W "Completed Grammar composition CRGru^"_$T(+0)_"  GRv, GRc, GXsq ",!
        G Q
 ;*  GRt  :  GRt(tokt)=tokt  Index of terminal token names, including certain Punct
-;;tokgFL:ttde,ttri_GRt(tokt)
 CRGtokt NEW Q S Q=""  I $$arg^pps("RG") G Qb
        NEW gi,gi0,PUL,tsq,P,tokt,L,L1
        KILL GRt,GXtsq,GXtt S GXtt=0,gti=0,GXtsq=0 
@@ -113,6 +112,20 @@ CRGtokt NEW Q S Q=""  I $$arg^pps("RG") G Qb
          .I tokt'["." S tokt=tokt_"."
          .D SFL^kfm("ttde,ttri",tokgrFL) ; GRt(tokt, 
          .S tsq=tsq+1,GXtsq(tsq)=tokt,GXtsg=tsq
+;;tokgFL:ttde,ttri_GRt(tokt)         
+Aa     S ttri="Aa"
+       F ci=1:1:26 S C=$C(ci+64),c=$C(96+ci) DO  ;
+         .I (c'?1L)!(C'?1U) d b^dv("Err  c and C","ci,c,C")
+         .S tokt=c_".",tks=c 
+         .S ttde="Letter "_c
+         .S tsq=tsq+1,GXtsq(tsq)=tokt,GXtsg=tsq
+         .D SFL^kfm("grde,tks",tokgrFL) ; tokt
+         .;
+         .S tokt=C_".",tks=C
+         .S ttde="Letter "_C 
+         .S tsq=tsq+1,GXtsq(tsq)=tokt,GXtsg=tsq
+         .D SFL^kfm("grde,tks",tokgrFL)
+         .W:$X ! W ci,": ",tokt," ",?8,tks," ",?18,grde,!
        W:$X ! W "Finished CRGtok^"_$T(+0)_"  Composing GRt(tokt,  Terminal token db.",!
        G Q
 ;*

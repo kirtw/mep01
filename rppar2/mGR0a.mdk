@@ -63,7 +63,10 @@ Karg:  Kill argument
     KVnlst
     
 KVnlst: List of Vars to Kill
-    Vna. [eKVnlst
+    KVn [eKVnlst
+    
+KVn: Single Kill Var
+    Vna.
     
 [eKVnlst:  end of comma list of KVars , optionionally null
     , KVnlst
