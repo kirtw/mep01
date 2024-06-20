@@ -6,7 +6,7 @@ ppGXU ;CKW/ESC i8mar24 umep./ rppar1/ ;2024-0308-63; Audit Part 1 GRv GRc Undef 
 ;
 ;;grabFL:grde,grnun,grri_GRv(grab)
 Aud    NEW Q,ngr,ngn I $$arg^pps("GRv,GRc,GXsq") G Qb
-       KILL GXxg,GXut,GXur,GXgtt  ; GXxg(grab,gran)=Rn
+       KILL GXxg,GXgtt,GXut,GXur  ; GXxg(grab,gran)=Rn
        S (ngr,ngn,ngt,nxg)=0  NEW grab,grnun,grun,gran,rsq,nni
        FOR rsq=1:1:GXsq S grab=$G(GXsq(rsq)) DO  ;
          .I grab="" D b^dv("Err grab GXsq(rsq","rsq,grab")  G Qb

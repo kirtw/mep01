@@ -97,35 +97,101 @@ Grammar -
   ALVn    Array or Local Var name, with % or ^ pfx    ln:102
     ALVn.1                    Vna.                
 Undef tokt/GRt by ^ppGXU  sp1.   in Label sp1. mCmds   
+Undef grab rule-name ^ppGXU  sp1.   in Label sp1. mCmds   
 Undef tokt/GRt by ^ppGXU  XXyy.   in XXyy.   
+Undef grab rule-name ^ppGXU  XXyy.   in XXyy.   
 Undef grab rule-name ^ppGXU  ZZWW   in ZZWW   
 Undef grab rule-name ^ppGXU  ZZZaaaaaaaaa123   in ZZZaaaaaaaaa123   
 Undef ?1P tok/Term  ^ppGXU  ;   in ; AllCom   
+Undef grab rule-name ^ppGXU  ;   in ; AllCom   
 Undef tokt/GRt by ^ppGXU  EE.   in EE. [E.]   
+Undef grab rule-name ^ppGXU  EE.   in EE. [E.]   
 Undef tokt/GRt by ^ppGXU  [E.]   in EE. [E.]   
+Undef grab rule-name ^ppGXU  [E.]   in EE. [E.]   
+Undef grab rule-name ^ppGXU  (   in ( fArg eArgL   
+Undef grab rule-name ^ppGXU  ,   in , fArg )   
+Undef grab rule-name ^ppGXU  )   in , fArg )   
 Undef grab rule-name ^ppGXU  LVna   in LVna   
 Undef tokt/GRt by ^ppGXU  Kwd.   in Kwd. sp1. Kcmd2   
+Undef grab rule-name ^ppGXU  Kwd.   in Kwd. sp1. Kcmd2   
 Undef tokt/GRt by ^ppGXU  sp1.   in Kwd. sp1. Kcmd2   
+Undef grab rule-name ^ppGXU  sp1.   in Kwd. sp1. Kcmd2   
 Undef tokt/GRt by ^ppGXU  Vna.   in Vna.   
+Undef grab rule-name ^ppGXU  Vna.   in Vna.   
+Undef grab rule-name ^ppGXU  ,   in , KVnlst   
 Undef tokt/GRt by ^ppGXU  Hwd.   in Hwd. sp1. Exp   
+Undef grab rule-name ^ppGXU  Hwd.   in Hwd. sp1. Exp   
 Undef tokt/GRt by ^ppGXU  sp1.   in Hwd. sp1. Exp   
+Undef grab rule-name ^ppGXU  sp1.   in Hwd. sp1. Exp   
 Undef grab rule-name ^ppGXU  Svn   in Svn   
 Undef tokt/GRt by ^ppGXU  [unop.   in [unop. Exp   
+Undef grab rule-name ^ppGXU  [unop.   in [unop. Exp   
 Undef grab rule-name ^ppGXU  Svn   in Svn bop Exp   
 Undef ?1P tok/Term  ^ppGXU  +   in +   
+Undef grab rule-name ^ppGXU  +   in +   
 Undef ?1P tok/Term  ^ppGXU  -   in -   
+Undef grab rule-name ^ppGXU  -   in -   
 Undef ?1P tok/Term  ^ppGXU  +   in +   
+Undef grab rule-name ^ppGXU  +   in +   
 Undef ?1P tok/Term  ^ppGXU  -   in -   
+Undef grab rule-name ^ppGXU  -   in -   
 Undef ?1P tok/Term  ^ppGXU  <   in < =   
+Undef grab rule-name ^ppGXU  <   in < =   
+Undef grab rule-name ^ppGXU  =   in < =   
 Undef ?1P tok/Term  ^ppGXU  >   in > =   
+Undef grab rule-name ^ppGXU  >   in > =   
+Undef grab rule-name ^ppGXU  =   in > =   
+Undef grab rule-name ^ppGXU  !   in ! <   
 Undef ?1P tok/Term  ^ppGXU  <   in ! <   
+Undef grab rule-name ^ppGXU  <   in ! <   
 Undef ?1P tok/Term  ^ppGXU  *   in *   
+Undef grab rule-name ^ppGXU  *   in *   
+Undef grab rule-name ^ppGXU  _   in _   
 Undef grab rule-name ^ppGXU  Vlnum   in Vlnum   
+Undef grab rule-name ^ppGXU  "   in " Lstr "   
 Undef grab rule-name ^ppGXU  Lstr   in " Lstr "   
+Undef grab rule-name ^ppGXU  "   in " Lstr "   
 Undef tokt/GRt by ^ppGXU  Vna.   in Vna.   
+Undef grab rule-name ^ppGXU  Vna.   in Vna.   
 
-tot  num grabs ng:22   num gran's  nan:38
+tot  num grabs ngr:22   num gran's  ngn:38 ngt:85
 
+grab undef errors: 37
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 'EE.'-(T) in AllCom.1.1 at ln 46
+Undef tok 'Vna.' 'Hwd.'-(T) in Hcmd.1.1 at ln 74
+Undef tok 'Vna.' 'Kwd.'-(T) in Kcmd.1.1 at ln 58
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 'Vna.'-(T) in ALVn.1.1 at ln 102
+Undef tok 'Vna.' 'XXyy.'-(T) in mCmds.4.1 at ln 34
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 
+Undef tok 'Vna.' '[E.]'-(T) in AllCom.1.2 at ln 46
+Undef tok 'Vna.' '[unop.'-(T) in Exp.2.1 at ln 77
+Undef tok 'Vna.' 
+Undef tok 'Vna.' 'sp1.'-(T) in Hcmd.1.2 at ln 74
+'EE. in 
+'Hwd. in 
+'Kwd. in 
+'Vna. in 
+'XXyy. in 
+'[E.] in 
+'[unop. in 
+'sp1. in 
 Looking for Unreferenced grab's named rules
 LblLine  Top Level with label and/or start-sp1   
 Comment  Semicolon comment   
@@ -158,10 +224,12 @@ Array GXby has 1 nodes and 1 with SubNodes
 Array GXlev has 1 nodes
 Array GXsq has 22 nodes
 Array GXtsq has 90 nodes
-Array GXur has 6 nodes
-Array GXut has 14 nodes
+Array GXup has 6 nodes
+Array GXur has 27 nodes
+Array GXut has 8 nodes
+Array GXxg has 14 nodes and 14 with SubNodes
 Array RG has 111 nodes and 1 with SubNodes
 
-End of Log File -/home/kw/km3a/umep/ww2x/GRI-log.3.html  09:22 26MAY24
+End of Log File -/home/kw/km3a/umep/ww2x/GRI-log.3.html  23:21 26MAY24
 </pre>
 </html>

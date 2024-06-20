@@ -3,7 +3,7 @@
 
 # Punctuations as themselves 
 # See CRGtok^ppGRI to create GRt(tokt)   List of Punctuations is in //tokt Line See PUL
-//tokt   {,.^%$#@!()[]'":=_   
+//tokt   {,.^%$#@!()[]'":=_*+-;<>   
 NN.
 LL.
 UU.
