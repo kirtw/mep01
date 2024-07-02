@@ -1,0 +1,12 @@
+zzrpg1  
+
+
+from ^ppGXU  old special case /
+                ...I Rnx=1,tok["/" DO  ; OBS  special format 
+                     ....I tok="/" Q  ;just std punct /
+                     ....D b^dv("OBS code / in data","tok")
+                     ....S tok0=tok
+                     ....S grtt=$P(tok,"/",2),tok=$P(tok,"/"),GXgtt(gran)=grtt
+                     ....D b^dv("OBS / in grulst tok","grri,grab,gran,grulst,Rn,tok")  
+                     
+                     

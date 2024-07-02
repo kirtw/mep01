@@ -1,0 +1,95 @@
+==   mPAR-GR0a.mdk      in umep/ rpg1/
+#   rev 19may24  2pm
+
+
+//GR    GRna  &   GRru
+LblLine:  Top Level with label and/or start-sp1
+   Label sp1. mCmds
+   ; Comment
+   sp1. mCmds
+# Comment content after semicolon (or dbl ;; ?)
+
+mCmds:Top level, start for now, grab
+   Hcmd
+   Kcmd
+   ; Comment
+
+#  Test Errors by Aud^ppGRI
+   XXyy.
+   ZZWW
+   ZZZaaaaaaaaa123
+
+Comment: Semicolon comment
+   ; AllCom
+AllCom: Text of comment, anything to EOL
+   E. [E.]
+   
+Label:  Line label/codeblock ref, arg/formal-args
+   LNa eLab
+eLab: op arg
+   ( fArg eArgL
+eArgL:
+   , fArg )
+fArg: formal label arg
+   LVna
+
+Kcmd:Kill command
+    Kwd. sp1. Kcmd2
+Kcmd2:  End of Kill Cmd
+    Karg
+Karg:  Kill argument
+    KVnlst
+    
+KVnlst: List of Vars to Kill
+    Vna. eKVnlst
+    
+eKVnlst:opnull  end of comma list of KVars 
+    , KVnlst
+    opnull.
+
+Hcmd:Hang is simple
+   Hwd. sp1.  exp   
+
+exp:Expression
+   Svn
+   [unop exp
+   Svn bop exp
+   Vlit
+[unop:  Unary Operators  t1tt is +- [TKc
+   + exp
+   - exp
+#  Not unary op ?
+[not: 
+   ! exp   
+bop: Binary operator
+   +
+   -
+   *
+   /
+   \
+   _
+   #
+   >
+   <
+   < =
+   > =
+   
+Vlit: Literal value in code, quote or number
+   [Vlqt
+   Vlnum
+[Vlqt: Literal Quoted string
+   " Lstr "
+Lstr:
+   EE.
+
+LNa: Label Name
+   Na [poC
+   
+Na:  Name of var, mGbl, label, sans (args)
+
+ALVn: Array or Local Var name, with % or ^ pfx
+     Vna.
+[poC: post conditional
+     : exp
+     
+//    end

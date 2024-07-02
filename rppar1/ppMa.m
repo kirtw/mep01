@@ -11,7 +11,7 @@ GRI    KILL  ;
          S D=$IO I D'["log" D b^dv("devlog not $IO ","D,devlog") USE devlog
        D ^ppWGR
        D ^ppGXU  ;Undef refs
-       D ^ppGXR  ;Nesting Refs
+       D ^ppGXR("mCmds")  ;Nesting Refs
        D clog^devlog  ; devlog implicit, tests $G(devlog)
        W:$X ! W "End of GR Analysis-  GRI^"_$T(+0),!
        Q

@@ -6,32 +6,32 @@
 <h1>Log File</h1>
 <pre>
 Completed Grammar composition CRGru^ppGRI  GRv, GRc, GXsq 
-1: 54.  54        Array or Local Var name, with % or ^ pfx
-2: 54.  54        Array or Local Var name, with % or ^ pfx
-3: 54.  54        Array or Local Var name, with % or ^ pfx
-4: 55.  55        Array or Local Var name, with % or ^ pfx
-5: 55.  55        Array or Local Var name, with % or ^ pfx
-6: 55.  55        Array or Local Var name, with % or ^ pfx
-7: 55.  55        Array or Local Var name, with % or ^ pfx
-8: 55.  55        Array or Local Var name, with % or ^ pfx
-9: 55.  55        Array or Local Var name, with % or ^ pfx
-10: 55. 55        Array or Local Var name, with % or ^ pfx
-11: 55. 55        Array or Local Var name, with % or ^ pfx
-12: 55. 55        Array or Local Var name, with % or ^ pfx
-13: 55. 55        Array or Local Var name, with % or ^ pfx
-14: 56. 56        Array or Local Var name, with % or ^ pfx
-15: 56. 56        Array or Local Var name, with % or ^ pfx
-16: 56. 56        Array or Local Var name, with % or ^ pfx
-17: 56. 56        Array or Local Var name, with % or ^ pfx
-18: 56. 56        Array or Local Var name, with % or ^ pfx
-19: 56. 56        Array or Local Var name, with % or ^ pfx
-20: 56. 56        Array or Local Var name, with % or ^ pfx
-21: 56. 56        Array or Local Var name, with % or ^ pfx
-22: 56. 56        Array or Local Var name, with % or ^ pfx
-23: 56. 56        Array or Local Var name, with % or ^ pfx
-24: 57. 57        Array or Local Var name, with % or ^ pfx
-25: 57. 57        Array or Local Var name, with % or ^ pfx
-26: 57. 57        Array or Local Var name, with % or ^ pfx
+1: A.   A         Array or Local Var name, with % or ^ pfx
+2: B.   B         Array or Local Var name, with % or ^ pfx
+3: C.   C         Array or Local Var name, with % or ^ pfx
+4: D.   D         Array or Local Var name, with % or ^ pfx
+5: E.   E         Array or Local Var name, with % or ^ pfx
+6: F.   F         Array or Local Var name, with % or ^ pfx
+7: G.   G         Array or Local Var name, with % or ^ pfx
+8: H.   H         Array or Local Var name, with % or ^ pfx
+9: I.   I         Array or Local Var name, with % or ^ pfx
+10: J.  J         Array or Local Var name, with % or ^ pfx
+11: K.  K         Array or Local Var name, with % or ^ pfx
+12: L.  L         Array or Local Var name, with % or ^ pfx
+13: M.  M         Array or Local Var name, with % or ^ pfx
+14: N.  N         Array or Local Var name, with % or ^ pfx
+15: O.  O         Array or Local Var name, with % or ^ pfx
+16: P.  P         Array or Local Var name, with % or ^ pfx
+17: Q.  Q         Array or Local Var name, with % or ^ pfx
+18: R.  R         Array or Local Var name, with % or ^ pfx
+19: S.  S         Array or Local Var name, with % or ^ pfx
+20: T.  T         Array or Local Var name, with % or ^ pfx
+21: U.  U         Array or Local Var name, with % or ^ pfx
+22: V.  V         Array or Local Var name, with % or ^ pfx
+23: W.  W         Array or Local Var name, with % or ^ pfx
+24: X.  X         Array or Local Var name, with % or ^ pfx
+25: Y.  Y         Array or Local Var name, with % or ^ pfx
+26: Z.  Z         Array or Local Var name, with % or ^ pfx
 Finished CRGtok^ppGRI  Composing GRt(tokt,  Terminal token db.
 
 ** Debug top+4^ppITK:  dbl spaces in $T 
@@ -42,23 +42,32 @@ TLab='TK1'
 I=5
 
 ** Debug top+4^ppITK:  dbl spaces in $T 
-L2=', 6 6 ,' 
-L=',    6 6 ,' 
+L2=', 8 8 ,' 
+L=',    8 8 ,' 
 tki=5
 TLab='TK1' 
 I=7
-Finished ^ppITK  tki:7 codes
 
-Audit of TK(tki,  tki end:7 completed.  ok?
+** Debug top+4^ppITK:  dbl spaces in $T 
+L2=', 10 10 ,' 
+L=',    10 10 ,' 
+tki=7
+TLab='TK1' 
+I=9
+Finished ^ppITK  tki:9 codes
+
+Audit of TK(tki,  tki end:9 completed.  ok?
 
 
 Kwd.           'K'   {1-1} 
 sp1.           '_'   {2-2} 
 Vna.           'X'   {3-3} 
 ,              ','   {4-4} 
-Vna.           'Y'   {5-5} 
-,              ','   {6-6} 
-Vna.           'Z'   {7-7} 
+Vna.           'abc'   {5-7} 
+,              ','   {8-8} 
+Vna.           'Y'   {9-9} 
+,              ','   {10-10} 
+Vna.           'Z'   {11-11} 
 --nxt In:1  Kwd. K
 InitGRAB: mCmds      0    1    level, start for no* 
 PSHb- grab:mCmds#1
@@ -114,7 +123,7 @@ PSHb- grab:[eKVnlst#11
 InitGRAN: [eKVnlst.1 11   4    , KVnlst 
 PSHn-GRAN gran:[eKVnlst.1#12
 termPASS: [eKVnlst.* [eKVnlst.1 1    , KVnlst                  ,        T               3:3        4    4 
---nxt In:5  Vna. Y
+--nxt In:5  Vna. abc
 InitGRAB: KVnlst     12   5    List of Vars to Kill 
 PSHb- grab:KVnlst#13
 >InitGRAN>gran       StkP grts grulst 
@@ -145,7 +154,7 @@ PSHb- grab:[eKVnlst#15
 InitGRAN: [eKVnlst.1 15   6    , KVnlst 
 PSHn-GRAN gran:[eKVnlst.1#16
 termPASS: [eKVnlst.* [eKVnlst.1 1    , KVnlst                  ,        T               5:5        6    6 
---nxt In:7  Vna. Z
+--nxt In:7  Vna. Y
 InitGRAB: KVnlst     16   7    List of Vars to Kill 
 PSHb- grab:KVnlst#17
 >InitGRAN>gran       StkP grts grulst 
@@ -157,54 +166,93 @@ PSHb- grab:KVn#19
 InitGRAN: KVn.1      19   7    Vna. 
 PSHn-GRAN gran:KVn.1#20
 termPASS: KVn.1.1/20 KVn.1      1    Vna.                      Vna.     T    KVn^p2PSR  5:5        7    7 
+--nxt In:8  , ,
 
 ** Debug granPASS+7^p3PAR:  Log gropsr
 gropsr='KVn^p2PSR' 
 gran='KVn.1' 
 grts=7
 grte=7
-tki=7
-tks=null
+tki=8
+tks=',' 
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
 granPASS:     KVn.1      7:7        7    7    1    Vna.                      Vna.     T 
 >grabPASS>QB  grab       gran       grts grte gropsr 
 grabPASS:     KVn        KVn.1      7    7    KVn^p2PSR 
+InitGRAB: [eKVnlst   18   8    end of comma list o* 
+PSHb- grab:[eKVnlst#19
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: [eKVnlst.1 19   8    , KVnlst 
+PSHn-GRAN gran:[eKVnlst.1#20
+termPASS: [eKVnlst.* [eKVnlst.1 1    , KVnlst                  ,        T               7:7        8    8 
+--nxt In:9  Vna. Z
+InitGRAB: KVnlst     20   9    List of Vars to Kill 
+PSHb- grab:KVnlst#21
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: KVnlst.1   21   9    KVn [eKVnlst 
+PSHn-GRAN gran:KVnlst.1#22
+InitGRAB: KVn        22   9    Single Kill Var 
+PSHb- grab:KVn#23
+>InitGRAN>gran       StkP grts grulst 
+InitGRAN: KVn.1      23   9    Vna. 
+PSHn-GRAN gran:KVn.1#24
+termPASS: KVn.1.1/24 KVn.1      1    Vna.                      Vna.     T    KVn^p2PSR  7:7        9    9 
+
+** Debug granPASS+7^p3PAR:  Log gropsr
+gropsr='KVn^p2PSR' 
+gran='KVn.1' 
+grts=9
+grte=9
+tki=9
+tks=null
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     KVn.1      7:7        7    7    2    KVn [eKVnlst              [eKVnlst E 
+granPASS:     KVn.1      9:9        9    9    1    Vna.                      Vna.     T 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     KVnlst     KVnlst.1   7    7     
+grabPASS:     KVn        KVn.1      9    9    KVn^p2PSR 
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     KVnlst.1   6:7/2      6    7    2    , KVnlst                  [eKVnlst E 
+granPASS:     KVn.1      9:9        9    9    2    KVn [eKVnlst              [eKVnlst E 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     [eKVnlst   [eKVnlst.1 6    7     
+grabPASS:     KVnlst     KVnlst.1   9    9     
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     [eKVnlst.1 5:7/3      5    7    2    KVn [eKVnlst              [eKVnlst E 
+granPASS:     KVnlst.1   8:9/2      8    9    2    , KVnlst                  [eKVnlst E 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     KVnlst     KVnlst.1   5    7     
+grabPASS:     [eKVnlst   [eKVnlst.1 8    9     
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     KVnlst.1   4:7/4      4    7    2    , KVnlst                  [eKVnlst E 
+granPASS:     [eKVnlst.1 7:9/3      7    9    2    KVn [eKVnlst              [eKVnlst E 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     [eKVnlst   [eKVnlst.1 4    7     
+grabPASS:     KVnlst     KVnlst.1   7    9     
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     [eKVnlst.1 3:7/5      3    7    2    KVn [eKVnlst              [eKVnlst E 
+granPASS:     KVnlst.1   6:9/4      6    9    2    , KVnlst                  [eKVnlst E 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     KVnlst     KVnlst.1   3    7     
+grabPASS:     [eKVnlst   [eKVnlst.1 6    9     
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     KVnlst.1   3:7/5      3    7    1    KVnlst                    [eKVnlst E 
+granPASS:     [eKVnlst.1 5:9/5      5    9    2    KVn [eKVnlst              [eKVnlst E 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     Karg       Karg.1     3    7     
+grabPASS:     KVnlst     KVnlst.1   5    9     
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     Karg.1     3:7/5      3    7    1    Karg                      [eKVnlst E 
+granPASS:     KVnlst.1   4:9/6      4    9    2    , KVnlst                  [eKVnlst E 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     Kcmd2      Kcmd2.1    3    7     
+grabPASS:     [eKVnlst   [eKVnlst.1 4    9     
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     Kcmd2.1    1:7/7      1    7    3    Kwd. sp1. Kcmd2           [eKVnlst E 
+granPASS:     [eKVnlst.1 3:9/7      3    9    2    KVn [eKVnlst              [eKVnlst E 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     Kcmd       Kcmd.1     1    7     
+grabPASS:     KVnlst     KVnlst.1   3    9     
 >granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
-granPASS:     Kcmd.1     1:7/7      1    7    1    Kcmd                      [eKVnlst E 
+granPASS:     KVnlst.1   3:9/7      3    9    1    KVnlst                    [eKVnlst E 
 >grabPASS>QB  grab       gran       grts grte gropsr 
-grabPASS:     mCmds      mCmds.1    1    7     
+grabPASS:     Karg       Karg.1     3    9     
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Karg.1     3:9/7      3    9    1    Karg                      [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Kcmd2      Kcmd2.1    3    9     
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Kcmd2.1    1:9/9      1    9    3    Kwd. sp1. Kcmd2           [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     Kcmd       Kcmd.1     1    9     
+>granPASS>QN  gran       gnC        grts grte Rn   grulst                    tok      toty 
+granPASS:     Kcmd.1     1:9/9      1    9    1    Kcmd                      [eKVnlst E 
+>grabPASS>QB  grab       gran       grts grte gropsr 
+grabPASS:     mCmds      mCmds.1    1    9     
 
 ** Debug top+15^p2HPT:  Err devlog value gone.
 devlog=UNDEF.

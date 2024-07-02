@@ -6,20 +6,20 @@ GRI    KILL  ;
        S Q=$$devlog^devIO("GRI-log.3.html","ww2x/")  ;HGen
          I Q'="" G Qb
        USE $G(devlog)
-       D G0^ppGRI  ; : GRv, GRc, GXsq
+       D G1^ppGRI  ; : GRt(), GRv, GRc, GXsq
        D ^ppWGR
        D ^ppGXU  ;Undef refs
-       D ^ppGXR  ;Trace-Nesting Refs
+       D ^ppGXR("exp00")  ;Trace-Nesting Refs   arg grabC  start-trace
        D clog^devlog  ; devlog implicit, tests $G(devlog)
        W:$X ! W "End of GR Analysis-  GRI^"_$T(+0),!
        Q
 ;*       
 LMp2   NEW Q S Q=""  
-       W:$X ! W "Starting LMp2^p2Ma ^p2PAR  ",!
-       D IB^mepIO  S Q=$$devlog^devIO("mp3LM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
+       W:$X ! W "Starting LMp2^p2Ma ^p3PAR  ",!
+       D IB^mepIO  S Q=$$devlog^devIO("mpG1a-LM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
        I $G(devlog)'="" USE devlog
        E  D b^dv("Err no devlog","devlog")
-       D G0^ppGRI  ; mGR0a.mdk in rppar2/ : GRv...
+       D G1^ppGRI  ; mGR0a.mdk in rpg1/ : GRv...
        D ^ppITK  ; TKv()  for S X=Y eol
          ;D pze^p2s("Log LM^p2Ma","GRv,GRc,TKv")
        D ^ppTXU  ;Audit TKv  vs GRt()  etc.
@@ -36,7 +36,7 @@ LMp2   NEW Q S Q=""
        G Q
 ;*
 ;*
-demo   W:$X ! W "Demo PTx Data",!
+demoX   W:$X ! W "Demo PTx Data",!
        D G1^ppGRI
        D ^ppITK
        D ^ppXIpt  ;Fudge PTx() Data

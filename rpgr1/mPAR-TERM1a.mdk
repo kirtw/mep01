@@ -1,0 +1,52 @@
+==   mPAR-TERM0a.mdk
+
+
+#  Terminal Codes GRt(tokt,
+
+
+
+# Punctuations as themselves 
+# Letters, UC and LC as themselves.   eg a. A. Z.
+# See CRGtok^ppGRI to create GRt(tokt)   List of Punctuations is in //tokt Line See PUL
+//tokt   {},.^%$@!()[]'":=+-*/\#_&<>;?    
+Npat. 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
+Lpat. 
+Upat.
+Apat.
+Ppat.
+Cpat.
+ANPpat.
+ANpat.
+Epat.    # Every char  ?1E
+
+Slit.   # string literal contents inside dbl quotes
+
+sp1.
+wsp.
+eol.
+Wd.
+Vna.
+qs.
+int.
+#  + - N [.] N   not exponent form yet
+num.  
+nex.
+
+# mCmds  multiple words, One letter or min, full, U/L case
+Qwd.    # QUIT words Q q quit Quit?
+Swd.
+Hwd.    # HALT Hang words
+Kwd.    # KILL words
+
+# Many more
+
+#  $FUNwords similarly
+Efun.   # $Extract
+Pfun.   # $Piece words
+
+#  OPEN Keywords
+Owd. 
+readonly.
+
+//   end of terminal token TOI
+

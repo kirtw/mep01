@@ -24,48 +24,58 @@ ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen/TOIcustom from RG() GR
 ;*
 ;*  RG() with //GG marker for grammar source, //tokt  marker for terminal token ids, //m for mumps code
 top    NEW Q I $$arg^pps("RG") G Qb
+       D ^p2IMG
        D CRGru ; RG() : GRv(grab),GRc(gran)->grulst, GXsq(rsq)=grab
-       D CRGtokt ; GRt(tokt, GXtsq(tsq)=tokt
        ;devlog still open for caller continuation  CFW^devlog(devlog)
+       D XTG  ;Compil GXtg Index  start term to select Gn: GXtg(grab,TKc,Gn)=""
        G Q
 ;*
 Q      Q:$Q Q Q:Q=""
 Qb     D b^dv("Err ^"_$T(+0),"Q,RG,devrg,gi,grab,gran") Q:$Q Q  Q
 ;* op no params
-G0     S gFil="mGR0a.mdk",gFol="rppar2/"   ; in rppar2/
-       D IRDGR(gFil,gFol) 
+G0x     S gFil="mGR0a.mdk",gFol="rpgr1/"
+        S tFil="PAR-tok1a.mdk",tFol="rpgr1/"
+       D IRDGR(gFil,gFol,tFil,tFol) 
+       D ^ppGRtok  ; RT() : GRt  terminal database       
        D ^ppGRI  ; RG() : GRv...
        Q
 ;*
-G1     S gFil="mGR1a.mdk",gFol="rppar1/"
-       D IRDGR(gFil,gFol) 
-       D ^ppGRI
+G1     S gFil="mPAR-GR1a.mdk",gFol="rpgr1/"
+       S tFil="mPAR-TERM1a.mdk",tFol="rpgr1/"
+       D IRDGR(gFil,gFol,tFil,tFol) ; RG(), RT()
+       D ^ppGRtok  ; RT() : GRt  terminal database
+       D ^ppGRI  ; RG() : GRv(), GRc(), ...
        Q
 ;*
-G3     S gFil="mGR0a.mdk",gFol="rppar1/"   ; in rppar1/
-       D IRDGR(gFil,gFol) 
+G3x     S gFil="mGR0a.mdk",gFol="rpgr1/"   ;
+       S tFil="mPAR-TERM1a.mdk",tFol="rpgr1/"
+       D IRDGR(gFil,gFol,tFil,tFol) 
        D ^ppGRI  ; RG() : GRv...
        Q
-;*    Read Grammar File, multiple sections to RG()     
-IRDGR(gFil,gFol)  NEW Q,D I $$arg^pps("gFil,gFol") G Qb 
+;*    Read Grammar File, multiple sections to RG()    and RT() 
+IRDGR(gFil,gFol,tFil,tFol)  NEW Q,D I $$arg^pps("gFil,gFol,tFil,tFol") G Qb 
        S D=$IO
-       KILL RG,GRv,GRc     S GRv=0,GRc=0,rsq=0  D ^ppIMG
+       KILL RG,GRv,GRc     S GRv=0,GRc=0,rsq=0
        D IB^mepIO ; PB umep./
        S devrg=PB_gFol_gFil
        S Q=$$^devRD(devrg,,"RG") I Q'="" G Qb
        I 'RG S Q="Empty GR grammar file " G Qb
        ;
+       S devrt=PB_tFol_tFil
+       S Q=$$^devRD(devrt,,"RT") I Q'="" G Qb
+       I 'RT S Q="Empty tok grammar file " G Qb
        USE D G Q
 ;*  RG() :  GRna, GRc, GXsq
 ;;grabFL:grde,grnun,grri_GRv(grab)
-;*   GRc(gran)=grulst, space delim tokens, term[".", Punct ?1P  or grab  rule
+;*   GRc(gran)=grulst, space delim tokens, term[".", Punct ?1P  or [grab] or grab  rule
+;*   GRnt(gran)=tklst, space delim, :: piece 2 after grulst
 ;*
 CRGru  NEW Q I $$arg^pps("RG") G Qb
        KILL GRv,GRc S grun=1,grab="?",grri="?"
-       S gi0=0 F gi=1:1:RG S L=$G(RG(gi)) I $E(L,1,2)="//",L["GR" S gi0=gi Q
+       S gi0=0 F gi=1:1:RG S L=$G(RG(gi)) I $E(L,1,4)="//GR" S gi0=gi+1 Q
        I 'gi0 S Q="Err did not find //GR in RG("_gi G Qb
        I $G(devrg)'="" S GRv(0,"devrg")=devrg
-       F gi=gi0+1:1:RG S L=$G(RG(gi)) Q:L["//"  DO  ;
+       F gi=gi0:1:RG S L=$G(RG(gi)) Q:L["//"  DO  ;
          .I $E(L)="#" Q ;skip comment # first char of line only
          .S Esp=$E(L)=" "
          .S L=$$DSP^dvc(L)
@@ -74,59 +84,49 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
          .I 'Esp DO  I Q'="" G Qb
             ..; No indentation, new grab
             ..S grab=$P(P1,":"),grun=0,grri=gi
-            ..I grab="" D b^dv("Err grab grab","grab,gi,P1,P2,L") G Qb
-            ..I grab'?.1"["1A.10AN D b^dv("Err format of grab in grammar file","grab,gi,L") G Qb
-            ..S D=$D(GRv(grab)) I D D b^dv("Dupl grab:","grab,grri") G Qb
-            ..;S gran=grab_"."_grun
+            ..I grab="" D b^dv("Err grab grab","grab,gi,P1,P2,L") Q
+            ..I grab'?.1"["1A.10AN.1"]" D b^dv("Err format of grab in grammar file","grab,gi,L") Q
+            ..S D=$D(GRv(grab)) I D D b^dv("Dupl grab:","D,grab,grri") Q
             ..S grde=P2
-            ..D SFL^kfm("grde,grri",grabFL) ; : GRv(grab
             ..S rsq=rsq+1
+            ..S grnun=grun
+            ..D SFL^kfm("grde,grnun,grri,rsq,grun",grabFL) ; : GRv(grab
             ..S GXsq(rsq)=grab,GXsq=rsq
          .I Esp DO  Q
             ..;Indented line, next grun/gran
             ..S grun=grun+1,grnun=grun
             ..S gran=grab_"."_grun
-            ..S grulst=L          
+            ..   ;  esp end spaces
+            ..;I L[" #" S L0=L,L=$P(L," #"),L=$$DSP^dvc(L) ;D b^dv("gran end-of-line comment","L0,L")
+            ..S grulst=$$DSP^dvc($P(L,"::"))      ;DSP after :: pieces  
+            ..S grtklst=$$DSP^dvc($P(L,"::",2))
             ..S t1tt="" I gran["[" S t1tt=$P(grulst," ")
-            ..D SFL^kfm("grulst",granFL)
+            ..D SFL^kfm("grulst,grtklst",granFL)  ; Note grulst and grtklst are filed under gran now
             ..D SFL^kfm("grnun,t1tt",grabFL)
+       S grab=0 F  S grab=$O(GRv(grab)) Q:grab=""  DO  ;
+         .S grn=$G(GRv(grab,"grnun")) 
+         .D GFL^kfm("grnun",grabFL)
+         .I grnun Q
+         .D GFL^kfm("grri,grde",grabFL)
+         .D b^dv("Err grab without any grans","grab,grnun,grri,grde")
        W:$X ! W "Completed Grammar composition CRGru^"_$T(+0)_"  GRv, GRc, GXsq ",!
        G Q
-;*  GRt  :  GRt(tokt)=tokt  Index of terminal token names, including certain Punct
-CRGtokt NEW Q S Q=""  I $$arg^pps("RG") G Qb
-       NEW gi,gi0,PUL,tsq,P,tokt,L,L1
-       KILL GRt,GXtsq,GXtt S GXtt=0,gti=0,GXtsq=0 
-       S gi0=0 F gi=1:1:RG S L=$G(RG(gi)) I $E(L,1,2)="//",L["tokt" S gi0=gi Q
-       I 'gi0 S Q="Err did not find //GR in RG("_gi G Qb
-       ; Kludge, added to grammar syntax ?Punct list
-       S PUL=$P(L," ",2,999) 
-         I PUL'?5.50P D b^dv("Bug PUL line //tokt Punct List","PUL,L,gi0") G Qb
-         F tsq=1:1:$L(PUL) S P=$E(PUL,tsq) I P'=" " S GRt(P)=P,GXtsq(tsq)=P  ;Literal Punct
-         S GRt(0,"PUL")=PUL
-       F gi=gi0+1:1:RG S L=$G(RG(gi)) Q:L["//"  Q:L["***"  DO  ;
-         .S L1=$$DSP^dvc(L) ;L1 tokt
-         .S tokt=$P(L1," ")
-         .S ttde=$P(L1," ",2,9) I ttde="" S ttde=tokt
-         .S ttri=gi
-         .I tokt="" Q  ;Ignore blank line
-         .I tokt'["." S tokt=tokt_"."
-         .D SFL^kfm("ttde,ttri",tokgrFL) ; GRt(tokt, 
-         .S tsq=tsq+1,GXtsq(tsq)=tokt,GXtsg=tsq
-;;tokgFL:ttde,ttri_GRt(tokt)         
-Aa     S ttri="Aa"
-       F ci=1:1:26 S C=$C(ci+64),c=$C(96+ci) DO  ;
-         .I (c'?1L)!(C'?1U) d b^dv("Err  c and C","ci,c,C")
-         .S tokt=c_".",tks=c 
-         .S ttde="Letter "_c
-         .S tsq=tsq+1,GXtsq(tsq)=tokt,GXtsg=tsq
-         .D SFL^kfm("grde,tks",tokgrFL) ; tokt
-         .;
-         .S tokt=C_".",tks=C
-         .S ttde="Letter "_C 
-         .S tsq=tsq+1,GXtsq(tsq)=tokt,GXtsg=tsq
-         .D SFL^kfm("grde,tks",tokgrFL)
-         .W:$X ! W ci,": ",tokt," ",?8,tks," ",?18,grde,!
-       W:$X ! W "Finished CRGtok^"_$T(+0)_"  Composing GRt(tokt,  Terminal token db.",!
-       G Q
-;*
+;*  Compile grtklst to GXtg(grab,tokt,Gn)=""
+XTG    KILL GXtg S GXtg=0   
+       W:$X ! W "Starting term to Gn Index  GXtg from grtklst  XTG^"_$T(+0),!
+       S gran=0 F  S gran=$O(GRc(gran)) Q:gran=""  DO  ;
+         .D GFL^kfm("grtklst",granFL)
+         .I grtklst="" Q
+         .S grab=$P(gran,".")
+         .S Gn=$P(gran,".",2)
+         .  I 'Gn D b^dv("Err Gn from gran ","gran,grab,Gn") Q
+         .F tj=1:1:$L(grtklst," ") S TLc=$P(grtklst," ",tj) DO  ;
+            ..I TLc="" D b^dv("Err in grtklst null TLc","grtklst,tj,TLc,gran,Gn") Q
+            ..S Gnx=$G(GXtg(grab,TLc))
+            ..  I Gnx'="" D b^dv("Err Dupl GXtg Index","grab,TLc,Gnx,Gn") Q
+            ..S GXtg(grab,TLc)=Gn,GXtg=GXtg+1
+      W:$X ! W "Completed Compile TK   GXtg  XTG^"_$T(+0)_"   x",GXtg," entries.",!
+      Q
+         
 
+ 

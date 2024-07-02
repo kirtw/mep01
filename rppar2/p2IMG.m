@@ -22,12 +22,12 @@ IKILLFL  D ^p2IMG ; VVL,*FL
          .S FL=$P(xFL,"_")
          .F vi=1:1:$L(FL,",") S vn=$P(FL,",",vi) KILL @vn  ;; KILL vs Set Null?
        Q
-;*  Not token, but Input Terminals sic name  -->trmFL  (or tkiFL - not good for searching)
+;*  Not token, but Input Terminals sic name  -->termFL  (or tkiFL - not good for searching)
 tokFL  ;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
-tokgrFL ;;tokgrFL:ttde,ttri_GRt(tokt)
+tokgrFL ;;tokgrFL:ttde,ttri,tokt,tks_GRt(tokt)
 ;
 grabFL ;;grabFL:grde,grnun,grri_GRv(grab)
-granFL ;;granFL:grulst,gropsr,grtt_GRc(gran)
+granFL ;;granFL:grulst,grtklst,gropsr,grtt_GRc(gran)
 ;
 ;;  Stack STK(StkP) in ^p2PAR  All grab vars incl grab, ditto All gran vars incl gran
 ;* StkP odd for grab, even for gran

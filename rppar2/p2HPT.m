@@ -14,7 +14,7 @@ top    NEW Q I $$arg^pps("PTx")
        S TIft="  by ^"_$T(+0)
        S TItb="^ppPT"
        S TImo="BraceLine"
-       S TIVL="devrg,devlog"
+       S TIVL="devrg,devlog,LM"
          I $G(devrg)="" DO  
            .S d=$G(GRv(0,"devrg")) I d'="" S devrg=d Q
            .D b^dv("Err undef devrg","devrg,TIVL")

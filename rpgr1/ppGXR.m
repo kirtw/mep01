@@ -1,4 +1,4 @@
-ppGXR ;CKW/ESC i8mar24 umep./ rppar1/ ;2024-0308-55;Trace/Traverse Grammar structure
+ppGXR(grabC) ;CKW/ESC i8mar24 umep./ rppar1/ ;2024-0308-55;Trace/Traverse Grammar structure
 ;
 ;  GRv(grab  gunun
 ;  GRc(gran  grulst, gropsr, 
@@ -9,9 +9,12 @@ ppGXR ;CKW/ESC i8mar24 umep./ rppar1/ ;2024-0308-55;Trace/Traverse Grammar struc
 ;
 top KILL GXby S GXby=0  ;GXby(grab,gran)=grulst
     KILL GXlev   ;GXlev(grab
-    NEW Q I $$arg^pps("GRv,GRc") G Qb
+    KILL GXug S GXug=0
+    NEW Q I $$arg^p2s("grabC,GRv,GRc") G Qb
     D ^ppIMG
-    S grabC="mCmds",Lev=0
+    USE $P W:$X ! W !,"Trace/Traverse Grammar Refs - ^"_$T(+0),"  from ",grabC,!
+      ;; grabC  mCmnds  or exp00  or LblLine
+    S Lev=0
     D G1(grabC,Lev)
     ;
     D UnRef  ;grabs not traversed
@@ -28,7 +31,7 @@ G1(grabC,Lev)
       .D Gran(grabC,un)
       .D Glst ;
       .  I grulst="" S Q="grulst null" Q
-      .D Trv2(Lev)
+      .D Trv2(Lev)  ; recursive
     Q
 ;*  Lev' grabC,grunC,gran,grulst  
 Trv2(Lev) NEW Rn
@@ -41,8 +44,7 @@ Trv2(Lev) NEW Rn
       .  I $G(GXby(tok,gran))'="" D b^dv("Mult refs ?ok","grab,gran,Rn,grulst,tok")
       .S GXby(tok,gran)=grulst ;
       .I Rtok Q  ;Already traversed tok
-      .S Lev=Lev+1 
-      .D G1(tok,Lev) ;Recursive
+      .D G1(tok,Lev+1) ;Recursive
     Q     
 ;*
 Q      Q:$Q Q Q:Q=""
@@ -57,7 +59,7 @@ Gab  S grab=grabC
      D Gran(grabC,grunC) ; : gran, grulst
      Q
 ;* : gran
-Gran(grabA,grunA) NEW Q I $$arg^pps("grabA,grunA") G Qb
+Gran(grabA,grunA) NEW Q I $$arg^p2s("grabA,grunA") G Qb
      S gran=grabA_"."_grunA
      Q
 ;* 
@@ -69,21 +71,24 @@ Glst D GFL^kfm("grulst,gropsr",granFL) ; GRc(gran : grulst
 Gtok  S tok=$P(grulst," ",Rn) 
       I tok="" D b^dv("Null tok in grulst","tok,grulst,Rn,granC,grabC") Q
       S toty="R" I tok?1P!(tok[".") S toty="T"
+      I tok["[" S toty="E"
       Q
 ;* Save Level of grab
 ;*  grabC, Lev : QS, oL,  GXlev(
 SLG S QS="",oLev=$G(GXlev(grabC))
-      I oLev'="",oLev<Lev S QS="Qlev"_Lev D ^dv("Gram Data Err Loop ","grabC,oLev,Lev") Q
+      I oLev'="",oLev<Lev S QS="Qlev"_Lev D ^dv("Grab Data Err Loop ","grabC,oLev,Lev") Q
     S GXlev(grabC)=Lev
     Q
-;*  Dupl ^ppXUxr ?
+;*  Dupl ^ppXUxr ?  UnTraversed ?
 UnRef  S nur=0 D ^ppIMG
-       W:$X ! W "Looking for Unreferenced grab's named rules",!
+       W:$X ! W "Looking for Unreferenced grab's named rules",!!
        F rsq=1:1:GXsq S grab=$G(GXsq(rsq)) DO  ;
-         .S x=$G(GXlev(grab))
-         .I x'="" Q
+         .S D=$D(GXlev(grab))
+         .I D Q
+         .;Unref'd grab
          .D GFL^kfm(grabFL) ; GRv(grab,  grde, grnun
          .S nur=nur+1 W:$X ! W grab,"  ",grde,"   " W:gropsr'="" " sr:",gropsr," "
+         .S GXug(grab)="",GXug=GXug+1
        I 'nur W:$X ! W " ... No Unref grab's found.",!
        E  W:$X ! W " found   x",$G(nur),"  by UnRef^"_$T(+0),!
        Q

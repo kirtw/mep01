@@ -10,7 +10,7 @@ top  NEW Q,DD  I $$arg^pps("TKv,GRt,GRv") G Qb
        .S DD=$D(GRt(tokt))
        .I DD=0 D ER("Undef tokt in GRt(  ")
        .; audit tks, tkcs, tkce
-       .I tkcs'?1N,tkcs'=ts+1 D ER("tkcs Start") ;Err
+       .I tkcs'?1N,tkcs'=(ts+1) D ER("tkcs Start") ;Err
        .I tkce'?1.2N D ER("tkce End") ;Err
        .I tks="" D ER("tks null") ;Err
        .I $L(tks)'=(tkce-tkcs+1) D ER("tks") ;Err

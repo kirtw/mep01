@@ -5,231 +5,151 @@
 </head>
 <h1>Log File</h1>
 <pre>
+Completed Punct Audit- AudP^ppGRtok
+1: A.   A         Letter A
+2: B.   B         Letter B
+3: C.   C         Letter C
+4: D.   D         Letter D
+5: E.   E         Letter E
+6: F.   F         Letter F
+7: G.   G         Letter G
+8: H.   H         Letter H
+9: I.   I         Letter I
+10: J.  J         Letter J
+11: K.  K         Letter K
+12: L.  L         Letter L
+13: M.  M         Letter M
+14: N.  N         Letter N
+15: O.  O         Letter O
+16: P.  P         Letter P
+17: Q.  Q         Letter Q
+18: R.  R         Letter R
+19: S.  S         Letter S
+20: T.  T         Letter T
+21: U.  U         Letter U
+22: V.  V         Letter V
+23: W.  W         Letter W
+24: X.  X         Letter X
+25: Y.  Y         Letter Y
+26: Z.  Z         Letter Z
+Finished CRTtok^ppGRtok  Composing GRt(tokt,  Terminal token db.
 Completed Grammar composition CRGru^ppGRI  GRv, GRc, GXsq 
-1: A.   A         Array or Local Var name, with % or ^ pfx
-2: B.   B         Array or Local Var name, with % or ^ pfx
-3: C.   C         Array or Local Var name, with % or ^ pfx
-4: D.   D         Array or Local Var name, with % or ^ pfx
-5: E.   E         Array or Local Var name, with % or ^ pfx
-6: F.   F         Array or Local Var name, with % or ^ pfx
-7: G.   G         Array or Local Var name, with % or ^ pfx
-8: H.   H         Array or Local Var name, with % or ^ pfx
-9: I.   I         Array or Local Var name, with % or ^ pfx
-10: J.  J         Array or Local Var name, with % or ^ pfx
-11: K.  K         Array or Local Var name, with % or ^ pfx
-12: L.  L         Array or Local Var name, with % or ^ pfx
-13: M.  M         Array or Local Var name, with % or ^ pfx
-14: N.  N         Array or Local Var name, with % or ^ pfx
-15: O.  O         Array or Local Var name, with % or ^ pfx
-16: P.  P         Array or Local Var name, with % or ^ pfx
-17: Q.  Q         Array or Local Var name, with % or ^ pfx
-18: R.  R         Array or Local Var name, with % or ^ pfx
-19: S.  S         Array or Local Var name, with % or ^ pfx
-20: T.  T         Array or Local Var name, with % or ^ pfx
-21: U.  U         Array or Local Var name, with % or ^ pfx
-22: V.  V         Array or Local Var name, with % or ^ pfx
-23: W.  W         Array or Local Var name, with % or ^ pfx
-24: X.  X         Array or Local Var name, with % or ^ pfx
-25: Y.  Y         Array or Local Var name, with % or ^ pfx
-26: Z.  Z         Array or Local Var name, with % or ^ pfx
-Finished CRGtok^ppGRI  Composing GRt(tokt,  Terminal token db.
+Starting term to Gn Index  GXtg from grtklst  XTG^ppGRI
+Completed Compile TK   GXtg  XTG^ppGRI   x13 entries.
 
 
 Grammar -
-  LblLine Top Level with label and/or start-sp1    ln:30
+  LblLine Top Level with label and/or start-sp1    ln:8
     LblLine.1                 Label sp1. mCmds    
     LblLine.2                 Comment             
-  mCmds   level, start for now, grab    ln:34
+  mCmds   level, start for now, grab    ln:13
     mCmds.1                   Kcmd                
     mCmds.2                   Hcmd                
-    mCmds.3                   Comment             
-    mCmds.4                   XXyy.               
-    mCmds.5                   ZZWW                
-    mCmds.6                   ZZZaaaaaaaaa123     
-  Comment Semicolon comment    ln:44
+    mCmds.3                   Comment # Cmd-position comment
+    mCmds.4                   XXyy. # not defined at terminal/token in GRt()
+    mCmds.5                   ZZWW # not defined elsewhere as grab
+    mCmds.6                   ZZZaaaaaaaaa123 # grab fmt error, too long
+  exp00   Top test Expr    ln:22
+    exp00.1                   exp                 
+  Comment Semicolon comment    ln:25
     Comment.1                 ; AllCom            
-  AllCom  Text of comment, anything to EOL    ln:46
-    AllCom.1                  EE. [E.]            
-  Label   Line label/codeblock ref, arg/formal-args    ln:49
+  AllCom  Text of comment, anything to EOL    ln:27
+    AllCom.1                  Epat. [Epat.]       
+  Label   Line label/codeblock ref, arg/formal-args    ln:30
     Label.1                   Na eLab             
-  eLab    op arg    ln:51
+  eLab    op arg    ln:32
     eLab.1                    ( fArg eArgL        
-  eArgL       ln:53
+  eArgL       ln:34
     eArgL.1                   , fArg )            
-  fArg    formal label arg    ln:55
+  fArg    formal label arg    ln:36
     fArg.1                    LVna                
-  Kcmd    command    ln:58
+  Kcmd    command    ln:39
     Kcmd.1                    Kwd. sp1. Kcmd2     
-  Kcmd2   End of Kill Cmd    ln:60
+  Kcmd2   End of Kill Cmd    ln:41
     Kcmd2.1                   Karg                
-  Karg    Kill argument    ln:62
+  Karg    Kill argument    ln:43
     Karg.1                    KVnlst              
-  KVnlst  List of Vars to Kill    ln:65
-    KVnlst.1                  KVn [eKVnlst        
-  KVn     Single Kill Var    ln:68
+  KVnlst  List of Vars to Kill    ln:46
+    KVnlst.1                  KVn [eKVnlst]       
+  KVn     Single Kill Var    ln:49
     KVn.1                     Vna.                
-  [eKVnlst end of comma list of KVars , optionionally null    ln:71
-    [eKVnlst.1                , KVnlst            
-  Hcmd    is simple    ln:74
-    Hcmd.1                    Hwd. sp1. Exp       
-  Exp         ln:77
-    Exp.1                     Svn                 
-    Exp.2                     [unop. Exp          
-    Exp.3                     Svn bop Exp         
-    Exp.4                     Vlit                
-  [unop   Unary Operators    ln:82
-    [unop.1                   +                   
-    [unop.2                   -                   
-  bop     Binary operator    ln:85
+  [eKVnlst] end of comma list of KVars , optionionally null    ln:52
+    [eKVnlst].1               , KVnlst            
+  Hcmd    is simple    ln:55
+    Hcmd.1                    Hwd. sp1. exp       
+  exp         ln:58
+    exp.1                     Svn [bopex]         
+    exp.2                     Vlit                
+    exp.3                     [paren]             
+    exp.4                     [unop] exp          
+  [paren] expr in paren    ln:64
+    [paren].1                 ( exp )             
+  [unop]  Unary Operators    ln:66
+    [unop].1                  +                   
+    [unop].2                  -                   
+    [unop].3                  !                   
+  [bopex]     ln:70
+    [bopex].1                 bop exp             
+  bop     Binary operator, ?dbl binary ops    ln:73
     bop.1                     +                   
     bop.2                     -                   
-    bop.3                     < =                 
-    bop.4                     > =                 
-    bop.5                     ! <                 
-    bop.6                     *                   
+    bop.3                     < [eq]              
+    bop.4                     > [eq]              
+    bop.5                     *                   
+    bop.6                     /                   
     bop.7                                         
-  Vlit    Literal value in code, quote or number    ln:94
-    Vlit.1                    Vlqt                
+    bop.8                     \                   
+    bop.9                     #                   
+  [eq]        ln:83
+    [eq].1                    =                   
+  Svn     Simple var name    ln:85
+    Svn.1                     Vna.                
+  Vlit    Literal value in code, quote or number    ln:88
+    Vlit.1                    [Vlqt]              
     Vlit.2                    Vlnum               
-  Vlqt    Literal Quoted string    ln:97
-    Vlqt.1                    " Lstr "            
-  Na      Name of var, mGbl, label, sans (args)    ln:100
-  ALVn    Array or Local Var name, with % or ^ pfx    ln:102
+  [Vlqt]  Literal Quoted string    ln:91
+    [Vlqt].1                  " Slit "            
+  Slit    Anything in string literal, til " or ""    ln:93
+    Slit.1                    ANP. [dbldbl] "     
+  NaArgs      ln:96
+    NaArgs.1                  Na ( ArgLst )       
+  Na      Name of var, mGbl, label, sans (args)    ln:98
+    Na.1                      Vna.                
+  [ArgsLst] Label( Formal-list) vs Actual-List vs Array/mGbl Args    ln:101
+    [ArgsLst].1               ( Arg [eArgLst] )   
+  [eArgLst]     ln:103
+    [eArgLst].1               , Arg               
+  Arg         ln:105
+    Arg.1                     exp                 
+  ALVn    Array or Local Var name, with % or ^ pfx    ln:107
     ALVn.1                    Vna.                
-Undef tokt/GRt by ^ppGXU  sp1.   in Label sp1. mCmds   
-Undef grab rule-name ^ppGXU  sp1.   in Label sp1. mCmds   
-Undef tokt/GRt by ^ppGXU  XXyy.   in XXyy.   
-Undef grab rule-name ^ppGXU  XXyy.   in XXyy.   
-Undef grab rule-name ^ppGXU  ZZWW   in ZZWW   
-Undef grab rule-name ^ppGXU  ZZZaaaaaaaaa123   in ZZZaaaaaaaaa123   
-Undef ?1P tok/Term  ^ppGXU  ;   in ; AllCom   
-Undef grab rule-name ^ppGXU  ;   in ; AllCom   
-Undef tokt/GRt by ^ppGXU  EE.   in EE. [E.]   
-Undef grab rule-name ^ppGXU  EE.   in EE. [E.]   
-Undef tokt/GRt by ^ppGXU  [E.]   in EE. [E.]   
-Undef grab rule-name ^ppGXU  [E.]   in EE. [E.]   
-Undef grab rule-name ^ppGXU  (   in ( fArg eArgL   
-Undef grab rule-name ^ppGXU  ,   in , fArg )   
-Undef grab rule-name ^ppGXU  )   in , fArg )   
-Undef grab rule-name ^ppGXU  LVna   in LVna   
-Undef tokt/GRt by ^ppGXU  Kwd.   in Kwd. sp1. Kcmd2   
-Undef grab rule-name ^ppGXU  Kwd.   in Kwd. sp1. Kcmd2   
-Undef tokt/GRt by ^ppGXU  sp1.   in Kwd. sp1. Kcmd2   
-Undef grab rule-name ^ppGXU  sp1.   in Kwd. sp1. Kcmd2   
-Undef tokt/GRt by ^ppGXU  Vna.   in Vna.   
-Undef grab rule-name ^ppGXU  Vna.   in Vna.   
-Undef grab rule-name ^ppGXU  ,   in , KVnlst   
-Undef tokt/GRt by ^ppGXU  Hwd.   in Hwd. sp1. Exp   
-Undef grab rule-name ^ppGXU  Hwd.   in Hwd. sp1. Exp   
-Undef tokt/GRt by ^ppGXU  sp1.   in Hwd. sp1. Exp   
-Undef grab rule-name ^ppGXU  sp1.   in Hwd. sp1. Exp   
-Undef grab rule-name ^ppGXU  Svn   in Svn   
-Undef tokt/GRt by ^ppGXU  [unop.   in [unop. Exp   
-Undef grab rule-name ^ppGXU  [unop.   in [unop. Exp   
-Undef grab rule-name ^ppGXU  Svn   in Svn bop Exp   
-Undef ?1P tok/Term  ^ppGXU  +   in +   
-Undef grab rule-name ^ppGXU  +   in +   
-Undef ?1P tok/Term  ^ppGXU  -   in -   
-Undef grab rule-name ^ppGXU  -   in -   
-Undef ?1P tok/Term  ^ppGXU  +   in +   
-Undef grab rule-name ^ppGXU  +   in +   
-Undef ?1P tok/Term  ^ppGXU  -   in -   
-Undef grab rule-name ^ppGXU  -   in -   
-Undef ?1P tok/Term  ^ppGXU  <   in < =   
-Undef grab rule-name ^ppGXU  <   in < =   
-Undef grab rule-name ^ppGXU  =   in < =   
-Undef ?1P tok/Term  ^ppGXU  >   in > =   
-Undef grab rule-name ^ppGXU  >   in > =   
-Undef grab rule-name ^ppGXU  =   in > =   
-Undef grab rule-name ^ppGXU  !   in ! <   
-Undef ?1P tok/Term  ^ppGXU  <   in ! <   
-Undef grab rule-name ^ppGXU  <   in ! <   
-Undef ?1P tok/Term  ^ppGXU  *   in *   
-Undef grab rule-name ^ppGXU  *   in *   
-Undef grab rule-name ^ppGXU  _   in _   
-Undef grab rule-name ^ppGXU  Vlnum   in Vlnum   
-Undef grab rule-name ^ppGXU  "   in " Lstr "   
-Undef grab rule-name ^ppGXU  Lstr   in " Lstr "   
-Undef grab rule-name ^ppGXU  "   in " Lstr "   
-Undef tokt/GRt by ^ppGXU  Vna.   in Vna.   
-Undef grab rule-name ^ppGXU  Vna.   in Vna.   
+Undef toks Analysis  WUS^ppGXU
 
-tot  num grabs ngr:22   num gran's  ngn:38 ngt:85
-
-grab undef errors: 37
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 'EE.'-(T) in AllCom.1.1 at ln 46
-Undef tok 'Vna.' 'Hwd.'-(T) in Hcmd.1.1 at ln 74
-Undef tok 'Vna.' 'Kwd.'-(T) in Kcmd.1.1 at ln 58
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 'Vna.'-(T) in ALVn.1.1 at ln 102
-Undef tok 'Vna.' 'XXyy.'-(T) in mCmds.4.1 at ln 34
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 
-Undef tok 'Vna.' '[E.]'-(T) in AllCom.1.2 at ln 46
-Undef tok 'Vna.' '[unop.'-(T) in Exp.2.1 at ln 77
-Undef tok 'Vna.' 
-Undef tok 'Vna.' 'sp1.'-(T) in Hcmd.1.2 at ln 74
-'EE. in 
-'Hwd. in 
-'Kwd. in 
-'Vna. in 
-'XXyy. in 
-'[E.] in 
-'[unop. in 
-'sp1. in 
-Looking for Unreferenced grab's named rules
-LblLine  Top Level with label and/or start-sp1   
-Comment  Semicolon comment   
-AllCom  Text of comment, anything to EOL   
-Label  Line label/codeblock ref, arg/formal-args   
-eLab  op arg   
-eArgL     
-fArg  formal label arg   
-Kcmd  command   
-Kcmd2  End of Kill Cmd   
-Karg  Kill argument   
-KVnlst  List of Vars to Kill   
-KVn  Single Kill Var   
-[eKVnlst  end of comma list of KVars , optionionally null   
-Hcmd  is simple   
-Exp     
-[unop  Unary Operators   
-bop  Binary operator   
-Vlit  Literal value in code, quote or number   
-Vlqt  Literal Quoted string   
-Na  Name of var, mGbl, label, sans (args)   
-ALVn  Array or Local Var name, with % or ^ pfx   
- found   x21  by UnRef^ppGXR
-Finished Traversal  by ^ppGXR
-** Arrays-
-Array GRc has 38 nodes and 38 with SubNodes
-Array GRt has 91 nodes and 73 with SubNodes
-Array GRv has 23 nodes and 23 with SubNodes
-Array GXby has 1 nodes and 1 with SubNodes
-Array GXlev has 1 nodes
-Array GXsq has 22 nodes
-Array GXtsq has 90 nodes
-Array GXup has 6 nodes
-Array GXur has 27 nodes
-Array GXut has 8 nodes
-Array GXxg has 14 nodes and 14 with SubNodes
-Array RG has 111 nodes and 1 with SubNodes
-
-End of Log File -/home/kw/km3a/umep/ww2x/GRI-log.3.html  23:21 26MAY24
+GXur- 
+'ArgLst' - (R) in NaArgs.1.3 at ln 96
+'LVna' - (R) in fArg.1.1 at ln 36
+'Vlnum' - (R) in Vlit.2.1 at ln 88
+'ZZWW' - (R) in mCmds.5.1 at ln 13
+'[dbldbl]' - (E) in Slit.1.2 at ln 93
+'as' - (R) in mCmds.5.6 at ln 13
+'at' - (R) in mCmds.4.5 at ln 13
+'comment' - (R) in mCmds.3.4 at ln 13
+'defined' - (R) in mCmds.4.4 at ln 13
+'defined' - (R) in mCmds.5.4 at ln 13
+'elsewhere' - (R) in mCmds.5.5 at ln 13
+'fmt' - (R) in mCmds.6.4 at ln 13
+'grab' - (R) in mCmds.5.7 at ln 13
+'grab' - (R) in mCmds.6.3 at ln 13
+'in' - (R) in mCmds.4.7 at ln 13
+'long' - (R) in mCmds.6.7 at ln 13
+'not' - (R) in mCmds.4.3 at ln 13
+'not' - (R) in mCmds.5.3 at ln 13
+'too' - (R) in mCmds.6.6 at ln 13
+GXut- 
+'ANP.' - (T) in Slit.1.1 at ln 93
+'XXyy.' - (T) in mCmds.4.1 at ln 13
+'[Epat.]' - (T) in AllCom.1.2 at ln 27
+GXup- 
+End of Log File -/home/kw/km3a/umep/ww2x/GRI-log.3.html  07:49 01JUL24
 </pre>
 </html>

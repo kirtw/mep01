@@ -1,0 +1,32 @@
+ppSCN(vn) ;CKW/ESC i30jun24 umep./ rpgr1/ ;2024-0630-40;Scan RG() for vars
+; from ^ppGRI, ^ppGXU  OBS there  grab0 not grammar var, but arg to ^p3PAR
+;
+
+;*  Save all vn:val  in GRv(0,vn)=val       SIC: colons used in grammar
+SCN()   ;
+    F ri=1:1:RG I $G(RG(ri))["//GR"  DO  ;
+      .F ri=ri+1:1:RG S L=$G(RG(ri)) Q:L["//"  I L["grab0:" DO  Q  ;
+         ..S vn=$P(L,":")
+         ..I vn'?1.9L.5N D b^dv("Illegal vn format","vn,val,ri,L") Q
+         ..S val=$P(L,":",2,99)
+         ..S GRv(0,vn)=val
+    I $D(GRv(0))=0 W !,"No vars (?grab0) ",!
+    E  W !! KILL GR0 MERGE GR0=GRv(0) zwr GR0 KILL GR0  W !
+    Q
+;*
+;* second variant, Dupl almost, from ^ppGXR
+;*  Scan for var:val        Dupl SCN in ^ppGRI
+SCN2(vn) NEW Q,ri,vn,val I $$arg^p2s("vn") G Qb
+    S vsch=vn_":"
+    F ri=1:1:RG I $G(RG(ri))["//GR"  DO  ;
+      .F ri=ri+1:1:RG S L=$G(RG(ri)) Q:L["//"  I $P(L,vsch)="",L'="" DO  Q  ;
+         ..S vn=$P(L,":")
+         ..I vn'?1.9L.5N D b^dv("Illegal vn format","vn,val,ri,L") Q
+         ..S val=$P(L,":",2,99)
+         ..S GRv(0,vn)=val
+    G Q
+;*
+;*
+Q      Q:$Q Q Q:Q=""
+Qb     D b^dv("Err ^"_$T(+0),"Q,vn,val,RG,devrg,gi,grab,gran") Q:$Q Q  Q
+;*

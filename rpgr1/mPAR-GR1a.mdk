@@ -1,0 +1,111 @@
+==  Grammar TOI File   grab & gran
+
+
+#
+//GR    GRna  &   GRru
+#  grab0/grabC not here - arg to ^p3PAR  grab0:exp00   
+#    vs LblLine vs mCmds, ^ppGXU, ^p3PAR
+LblLine:  Top Level with label and/or start-sp1
+   Label sp1. mCmds
+# linestart comment gran LblLine.2
+   Comment  
+   
+mCmds:Top level, start for now, grab
+   Kcmd
+   Hcmd   
+   Comment  # Cmd-position comment
+#  Test Errors by Aud^ppGRI
+   XXyy.       # not defined at terminal/token in GRt()
+   ZZWW         #  not defined elsewhere as grab
+   ZZZaaaaaaaaa123     # grab fmt error, too long
+
+exp00:  Top test Expr
+   exp
+   
+Comment: Semicolon comment
+   ; AllCom
+AllCom: Text of comment, anything to EOL
+   Epat. [Epat.]
+   
+Label:  Line label/codeblock ref, arg/formal-args
+   Na eLab
+eLab: op arg
+   ( fArg eArgL
+eArgL:
+   , fArg )
+fArg: formal label arg
+   LVna
+
+Kcmd:Kill command
+    Kwd. sp1. Kcmd2
+Kcmd2:  End of Kill Cmd
+    Karg
+Karg:  Kill argument
+    KVnlst
+    
+KVnlst: List of Vars to Kill
+    KVn [eKVnlst]
+    
+KVn: Single Kill Var
+    Vna.
+    
+[eKVnlst]:  end of comma list of KVars , optionionally null
+    , KVnlst
+
+Hcmd:Hang is simple
+   Hwd. sp1.  exp   
+
+exp:Expression
+   Svn [bopex]  ::Vna.
+   Vlit   ::Npat. "
+   [paren]   ::(
+   [unop] exp   ::+ - !
+   
+[paren]: expr in paren
+   ( exp )
+[unop]:  Unary Operators
+   +
+   -
+   !
+[bopex]:
+   bop exp
+   
+bop: Binary operator, ?dbl binary ops
+   +
+   -
+   < [eq]
+   > [eq]
+   *
+   /
+   _   
+   \
+   #
+[eq]:
+   =
+Svn:  Simple var name
+   Vna.   ::  Vna.   # includes ^ % Apat.
+   
+Vlit: Literal value in code, quote or number
+   [Vlqt]
+   Vlnum
+[Vlqt]: Literal Quoted string
+   " Slit "
+Slit:  Anything in string literal, til "  or ""
+   ANP. [dbldbl] "
+
+NaArgs:
+   Na ( ArgLst )
+Na:  Name of var, mGbl, label, sans (args)
+   Vna.
+
+[ArgsLst]:     Label( Formal-list)  vs Actual-List  vs Array/mGbl Args
+    ( Arg [eArgLst] )
+[eArgLst]:
+    , Arg
+Arg: 
+    exp
+ALVn: Array or Local Var name, with % or ^ pfx
+     Vna.
+
+//
+

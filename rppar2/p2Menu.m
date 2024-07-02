@@ -28,11 +28,10 @@ Menu	;Text for Menu  	Compile  RM()
 ;;mm. Select from p2 Parse mumps Main: _Main p2 Menu  |mm
 ;; p. LMp2^p2Ma Test Parser on pre-fab TK() S X=A   p2PAR GOTO or p3PAR recursive
 ;; gri. GRI^p2Ma  Generate GRv(grab, GRc(gran Grammar Tables devlog
-;; demo. demo^p2Ma  Fudge PTx Data for HGen
 ;;     ^ppWGR  Write Grammar
 ;;     ^ppWGRt  Write Grammar Terminal tokens tokt (1P or contain dot)
 ;;     ^ppWTK  Write Terminal Input Tokens TKv()  
-;;     la^dv  List Arrays
+;; la. la^dv  List Arrays
 ;;     audFL^p2IMG  Audit  *FL  p2IMG  (vs audFIX p2IMG)
 ;;     audFIX^p2IMG Correct *FL Lines in MRou !  CAUTION
 ;; mbr. ^mbrofme  Refresh MBR
@@ -48,6 +47,7 @@ Menu	;Text for Menu  	Compile  RM()
 ;;  g1. g1^ppzCGEV  Change Every rppar1/  See ppzCGEV
 ;;
 ;;OBS.   Obsolete versions
+;; demo. demo^p2Ma  Fudge PTx Data for HGen
 ;;test.    test menu
   ;;***
   

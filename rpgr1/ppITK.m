@@ -2,7 +2,7 @@ ppITK(TLab) ;CKW/ESC i7mar24 umep./ rppar1/ ;2024-0307-60;Create TKv() fudge fro
 
 
 ;;
-      I $G(TLab)="" S TLab="TK1"
+      I $G(TLab)="" S TLab="Texp1"
 ;*
 top   KILL TKv S tki=0,TKv=0
       F I=1:1 S T=$T(@TLab+I),L=$P(T,";;",2,99) Q:L["***"  Q:L=""  DO  ;
@@ -17,6 +17,15 @@ top   KILL TKv S tki=0,TKv=0
         .S TKv=tki
       W:$X ! W "Finished ^"_$T(+0)_"  tki:",$G(tki)," codes",!!
       Q
+;*
+Texp1  ;; Fudge simplest expr tests
+;;LM:a+b/2;;basic expr
+;;Vna. 1 1 a
+;;+    2 2 +
+;;Vna. 3 3 b
+;;/    4 4 /
+;;Npat. 5 5 2
+;  ***
 ;*
 TK1  ;; Fudge simplest TK  K X,abc,Y,Z
 ;;LM:K X;test;;

@@ -1,18 +1,40 @@
-==   mPAR-GR0a.mdk      in umep/ rppar2/
-#   rev 19may24  2pm
+==  Grammar 0.1 mumps parts     Simplest, No fail K X  K X,Y
 
+
+# Punctuations as themselves 
+# See CRGtok^ppGRI to create GRt(tokt)   List of Punctuations is in //tokt Line See PUL
+//tokt   {,.^%$#@!()[]'":=_*+-;<>   
+NN.
+LL.
+UU.
+AA.
+PP.
+
+CC.
+sp1.
+wsp.
+eol.
+Wd.
+Vna.
+qs.
+int.
+#  + - N [.] N   not exponent form yet
+num.  
+nex.
+Qwd.
+Swd.
+Hwd.
+Kwd.
 
 //GR    GRna  &   GRru
 LblLine:  Top Level with label and/or start-sp1
    Label sp1. mCmds
-   ; Comment
-   sp1. mCmds
-# Comment content after semicolon (or dbl ;; ?)
-
+# linestart comment
+   Comment  
 mCmds:Top level, start for now, grab
-   Hcmd
    Kcmd
-   ; Comment
+   Hcmd   
+   Comment
 
 #  Test Errors by Aud^ppGRI
    XXyy.
@@ -22,7 +44,7 @@ mCmds:Top level, start for now, grab
 Comment: Semicolon comment
    ; AllCom
 AllCom: Text of comment, anything to EOL
-   E. [E.]
+   EE. [E.]
    
 Label:  Line label/codeblock ref, arg/formal-args
    Na eLab
@@ -41,21 +63,23 @@ Karg:  Kill argument
     KVnlst
     
 KVnlst: List of Vars to Kill
-    Vna. eKVnlst
+    KVn [eKVnlst
     
-eKVnlst:opnull  end of comma list of KVars 
+KVn: Single Kill Var
+    Vna.
+    
+[eKVnlst:  end of comma list of KVars , optionionally null
     , KVnlst
-    opnull.
 
 Hcmd:Hang is simple
    Hwd. sp1.  Exp   
 
 Exp:Expression
    Svn
-   unop. Exp
+   [unop. Exp
    Svn bop Exp
    Vlit
-unop:  Unary Operators
+[unop:  Unary Operators
    +
    -
 bop: Binary operator
@@ -78,4 +102,9 @@ Na:  Name of var, mGbl, label, sans (args)
 ALVn: Array or Local Var name, with % or ^ pfx
      Vna.
 
-//    end
+
+//m   mumps test code
+K X
+//TK
+Kwd.K sp1. Vna.X_K X
+//
