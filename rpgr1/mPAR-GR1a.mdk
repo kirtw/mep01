@@ -68,7 +68,7 @@ exp:Expression
    -
    !
 [bopex]:
-   bop exp
+   bop exp  ::+ - < > * / _ \ #
    
 bop: Binary operator, ?dbl binary ops
    +
@@ -80,10 +80,10 @@ bop: Binary operator, ?dbl binary ops
    _   
    \
    #
-[eq]:
-   =
+[eq]: optional second char of bop, ie < = is less than or equal to
+   = ::=
 Svn:  Simple var name
-   Vna.   ::  Vna.   # includes ^ % Apat.
+   Vna.   ::  Vna. ::  # includes ^ % Apat.  Presumes preprocessor
    
 Vlit: Literal value in code, quote or number
    [Vlqt]

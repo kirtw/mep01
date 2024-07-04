@@ -25,7 +25,7 @@ Qa      S argQ=Q,argRet=(Q'=""),argDolQ=$Q,argVL=VL
 ;*
 ;*  Local modified vers of pze^dv 
 pze(M,VL) ;
-      NEW X,D,%ZSH S D=$IO
+      NEW X,D,%ZSH,d,vi,vn,val,ln,ci,v0,C  S D=$IO
       S VL=$G(VL)
       S M=$G(M)
       zsh "s":%ZSH  S %c=$G(%ZSH("S",2)) I %c="" S %c="caller"      
@@ -40,9 +40,8 @@ pze(M,VL) ;
       I X["." D ^dvstk,b^dv("dot Break out of pze- ",VL) ; Dir Mode Break
       USE D
       Q
-WVL(VL) NEW D,d,vi,vn,val,ln   
+WVL(VL) ;
    I $G(VL)="" Q
-   ;S D=$IO USE $P
    F vi=1:1:$L(VL,",") S vn=$P(VL,",",vi) I vn?.1"%"1A.an DO  ;
      .W:$X ! W " ",vn,": "
      .S d=$D(@vn),val=$G(@vn)
@@ -50,10 +49,13 @@ WVL(VL) NEW D,d,vi,vn,val,ln
      .I d#2=0 S val="UNDEF."
      .I d=11 S val="ARRAY+Str "_val
      .I d=10 S val="ARRAY!"
+     .I val'?.ANP DO  ;ctrl in val
+        ..S v0=""
+        ..F ci=1:1:$L(val) S C=$E(val,ci) S:C?1C C="$C("_$A(C)_")" S v0=v0_C
+        ..S val=v0
      .S ln=$L(val),vw=50
      .W $E(val,1,vw)
      .I ln>50 W !,?10,"...:",$E(val,vw+1,vw+60) W:ln>vw+60 "+"
      .W !
-   ;USE D 
    Q
 ;*

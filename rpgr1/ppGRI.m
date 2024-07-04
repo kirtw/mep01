@@ -100,6 +100,7 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
             ..;I L[" #" S L0=L,L=$P(L," #"),L=$$DSP^dvc(L) ;D b^dv("gran end-of-line comment","L0,L")
             ..S grulst=$$DSP^dvc($P(L,"::"))      ;DSP after :: pieces  
             ..S grtklst=$$DSP^dvc($P(L,"::",2))
+            ..I grtklst'="" D pze^p2s("Log grtklst ::2 ","grtklst,gran,grulst,L")
             ..S t1tt="" I gran["[" S t1tt=$P(grulst," ")
             ..D SFL^kfm("grulst,grtklst",granFL)  ; Note grulst and grtklst are filed under gran now
             ..D SFL^kfm("grnun,t1tt",grabFL)

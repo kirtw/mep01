@@ -1,0 +1,11 @@
+==  ReFactored Input terminals
+
+
+LM is raw mumps chars, ascii (No ctrl)
+
+Initialization, nextC for ci=0 -> ci=ci+1, C=$E(LM,ci)
+
+TKc=C, tki=1
+
+NxtI - next TKc and rest of this one (tki)  and return last Str.
+

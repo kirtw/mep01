@@ -1,0 +1,32 @@
+==  Revised ReFactored PreProcessor
+
+
+Input Terminals
+
+
+Since words are committed by the first char, eg Kcmd. by K, it is
+unnecessary to pre-scan inputs out of context.
+Instead, after K is parsed, any subsequent chars can be processed.
+ie when K matches Kcmd. as part of its post-processing, ILL can be
+added to the results and tested for syntax error if misspelled...
+
+Similarly Vna.  is initiated irreversibly in certain contexts by
+^ % or Apat.  and the rest of the word can be then finished from input
+chars to compose the string input.
+
+There is still ambiguity between specific letters, 'K'  vs Apat.  or ANpat.
+or ANPpat. or Epat. etc.
+
+StringLit  starting with quote and consumming everything (but Cpat.) until
+an end quote is encountered  or dbldbl quotes representing a quote char inside the Slit.
+
+Again, after committing to " starting Slit. the preprocessor can quickly
+parse subsequent input chars.
+
+Where would terminals like Apat., ANpat. occur and are they necessary ?
+
+SO, TKv(tki) does not need to be parsed in advance, or even how many
+tokT's will be involved. Some are multichar as before, just not predestined, but
+decided after the fact, after context and syntax-element are determined from the
+first char.
+
