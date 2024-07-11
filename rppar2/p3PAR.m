@@ -59,10 +59,10 @@ GRAN(gran)  NEW Q I $$arg^p2s("gran") G Qb
         ; NEW grulst,nlst,gropsr,gropsyn,Rn, grts,grte (actually gnts,gnte ?)
         D granI ; : grulst, nlst, Rn=0
         D PSHn("GRAN")
-N1      I gran="Svn.1" D pze^p2s("Log Svn.1 N1 in GRAN","gran,Rn,nlst")
+N1      I gran="exp.1" D pze^p2s("Log exp.1 N1 in GRAN","gran,Rn,nlst")
         I Rn'<nlst D granPASS G Q ;Passed every tok in grulst/Rn
         S Rn=Rn+1
-        D TOK(Rn) I QT="" DO:gran="Svn.1"  G N1 
+        D TOK(Rn) I QT="" DO:gran="exp.1"  G N1 
           .I Rn'=1 D b^dv("Err Rn","Rn,QT,gran,grab")
 N2      S QN=QT D granFAIL
         G Q

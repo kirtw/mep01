@@ -29,11 +29,11 @@ pze(M,VL) ;
       S VL=$G(VL)
       S M=$G(M)
       zsh "s":%ZSH  S %c=$G(%ZSH("S",2)) I %c="" S %c="caller"      
-      W:$X ! W " ^p2s  *** pze ***  by "_%c_"- ",M,!           
-      USE $P I $G(devlog)'="" W:$X ! W "devlog:",devlog,!
+      USE $P W:$X ! W " pze^p2s  *** ",%c," ***  - ",M,!           
+      I $G(devlog)'="" W:$X ! W "devlog:",devlog,!
       I $G(deverr)'="" W:$X ! W "deverr:",deverr,!
       I D'=$P,D'=$G(devlog) W:$X ! W "Current $IO not $P:",D,!
-      W:$X ! W !," *** pze^p2s ***   ",M    
+        ; W:$X ! W !," *** pze^p2s ***   ",M    
       I VL'="" D WVL(VL)
       W " Pause ( . for Dir Mode )  <ret> "
       READ ":",X,!!

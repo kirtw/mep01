@@ -1,4 +1,4 @@
-dzdelo(zro)  ;CKW/ESC  i27aug19 gmsa/ rd2zro/ ; 20200907-98 ;Delete *.o FIles from */o/*.o
+dzdelo(zro)  ;CKW/ESC  i27aug19 umep./ ru*/ ; 20200907-98 ;Delete *.o FIles from */o/*.o
   ;
 ;$$Q  or not   sr zl5  from ^dvzl
 A       I $G(zro)="" S Q="Arg ^"_$T(+0) D bug^dv(Q,"Q,zro") Q
