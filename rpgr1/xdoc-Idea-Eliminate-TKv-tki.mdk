@@ -1,0 +1,31 @@
+==   Idea-EliminateTKv()  vs simple LM, C input, ptrs tics, tice
+
+
+12jul24
+
+tki as ptr
+TKc  as char, C  - no longer Vna. etc
+  These appear in grulst's as tok but are tested vs TKc and $G(TTc(tokt,TKc))=1 QTest
+  
+TKv() is eliminated.
+tki is eliminated vs TKi, ptr into LM
+
+New comprehensive Input control vars
+    LM is line of mumps, eg from MRou, ri
+       tabs converted
+    LMi is ptr into LM, equiv to ci before
+    LMc is just literal char, ~C, maybe EOL, EOF explicitly, (never tab)
+       It is not space, handled by sp1.  or wsp. via ^p3INtx special case ?
+       or NOT at this level, no more space-delim lists, only TTc1(tokt,LMc)
+        which could be space here ?
+
+grts and grte become ptrs from TKi into LM, $E(LM  for str
+gnts, gnte  duplicate with grte  - really gran not grab,
+   but grab assumes from passed gran.
+   
+^p3INtx  bumps tkce along when eg var is abc
+
+Vna. is an abstract terminal, tokt
+    collection of ^ and % and Apat.  which is 52 letters
+    TTc("Vna.",C  contains 52 + 2 entries, easily tested vs TKc~C
+    

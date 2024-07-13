@@ -37,7 +37,7 @@ Hcss   ;
        Q
 ;;pt2FL:gran,grts,grte_PTx(StkP,grts)
 guts  D ot("table")
-      D ot("tr"),htr("tki:") F tki=1:1:TKv D ot("th"),sv(tki),ct
+      D ot("tr"),htr("grstr:"_grstr) F ti=1:1:$L(LM) D ot("th"),sv($E(LM,ti)),ct
       D ct,breol^hgh
       S pti="" F ptj=0:1  S pti=$O(PTx(pti))  Q:pti=""  D rows  ;
        ;

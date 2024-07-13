@@ -1,0 +1,18 @@
+== Idea-Input-Extend
+
+
+Since I cannot predict the use of a word, I cannot reliably put the word into one input terminal entity.
+
+However, the syntax is determined by the first char, say a of what is a var abc.
+Vna. is invoked (and then Svn etc.
+
+Instead of just incrementing tki or the char input pointer, I can invoke a continuation input sr specific to the context, ie the terminal token (tokt) and add the rest of the chars, b and c as long as they match. This is mumps code, so ?an etc is accessible.
+The sr returns tkce and this is added to the string for tki.
+
+This is handled by ^p3INtx  which increments tki after adding chars and bumping the char input ptr.  depending on the current tokt and its sr TKv(tki tkce and tkstr are updated, before tki is bumped and TKc is set from the next input char.  TKc is always now a char, not a terminal like Vna. (Or maybe this is wrong...)
+
+... ?
+
+
+
+

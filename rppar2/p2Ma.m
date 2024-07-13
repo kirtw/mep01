@@ -17,17 +17,17 @@ GRI    KILL  ;
 LMp2   NEW Q S Q=""  
        W:$X ! W "Starting LMp2^p2Ma ^p3PAR  ",!
        D IB^mepIO  S Q=$$devlog^devIO("mpG1a-LM-log.3.html","ww2x/") G:Q'="" Qb ;HGen
-       I $G(devlog)'="" USE devlog
+       I $G(devlog)'="" USE $P W !,"devlog:",devlog,! USE devlog
        E  D b^dv("Err no devlog","devlog")
        D G1^ppGRI  ; mGR0a.mdk in rpg1/ : GRv...
-       D ^ppITK  ; TKv()  for S X=Y eol
+       ;D ^ppITK  ; TKv()  for S X=Y eol
          ;D pze^p2s("Log LM^p2Ma","GRv,GRc,TKv")
-       D ^ppTXU  ;Audit TKv  vs GRt()  etc.
-       D ^ppWTK ; Write TKv()
+       ;D ^ppTXU  ;Audit TKv  vs GRt()  etc.
+       ;D ^ppWTK ; Write TKv()
          ;D pze^p2s("See TKv ","TKv")
        USE devlog 
        ;D ^p2PAR  ;STK, non-recursive  rppar2/ ^p2PAR One big MRou
-            KILL (TKv,GRv,GRc,GRt,GXsq,Q)  ; debug
+            KILL (RM,GRv,GRc,GRt,GXsq,Q)  ; debug
        D ^p3PAR  ; Recursive + STK, toty{T,R,E}
        I $G(devlog)'="" U $P W !,"devlog:",devlog,"  ... Completed.",!
        D ^p2HPT  ; HGen PTx(pti,tki,   @pt2FL  grid  PI

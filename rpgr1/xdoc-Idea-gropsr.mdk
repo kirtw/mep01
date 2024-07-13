@@ -1,0 +1,14 @@
+==  Idea-gropsr.mdk
+
+The idea of gropsr as attr of gran - syntax :: piece 2 in Grammar TOI
+
+is to execute a sr  in ^p2PSR  with name of grab/gran less [] if type 'E'
+
+To save a Var cross ref for MBR for example
+
+Parameters accessible are
+    Input chars, grts to grte  = grstr
+    
+Some context vars may be set by one (higher) syntax like arg of var
+    and be used by sub elements of the expression
+    

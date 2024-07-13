@@ -1,0 +1,36 @@
+==  Idea-grtklst   - List of first chars and which Gn is implied/required
+
+
+Ultimately derived by traversing the grammar and deriving normal grab/gran
+    from the first elements it may be satisfied by.
+    
+Note it is the mumpsy concept that one char determines the grammar path
+    with subsequent chars following.
+    
+The algorithm of a grab rule, when it is run against a particular TKc
+    uses a lookup to pick its Gn which is the only one that can pass.
+    
+Rather than trying every alternative Gn,
+    each of which is required to start with a different TKc input char.
+    
+I am hand deriving the list of TKc chars for each (selected) gran
+    from manually looking at it subsets.
+    
+Note a complication of terminal Vna. is that it can start with ^ % or Apat.
+    where TKc is not unique, in that "a" may start Vna or match Apat.
+        or LCpat. or ANpat.  or Epat. ...
+        
+LookAhead chars may apply to terminals like Vna.  - ie ^ % and Apat.
+Apat. may be represented as 26 + 26 chars in an array to test vs 'a' the actual first letter of Vna.
+
+Npat. ::1 2 3 4 5 6 7 8 9 0
+UCpat. ::A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+LCpat. ::a b c d e f g h i j k l m n o p q r s t u v w x y z
+Apat.  ::LCpat. UCpat.::  merged after Array
+Ppat.  ::sp1. com1. dot1. / < > & ? ` ~ ! @ # $ % ^ *n ( ) - _ = + [ } { } \ | ; : ' "
+
+Array to test TKc when it is only an actual input char-
+   QTest
+   $G(TTk(tokt,chr))=1  true
+   S QTest=$G(TTk(tokt,TKc))   null, no  or 1 true QTest hit
+   

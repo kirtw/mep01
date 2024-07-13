@@ -1,21 +1,20 @@
 p3PAR(murl) ;CKW/ESC i7feb24 umep./ rppar1/ ;2024-0523-99;mumps table, recurse mods, mumps parser
-;  RM(mri) LM is MRou, devmr
+;  RM(LMi), ea LM is line, from MRou, devmr
 ;
 ;
-;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 top     NEW Q I $$arg^p2s("GRv,GRc,GRt") G Qb
     D ^p2IMG
     I $G(murl)="" D fake^p3INxt  ; : Fudge RM() for testing
     I $G(murl)'="" B  D ^devRDmRou(murl)  ; RM(), mRou
         D ^p2PAinit
         S (QT,QN,QB,QI,QG)="???"  ; just in case  Null pass, not null fails
-        D Init^p3INxt ; : first TKc  char to parse
+        D Init^p3INxt ; : first LMc  char to parse
           ; mGR0a.mdk          S grab="mCmds"
         S grab0=$G(GRv(0,"grab0"))
         I grab0="" S grab0="exp00"  ;Starting top rule {'mCmds', ptr Rn
         S StkP=0 KILL STK S STK=0
         I $D(Q)=0 B  ; ?
-        D pze^p2s("Log Init ","TKc,tki,mri,mRou")
+        D pze^p2s("Log Init ","LMc,LMi,MRi,mRou")
         D GRAB(grab0)  ;grab : QB
         I QB'="" D b^dv("Failed Parse top grab0","QB,grab0,StkP")
         I $D(Q)=0 B  ; ?     
@@ -30,25 +29,25 @@ GRAB(grab) NEW Q I $$arg^p2s("grab") G Qb
        NEW grun,Gn,Gn0,grnun,grts,grte,grri,grde,grri ; attr of grab
        NEW grulst,nlst,Rn,gropsr,gropsyn  ; attr of gran
        D grabI
-       D PSHb("GRAB")
-       I StkP>50 D b^dv("Err Runaway Recursion","StkP,grab,gran")
-       S Gn0=0 I $D(GXtg(grab,TKc)) DO  G:QT="" B2
-         .S Gn0=$O(GXtg(grab,TKc))
+       S Gn0=0 
+       I $D(GXtg(grab,LMc)) DO  G:QT="" EB2
+         .S Gn0=$O(GXtg(grab,LMc))
          .D Gn2(Gn0)
          .D GRAN(gran) ; : QN
-       S Gn=1,QN="?" G GN1  ; Try rest of Gn's (skip Gn0)
+       S Gn=1,QN="?" G GB1  ; Try rest of Gn's (skip Gn0)
+;*       
 Gn2(Gnn) S Gn=Gnn,grun=Gn,gran=grab_"."_Gn
        Q
 ; falls  Gn, grab : gran, grun~Gn       
-GN1    D Gn2(Gn)
-       I Gn'=Gn0 D GRAN(gran) I QN="" D grabPASS G B2
-       I Gn<grnun S Gn=Gn+1 G GN1
-GN2    D grabFAIL ;
+GB1    D Gn2(Gn)
+       I Gn'=Gn0 D GRAN(gran) I QN="" D grabPASS G EB2
+       I Gn<grnun S Gn=Gn+1 G GB1
+GB2    D grabFAIL ;
        S QB=QN I QB="" S QB="X?"
-       D POP2("QFGRAB")  ; StkP
+       D POP2^p3PSH("QB-R-GRAB-GB2")  ; StkP
        G Q
-B2     S popte=grte S QB=""
-       D POP2("QPGRAB")  ; StkP
+EB2     S popte=grte S QB=""
+       D POP2^p3PSH("QB-E-GRAB-EB2")  ; StkP
        G Q ; ends GRAB, QB, popte?
 ;* Gn, gran, grnun : QN     
 ;*If finishes alt list, (Gn~grun) without passing, fails grab QB still "??"
@@ -56,9 +55,9 @@ B2     S popte=grte S QB=""
 ;*gran val is Gn : QN, grts,grte if QN null/pass gran/grun is a successful alt in grab
 GRAN(gran)  NEW Q I $$arg^p2s("gran") G Qb
         ; gran NEW by arg (and set)
-        ; NEW grulst,nlst,gropsr,gropsyn,Rn, grts,grte (actually gnts,gnte ?)
+        ; NEW grulst,nlst,gropsr,gropsyn,Rn, grts,grte ;(actually gnts,gnte ?) in GRAB
         D granI ; : grulst, nlst, Rn=0
-        D PSHn("GRAN")
+        D PSHn^p3PSH("GRAN")
 N1      I gran="exp.1" D pze^p2s("Log exp.1 N1 in GRAN","gran,Rn,nlst")
         I Rn'<nlst D granPASS G Q ;Passed every tok in grulst/Rn
         S Rn=Rn+1
@@ -87,18 +86,19 @@ GEtok  I $G(tok)="" S Q="arg-tok" G Qb
        ;Look ahead if fails first term, pass null
        ; t1tt same as $P(grulst," ",1) for [grab toty="E"
        S t1tt=$G(GRv(tokt,"t1tt")) 
-         I t1tt="" D b^dv("GRv fail t1tok for E type [ rule","t1tt,tokt,TKc") G Qb
-       I t1tt'=TKc S QT="" G Q  ;E fail first term is pass null
+         I t1tt="" D b^dv("GRv fail t1tok for E type [ rule","t1tt,tokt,LMc") G Qb
+       I t1tt'=LMc S QT="" G Q  ;E fail first term is pass null
+       D b^dv("Log Pass null 'E' type","tokt,toty,StkP,t1tt,LMc,LMi")
        GOTO GRtok  ; treat as grab      
 ;*  tok is grab, recurse toty 'R' or 'E'
-GRtok   ;D PSH("GRtok")  
-        D GRAB(tok) S QT=QB
+GRtok   D GRAB(tok) S QT=QB
         I QB="" S grte=popte
+        S QT=QB
         G Q  ;ends TOK, QT
 ;*
 grabI NEW Q I $$arg^p2s("grab,StkP") G Qb
      S QB="??"   ;must be set by     
-     S grts=tki,grte="???"
+     S grts=LMi,grte="???"
      D GFL^kfm("grnun,grde,grri",grabFL) ; GRv(grab : grde, grnun  
      D bln^dv3("InitGRAB")     
      G Q
@@ -114,11 +114,12 @@ granI   NEW Q I $$arg^p2s("gran") G Qb
         D GFL^kfm("grulst",granFL) ; gran, GRc(gran : grulst
         S nlst=$L(grulst," ")
         S QN="??",grte="?"
+        ;get these when needed at granPASS ---  or in ^ppGRI
         S gropsr="",sr=$TR(grab,"[]")_"^p2PSR"
           I $T(@sr)'="" S gropsr=sr ;D b^dv("Log found gropsr sr","gropsr,gran")
         S gropsyn="",sr=$TR(grab,"[]")_"^p2PSYN"
           I $T(@sr)'="" S gropsyn=sr ;D b^dv("Log found gropsyn sr","gropsyn,gran")
-        S grts=tki,grte="?",grstr="???"
+        S grts=LMi,grte="?",grstr="???"
         D bln^dv3("InitGRAN")
         S Rn=0,tok="??"  ;for PHSn               
         G Q
@@ -129,19 +130,18 @@ Ttok ; : QT null pass, else fails
     NEW Q,QTest I $$arg^p2s("tokt,toty") G Qb
     S DD=$D(GRt(tokt)) I DD=0 S Q="Undef tokt '"_tokt_"'" G Qb    
     S ttQT=$G(GRt(tokt,"ttQT"))
-      I ttQT="" S QTest=(tokt=TKc)
+      I ttQT="" S QTest=(tokt=LMc)
       E  S XX="S QTest=$$"_ttQT_"^p3INxt" X XX DO  ;
          .W:$X ! W "QTest (",tokt,") :",QTest,"  "
          .D b^dv("Log QTest ttQT ","QTest,tokt,tok,grab,gran,StkP,tkcs,tkce,grts,grte")
-    I 'QTest S QT="1 tokt-Failed"_TKc_"'="_tokt D TermNO G Q
-    ;D TermMch  
-    ;* Terminal matched Input tokt=TKc~tkcod/Input tki :
-;  Bumps both Input, tki,  after finding a terminal match
-   S grte=tki  ;was gn te
-   D ^p3INxt  ; TKc, mci, mri, tki+
+    I 'QTest S QT="1 tokt-Failed"_LMc_"'="_tokt D TermNO G Q
+    ;
+    D ^p3INxt  ; LMi, MRi'?,  then new LMi, TKc~now LMc
+     ; may bump LMi 
+   S grte=LMi  ;was gn te, was tki
       D bln^dv3("termPASS")
-    S QT="" ;QTest matches !
-    I TKc=EOF  D b^dv("End of TKc(tki)","ci,TKc,mri,LM")  ;No more input
+    S QT="" ;QTest matched !
+    I LMc=EOF  D b^dv("End of LM input","ci,LMc,MRi,LM")  ;No more input
     G Q
 ;*
 ;* gran, Rn, grulst : tok, toty
@@ -165,7 +165,8 @@ granPASS S QN=""
 ;
       D der2
       I $D(PTx(StkP,grts,"grte")) ;D ^dv("Dupl PTx","StkP,gran,grts,grte")
-      D SFL^kfm("gran,grts,grte,grstr,grulst,gropsr,gropsyn,colspan,gnC","_PTx(StkP,grts)")
+      S svFL="gran,grts,grte,grstr,grulst,gropsr,gropsyn,colspan,gnC"
+      D SFL^kfm(svFL,"_PTx(StkP,grts)")
         D bln^dv3("granPASS")
         ;D ^dv("Log granPASS","QT,grulst,grts,grte")
         Q
@@ -185,15 +186,12 @@ granFAIL D bln^dv3("granFAIL")
         D pze^p2s("Log granFAIL","QN,QT,gran")
         Q
 ;*
-
-;*
-
 ;* Terminal does not match, rule fails (or tried to use Undef term)
-;*  Fails QN gran if any terminal doesnt match next TKc~tkcod
+;*  Fails QN gran if any terminal doesnt match next LMc~tkcod
 TermNO S QT="X:"_tokt_" at "_$G(gnn)
       W:$X ! W "TTX x ",gran," Failed at ",tokt,"   [",grulst,"] #",Rn,!
       D bln^dv3("termFAIL")
-      D pze^p2s("Log End TermNO","QT,QI,tokt,tki,TKc")
+      D pze^p2s("Log End TermNO","QT,QI,tokt,LMi,LMc")
       Q
 ;*      
 ;;sgrabFL:grab,sty,grnun,grts,grte,grde,grri_STK(StkP)
@@ -202,58 +200,9 @@ TermNO S QT="X:"_tokt_" at "_$G(gnn)
 ;*
 grabFAIL S QB="Failed "_grab_" x"_$G(gnn) 
         D bln^dv3("grabFAIL")
-        D pze^p2s("grabFAIL: Syntax Err?","QB,grab,gran,tki,TKc,StkP")
+        D pze^p2s("grabFAIL: Syntax Err?","QB,grab,gran,LMi,LMc,StkP")
         Q
-;*
-xPSH(M) S M=$G(M,"argPSH") D PSHb(M),PSHn Q  ; ,PSHt  
-POP2(M) S M=$G(M,"argPOP") ;D POPn,POPb(M)   Q  ; POPt,
-       S StkP=StkP-2
-       Q
-;*
-PSHb(M)  S sty="grab" S M=$G(M)
-    S StkP=StkP+1 
-    D SFL^kfm(sgrabFL)  ; Save
-    W:$X ! W "PSHb- grab:",$G(grab),"#",StkP,!
-    Q
-;*      
-PSHn(M) S sty="gran"  S M=$G(M)
-    S StkP=StkP+1 
-    S Lev=StkP
-    D SFL^kfm(sgranFL) ; : STK(StkP)
-    W:$X ! W "PSHn-",M," gran:",$G(gran),"#",StkP,!
-    Q
-;;stokFL:gnn,sty,gtki_STK(StkP)
-xPSHt(M)   S M=$G(M) S sty="tok" S gtki=$G(tki)
-    S StkP=StkP+1
-    D SFL^kfm(stokFL)
-    W:$X ! W "PSHt-",M," gnn:",$G(gnn),"#",StkP,!    
-    Q
-;*  
-;;sgrabFL:grab,sty,grnun,Gn,grun,grts,grte,grde,grri_STK(StkP)
-;;sgranFL:gran,sty,grulst,nlst,Rn,tok,gropsr_STK(StkP)
-;;stokFL:gnn,sty,gtki_STK(StkP)
-;*
-xPOPb(M)   S M=$G(M)
-    I StkP<1 D b^dv("PSHb Sync-StkP not odd ","StkP")
-    D GFL^kfm(sgrabFL) ; STK(StkP,
-    W:$X ! W "POPb-",M," grab:",$G(grab),"#",StkP,!
-    I sty'="grab" D bug^dv("Stk sync pop/push sty grab","sty,M,StkP,grab,gran")
-    S StkP=StkP-1
-    Q
-xPOPn(M)  S M=$G(M) ;  actually StkP=StkP-1  but dont reset loc vars ---
-    I StkP<2 D b^dv("Err Stk UnderFlop pop","StkP") G Qb
-    D GFL^kfm(sgranFL) ; STK(StkP,
-    W:$X ! W "POPn-",M," gran:",$G(gran),"#",StkP,!    
-    I sty'="gran" D ^WSTK,^dvstk,b^dv("Stk sync pop/push sty gran","M,sty,StkP,grab,gran")
-    S StkP=StkP-1
-    Q   
-xPOPt(M)  S M=$G(M,"argPOPt")
-    I StkP<2 D b^dv("Err Stk UnderFlop pop","StkP") G Qb
-    D GFL^kfm(stokFL)
-    W:$X ! W "POPt-",M," gnn:",$G(gnn),"#",StkP,!
-    I sty'="tok" D ^dvstk,b^dv("Err POPt sty ","sty,M,StkP,gnn")
-    S StkP=StkP-1
-    Q      
+
 
 
      

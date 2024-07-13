@@ -6,30 +6,26 @@ gen  ;
      D TX2
      W:$X ! W "Logpost gran:",gran,"   '",gnstr,"'  ",!
      Q
-;*  grts,grte : TKv(), grstr, tn~colspan
-TX2() NEW Q,tkj,tn S Q=""
+;*  tkcs,tkce : grstr, tn~colspan
+TX2() NEW Q S Q=""
      I '$G(grts) S Q="arg:grts="_grts G Qb  ;of gran
      I '$G(grte) S Q="arg:grte="_grte G Qb
-     S tn=grte-grts+1 I tn<1 S Q="arg order grts-grte" G Qb
+     S tn=tkce-tkcs+1 I tn<1 S Q="arg order tkcs-tkce" G Qb
      S colspan="" I tn>1 S colspan=tn
-     S grstr="" F tkj=grts:1:grte S str=$G(TKv(tkj,"tks")),grstr=grstr_str I str="" D b^dv("Err tks null","str,tkj,grstr,tki")
+     S grstr=$E(LM,tkcs,tkce)
      G Q
 ;*
-;  tki : tks, Vna
-Svna NEW Q I $$arg^p2s("tki") G Qb
-     D GFL^kfm(tokFL) ; tki -> tks,tkcs,tkce
-       I tks="" D b^dv("Err tks null in tki","tks,tki,tkcod")
-     I $E(tks)'?1A,$E(tks)'="%" Q  ;Ignore mGbl, $E, $P for now
-     S Vna=tks     
+;  tkcs,tkce : grstr, Vna
+Svna NEW Q I $$arg^p2s("tkce") G Qb
+     S grstr=$E(LM,tkcs,tkce)
+     S Vna=grstr     
      ;log cross ref Var SET
      Q
-;;tokFL:tkcod,tks,tkcs,tkce,tkri_TKv(tki)
 ;* Vna, LM, cbid :  XRV() for MBR code analysis
-XRna(VarActTy)  NEW Q I $$arg^p2s("tki,Vna,TKv,VarActTy") G Qb 
+XRna(VarActTy)  NEW Q I $$arg^p2s("LM,Vna,VarActTy") G Qb 
      I $G(cbid)="" S cbid="TestLine"
-     I $G(LM)="" S LM=$G(TKv(0,"LM")) I LM="" S LM="K X,Y"  ; sic fudge/kludge
      S ssVna=Vna I Vna["(" S ssVna=$P(Vna,"("),VAarg=$P($P(Vna,"(",2),")")
-     I ssVna="" D b^dv("Lost Vna ","ssVna,Vna,tks,tki") Q
+     I ssVna="" D b^dv("Lost Vna ","ssVna,Vna,grstr,tkcs,tkce") Q
      S XRV(ssVna,cbid,VarActTy)=LM  ; for MBR xref Vars
      Q
 ;*     
@@ -39,11 +35,19 @@ Qb     D b^dv("Err Post granPASS sr gropsr in ^"_$T(+0),"Q,grab,gran,grts,grte,c
 ;*     * * * * *       
 ;   @gropsr^p2PSR
 ;
-;*  tki & TKv(tki  tkiFL 
-KVn  NEW Q I $$arg^p2s("tki") G Qb
-     D TX2 ; grts,grte : grstr
+;*  
+KVn  NEW Q I $$arg^p2s("LMi") G Qb
+     D TX2 ; tkcs,tkce : grstr
      S Vna=grstr
      I grstr="" D b^dv("Err no grstr/Vna of gran gropsr","Vna,grstr,grts,grte,gran,gropsr") G Qb
      D XRna("K") ; 
      Q
-     ;
+     ; Var in exp
+Svn  NEW Q I $$arg^p2s("LMi,tkcs,tkce") G Qb
+     D TX2 ; : grstr
+     S Vna=grstr
+     D b^dv("Log gropsr of Svn","grstr,gran")
+     D XRna("E")  ;expr var ref
+     S QT=""
+     Q
+     

@@ -3,7 +3,14 @@ p2PARinit ;CKW/ESC i26mar24 umep./ rppar2/ ;2024-0401-45;Init SR for Parser
 ;
 ;
 Init  D IKILL
-      D Istb
+      D IRM
+      D Istb  ; : tbs()
+      Q
+;* Init Input  RM()
+IRM   I '$G(RM) D b^dv("Need RM() MRou fake or real","RM") Q
+      S LM=$G(RM(1)),LMi=1,MRi=1
+      S LMc=$E(LM,LMi)
+        I LMc="" D b^dv("Err bug RM(1) null ?","LM,LMi,LMc,MRi")
       Q
 ;*
 IKILL   KILL STK S StkP="0?"

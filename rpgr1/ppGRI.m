@@ -13,7 +13,9 @@ ppGRI  ;CKW/ESC i7feb24 umep./  rppar1/ ;2024-0304-77;Gen/TOIcustom from RG() GR
 ;;granFL:grulst,gropsr,grtt_GRc(gran)
 ;;gran:s grab.grun eg Exp.1, "Exp.2"  subscript of GRc esp grulst- rule list
 ;;grulst;spdelim List of tokens, either terminal in TKv or grab  rule name (not gran)
-;;   1st sp piece may have term after / from grammar file,  gran may be attached to _2
+;;
+;;grtklst: sp-delim list of start chars (or term-toks (eg Vna.)  dbl colon TOI
+;;   vs derived from traversal and term-1st
 ;;toktPUL:special list of tokt's which may start gran, $P(tokL," ") is punct list, rest $P(sp tokt's
 ;;gropsr: post proc sr, in ^ppPSR/^p2PSR - not in GRc, derived later,  see granI^p2PAR
 ;
@@ -100,9 +102,13 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
             ..;I L[" #" S L0=L,L=$P(L," #"),L=$$DSP^dvc(L) ;D b^dv("gran end-of-line comment","L0,L")
             ..S grulst=$$DSP^dvc($P(L,"::"))      ;DSP after :: pieces  
             ..S grtklst=$$DSP^dvc($P(L,"::",2))
-            ..I grtklst'="" D pze^p2s("Log grtklst ::2 ","grtklst,gran,grulst,L") ; pze^p2s
+            ..I grtklst'="" ;D pze^p2s("Log grtklst ::2 ","grtklst,gran,grulst,L") ; pze^p2s
+            ..S gr0=$TR(grab,"[]"),gropsr="" S glab=gr0_"^p2PSR",z=$T(@glab)
+            ..  I z'="" S gropsr=glab
+            ..S grsyn="" S glb2=gr0_"^p2PSYN",z=$T(@glb2)
+            ..  I z'="" S grsyn=glb2
             ..S t1tt="" I gran["[" S t1tt=$P(grulst," ")
-            ..D SFL^kfm("grulst,grtklst",granFL)  ; Note grulst and grtklst are filed under gran now
+            ..D SFL^kfm("grulst,grtklst,gropsr,grsyn",granFL)  ; Note grulst and grtklst are filed under gran now
             ..D SFL^kfm("grnun,t1tt",grabFL)
        S grab=0 F  S grab=$O(GRv(grab)) Q:grab=""  DO  ;
          .S grn=$G(GRv(grab,"grnun")) 
