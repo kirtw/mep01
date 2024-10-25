@@ -15,7 +15,7 @@ New comprehensive Input control vars
        tabs converted
     LMi is ptr into LM, equiv to ci before
     LMc is just literal char, ~C, maybe EOL, EOF explicitly, (never tab)
-       It is not space, handled by sp1.  or wsp. via ^p3INtx special case ?
+       It is not space, (handled by sp1.?)  or wsp. via ^p3INtx special case ?
        or NOT at this level, no more space-delim lists, only TTc1(tokt,LMc)
         which could be space here ?
 

@@ -3,7 +3,7 @@ ppGRtok ;CKW/ESC i30jun24 umep./ rpgr1/ ;2024-0630-49;Construct Terminal grammar
 ;
 ;
 ;
-top  NEW Q,tsq S Q=""   ;Read RT() from PAR-TOK1a.mdk 
+top  NEW Q,tsq S Q=""   ;Read RT() from mPAR-TERM1a.mdk 
      ;GRt()
      D ^p2IMG  ; tokgrFL
      D CRTtokt ; RT//tok : GRt(tokt, GXtsq(tsq)=tokt
@@ -14,22 +14,39 @@ top  NEW Q,tsq S Q=""   ;Read RT() from PAR-TOK1a.mdk
 CRTtokt NEW Q S Q=""  I $$arg^pps("RT") G Qb
        NEW gi,gi0,PUL,P,tokt,L,L1
        KILL GRt,GXtsq,GXtt S GXtt=0,gti=0,GXtsq=0 
+       KILL TTc1 ;
+         S TTc1("sp1."," ")=1  ;Fudge, not from term table syntax
+         S TTc1("com1.",",")=1
+         S TTc1("dot1.",".")=1
+         F c=" ",$C(9,10) S TTc1("wsp.",c)=1   ;EOL=$C(10) 
        S gi0=0 F gi=1:1:RT S L=$G(RT(gi)) I $E(L,1,2)="//",L["tokt" S gi0=gi+1 Q
        I 'gi0 S Q="Err did not find //tokt in RT("_gi G Qb
        ; Punct List
        S PUL=$P(L," ",2,999) D TPUL(PUL),AudP
        ;
        F gi=gi0:1:RT S L=$G(RT(gi)) Q:L["//"  Q:L["***"  DO  ;
-         .S L1=$$DSP^dvc(L) ;L1 tokt
+         .S L1=$$DSP^dvc($P(L,"::")),L2=$$DSP^dvc($P(L,"::",2))
          .S tokt=$P(L1," ")
          .S ttde=$P(L1," ",2,9) I ttde="" S ttde=tokt
          .S ttri=gi
          .I tokt="" Q  ;Ignore blank line
          .I tokt'["." S tokt=tokt_"."
+         .I L2'="" D C1 ; tokt, L2 : TTc1(tokt,C)=1
          .D SFL^kfm("ttde,ttri",tokgrFL) ; GRt(tokt, 
          .S tsq=tsq+1,GXtsq(tsq)=tokt,GXtsg=tsq
        G Q
+;* tokt, L2 sp-delim-list
+C1     KILL TTc1(tokt)
+       F ci=1:1:$L(L2," ") S P=$P(L2," ",ci) DO  ;
+         .I P[".",$D(TTc1(P)) DO  Q  ;copy
+            ..MERGE TTc1(tokt)=TTc1(P)
+         .I P?1ANP S TTc1(tokt,P)=1 Q
+         .D b^dv("Err tokt Unk Chars in L2","tokt,L2,ci,P")
+       ;I tokt="Apat." W !! KILL TT MERGE TT=TTc1(tokt) zwr TT W !! D b^dv("Log Apat.","tokt")
+       Q
 ;*
+
+       
 ;*
 Q      Q:$Q Q Q:Q=""
 Qb     D b^dv("Err ^"_$T(+0),"Q,RG,devrg,gi,grab,gran") Q:$Q Q  Q

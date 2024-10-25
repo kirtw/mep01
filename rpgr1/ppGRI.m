@@ -71,7 +71,7 @@ IRDGR(gFil,gFol,tFil,tFol)  NEW Q,D I $$arg^pps("gFil,gFol,tFil,tFol") G Qb
 ;;grabFL:grde,grnun,grri_GRv(grab)
 ;*   GRc(gran)=grulst, space delim tokens, term[".", Punct ?1P  or [grab] or grab  rule
 ;*   GRnt(gran)=tklst, space delim, :: piece 2 after grulst
-;*
+;* Custom TOI NoIndent/Indent $E1-space, ...
 CRGru  NEW Q I $$arg^pps("RG") G Qb
        KILL GRv,GRc S grun=1,grab="?",grri="?"
        S gi0=0 F gi=1:1:RG S L=$G(RG(gi)) I $E(L,1,4)="//GR" S gi0=gi+1 Q
@@ -85,13 +85,13 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
          .S P1=$P(L," "),P2=$P(L," ",2,99)     
          .I 'Esp DO  I Q'="" G Qb
             ..; No indentation, new grab
-            ..S grab=$P(P1,":"),grun=0,grri=gi
+            ..S grab=$P(P1,":"),grri=gi
             ..I grab="" D b^dv("Err grab grab","grab,gi,P1,P2,L") Q
             ..I grab'?.1"["1A.10AN.1"]" D b^dv("Err format of grab in grammar file","grab,gi,L") Q
             ..S D=$D(GRv(grab)) I D D b^dv("Dupl grab:","D,grab,grri") Q
             ..S grde=P2
             ..S rsq=rsq+1
-            ..S grnun=grun
+            ..S (grnun,grun)=0
             ..D SFL^kfm("grde,grnun,grri,rsq,grun",grabFL) ; : GRv(grab
             ..S GXsq(rsq)=grab,GXsq=rsq
          .I Esp DO  Q
@@ -99,10 +99,10 @@ CRGru  NEW Q I $$arg^pps("RG") G Qb
             ..S grun=grun+1,grnun=grun
             ..S gran=grab_"."_grun
             ..   ;  esp end spaces
-            ..;I L[" #" S L0=L,L=$P(L," #"),L=$$DSP^dvc(L) ;D b^dv("gran end-of-line comment","L0,L")
+            ..;;;I L[" #" S L0=L,L=$P(L," #"),L=$$DSP^dvc(L) ;D b^dv("gran end-of-line comment","L0,L")
             ..S grulst=$$DSP^dvc($P(L,"::"))      ;DSP after :: pieces  
             ..S grtklst=$$DSP^dvc($P(L,"::",2))
-            ..I grtklst'="" ;D pze^p2s("Log grtklst ::2 ","grtklst,gran,grulst,L") ; pze^p2s
+            ..I grtklst'="" ;D pze^p2s("Log grtklst ::2 ","grtklst,gran,grulst,L")
             ..S gr0=$TR(grab,"[]"),gropsr="" S glab=gr0_"^p2PSR",z=$T(@glab)
             ..  I z'="" S gropsr=glab
             ..S grsyn="" S glb2=gr0_"^p2PSYN",z=$T(@glb2)

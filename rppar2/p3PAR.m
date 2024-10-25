@@ -5,7 +5,7 @@ p3PAR(murl) ;CKW/ESC i7feb24 umep./ rppar1/ ;2024-0523-99;mumps table, recurse m
 top     NEW Q I $$arg^p2s("GRv,GRc,GRt") G Qb
     D ^p2IMG
     I $G(murl)="" D fake^p3INxt  ; : Fudge RM() for testing
-    I $G(murl)'="" B  D ^devRDmRou(murl)  ; RM(), mRou
+    I $G(murl)'="" B  D ^devRM(murl)  ; murl : RM(), mRou
         D ^p2PAinit
         S (QT,QN,QB,QI,QG)="???"  ; just in case  Null pass, not null fails
         D Init^p3INxt ; : first LMc  char to parse
@@ -113,7 +113,7 @@ grabPASS S QB=""
 granI   NEW Q I $$arg^p2s("gran") G Qb
         D GFL^kfm("grulst",granFL) ; gran, GRc(gran : grulst
         S nlst=$L(grulst," ")
-        S QN="??",grte="?"
+        S QN="??"
         ;get these when needed at granPASS ---  or in ^ppGRI
         S gropsr="",sr=$TR(grab,"[]")_"^p2PSR"
           I $T(@sr)'="" S gropsr=sr ;D b^dv("Log found gropsr sr","gropsr,gran")
@@ -138,7 +138,7 @@ Ttok ; : QT null pass, else fails
     ;
     D ^p3INxt  ; LMi, MRi'?,  then new LMi, TKc~now LMc
      ; may bump LMi 
-   S grte=LMi  ;was gn te, was tki
+   S grte=tkce  ;was gn te, was tki
       D bln^dv3("termPASS")
     S QT="" ;QTest matched !
     I LMc=EOF  D b^dv("End of LM input","ci,LMc,MRi,LM")  ;No more input
@@ -160,7 +160,7 @@ granPASS S QN=""
         ;S gnC=$G(grts)_":"_$G(grte) I nospan S gnC=gnC_"/"_$G(nospan)   
         I $G(grts)="" D ^dv("Err null grts granPASS","gran,grts,grte,grab")
         I $G(gropsr)'="" DO   D @gropsr ;post pass process
-          .D ^dv("Log gropsr","gropsr,gran,grts,grte,tki,tks")
+          .D ^dv("Log gropsr","gropsr,gran,grts,grte")
         ;D SFL^kfm("grte,gnC,gropsr","_PTx(StkP,grts)")
 ;
       D der2
@@ -171,9 +171,7 @@ granPASS S QN=""
         ;D ^dv("Log granPASS","QT,grulst,grts,grte")
         Q
 ;*  grts,grte, TKv() : grstr, colspan, gnC      
-der2  S grstr="'" F tkx=grts:1:grte DO  
-        .S grstr=grstr_$G(TKv(tkx,"tks"),"|")
-      S grstr=grstr_"'"
+der2  S grstr="'"_$E(LM,tkcs,tkce)_"'"
       S colspan=grte-grts+1
       I colspan'>1 DO  S colspan="" 
         .I colspan=1 Q

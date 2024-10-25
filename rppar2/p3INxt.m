@@ -1,6 +1,6 @@
 p3INxt ;CKW/ESC i3jul24 umep./ rppar2/ ;2024-0703-24;Get Next Input and rest of current String
 ;
-;   LM  Line of mumps code, from MRi in mRou, RM(MRi)
+;   LM  Line of mumps code, from MRi in mrou, RM(MRi)
 ;   LMi ptr into LM
 ;   LMc,<-TKc is C  next char to drive parse
 ;   tokt is term tok found 1st char of, to finish word prn, grsyn
@@ -10,7 +10,7 @@ p3INxt ;CKW/ESC i3jul24 umep./ rppar2/ ;2024-0703-24;Get Next Input and rest of 
 top   ;
 ;*  LMi: grstr, cs,ce + LMi', LMc,  MRi
 ;* Produces:  C~LMc, TT()
-;;Static vars: LMi, LM, MRi, mRou, RM()   
+;;Static vars: LMi, LM, MRi, mrou, RM()   
 NxtI  NEW Q I $$arg^p2s("LMi,LM,MRi,RM") G Qb
      ;I C=EOF,LMc=C G Q
      S LMi=LMi+1,C=$E(LM,LMi),LMc=C
@@ -88,7 +88,7 @@ IES  NEW CML,Cj,Cmd,Clc,CU,CL,C1
 ;*
 ;*  Fudge RM() for testing
 fake KILL RM
-     S RM(1)="a+b/c",RM=1,mRou="Expr1"
+     S RM(1)="a+b/c",RM=1,mrou="Expr1"
      Q
 ;*
 

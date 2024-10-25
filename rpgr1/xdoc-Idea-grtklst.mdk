@@ -1,5 +1,11 @@
-==  Idea-grtklst   - List of first chars and which Gn is implied/required
-
+==  Idea-grtklst   - List of first chars 
+    1.     and which Gn is implied/required
+         GXtg(grab,char)=Gn  for all poss first chars, incl Apat. etc. most not
+         manually entered space-delim list in gran :: -> grab composite ->Gn only
+    2.   tokt  terminal tokens and testing for their first chars
+            similar but distinct  GRt()  same grtklst sic bad name
+            TTc1(tokt,chars)=1  QTest passes
+Traverse and derive grtklst or GXtg and TTc1(tokt,C)=1 just yes or no, ?other info
 
 Ultimately derived by traversing the grammar and deriving normal grab/gran
     from the first elements it may be satisfied by.
@@ -14,7 +20,7 @@ Rather than trying every alternative Gn,
     each of which is required to start with a different TKc input char.
     
 I am hand deriving the list of TKc chars for each (selected) gran
-    from manually looking at it subsets.
+    from manually looking at its subsets.
     
 Note a complication of terminal Vna. is that it can start with ^ % or Apat.
     where TKc is not unique, in that "a" may start Vna or match Apat.

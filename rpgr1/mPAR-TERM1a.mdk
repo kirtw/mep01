@@ -9,21 +9,26 @@
 # Letters, UC and LC as themselves.   eg a. A. Z.
 # See CRGtok^ppGRI to create GRt(tokt)   List of Punctuations is in //tokt Line See PUL
 //tokt   {},.^%$@!()[]'":=+-*/\#_&<>;?    
-Npat. 0 | 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9
-Lpat. 
-Upat.
-Apat.
-Ppat.
-Cpat.
-ANPpat.
-ANpat.
-Epat.    # Every char  ?1E
 
-Slit.   # string literal contents inside dbl quotes
+Npat. ::1 2 3 4 5 6 7 8 9 0
+UCpat. ::A B C D E F G H I J K L M N O P Q R S T U V W X Y Z
+LCpat. ::a b c d e f g h i j k l m n o p q r s t u v w x y z
+Apat.  ::LCpat. UCpat.::  merged as Array
+Ppat.  ::sp1. com1. dot1. / < > & ? ` ~ ! @ # $ % ^ * ( ) - _ = + [ } { } \ | ; : ' "
+Gpat. ;;Apat. Npat. Ppat.
+nqGpat. ;;Apat. Npat. / < > & ? ` ~ ! @ # $ % ^ * ( ) - _ = + [ } { } \ | ; : '
+#Cpat.   ;;$C 0-31, 127  names eol CR LF eof FF tab, ...
+ANPpat.  ;;Apat. Npat. Ppat.
+ANpat.   ;;Apat. Npat.
+Epat.    ;;Gpat. Cpat. # Every char  ?1E
 
-sp1.
-wsp.
-eol.
+Slit.   # string literal contents inside dbl quotes, op "" inside
+
+eol.  ;;c12 c13
+CR.   ;;c13
+LF.   ;;c10
+FF.   ;;c14
+tab.  ;;c9
 Wd.
 Vna.  ::^ % Apat.::
 qs.
